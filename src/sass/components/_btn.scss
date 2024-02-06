@@ -24,4 +24,7 @@
   position: absolute;
   top: 1rem;
   left: .5rem;
+  transition: all .3s;
+
+  @extend %btn-hover-active;
 }

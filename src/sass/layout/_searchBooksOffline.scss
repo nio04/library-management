@@ -1,0 +1,87 @@
+@use "../abstracts/" as abs;
+@use "../base";
+@use "../components";
+
+.search-books-offline{
+  margin-bottom: 5rem;
+
+  .h1{
+    margin: 10rem 0 4rem 0;
+  }
+
+  form{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    padding-top: 2rem;
+    padding-left: 15rem;
+    margin-bottom: 5rem;
+
+    input[type="text"]{
+      height: 4rem;
+      width: 50%;
+    }
+
+    input[type="submit"]{
+      margin-top: 2rem;
+
+      @extend %btn-hover-active;
+    }
+  }
+
+  .search-result{
+    min-height: 30vh;
+    width: 80vw;
+
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+
+    margin: 0 auto;
+    padding-top: 2rem;
+    border: 2px solid var(--secondary-color-400);
+
+    p{
+      font-size: 3.3rem;
+      font-weight: 500;
+      align-self: flex-start;
+    }
+
+    &__section{
+      max-width: 100%;
+
+      .search-result{
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(min-content, 30rem));
+        justify-content: center;
+        gap: 5rem;
+
+        padding: 5rem;
+        border-bottom: 2px solid var(--secondary-color-400);
+
+        list-style: none;
+        &__item{
+          display: flex;
+          align-items: center;
+
+          border: 2px solid var(--secondary-color-400);
+
+          img{
+            height: auto;
+            width: 100%;
+            max-width: 10rem;
+          }
+
+          .book-title{
+            margin-left: 2rem;
+          }
+        }
+      }
+    }
+  }
+}

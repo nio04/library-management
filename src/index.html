@@ -47,7 +47,7 @@
 
       <!-- VIEW ALL BOOKS FROM OFFLINE -->
       <section class="view-books-offline hidden">
-        <button class="btn">back to library page</button>
+        <button class="btn btn-back">back to library page</button>
         <h1 class="h1">view all the books colection</h1>
 
         <ul class="book">
@@ -166,7 +166,39 @@
       </section>
 
       <!-- SEARCH BOOKS FROM OFFLINE COLLECTION -->
-      <section class="search-books-offline hidden"></section>
+      <section class="search-books-offline hidden">
+        <button class="btn btn-back">back to library page</button>
+        <h1 class="h1">search for books in library</h1>
+
+        <form class="search-books__form">
+          <input type="text" placeholder="search for your books...">
+          <input type="submit" value="search" class="btn">
+        </form>
+
+        <section class="search-result">
+          <p>search results: </p>
+
+          <section class="search-result__section">
+            <ul class="search-result" id="search-result">
+              <li class="search-result__item">
+                <img src="asset/img/book.jpg"
+                     alt="sample book picture">
+                <p class="book-title">book name</p>
+              </li>
+              <li class="search-result__item">
+                <img src="asset/img/book.jpg"
+                     alt="sample book picture">
+                <p class="book-title">book name</p>
+              </li>
+              <li class="search-result__item">
+                <img src="asset/img/book.jpg"
+                     alt="sample book picture">
+                <p class="book-title">book name</p>
+              </li>
+            </ul>
+          </section>
+        </section>
+      </section>
 
       <!-- UPLOAD A BOOK -->
       <section class="upload-book-container hidden">

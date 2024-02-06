@@ -1,11 +1,6 @@
 @use "../abstracts/" as abs;
 
 .upload-book-container{
-
-  .btn{
-    @extend %btn-hover-active;
-  }
-
   .h1{
     @include abs.margin-t(12);
   }
