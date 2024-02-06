@@ -9,22 +9,13 @@
   border: none;
   outline: none;
   cursor: pointer;
-  transition: all .3s;
-}
-// WELCOME
-.welcome-btn{
-  transition: all .3s;
-
   @extend %btn-hover-active;
-
+  transition: all .3s;
 }
 
-// LIBRARY
 .btn-back{
   position: absolute;
   top: 1rem;
   left: .5rem;
   transition: all .3s;
-
-  @extend %btn-hover-active;
 }
