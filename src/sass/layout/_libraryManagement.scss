@@ -1,0 +1,39 @@
+@use "../abstracts/" as abs;
+@use "../base/" as base;
+@use "../components/" as comp;
+
+// THIS CONTAINS ALL THE
+// SECTIONS FOR LIBRARY MANAGING ONLY
+// 2ND PAGE
+
+.library-management{
+  min-height: 100vh;
+  max-width: 100vw;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1.6rem;
+
+  position: relative;
+  padding-bottom: 7rem;
+  overflow-y: hidden;
+
+  h1{
+    // @include abs.margin-t(12);
+  }
+
+  section{
+    font-size: 2.7rem;
+    text-align: center;
+
+    button{
+      min-width: 49rem;
+      padding: 1rem 2rem;
+      transition: all .3s;
+
+      @extend %btn-hover-active;
+    }
+  }
+}

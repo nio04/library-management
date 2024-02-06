@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+    <title>library management system</title>
+    <link rel="stylesheet" href="sass/page/_mainHome.scss">
+    <script src="js/controller.js" defer type="module"></script>
+  </head>
+  <body>
+    <section class="container">
+      <!-- WELCOME VIEW -->
+      <section class="welcome">
+        <h1 class="h1">library management system</h1>
+        <button class="btn welcome-btn">open the library</button>
+      </section>
+
+      <!-- LIBRARY MANAGEMENT -->
+      <section class="library-management hidden">
+        <button class="btn btn-back">back to main page</button>
+        <h1 class="h1">library management page</h1>
+        <section class="view-books">
+          <button class="btn" data-pointer="view-books-offline">view
+            all the
+            books in store</button>
+        </section>
+        <section class="search-books"><button class="btn"
+                  data-pointer="search-books-offline">search all
+            the
+            available books
+            in
+            the store</button></section>
+        <section class="upload-book"><button class="btn"
+                  data-pointer="upload-book-container">upload a
+            book</button></section>
+        <section class="search-online"><button class="btn"
+                  data-pointer="search-books-online">search
+            information about a
+            book
+            in online</button></section>
+        <section class="issue-book">
+          <button class="btn" data-pointer="issue-a-book">issue a
+            book</button>
+        </section>
+      </section>
+
+      <!-- VIEW ALL BOOKS FROM OFFLINE -->
+      <section class="view-books-offline hidden">
+        <button class="btn">back to library page</button>
+        <h1 class="h1">view all the books colection</h1>
+
+        <ul class="book">
+          <li class="book__item">
+            <section class="img"><img src="asset/img/book.jpg"
+                   alt="sample book picture"></section>
+            <section class="book__item__description">
+              <p class="item__quantity">10</p>
+              <h3 class="item__title">book name</h3>
+              <p class="item__genere">comedy, romance, slice of life,
+                actions, tragedy</p>
+              <h6 class="item__author-name">author name</h6>
+            </section>
+          </li>
+          <li class="book__item">
+            <section class="img"><img src="asset/img/book.jpg"
+                   alt="sample book picture"></section>
+            <section class="book__item__description">
+              <p class="item__quantity">10</p>
+              <h3 class="item__title">book name</h3>
+              <p class="item__genere">comedy, romance, slice of life,
+                actions, tragedy</p>
+              <h6 class="item__author-name">author name</h6>
+            </section>
+          </li>
+          <li class="book__item">
+            <section class="img"><img src="asset/img/book.jpg"
+                   alt="sample book picture"></section>
+            <section class="book__item__description">
+              <p class="item__quantity">10</p>
+              <h3 class="item__title">book name</h3>
+              <p class="item__genere">comedy, romance, slice of life,
+                actions, tragedy</p>
+              <h6 class="item__author-name">author name</h6>
+            </section>
+          </li>
+          <li class="book__item">
+            <section class="img"><img src="asset/img/book.jpg"
+                   alt="sample book picture"></section>
+            <section class="book__item__description">
+              <p class="item__quantity">10</p>
+              <h3 class="item__title">book name</h3>
+              <p class="item__genere">comedy, romance, slice of life,
+                actions, tragedy</p>
+              <h6 class="item__author-name">author name</h6>
+            </section>
+          </li>
+          <li class="book__item">
+            <section class="img"><img src="asset/img/book.jpg"
+                   alt="sample book picture"></section>
+            <section class="book__item__description">
+              <p class="item__quantity">10</p>
+              <h3 class="item__title">book name</h3>
+              <p class="item__genere">comedy, romance, slice of life,
+                actions, tragedy</p>
+              <h6 class="item__author-name">author name</h6>
+            </section>
+          </li>
+          <li class="book__item">
+            <section class="img"><img src="asset/img/book.jpg"
+                   alt="sample book picture"></section>
+            <section class="book__item__description">
+              <p class="item__quantity">10</p>
+              <h3 class="item__title">book name</h3>
+              <p class="item__genere">comedy, romance, slice of life,
+                actions, tragedy</p>
+              <h6 class="item__author-name">author name</h6>
+            </section>
+          </li>
+          <li class="book__item">
+            <section class="img"><img src="asset/img/book.jpg"
+                   alt="sample book picture"></section>
+            <section class="book__item__description">
+              <p class="item__quantity">10</p>
+              <h3 class="item__title">book name</h3>
+              <p class="item__genere">comedy, romance, slice of life,
+                actions, tragedy</p>
+              <h6 class="item__author-name">author name</h6>
+            </section>
+          </li>
+          <li class="book__item">
+            <section class="img"><img src="asset/img/book.jpg"
+                   alt="sample book picture"></section>
+            <section class="book__item__description">
+              <p class="item__quantity">10</p>
+              <h3 class="item__title">book name</h3>
+              <p class="item__genere">comedy, romance, slice of life,
+                actions, tragedy</p>
+              <h6 class="item__author-name">author name</h6>
+            </section>
+          </li>
+          <li class="book__item">
+            <section class="img"><img src="asset/img/book.jpg"
+                   alt="sample book picture"></section>
+            <section class="book__item__description">
+              <p class="item__quantity">10</p>
+              <h3 class="item__title">book name</h3>
+              <p class="item__genere">comedy, romance, slice of life,
+                actions, tragedy</p>
+              <h6 class="item__author-name">author name</h6>
+            </section>
+          </li>
+          <li class="book__item">
+            <section class="img"><img src="asset/img/book.jpg"
+                   alt="sample book picture"></section>
+            <section class="book__item__description">
+              <p class="item__quantity">10</p>
+              <h3 class="item__title">book name</h3>
+              <p class="item__genere">comedy, romance, slice of life,
+                actions, tragedy</p>
+              <h6 class="item__author-name">author name</h6>
+            </section>
+          </li>
+
+        </ul>
+      </section>
+
+      <!-- SEARCH BOOKS FROM OFFLINE COLLECTION -->
+      <section class="search-books-offline hidden"></section>
+
+      <!-- UPLOAD A BOOK -->
+      <section class="upload-book-container hidden">
+        <button class="btn btn-back">back to library page</button>
+        <h1 class="h1">uplaod a book</h1>
+
+        <form class="upload-book__form">
+          <label>Book Name: <input type="text"
+                   placeholder="enter the book name"></label>
+          <label>Image: <input type="text"
+                   placeholder="enter image url"></label>
+          <label>Author name: <input type="text"
+                   placeholder="enter author name"></label>
+          <label>Genere: <input type="text"
+                   placeholder="enter genre by comma seperated"></label>
+          <label class="quantity-label">Quantity: <input type="number"
+                   placeholder="enter book quantity"></label>
+          <input type="submit" value="upload" id="form-upload"
+                 class="btn">
+        </form>
+      </section>
+
+      <!-- SEARCH INFORMATION ABOUT BOOKS IN ONLINE -->
+      <section class="search-books-online hidden"></section>
+
+      <!-- ISSUE A BOOK -->
+      <section class="issue-a-book hidden"></section>
+    </section>
+  </body>
+
+</html>
