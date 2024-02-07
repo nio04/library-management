@@ -28,14 +28,20 @@
       border: 2px solid var(--primary-color-200);
       border-radius: 1.2rem;
       box-sizing: content-box;
+      position: relative;
 
       // ITEM IMG
       .img{
-        width: 17rem;
+        width: 12rem;
+        height: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
        img{
-        height: 100%;
-        width: 100%;
+        height: auto;
+        width: 80%;
+        max-width: 90%;
         border-radius: 1.5rem;
         object-fit:cover;
         transform: translateX(-.5rem);
@@ -44,7 +50,6 @@
 
       // ITEM DESCRIPTIONS
       &__description{
-        position: relative;
         padding-left: .8rem;
 
         flex: 0 0 50%;
@@ -53,7 +58,7 @@
           &__quantity{
             position: absolute;
             bottom: .2rem;
-            right: -1rem;
+            right: 1.6rem;
             font-size: 2rem;
             font-style: italic;
             font-weight: 800;
@@ -72,12 +77,13 @@
           }
 
           &__author-name{
-           position: absolute;
-           bottom: 3rem;
-           left: .5rem;
+          //  position: absolute;
+          //  bottom: 3rem;
+          //  right: 10rem;
           font-size: 1.8rem;
           font-style: italic;
           font-weight: 500;
+          margin-top: 2rem;
           }
         }
       }

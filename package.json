@@ -9,8 +9,12 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "staticFiles": {
+    "staticPath": "src/asset/img/"
+  },
   "devDependencies": {
     "@parcel/transformer-sass": "^2.11.0",
-    "parcel": "^2.11.0"
+    "parcel": "^2.11.0",
+    "parcel-reporter-static-files-copy": "^1.5.3"
   }
 }

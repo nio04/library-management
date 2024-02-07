@@ -7,3 +7,8 @@ export function hideEl(...parents) {
 export function showEl(...parents) {
    parents.forEach(el => el.classList.remove("hidden"));
 }
+
+// RANDOM GENERATE NUMBER WITHIN RANGE
+export function randomNumber(limit) {
+  return Math.trunc(Math.random() * limit + 1);
+}

@@ -1,3 +1,4 @@
+// 2ND PAGE
 import * as helper from "../helper";
 const welcomeSection=document.querySelector(".welcome")
 const libraryManagement = document.querySelector(".library-management");
