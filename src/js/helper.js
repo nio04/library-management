@@ -8,6 +8,11 @@ export function showEl(...parents) {
    parents.forEach(el => el.classList.remove("hidden"));
 }
 
+// RENDER ON SCREEN
+export function render(parent, markup) {
+  parent.innerHTML = markup;
+}
+
 // RANDOM GENERATE NUMBER WITHIN RANGE
 export function randomNumber(limit) {
   return Math.trunc(Math.random() * limit + 1);

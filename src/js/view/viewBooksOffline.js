@@ -1,9 +1,17 @@
-import {bookLists} from "../bookContent";
+import { bookLists } from "../bookContent";
+import { render } from "./../helper";
 
 const viewBooksContainer = document.querySelector("#viewbooks__offline__section");
 
 function offlineBookControl() {
-  const books= bookLists.map(book => `
+
+  const books = bookLists.map(book => renderMarkup(book)).join("");
+
+  render(viewBooksContainer, books);
+}
+
+function renderMarkup(book) {
+  return `
    <li class="book__item" data-id="${ book.id }">
       <section class="img">
         <img src="${book.imgUrl}"
@@ -17,9 +25,7 @@ function offlineBookControl() {
         <h6 class="item__author-name">${ book.authorName }</h6>
       </section>
    </li>
-  `).join("");
-
-  viewBooksContainer.innerHTML = books;
+  `
 }
 
 document.addEventListener("DOMContentLoaded", offlineBookControl);

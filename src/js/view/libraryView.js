@@ -1,4 +1,4 @@
-// 2ND PAGE
+// 2ND
 import * as helper from "../helper";
 const welcomeSection=document.querySelector(".welcome")
 const libraryManagement = document.querySelector(".library-management");
@@ -46,7 +46,10 @@ function libraryPageControl(ev) {
     }
   }
 
-  if (!ev.target.closest(".library-management") || ev.target.classList.contains("library-management")) return;
+  // TAPPED ELEMENT IS NOT CHILD OF [LIBRARY-MANAGEMENT]
+  // TAPPED ELEMENT CONTAINS [LIBRARY-MANAGEMENT] CLASS
+  // TAPPED ELEMENT CONTAINS [H1] CLASS
+  if (!ev.target.closest(".library-management") || ev.target.classList.contains("library-management") || ev.target.classList.contains("h1"))return;
 
   // HIDE ALL THE SECTION
   hideAllSections();

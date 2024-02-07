@@ -2,6 +2,7 @@ import * as helper from "./helper";
 
 const offlineImg = 10;
 
+// ONLY GENERATE RANDOM NUMBER BASED ON IMAGE NUMBER
 const randomPicturePick = () =>
   helper.randomNumber(offlineImg)
 
