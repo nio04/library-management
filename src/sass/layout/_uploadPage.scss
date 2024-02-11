@@ -1,7 +1,7 @@
 @use "../abstracts/" as abs;
 
-.upload-book-container{
-  .h1{
-    @include abs.margin-t(12);
-  }
+.upload-book-container {
+	.h1 {
+		@include abs.margin-t(12);
+	}
 }

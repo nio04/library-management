@@ -1,21 +1,20 @@
 @use "../abstracts/" as abs;
 
-.btn{
-  color: var(--color-white);
-  font-size: 2.5rem;
-  padding: 2rem 4rem;
-  background-color: var(--primary-color-400);
-  border-radius: 1.2rem;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  @extend %btn-hover-active;
-  transition: all .3s;
+.btn {
+	color: var(--color-white);
+	font-size: 2.5rem;
+	padding: 2rem 4rem;
+	background-color: var(--primary-color-400);
+	border-radius: 1.2rem;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	transition: all 0.3s;
 }
 
-.btn-back{
-  position: absolute;
-  top: 1rem;
-  left: .5rem;
-  transition: all .3s;
+.btn-back {
+	position: absolute;
+	top: 1rem;
+	left: 0.5rem;
+	transition: all 0.3s;
 }

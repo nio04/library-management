@@ -1,123 +1,185 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-    <title>library management system</title>
-    <link rel="stylesheet" href="sass/page/_mainHome.scss">
-    <script src="js/controller.js" defer type="module"></script>
-  </head>
-  <body>
-    <section class="container">
-      <!-- WELCOME VIEW -->
-      <section class="welcome">
-        <h1 class="h1">library management system</h1>
-        <button class="btn welcome-btn">open the library</button>
-      </section>
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0" />
+		<title>library management system</title>
+		<link rel="stylesheet" href="sass/page/_mainHome.scss" />
+		<script src="js/controller.js" defer type="module"></script>
+	</head>
+	<body>
+		<section class="container">
+			<!-- WELCOME VIEW -->
+			<section class="welcome">
+				<h1 class="h1">library management system</h1>
+				<button class="btn welcome-btn anim-btn">open the library</button>
+			</section>
 
-      <!-- LIBRARY MANAGEMENT -->
-      <section class="library-management hidden">
-        <button class="btn btn-back" id="back-btn"
-                data-back-to="mainPage">back to main
-          page</button>
-        <h1 class="h1">library management page</h1>
-        <section class="view-books">
-          <button class="btn" data-pointer="view-books-offline">view
-            all the
-            books in store</button>
-        </section>
-        <section class="search-books"><button class="btn"
-                  data-pointer="search-books-offline">search all
-            the
-            available books
-            in
-            the store</button></section>
-        <section class="upload-book"><button class="btn"
-                  data-pointer="upload-book-container">upload a
-            book</button></section>
-        <section class="search-online"><button class="btn"
-                  data-pointer="search-books-online">search
-            information about a
-            book
-            in online</button></section>
-        <section class="issue-book">
-          <button class="btn" data-pointer="issue-a-book">issue a
-            book</button>
-        </section>
-      </section>
+			<!-- LIBRARY MANAGEMENT -->
+			<section class="library-management hidden">
+				<button
+					class="btn btn-back anim-btn"
+					id="back-btn"
+					data-back-to="mainPage">
+					back to main page
+				</button>
+				<h1 class="h1">library management page</h1>
+				<section class="view-books">
+					<button class="btn anim-btn" data-pointer="view-books-offline">
+						view all the books in store
+					</button>
+				</section>
+				<section class="search-books">
+					<button class="btn anim-btn" data-pointer="search-books-offline">
+						search all the available books in the store
+					</button>
+				</section>
+				<section class="upload-book">
+					<button
+						class="btn anim-btn"
+						data-pointer="upload-book-container">
+						upload a book
+					</button>
+				</section>
+				<section class="search-online">
+					<button class="btn anim-btn" data-pointer="search-books-online">
+						search information about a book in online
+					</button>
+				</section>
+				<section class="issue-book">
+					<button class="btn anim-btn" data-pointer="issue-a-book">
+						issue a book
+					</button>
+				</section>
+			</section>
 
-      <!-- VIEW ALL BOOKS FROM OFFLINE -->
-      <section class="view-books-offline hidden">
-        <button class="btn btn-back" id="back-btn"
-                data-back-to="libraryPage">back to library
-          page</button>
-        <h1 class="h1">view all the books colection</h1>
+			<!-- VIEW ALL BOOKS FROM OFFLINE -->
+			<section class="view-books-offline hidden">
+				<button
+					class="btn btn-back anim-btn"
+					id="back-btn"
+					data-back-to="libraryPage">
+					back to library page
+				</button>
+				<h1 class="h1">view all the books colection</h1>
 
-        <ul class="book" id="viewbooks__offline__section">
-          <!-- render offline books -->
+				<ul class="book" id="viewbooks__offline__section">
+					<!-- render offline books -->
+				</ul>
+			</section>
 
-        </ul>
-      </section>
+			<!-- SEARCH BOOKS FROM OFFLINE COLLECTION -->
+			<section class="search-books-offline hidden">
+				<button
+					class="btn btn-back anim-btn"
+					id="back-btn"
+					data-back-to="libraryPage">
+					back to library page
+				</button>
+				<h1 class="h1">search for books in library</h1>
 
-      <!-- SEARCH BOOKS FROM OFFLINE COLLECTION -->
-      <section class="search-books-offline hidden">
-        <button class="btn btn-back" id="back-btn"
-                data-back-to="libraryPage">back to library
-          page</button>
-        <h1 class="h1">search for books in library</h1>
+				<form class="search-books__form">
+					<input type="text" placeholder="search for your books..." />
+					<input type="submit" value="search" class="btn anim-btn" />
+				</form>
 
-        <form class="search-books__form">
-          <input type="text" placeholder="search for your books...">
-          <input type="submit" value="search" class="btn">
-        </form>
+				<section class="search-result">
+					<p>search results:</p>
 
-        <section class="search-result">
-          <p>search results: </p>
+					<section class="search-result__section">
+						<ul class="search-result" id="search-result">
+							<!-- render book -->
+						</ul>
+					</section>
+				</section>
+			</section>
 
-          <section class="search-result__section">
-            <ul class="search-result" id="search-result">
-              <!-- render book -->
-            </ul>
-          </section>
-        </section>
-      </section>
+			<!-- UPLOAD A BOOK -->
+			<section class="upload-book-container hidden">
+				<button
+					class="btn btn-back anim-btn"
+					id="back-btn"
+					data-back-to="libraryPage">
+					back to library page
+				</button>
 
-      <!-- UPLOAD A BOOK -->
-      <section class="upload-book-container hidden">
-        <button class="btn btn-back" id="back-btn"
-                data-back-to="libraryPage">back to library
-          page</button>
-        <h1 class="h1">uplaod a book</h1>
+				<!-- MODAL -->
+				<div class="modal hidden">
+					<p class="modal__message"></p>
+					<button class="btn modal__btn">OK, I UNDERSTAND</button>
+				</div>
 
-        <form class="upload-book__form">
-          <label>Book Name: <input type="text" id="book-name__input"
-                   minlength="2" maxlength="10" required
-                   placeholder="enter the book name"></label>
-          <label>Image: <input type="file" id="book-image__input"
-                   required
-                   accept="image/png, image/jpeg, image/png"></label>
-          <label>Author name: <input type="text"
-                   id="book-author__input" required minlength="2"
-                   maxlength="10"
-                   placeholder="enter author name"></label>
-          <label>Genere: <input type="text" id="book-genre__input"
-                   minlength="2" maxlength="30" required
-                   placeholder="enter genre by comma seperated"></label>
-          <label class="quantity-label">Quantity: <input type="number"
-                   id="book-quantity__input" min="1" max="1000"
-                   required placeholder="enter book quantity"></label>
-          <input type="submit" value="upload" id="form-upload"
-                 class="btn">
-        </form>
-      </section>
+				<h1 class="h1">uplaod a book</h1>
 
-      <!-- SEARCH INFORMATION ABOUT BOOKS IN ONLINE -->
-      <section class="search-books-online hidden"></section>
+				<form class="upload-book__form">
+					<label
+						>Book Name:
+						<input
+							type="text"
+							id="book-name__input"
+							minlength="2"
+							maxlength="20"
+							required
+							placeholder="enter the book name"
+							value="book name A"
+					/></label>
+					<label
+						>Image:
+						<input
+							type="file"
+							id="book-image__input"
+							accept="image/png, image/jpeg, image/png"
+					/></label>
+					<label
+						>Author name:
+						<input
+							type="text"
+							id="book-author__input"
+							required
+							minlength="2"
+							maxlength="15"
+							placeholder="enter author name"
+							value="author name A"
+					/></label>
+					<label
+						>Genere:
+						<input
+							type="text"
+							id="book-genre__input"
+							minlength="2"
+							maxlength="40"
+							required
+							placeholder="enter genre by comma seperated"
+							value="comedy, rmance, slice of life"
+					/></label>
+					<label class="quantity-label"
+						>Quantity:
+						<input
+							type="number"
+							id="book-quantity__input"
+							min="1"
+							max="1000"
+							required
+							placeholder="enter book quantity"
+							value="10"
+					/></label>
+					<input
+						type="submit"
+						value="upload"
+						id="form-upload"
+						class="btn anim-btn" />
+				</form>
+			</section>
 
-      <!-- ISSUE A BOOK -->
-      <section class="issue-a-book hidden"></section>
-    </section>
-  </body>
+			<!-- SEARCH INFORMATION ABOUT BOOKS IN ONLINE -->
+			<section class="search-books-online hidden"></section>
 
+			<!-- ISSUE A BOOK -->
+			<section class="issue-a-book hidden"></section>
+		</section>
+
+		<div class="overlay overlay-off"></div>
+	</body>
 </html>

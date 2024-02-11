@@ -1,0 +1,45 @@
+.modal {
+	width: 60rem;
+	height: 30rem;
+
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 28rem;
+
+	font-weight: 500;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: var(--secondary-color-500);
+	color: white;
+	border-radius: 2.5rem;
+	z-index: 10;
+
+	&__message {
+		min-height: 100%;
+		min-width: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		text-transform: capitalize;
+		font-size: 3rem;
+		padding: 0 1.8rem;
+		line-height: 5rem;
+	}
+
+	&__btn {
+		position: absolute;
+		bottom: 0;
+		left: 20%;
+		transform: translateY(10.2rem);
+
+		&:hover {
+			box-shadow: 0 2px 2px 4px rgba(0, 0, 0, 0.4);
+
+			&:active {
+				box-shadow: none;
+			}
+		}
+	}
+}
