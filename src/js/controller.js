@@ -4,9 +4,10 @@ import welcomeView from "./view/welcomeView";
 import libraryView from "./view/libraryView";
 import uploadBookView from "./view/uploadBookView";
 import viewBooksOffline from "./view/viewBooksOffline";
+import searchBooksOffline from "./view/searchBooksOffline";
 
 welcomeView.welcomeViewControl;
 libraryView.libraryPageControl;
-// uploadBookView.uploadBookControl;
+uploadBookView.uploadBookControl;
 viewBooksOffline.offlineBookControl;
-model.offlineBook(uploadBookView.uploadBookControl);
+searchBooksOffline.searchBookControl;

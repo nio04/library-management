@@ -1,6 +1,7 @@
+import { bookLists } from "../bookContent";
 import * as helper from "../helper";
 
-const modalMessage = document.querySelector(".modal__message");
+const parent = document.querySelector(".upload-book-container");
 let bookName;
 let img;
 let authorName;
@@ -11,6 +12,9 @@ const customBooks = [];
 
 function uploadBookControl(ev) {
 	ev.preventDefault();
+
+	// RETURN, IF THE SUBMIT BTN IS FROM ANOTHER FORM
+	if (!ev.target.closest("upload-book-container")) return;
 
 	// ON SUBMIT, GET VALUE OF INPUT'S
 	getInputValue();
@@ -23,7 +27,7 @@ function uploadBookControl(ev) {
 	);
 
 	// RENDER [SUCCESS, ERROR] MESSAGE IN UI
-	renderSubmitResultModal(validateResult);
+	renderSubmitResultModal(ev, validateResult);
 
 	// IF [VALIDATE-RESULT] TRUE MEANS,
 	// THERE IS SOMETHING WRONG, SO,
@@ -33,17 +37,17 @@ function uploadBookControl(ev) {
 	// compute - Book IMAGE - src
 	const bookImg = img.files[0];
 
-	return {
+	customBooks.push({
 		id: crypto.randomUUID(),
 		bookName,
 		bookImg,
 		authorName,
 		bookGenre,
 		bookQuantity,
-	};
-}
+	});
 
-// console.log(customBooks);
+	console.log(customBooks);
+}
 
 const getInputValue = () => {
 	bookName = document.querySelector("#book-name__input").value;
@@ -62,14 +66,17 @@ const validateNaming = (...names) => {
 	return result.includes(true);
 };
 
-const renderSubmitResultModal = (validateResult) => {
-	const errorMessage = `There might be something wrong with your input...please check your input.`;
-	const sccessMessage = `Congratulation! you have successfully added a new books the library collection`;
-
-	helper.showModal();
-
-	if (validateResult) modalMessage.textContent = errorMessage;
-	else modalMessage.textContent = sccessMessage;
+const renderSubmitResultModal = (ev, validateResult) => {
+	if (ev.target.closest(".upload-book-container") && validateResult)
+		helper.showModal(
+			parent,
+			`There might be something wrong with your input... Please check your input.`
+		);
+	else if (ev.target.closest(".upload-book-container") && !validateResult)
+		helper.showModal(
+			parent,
+			`Congratulation! You have successfully added a new books the library collection.`
+		);
 };
 
 // CLICK EVENT

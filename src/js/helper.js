@@ -1,4 +1,3 @@
-const modal = document.querySelector(".modal");
 const overlay = document.querySelector(".overlay");
 
 // HIDE ELEMENT
@@ -21,14 +20,48 @@ export function randomNumber(limit) {
 	return Math.trunc(Math.random() * limit + 1);
 }
 
+function generateModalMarkup(parent) {
+	const markup = `
+	<div class="modal">
+		<p class="modal__message"></p>
+		<button class="btn modal__btn">OK, I UNDERSTAND</button>
+	</div>`;
+
+	parent.insertAdjacentHTML("afterbegin", markup);
+}
+
 // SHOW MODAL
-export function showModal() {
-	modal.classList.remove("hidden");
+export function showModal(parent, message = "") {
+	generateModalMarkup(parent);
+
 	overlay.classList.remove("overlay-off");
+
+	document.querySelector(".modal__message").textContent = message;
 }
 
 // HIDE MODAL
 export function hideModal() {
-	modal.classList.add("hidden");
+	document.querySelector(".modal").remove();
 	overlay.classList.add("overlay-off");
+}
+
+export function renderBookMarkup(parent, book) {
+	const markup = `
+	<li class="book__item">
+		<section class="img">
+			<img
+				src="${book.imgUrl}"
+				alt="${book.title}" />
+		</section>
+		<section class="book__item__description">
+			<h3 class="item__title">${book.title}</h3>
+			<p class="item__genere">
+				${book.genre}
+			</p>
+			<h6 class="item__author-name">${book.authorName}</h6>
+		</section>
+	</li>
+	`;
+
+	parent.innerHTML = markup;
 }

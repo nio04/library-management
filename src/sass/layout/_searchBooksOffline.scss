@@ -51,7 +51,7 @@
 		&__section {
 			max-width: 100%;
 
-			.search-result {
+			.book {
 				display: grid;
 				grid-template-columns: repeat(
 					auto-fill,
@@ -70,14 +70,51 @@
 
 					border: 2px solid var(--secondary-color-400);
 
-					img {
+					.img {
+						width: 12rem;
 						height: auto;
-						width: 100%;
-						max-width: 10rem;
+						display: flex;
+						justify-content: center;
+						align-items: center;
+
+						img {
+							height: auto;
+							width: 80%;
+							max-width: 90%;
+							border-radius: 1.5rem;
+							object-fit: cover;
+							transform: translateX(-0.5rem);
+						}
 					}
 
-					.book-title {
-						margin-left: 2rem;
+					&__description {
+						padding-left: 0.8rem;
+
+						flex: 0 0 50%;
+
+						.item {
+							&__title {
+								margin: 2rem 0;
+								font-size: 2.3rem;
+								text-transform: capitalize;
+							}
+
+							&__genere {
+								font-weight: 200;
+								color: gray;
+								font-size: 1.6rem;
+							}
+
+							&__author-name {
+								//  position: absolute;
+								//  bottom: 3rem;
+								//  right: 10rem;
+								font-size: 1.8rem;
+								font-style: italic;
+								font-weight: 500;
+								margin-top: 2rem;
+							}
+						}
 					}
 				}
 			}

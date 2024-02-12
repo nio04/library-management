@@ -81,15 +81,22 @@
 				<h1 class="h1">search for books in library</h1>
 
 				<form class="search-books__form">
-					<input type="text" placeholder="search for your books..." />
-					<input type="submit" value="search" class="btn anim-btn" />
+					<input
+						type="search"
+						id="search__books__offline__input"
+						placeholder="search for your books..." />
+					<input
+						type="submit"
+						value="search"
+						class="btn anim-btn"
+						id="search__books__offline__btn" />
 				</form>
 
-				<section class="search-result">
+				<section class="search-result hidden">
 					<p>search results:</p>
 
 					<section class="search-result__section">
-						<ul class="search-result" id="search-result">
+						<ul class="search-result__lists book" id="search-result">
 							<!-- render book -->
 						</ul>
 					</section>
@@ -104,12 +111,6 @@
 					data-back-to="libraryPage">
 					back to library page
 				</button>
-
-				<!-- MODAL -->
-				<div class="modal hidden">
-					<p class="modal__message"></p>
-					<button class="btn modal__btn">OK, I UNDERSTAND</button>
-				</div>
 
 				<h1 class="h1">uplaod a book</h1>
 
