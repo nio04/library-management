@@ -61,7 +61,6 @@
 				gap: 5rem;
 
 				padding: 5rem;
-				border-bottom: 2px solid var(--secondary-color-400);
 
 				list-style: none;
 				&__item {
@@ -88,11 +87,18 @@
 					}
 
 					&__description {
+						position: relative;
 						padding-left: 0.8rem;
 
-						flex: 0 0 50%;
-
 						.item {
+							&__quantity {
+								position: absolute;
+								bottom: 0.2rem;
+								right: 1.6rem;
+								font-size: 2rem;
+								font-style: italic;
+								font-weight: 800;
+							}
 							&__title {
 								margin: 2rem 0;
 								font-size: 2.3rem;

@@ -1,30 +1,25 @@
 import { bookLists } from "../bookContent";
+import * as customBooksOffline from "../customBooksOffline";
 import * as helper from "../helper";
 
 const parent = document.querySelector(".upload-book-container");
-let bookName;
+let title;
 let img;
 let authorName;
-let bookGenre;
-let bookQuantity;
-
-const customBooks = [];
+let genre;
+let quantity;
 
 function uploadBookControl(ev) {
 	ev.preventDefault();
 
 	// RETURN, IF THE SUBMIT BTN IS FROM ANOTHER FORM
-	if (!ev.target.closest("upload-book-container")) return;
+	if (!ev.target.parentElement === parent) return;
 
 	// ON SUBMIT, GET VALUE OF INPUT'S
 	getInputValue();
 
 	// VALIDATE ALL THE NAMING
-	const validateResult = validateNaming(
-		bookName,
-		authorName,
-		bookQuantity
-	);
+	const validateResult = validateNaming(title, authorName, quantity);
 
 	// RENDER [SUCCESS, ERROR] MESSAGE IN UI
 	renderSubmitResultModal(ev, validateResult);
@@ -35,26 +30,29 @@ function uploadBookControl(ev) {
 	if (validateResult) return;
 
 	// compute - Book IMAGE - src
-	const bookImg = img.files[0];
+	const imgUrl = img.files[0]?.name;
 
-	customBooks.push({
+	customBooksOffline.customBooks.push({
 		id: crypto.randomUUID(),
-		bookName,
-		bookImg,
+		title,
+		imgUrl,
 		authorName,
-		bookGenre,
-		bookQuantity,
+		genre,
+		quantity,
 	});
 
-	console.log(customBooks);
+	console.log(customBooksOffline.customBooks);
+
+	// RENDER BOOKS IN UI
+	customBooksOffline.renderBook();
 }
 
 const getInputValue = () => {
-	bookName = document.querySelector("#book-name__input").value;
+	title = document.querySelector("#book-name__input").value;
 	img = document.querySelector("#book-image__input");
 	authorName = document.querySelector("#book-author__input").value;
-	bookGenre = document.querySelector("#book-genre__input").value;
-	bookQuantity = document.querySelector("#book-quantity__input").value;
+	genre = document.querySelector("#book-genre__input").value;
+	quantity = document.querySelector("#book-quantity__input").value;
 };
 
 // VALIDATE NAMING

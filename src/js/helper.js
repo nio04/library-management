@@ -45,23 +45,31 @@ export function hideModal() {
 	overlay.classList.add("overlay-off");
 }
 
-export function renderBookMarkup(parent, book) {
-	const markup = `
-	<li class="book__item">
-		<section class="img">
-			<img
-				src="${book.imgUrl}"
-				alt="${book.title}" />
-		</section>
-		<section class="book__item__description">
-			<h3 class="item__title">${book.title}</h3>
-			<p class="item__genere">
-				${book.genre}
-			</p>
-			<h6 class="item__author-name">${book.authorName}</h6>
-		</section>
-	</li>
+// RENDER BOOKS FROM ARRAY OF OBJECT
+export function renderBookMarkup(parent, books) {
+	Array.isArray(books) ? books : [books];
+
+	const markup = books
+		.map((book) => {
+			return `
+				<li class="book__item">
+					<section class="img">
+						<img
+						src="${book?.imgUrl}"
+						alt="${book.title}" />
+					</section>
+					<section class="book__item__description">
+						<p class="item__quantity">${book.quantity}</p>;
+						<h3 class="item__title">${book.title}</h3>
+						<p class="item__genere">
+						${book.genre}
+						</p>
+						<h6 class="item__author-name">${book.authorName}</h6>
+					</section>
+				</li>
 	`;
+		})
+		.join("");
 
 	parent.innerHTML = markup;
 }

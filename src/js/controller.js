@@ -8,6 +8,6 @@ import searchBooksOffline from "./view/searchBooksOffline";
 
 welcomeView.welcomeViewControl;
 libraryView.libraryPageControl;
-uploadBookView.uploadBookControl;
 viewBooksOffline.offlineBookControl;
 searchBooksOffline.searchBookControl;
+uploadBookView.uploadBookControl;

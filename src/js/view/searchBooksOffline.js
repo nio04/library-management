@@ -12,7 +12,10 @@ const allOfflineBookName = bookLists.map((book) => book.title);
 let searchValue;
 
 function getSearchInput(ev) {
-	return (searchValue = ev.target.value);
+	searchValue = ev.target.value;
+	if (ev.target.value.length === 0) {
+		document.querySelector(".search-result__lists .book__item").remove();
+	}
 }
 
 export default function bookSearchControl(ev) {
@@ -33,11 +36,13 @@ export default function bookSearchControl(ev) {
 
 	// FIND THE BOOK OBJECT
 	const bookMatch = bookLists.find((book) => book.title === searchValue);
-	console.log(bookMatch);
+	const processBook = [];
+	processBook.push(bookMatch);
+	console.log(processBook);
 	// GENERATE BOOK IN UI
 	helper.renderBookMarkup(
 		document.querySelector(".search-result__lists"),
-		bookMatch
+		processBook
 	);
 }
 
