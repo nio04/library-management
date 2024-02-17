@@ -14,45 +14,53 @@
 			<!-- WELCOME VIEW -->
 			<section class="welcome">
 				<h1 class="h1">library management system</h1>
-				<button class="btn welcome-btn anim-btn">open the library</button>
+				<button class="btn welcome-btn anim-btn navigator__link">
+					open the library
+				</button>
 			</section>
 
 			<!-- LIBRARY MANAGEMENT -->
 			<section class="library-management hidden">
 				<button
-					class="btn btn-back anim-btn"
+					class="btn btn-back anim-btn navigator__link"
 					id="back-btn"
 					data-back-to="mainPage">
 					back to main page
 				</button>
 				<h1 class="h1">library management page</h1>
 				<section class="view-books">
-					<button class="btn anim-btn" data-pointer="view-books-offline">
+					<button
+						class="btn anim-btn navigator__link"
+						data-pointer="view-books-offline">
 						view all the books in store
 					</button>
 				</section>
 				<section class="search-books">
-					<button class="btn anim-btn" data-pointer="search-books-offline">
+					<button
+						class="btn anim-btn navigator__link"
+						data-pointer="search-books-offline">
 						search all the available books in the store
 					</button>
 				</section>
 				<section class="upload-book">
 					<button
-						class="btn anim-btn"
+						class="btn anim-btn navigator__link"
 						data-pointer="upload-book-container">
 						upload a book
 					</button>
 				</section>
 				<section class="search-online">
 					<button
-						class="btn anim-btn"
+						class="btn anim-btn navigator__link"
 						data-pointer="search-books-online"
 						disabled>
 						search information about a book in online
 					</button>
 				</section>
 				<section class="issue-book">
-					<button class="btn anim-btn" data-pointer="issue-a-book">
+					<button
+						class="btn anim-btn navigator__link"
+						data-pointer="issue-a-book">
 						issue a book
 					</button>
 				</section>
@@ -61,7 +69,7 @@
 			<!-- VIEW ALL BOOKS FROM OFFLINE -->
 			<section class="view-books-offline hidden">
 				<button
-					class="btn btn-back anim-btn"
+					class="btn btn-back anim-btn navigator__link"
 					id="back-btn"
 					data-back-to="libraryPage">
 					back to library page
@@ -85,7 +93,7 @@
 			<!-- SEARCH BOOKS FROM OFFLINE COLLECTION -->
 			<section class="search-books-offline hidden">
 				<button
-					class="btn btn-back anim-btn"
+					class="btn btn-back anim-btn navigator__link"
 					id="back-btn"
 					data-back-to="libraryPage">
 					back to library page
@@ -100,7 +108,7 @@
 					<input
 						type="submit"
 						value="search"
-						class="btn anim-btn"
+						class="btn anim-btn navigator__link"
 						id="search__books__offline__btn" />
 				</form>
 
@@ -118,7 +126,7 @@
 			<!-- UPLOAD A BOOK -->
 			<section class="upload-book-container hidden">
 				<button
-					class="btn btn-back anim-btn"
+					class="btn btn-back anim-btn navigator__link"
 					id="back-btn"
 					data-back-to="libraryPage">
 					back to library page
@@ -182,7 +190,7 @@
 						type="submit"
 						value="upload"
 						id="form-upload"
-						class="btn anim-btn" />
+						class="btn anim-btn navigator__link" />
 				</form>
 			</section>
 
@@ -194,5 +202,8 @@
 		</section>
 
 		<div class="overlay overlay-off"></div>
+		<div class="spinner hidden">
+			<div class="spinner__content"></div>
+		</div>
 	</body>
 </html>

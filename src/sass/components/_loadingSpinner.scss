@@ -1,0 +1,18 @@
+@use "../abstracts" as abs;
+@use "../base";
+
+.spinner {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+
+	&__content {
+		width: 50px;
+		height: 50px;
+		border: 4px solid transparent;
+		border-top-color: #3498db;
+		border-radius: 50%;
+		animation: spin 1s linear infinite;
+	}
+}

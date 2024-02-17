@@ -1,4 +1,6 @@
+const container = document.querySelector(".container");
 const overlay = document.querySelector(".overlay");
+const spinner = document.querySelector(".spinner");
 
 // HIDE ELEMENT
 export function hideEl(...parents) {
@@ -43,6 +45,26 @@ export function showModal(parent, message = "") {
 export function hideModal() {
 	document.querySelector(".modal").remove();
 	overlay.classList.add("overlay-off");
+}
+
+// SHOW SPINNER
+export function showSpinner(ev) {
+	if (!ev?.target.classList.contains("navigator__link")) return;
+
+	// HIDE CONTAINER
+	hideEl(container);
+
+	// SHOW SPINNER
+	showEl(spinner);
+}
+
+// HIDE SPINNER
+export function hideSpinner() {
+	// SHOW CONTAINER
+	showEl(container);
+
+	// HIDE SPINNER
+	hideEl(spinner);
 }
 
 // RENDER BOOKS FROM ARRAY OF OBJECT
