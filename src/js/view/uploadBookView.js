@@ -1,8 +1,8 @@
-import { bookLists } from "../bookContent";
-import * as customBooksOffline from "../customBooksOffline";
+import * as bookContent from "../bookContent";
 import * as helper from "../helper";
 
 const parent = document.querySelector(".upload-book-container");
+const form = document.querySelector("#book-form__upload");
 let title;
 let img;
 let authorName;
@@ -13,7 +13,7 @@ function uploadBookControl(ev) {
 	ev.preventDefault();
 
 	// RETURN, IF THE SUBMIT BTN IS FROM ANOTHER FORM
-	if (!ev.target.parentElement === parent) return;
+	if (ev.target.id !== "book-form__upload") return;
 
 	// ON SUBMIT, GET VALUE OF INPUT'S
 	getInputValue();
@@ -32,7 +32,7 @@ function uploadBookControl(ev) {
 	// compute - Book IMAGE - src
 	const imgUrl = img.files[0]?.name;
 
-	customBooksOffline.customBooks.push({
+	bookContent.newBook.push({
 		id: crypto.randomUUID(),
 		title,
 		imgUrl,
@@ -41,10 +41,13 @@ function uploadBookControl(ev) {
 		quantity,
 	});
 
-	console.log(customBooksOffline.customBooks);
-
 	// RENDER BOOKS IN UI
-	customBooksOffline.renderBook();
+	helper.renderBookMarkup(
+		document.querySelector(
+			".view-books-offline__custom #viewbooks__offline__section"
+		),
+		bookContent.bookLists.newBook
+	);
 }
 
 const getInputValue = () => {

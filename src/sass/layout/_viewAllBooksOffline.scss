@@ -1,0 +1,96 @@
+@use "../abstracts/" as abs;
+@use "../base";
+@use "../components";
+
+.view-books-offline {
+	overflow-x: hidden;
+	margin-bottom: 20rem;
+
+	h1 {
+		border-bottom: 5px double var(--secondary-color-600);
+
+		margin: 10rem 20rem 10rem 20rem;
+	}
+
+	.book {
+		width: 100vw;
+		max-width: 100vw;
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(min-content, 40rem));
+		justify-content: center;
+		gap: 2rem;
+
+		overflow-y: hidden;
+
+		&__item {
+			display: flex;
+			list-style: none;
+			border: 2px solid var(--primary-color-200);
+			border-radius: 1.2rem;
+			box-sizing: content-box;
+			position: relative;
+
+			// ITEM IMG
+			.img {
+				width: 12rem;
+				height: auto;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+
+				img {
+					height: auto;
+					width: 80%;
+					max-width: 90%;
+					border-radius: 1.5rem;
+					object-fit: cover;
+					transform: translateX(-0.5rem);
+				}
+			}
+
+			// ITEM DESCRIPTIONS
+			&__description {
+				padding-left: 0.8rem;
+
+				flex: 0 0 50%;
+
+				.item {
+					&__quantity {
+						position: absolute;
+						bottom: 0.2rem;
+						right: 1.6rem;
+						font-size: 2rem;
+						font-style: italic;
+						font-weight: 800;
+					}
+
+					&__title {
+						margin: 2rem 0;
+						font-size: 2.3rem;
+						text-transform: capitalize;
+					}
+
+					&__genere {
+						font-weight: 200;
+						color: gray;
+						font-size: 1.6rem;
+					}
+
+					&__author-name {
+						//  position: absolute;
+						//  bottom: 3rem;
+						//  right: 10rem;
+						font-size: 1.8rem;
+						font-style: italic;
+						font-weight: 500;
+						margin-top: 2rem;
+					}
+				}
+			}
+		}
+	}
+
+	&__custom {
+		margin-top: 20rem;
+	}
+}

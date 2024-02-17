@@ -1,4 +1,4 @@
-import { bookLists } from "../bookContent";
+import * as bookContent from "../bookContent";
 import * as helper from "../helper";
 
 const parent = document.querySelector(".search-books-offline");
@@ -8,13 +8,16 @@ const searchInput = document.querySelector(
 const searchBtn = document.querySelector("#search__books__offline__btn");
 const resultParent = document.querySelector(".search-result");
 
-const allOfflineBookName = bookLists.map((book) => book.title);
+const allOfflineBookName = bookContent.bookLists.preBook.map(
+	(book) => book.title
+);
+
 let searchValue;
 
 function getSearchInput(ev) {
 	searchValue = ev.target.value;
 	if (ev.target.value.length === 0) {
-		document.querySelector(".search-result__lists .book__item").remove();
+		document.querySelector(".search-result__lists .book__item")?.remove();
 	}
 }
 
@@ -35,10 +38,12 @@ export default function bookSearchControl(ev) {
 	helper.showEl(resultParent);
 
 	// FIND THE BOOK OBJECT
-	const bookMatch = bookLists.find((book) => book.title === searchValue);
+	const bookMatch = bookContent.bookLists.preBook.find(
+		(book) => book.title === searchValue
+	);
 	const processBook = [];
 	processBook.push(bookMatch);
-	console.log(processBook);
+
 	// GENERATE BOOK IN UI
 	helper.renderBookMarkup(
 		document.querySelector(".search-result__lists"),

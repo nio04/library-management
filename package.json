@@ -1,21 +1,22 @@
 {
-  "name": "library-management-system",
-  "version": "1.0.0",
-  "description": "",
-  "source": "src/index.html",
-  "scripts": {
-    "dev": "parcel"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "staticFiles": {
-    "staticPath": "src/asset/img/"
-  },
-  "devDependencies": {
-    "@parcel/transformer-sass": "^2.11.0",
-    "parcel": "^2.11.0",
-    "parcel-reporter-static-files-copy": "^1.5.3",
-    "sharp": "^0.33.2"
-  }
+	"name": "library-management-system",
+	"version": "1.0.0",
+	"description": "",
+	"source": "src/index.html",
+	"scripts": {
+		"dev": "parcel",
+		"build": "parcel build --public-url ./"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"staticFiles": {
+		"staticPath": "src/asset/img/"
+	},
+	"devDependencies": {
+		"@parcel/transformer-sass": "^2.11.0",
+		"parcel": "^2.11.0",
+		"parcel-reporter-static-files-copy": "^1.5.3",
+		"sharp": "^0.33.2"
+	}
 }
