@@ -1,5 +1,5 @@
-import * as bookContent from "../bookContent";
 import * as helper from "../helper";
+import * as comp from "../component";
 
 const parent = document.querySelector(".search-books-offline");
 const searchInput = document.querySelector(
@@ -7,10 +7,6 @@ const searchInput = document.querySelector(
 );
 const searchBtn = document.querySelector("#search__books__offline__btn");
 const resultParent = document.querySelector(".search-result");
-
-const allOfflineBookName = bookContent.bookLists.preBook.map(
-	(book) => book.title
-);
 
 let searchValue;
 
@@ -22,30 +18,33 @@ function getSearchInput(ev) {
 }
 
 export default function bookSearchControl(ev) {
-	const findBook = allOfflineBookName.includes(searchValue);
-
 	// RENDER ERROR MESSAGE WHEN BOOKS NOT FOUND
-	if (ev.target.closest(".search-books-offline") && !findBook) {
-		helper.showModal(
+	if (
+		ev.target.closest(".search-books-offline") &&
+		!helper.findBook(searchValue)
+	) {
+		comp.showModal(
 			parent,
 			"sorry, We could not find the book you query. please try again"
 		);
 
-		return;
+		return helper.inputCleaner();
 	}
 
 	// EXECUTE ON SUCCESS
 	helper.showEl(resultParent);
 
+	// INPUT CLEANER
+	helper.inputCleaner();
+
 	// FIND THE BOOK OBJECT
-	const bookMatch = bookContent.bookLists.preBook.find(
-		(book) => book.title === searchValue
-	);
+	helper.bookMatch(searchValue);
+
 	const processBook = [];
-	processBook.push(bookMatch);
+	processBook.push(helper.bookMatch(searchValue));
 
 	// GENERATE BOOK IN UI
-	helper.renderBookMarkup(
+	comp.renderBookMarkup(
 		document.querySelector(".search-result__lists"),
 		processBook
 	);

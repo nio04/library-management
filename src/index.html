@@ -60,7 +60,7 @@
 				<section class="issue-book">
 					<button
 						class="btn anim-btn navigator__link"
-						data-pointer="issue-a-book">
+						data-pointer="issue__book">
 						issue a book
 					</button>
 				</section>
@@ -151,7 +151,8 @@
 						<input
 							type="file"
 							id="book-image__input"
-							accept="image/png, image/jpeg, image/png"
+							name="book-image__input"
+							accept="image/*"
 					/></label>
 					<label
 						>Author name:
@@ -198,7 +199,58 @@
 			<section class="search-books-online hidden"></section>
 
 			<!-- ISSUE A BOOK -->
-			<section class="issue-a-book hidden"></section>
+			<section class="issue__book hidden">
+				<button
+					class="btn btn-back anim-btn navigator__link"
+					id="back-btn"
+					data-back-to="libraryPage">
+					back to library page
+				</button>
+
+				<h1 class="h1">issue a book</h1>
+
+				<!-- SHOW CHECKOUT PROGRESS -->
+				<section class="issue__book__progress">
+					<h3>
+						steps 1 of 7 : <span class="step__description">find book</span>
+					</h3>
+				</section>
+
+				<!-- STEP : 01 -- FIND BOOK -->
+				<section class="step__1 issue__book__find__book">
+					<form class="search-books__form">
+						<input
+							type="search"
+							id="search__books__offline__input"
+							placeholder="search for your books..." />
+						<input
+							type="submit"
+							value="search"
+							class="btn anim-btn navigator__link"
+							id="search__books__offline__btn" />
+					</form>
+
+					<!-- SHOW BOOK [SEARCH-RESULT] -->
+					<section class="search-result__section hidden">
+						<span class="book-mark un-marked un-marked__icon">❌</span>
+						<ul class="search-result__lists book" id="search-result">
+							<!-- render book -->
+						</ul>
+					</section>
+				</section>
+
+				<!-- STEP : 02 -- CHECK BOOK AVAILABLEITY -->
+
+				<!-- STEP : 03 -- CHECKING LIBRARY CARD -->
+
+				<!-- step : 04 -- PROVIDE BOOK INFORMATION -->
+
+				<!-- step : 05 -- SHOW CHECKOUT PROCESSING LADING -->
+
+				<!-- step : 06 -- SHOW DUE DATE -->
+
+				<!-- step : 07 -- TAKE THE BOOK -->
+			</section>
 		</section>
 
 		<div class="overlay overlay-off"></div>

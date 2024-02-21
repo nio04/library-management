@@ -1,5 +1,6 @@
+import * as helper from "./../helper";
+import * as comp from "../component";
 import * as bookContent from "../bookContent";
-import { render } from "./../helper";
 
 const viewBooksContainer = document.querySelector(
 	"#viewbooks__offline__section"
@@ -10,7 +11,7 @@ function offlineBookControl() {
 		.map((book) => renderMarkup(book))
 		.join("");
 
-	render(viewBooksContainer, books);
+	comp.render(viewBooksContainer, books);
 }
 
 function renderMarkup(book) {

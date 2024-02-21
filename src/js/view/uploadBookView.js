@@ -1,25 +1,31 @@
-import * as bookContent from "../bookContent";
 import * as helper from "../helper";
+import * as comp from "../component";
+import * as bookContent from "../bookContent";
 
 const parent = document.querySelector(".upload-book-container");
-const form = document.querySelector("#book-form__upload");
 let title;
 let img;
 let authorName;
 let genre;
 let quantity;
+const formUploadBtn = document.querySelector("#form-upload");
 
 function uploadBookControl(ev) {
 	ev.preventDefault();
 
 	// RETURN, IF THE SUBMIT BTN IS FROM ANOTHER FORM
-	if (ev.target.id !== "book-form__upload") return;
+	if (ev.target.id !== "form-upload") return;
 
 	// ON SUBMIT, GET VALUE OF INPUT'S
 	getInputValue();
 
 	// VALIDATE ALL THE NAMING
-	const validateResult = validateNaming(title, authorName, quantity);
+	const validateResult = validateNaming(
+		title,
+		authorName,
+		quantity,
+		genre
+	);
 
 	// RENDER [SUCCESS, ERROR] MESSAGE IN UI
 	renderSubmitResultModal(ev, validateResult);
@@ -30,7 +36,7 @@ function uploadBookControl(ev) {
 	if (validateResult) return;
 
 	// compute - Book IMAGE - src
-	const imgUrl = img.files[0]?.name;
+	let imgUrl = img.files[0]?.name;
 
 	bookContent.newBook.push({
 		id: crypto.randomUUID(),
@@ -42,7 +48,7 @@ function uploadBookControl(ev) {
 	});
 
 	// RENDER BOOKS IN UI
-	helper.renderBookMarkup(
+	comp.renderBookMarkup(
 		document.querySelector(
 			".view-books-offline__custom #viewbooks__offline__section"
 		),
@@ -60,7 +66,14 @@ const getInputValue = () => {
 
 // VALIDATE NAMING
 const validateNaming = (...names) => {
-	const regex = /[-\[\]\(\);:'"\/!@#$%^&*()_+?/\\><.,=]{1,}/gi;
+	if (
+		names[0].length === 0 ||
+		names[1].length === 0 ||
+		names[2].length === 0
+	)
+		return true;
+
+	const regex = /[-\[\]\(\);:'"\/!@#$%^&*()_+?/\\><.=]{1,}/gi;
 
 	const result = names.map((name) => regex.test(name));
 
@@ -69,12 +82,12 @@ const validateNaming = (...names) => {
 
 const renderSubmitResultModal = (ev, validateResult) => {
 	if (ev.target.closest(".upload-book-container") && validateResult)
-		helper.showModal(
+		comp.showModal(
 			parent,
 			`There might be something wrong with your input... Please check your input.`
 		);
 	else if (ev.target.closest(".upload-book-container") && !validateResult)
-		helper.showModal(
+		comp.showModal(
 			parent,
 			`Congratulation! You have successfully added a new books the library collection.`
 		);
@@ -82,10 +95,10 @@ const renderSubmitResultModal = (ev, validateResult) => {
 
 // CLICK EVENT
 document.addEventListener("click", (ev) => {
-	if (ev.target.classList.contains("modal__btn")) helper.hideModal();
-	else if (ev.target.classList.contains("overlay")) helper.hideModal();
+	if (ev.target.classList.contains("modal__btn")) comp.hideModal();
+	else if (ev.target.classList.contains("overlay")) comp.hideModal();
 });
 
 // FORM SUBMT EVENT
-document.addEventListener("submit", uploadBookControl);
+formUploadBtn.addEventListener("click", uploadBookControl);
 export default uploadBookControl;

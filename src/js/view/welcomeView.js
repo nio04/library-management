@@ -1,4 +1,5 @@
 import * as helper from "../helper";
+import * as comp from "../component";
 import { spinnerTimer } from "../config";
 
 const welcomeSection = document.querySelector(".welcome");
@@ -13,16 +14,15 @@ const issueBookSection = document.querySelector(".issue-book");
 
 function welcomeViewControl(ev) {
 	// console.log();
-	helper.showSpinner(ev);
+	comp.showSpinner(ev);
 
 	setTimeout(() => {
-		helper.hideSpinner();
+		comp.hideSpinner();
 
 		// welcomeSection.classList.add("hidden");
 		helper.hideEl(welcomeSection);
 
 		// SHOW LIBRARY-MANAGEMENT PAGE
-		// libraryPage.classList.remove("hidden");
 		helper.showEl(
 			libraryPage,
 			viewAllBooksSection,

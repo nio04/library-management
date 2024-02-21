@@ -1,1 +1,1 @@
-export const spinnerTimer = 1500;
+export const spinnerTimer = 300;

@@ -1,5 +1,6 @@
 // 2ND
 import * as helper from "../helper";
+import * as comp from "../component";
 import { spinnerTimer } from "../config";
 
 const container = document.querySelector(".container");
@@ -36,11 +37,11 @@ function showTargetElement(ev) {
 }
 
 function libraryPageControl(ev) {
-	helper.showSpinner(ev);
+	comp.showSpinner(ev);
 
 	setTimeout(() => {
 		if (backBtn) {
-			helper.hideSpinner();
+			comp.hideSpinner();
 
 			const target = ev.target.dataset.backTo;
 
