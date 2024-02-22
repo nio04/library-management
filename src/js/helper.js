@@ -2,7 +2,9 @@ import * as bookContent from "./bookContent";
 
 // HIDE ELEMENT
 export function hideEl(...parents) {
-	Array.from(parents).forEach((parent) => parent.classList.add("hidden"));
+	parents.forEach((parent) => {
+		parent.classList.add("hidden");
+	});
 }
 
 // SHOW ELEMENT

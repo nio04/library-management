@@ -17,7 +17,8 @@
 		}
 	}
 
-	&__find__book {
+	&__find__book,
+	.step__1 {
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -138,5 +139,8 @@
 				}
 			}
 		}
+	}
+
+	.step__2 {
 	}
 }

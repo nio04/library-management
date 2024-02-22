@@ -11,6 +11,11 @@ export function render(parent, markup) {
 
 // RENDER AS SIBLING
 export function renderSibling(parent, markup) {
+	parent.insertAdjacentHTML("afterend", markup);
+}
+
+// RENDER AS CHILDREN
+export function renderChildren(parent, markup) {
 	parent.insertAdjacentHTML("beforeend", markup);
 }
 
