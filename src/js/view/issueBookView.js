@@ -24,7 +24,18 @@ const resultParent = document.querySelector(
 const bookMarkIcon = document.querySelector(".issue__book .book-mark");
 const step1 = document.querySelector(".issue__book .step__1");
 const step2 = document.querySelector(".issue__book .step__2");
-let step = 1;
+
+const bookIssueSteps = [
+	"find book",
+	"check availablity",
+	"check library card",
+	"provide book information",
+	"checkout processing",
+	"due date",
+	"pick up the book",
+];
+
+// let step = 1;
 
 const generateNextButton = (step) => `
 <button class="btn anim-btn next__step__btn" data-go-next-step="${step}">Next step</button>
@@ -86,7 +97,7 @@ function bookSelectIconControl(ev) {
 		// UPDATE STEP COUNTER
 		// step += 1;
 
-		comp.renderSibling(resultParent, generateNextButton(step + 1));
+		comp.renderSibling(resultParent, generateNextButton(2));
 	} else {
 		// REMOVE [TICK] ICON WITH [CROSS] ICON
 		helper.removeEl(document.querySelector(".next__step__btn"));
@@ -98,25 +109,38 @@ function bookSelectIconControl(ev) {
 	}
 }
 
-function goNextStepControl(_, step) {
+function goNextStepControl(ev) {
+	const dynamicStep = ev.target.dataset.goNextStep;
+
+	if (Number(dynamicStep) > 7) return;
+
 	const progressDescription = document.querySelector(
 		".issue__book__progress h1"
 	);
 
-	// UPDATE STEP COUNTER
-	step += 1;
-
 	// UPDATE STEP PROGRESS
-	progressDescription.textContent = `steps ${step} of 7 : check availablity`;
+	progressDescription.textContent = `steps ${dynamicStep} of 7 : ${
+		bookIssueSteps[Number(dynamicStep) - 1]
+	}`;
 
 	// 	HIDE PREVIOUS STEP CONTENT
-	helper.hideEl(document.querySelector(`.step__${step - 1}`));
+	helper.hideEl(
+		document.querySelector(`.step__${Number(dynamicStep) - 1}`)
+	);
+	helper.hideEl(document.querySelector(`.book__issue__step`));
+	// helper.removeEl(document.querySelector(`.step__${step - 1}`));
+
+	// REMOVE PREVIOUS [GO NEXT] BUTTON
+	helper.removeEl(document.querySelector(`[data-go-next-step]`));
 
 	// SHOW NEXT STEP
-	helper.showEl(document.querySelector(`.step__${step}`));
+	helper.showEl(document.querySelector(`.step__${dynamicStep}`));
 
 	// RENDER NEXT BUTTON
-	comp.renderChildren(step2, generateNextButton(step + 1));
+	comp.renderChildren(
+		document.querySelector(`.step__${Number(dynamicStep)}`),
+		generateNextButton(Number(dynamicStep) + 1)
+	);
 }
 // function clearBookDefault() {
 // 	document.querySelector(".issue__book .search-result__lists").innerHTML =
@@ -131,12 +155,15 @@ export default function issueBookControl(ev) {
 
 	if (!ev.target.closest(".issue__book")) return;
 
+	// STEP 1: FIND BOOK
 	if (ev.target.id === "search__books__offline__btn") findBook(ev);
 
+	// STEP 1.1: SELECT BOOK ICON
 	if (ev.target.classList.contains("book-mark")) bookSelectIconControl(ev);
 
+	// STEP 1.3: CLICK ON [NEXT] BUTTON
 	if (ev.target.classList.contains("next__step__btn"))
-		goNextStepControl(ev, step);
+		goNextStepControl(ev);
 }
 
 // SEARCH BOOK

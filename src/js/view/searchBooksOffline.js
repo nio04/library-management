@@ -18,6 +18,7 @@ function getSearchInput(ev) {
 }
 
 export default function bookSearchControl(ev) {
+	ev.preventDefault();
 	// RENDER ERROR MESSAGE WHEN BOOKS NOT FOUND
 	if (
 		ev.target.closest(".search-books-offline") &&
