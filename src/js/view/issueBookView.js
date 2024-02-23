@@ -9,7 +9,6 @@
  *  take the book
  */
 
-// import { searchValue } from "./searchBooksOffline";
 import * as helper from "../helper";
 import * as comp from "../component";
 
@@ -22,8 +21,6 @@ const resultParent = document.querySelector(
 	".issue__book .search-result__section"
 );
 const bookMarkIcon = document.querySelector(".issue__book .book-mark");
-const step1 = document.querySelector(".issue__book .step__1");
-const step2 = document.querySelector(".issue__book .step__2");
 
 const bookIssueSteps = [
 	"find book",
@@ -35,16 +32,9 @@ const bookIssueSteps = [
 	"pick up the book",
 ];
 
-// let step = 1;
-
 const generateNextButton = (step) => `
 <button class="btn anim-btn next__step__btn" data-go-next-step="${step}">Next step</button>
 `;
-
-// function clearPreviosHtmlContent(parent) {
-// 	console.log(document.querySelector(parent));
-// 	document.querySelector(parent).innerHTML = "";
-// }
 
 function findBook(ev) {
 	ev.preventDefault();
@@ -94,9 +84,6 @@ function bookSelectIconControl(ev) {
 
 		document.querySelector(".book-mark").textContent = "✅";
 
-		// UPDATE STEP COUNTER
-		// step += 1;
-
 		comp.renderSibling(resultParent, generateNextButton(2));
 	} else {
 		// REMOVE [TICK] ICON WITH [CROSS] ICON
@@ -110,6 +97,7 @@ function bookSelectIconControl(ev) {
 }
 
 function goNextStepControl(ev) {
+	// GET [STEP] VARIABLE FROM DOM BUTTON
 	const dynamicStep = ev.target.dataset.goNextStep;
 
 	if (Number(dynamicStep) > 7) return;
@@ -123,17 +111,13 @@ function goNextStepControl(ev) {
 		bookIssueSteps[Number(dynamicStep) - 1]
 	}`;
 
-	// 	HIDE PREVIOUS STEP CONTENT
-	helper.hideEl(
-		document.querySelector(`.step__${Number(dynamicStep) - 1}`)
-	);
+	// 	HIDE ALL STEPS
 	helper.hideEl(document.querySelector(`.book__issue__step`));
-	// helper.removeEl(document.querySelector(`.step__${step - 1}`));
 
-	// REMOVE PREVIOUS [GO NEXT] BUTTON
+	// REMOVE ALL [GO NEXT] BUTTONS
 	helper.removeEl(document.querySelector(`[data-go-next-step]`));
 
-	// SHOW NEXT STEP
+	// SHOW NEXT STEP IN UI
 	helper.showEl(document.querySelector(`.step__${dynamicStep}`));
 
 	// RENDER NEXT BUTTON
@@ -142,11 +126,6 @@ function goNextStepControl(ev) {
 		generateNextButton(Number(dynamicStep) + 1)
 	);
 }
-// function clearBookDefault() {
-// 	document.querySelector(".issue__book .search-result__lists").innerHTML =
-// 		"";
-// 	helper.hideEl(bookMarkIcon);
-// }
 
 export default function issueBookControl(ev) {
 	// HIDE ALL STEPS AND SHOW FIRST STEP ONLY
