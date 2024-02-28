@@ -2,14 +2,22 @@ import * as bookContent from "./bookContent";
 
 // HIDE ELEMENT
 export function hideEl(...parents) {
-	parents.forEach((parent) => {
-		parent.classList.add("hidden");
-	});
+	parents.forEach((parent) => parent.classList.add("hidden"));
 }
 
 // SHOW ELEMENT
 export function showEl(...parents) {
 	parents.forEach((parent) => parent.classList.remove("hidden"));
+}
+
+// REMOVE ELEMENT
+export function removeEl(...targets) {
+	targets.forEach((target) => target.remove());
+}
+
+// CLEAN INSIDE PARENT
+export function cleanParent(target) {
+	document.querySelector(target).innerHTML = "";
 }
 
 // ADD CLASS
@@ -20,11 +28,6 @@ export function addClass(target, ...classes) {
 // REMOVE CLASS
 export function removeClass(target, ...classes) {
 	target.classList.remove(...classes);
-}
-
-// REMOVE ELEMENT
-export function removeEl(...parents) {
-	parents.forEach((parent) => parent.remove(parent));
 }
 
 // RANDOM GENERATE NUMBER WITHIN RANGE

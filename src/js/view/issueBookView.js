@@ -32,9 +32,33 @@ const bookIssueSteps = [
 	"pick up the book",
 ];
 
+let getBook;
+
 const generateNextButton = (step) => `
 <button class="btn anim-btn next__step__btn" data-go-next-step="${step}">Next step</button>
 `;
+
+function resetOnLoad() {
+	// RESET ISSUE-BOOK HEADER
+	document.querySelector(
+		".issue__book .issue__book__progress"
+	).innerHTML = `<h1>steps 1 of 7: <span class="step__description">find book</span></h1>`;
+
+	// RESET BOOK-MARK ICON
+	if (document.querySelector(".book-mark")) {
+		// HIDE PARENT
+		helper.addClass(resultParent, "hidden");
+
+		// RESET TO DEFAULT
+		helper.addClass(bookMarkIcon, "un-marked", "un-marked__icon");
+		helper.removeClass(bookMarkIcon, "marked", "marked__icon");
+
+		document.querySelector(".book-mark").textContent = "❌";
+	}
+
+	// RESET SEARCH-RESULT SECTION
+	document.querySelector(".issue__book .step__1 ul").innerHTML = "";
+}
 
 function findBook(ev) {
 	ev.preventDefault();
@@ -62,12 +86,17 @@ function findBook(ev) {
 	helper.inputCleaner("search__books__offline__input");
 
 	// FIND THE BOOK OBJECT
-	const getBook = helper.bookMatch(searchValue);
+	getBook = helper.bookMatch(searchValue);
 
 	// GENERATE BOOK IN UI
 	comp.renderBookMarkup(
 		document.querySelector(".issue__book .search-result__lists"),
 		[getBook]
+	);
+
+	// TEST FOR FIXING MARKED ICON
+	console.log(
+		document.querySelector(".issue__book .step__1 section ul li")
 	);
 }
 
@@ -103,13 +132,13 @@ function goNextStepControl(ev) {
 	if (Number(dynamicStep) > 7) return;
 
 	const progressDescription = document.querySelector(
-		".issue__book__progress h1"
+		".issue__book__progress"
 	);
 
 	// UPDATE STEP PROGRESS
-	progressDescription.textContent = `steps ${dynamicStep} of 7 : ${
+	progressDescription.innerHTML = `<h1> steps ${dynamicStep} of 7 : <span class="step__description">${
 		bookIssueSteps[Number(dynamicStep) - 1]
-	}`;
+	}</span></h1>`;
 
 	// 	HIDE ALL STEPS
 	helper.hideEl(document.querySelector(`.book__issue__step`));
@@ -120,17 +149,46 @@ function goNextStepControl(ev) {
 	// SHOW NEXT STEP IN UI
 	helper.showEl(document.querySelector(`.step__${dynamicStep}`));
 
+	// CLEAR OLD BUTTON IF EXIST
+	document
+		.querySelector(`.step__${Number(dynamicStep)} .next__step__btn`)
+		?.remove();
+
 	// RENDER NEXT BUTTON
 	comp.renderChildren(
 		document.querySelector(`.step__${Number(dynamicStep)}`),
 		generateNextButton(Number(dynamicStep) + 1)
 	);
+
+	// step 02: EXECUTE on BOOK EXIST FUNCTION
+	if (Number(dynamicStep) === 2) checkBookExist(getBook);
+}
+
+// STEP 2: CHECK BOOK EXISTENCE
+function checkBookExist(bookExist) {
+	// // CLEAR THE PARENT CONTAINER
+	helper.cleanParent(".issue__book .step__2 .book-status");
+
+	// BOOK NOT AVAILABLE
+	if (bookExist.quantity === 0)
+		comp.renderChildren(
+			document.querySelector(".issue__book .step__2 .book-status"),
+			`<h1 class="h1">Book Not Available</h1>`
+		);
+	else
+		comp.renderChildren(
+			document.querySelector(".issue__book .step__2 .book-status"),
+			`<h1 class="h1">Book Available</h1>`
+		);
 }
 
 export default function issueBookControl(ev) {
 	// HIDE ALL STEPS AND SHOW FIRST STEP ONLY
 	allSteps.forEach((step) => step.classList.add("hidden"));
 	helper.showEl(allSteps[0]);
+
+	// ALWAYS LOAD FIRST STEP AS default
+	if (ev.target.dataset.pointer === "issue__book") resetOnLoad();
 
 	if (!ev.target.closest(".issue__book")) return;
 
