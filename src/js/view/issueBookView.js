@@ -183,14 +183,10 @@ function checkBookExist(bookExist) {
 }
 
 export default function issueBookControl(ev) {
-	// HIDE ALL STEPS AND SHOW FIRST STEP ONLY
-	allSteps.forEach((step) => step.classList.add("hidden"));
-	helper.showEl(allSteps[0]);
+	if (!ev.target.closest(".issue__book")) return;
 
 	// ALWAYS LOAD FIRST STEP AS default
 	if (ev.target.dataset.pointer === "issue__book") resetOnLoad();
-
-	if (!ev.target.closest(".issue__book")) return;
 
 	// STEP 1: FIND BOOK
 	if (ev.target.id === "search__books__offline__btn") findBook(ev);
