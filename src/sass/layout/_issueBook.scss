@@ -154,6 +154,33 @@
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
+
+		.check__library-card {
+			margin-bottom: 10rem;
+			.title {
+				font-size: 4rem;
+				text-transform: uppercase;
+				margin-bottom: 5rem;
+			}
+
+			.description {
+				display: flex;
+				justify-content: space-around;
+				align-content: center;
+
+				label {
+					input {
+						height: 3rem;
+						width: 3rem;
+					}
+					span {
+						font-size: 3rem;
+						margin-left: 1rem;
+						transform: translateY(-1rem);
+					}
+				}
+			}
+		}
 	}
 
 	.step__4 {

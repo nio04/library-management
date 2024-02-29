@@ -232,6 +232,7 @@ export default function issueBookControl(ev) {
 	if (ev.target.classList.contains("next__step__btn"))
 		goNextStepControl(ev);
 
+	// STEP 2: WHEN NO BOOK > PREVIOUS BTN ACTIVITY
 	if (ev.target.classList.contains("prev__step__btn")) goPrevStepControl();
 }
 
