@@ -199,20 +199,11 @@ function checkBookExist(bookExist) {
 		);
 }
 
-// EXIT FROM ISSUE-BOOK SECTION
-function exitFromIssueBook() {
-	const btn = document.querySelector(".step__3 .btn");
-	helper.showEl(btn);
-	// helper.removeClass(btn, "next__step__btn");
-	helper.addClass(btn, "go__library-page");
-	btn.textContent = "Go to library page";
-}
-
 // STEP 3: CHECK LIBRARY CARD
 function libraryCardCheck(ev) {
-	console.log(ev.target.value);
 	const checkLibraryCard = ev.target.value;
 
+	// SHOW BTN ON HAVING LIBRARY-CARD
 	if (checkLibraryCard === "yes") {
 		helper.showEl(document.querySelector(".step__3 .next__step__btn"));
 		helper.hideEl(document.querySelector(".step__3 .go__library-page"));
@@ -223,6 +214,7 @@ function libraryCardCheck(ev) {
 }
 export default function issueBookControl(ev) {
 	// console.log(ev);
+
 	// TAP >> [ISSUE-BOOK] BUTTON OR [NEXT-STEP] BUTTON
 	// HIDE ALL THE STEPS AND SHOW A PARTICULAR STEP
 	if (
@@ -251,10 +243,16 @@ export default function issueBookControl(ev) {
 	// STEP 2: WHEN NO BOOK > PREVIOUS BTN ACTIVITY
 	if (ev.target.classList.contains("prev__step__btn")) goStep1();
 
-	// STEP 3.0: HIDE [NEXT-STEP] [go-library] FROM STEP 3
+	// STEP 3.0: HIDE [NEXT-STEP] [go-library] FROM STEP 3,
+	// CLEAR RADIO CHECKED
 	if (ev.target.dataset.goNextStep === "3") {
 		helper.hideEl(document.querySelector(".step__3 .next__step__btn"));
 		helper.hideEl(document.querySelector(".step__3 .go__library-page"));
+
+		// CLEAR RADIO CHECKED
+		document
+			.querySelectorAll(".step__3 .library-card__check__input")
+			.forEach((checkBox) => (checkBox.checked = false));
 	}
 	// STEP 3.1: CHECK LIBRARY CARD
 	if (ev.target.classList.contains("library-card__check__input"))
