@@ -98,11 +98,6 @@ function findBook(ev) {
 		document.querySelector(".issue__book .search-result__lists"),
 		[getBook]
 	);
-
-	// TEST FOR FIXING MARKED ICON
-	console.log(
-		document.querySelector(".issue__book .step__1 section ul li")
-	);
 }
 
 function bookSelectIconControl(ev) {
@@ -171,7 +166,7 @@ function goNextStepControl(ev) {
 }
 
 // HANDLE [PREVIOUS-STEP] BUTTON
-function goPrevStepControl() {
+function goStep1() {
 	hideAllStepsAndShowFirstStep();
 	resetOnLoad();
 	// REMOVE [PREV-BTN] FROM PREVIOUS ATTEMPT
@@ -204,11 +199,28 @@ function checkBookExist(bookExist) {
 		);
 }
 
-// STEP 3: CHECK LIBRARY CARD
-function libraryCardCheck(ev) {
-	console.log(ev);
+// EXIT FROM ISSUE-BOOK SECTION
+function exitFromIssueBook() {
+	const btn = document.querySelector(".step__3 .btn");
+	helper.showEl(btn);
+	// helper.removeClass(btn, "next__step__btn");
+	helper.addClass(btn, "go__library-page");
+	btn.textContent = "Go to library page";
 }
 
+// STEP 3: CHECK LIBRARY CARD
+function libraryCardCheck(ev) {
+	console.log(ev.target.value);
+	const checkLibraryCard = ev.target.value;
+
+	if (checkLibraryCard === "yes") {
+		helper.showEl(document.querySelector(".step__3 .next__step__btn"));
+		helper.hideEl(document.querySelector(".step__3 .go__library-page"));
+	} else {
+		helper.showEl(document.querySelector(".step__3 .go__library-page"));
+		helper.hideEl(document.querySelector(".step__3 .next__step__btn"));
+	}
+}
 export default function issueBookControl(ev) {
 	// console.log(ev);
 	// TAP >> [ISSUE-BOOK] BUTTON OR [NEXT-STEP] BUTTON
@@ -237,11 +249,29 @@ export default function issueBookControl(ev) {
 		goNextStepControl(ev);
 
 	// STEP 2: WHEN NO BOOK > PREVIOUS BTN ACTIVITY
-	if (ev.target.classList.contains("prev__step__btn")) goPrevStepControl();
+	if (ev.target.classList.contains("prev__step__btn")) goStep1();
 
-	// STEP 3: CHECK LIBRARY CARD
+	// STEP 3.0: HIDE [NEXT-STEP] [go-library] FROM STEP 3
+	if (ev.target.dataset.goNextStep === "3") {
+		helper.hideEl(document.querySelector(".step__3 .next__step__btn"));
+		helper.hideEl(document.querySelector(".step__3 .go__library-page"));
+	}
+	// STEP 3.1: CHECK LIBRARY CARD
 	if (ev.target.classList.contains("library-card__check__input"))
 		libraryCardCheck(ev);
+
+	// STEP 3.2: NO LIBRARY-CARD > THROWS TO LIBRARY-MANAGEMENT PAGE
+	if (ev.target.classList.contains("go__library-page")) {
+		// SHOW LIBRARY PAGE & ITS CONTENT
+		helper.showEl(document.querySelector(".library-management"));
+		document
+			.querySelectorAll(".library-management section")
+			.forEach((el) => el.classList.remove("hidden"));
+
+		// HIDE ISSUE-BOOK PAGE
+		helper.hideEl(document.querySelector(".issue__book"));
+		helper.hideEl(document.querySelector(".step__3"));
+	}
 }
 
 document.addEventListener("click", issueBookControl);

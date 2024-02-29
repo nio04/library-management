@@ -7,7 +7,9 @@ export function hideEl(...parents) {
 
 // SHOW ELEMENT
 export function showEl(...parents) {
-	parents.forEach((parent) => parent.classList.remove("hidden"));
+	parents.forEach((parent) => {
+		parent.classList.remove("hidden");
+	});
 }
 
 // REMOVE ELEMENT
