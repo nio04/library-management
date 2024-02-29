@@ -38,6 +38,11 @@ const generateNextButton = (step) => `
 <button class="btn anim-btn next__step__btn" data-go-next-step="${step}">Next step</button>
 `;
 
+function hideAllStepsAndShowFirstStep() {
+	allSteps.forEach((step) => helper.hideEl(step));
+	helper.showEl(allSteps[0]);
+}
+
 function resetOnLoad() {
 	console.log("reset");
 	// RESET ISSUE-BOOK HEADER
@@ -126,6 +131,7 @@ function bookSelectIconControl(ev) {
 	}
 }
 
+// HANDLE [NEXT-STEP] BUTTON
 function goNextStepControl(ev) {
 	// GET [STEP] VARIABLE FROM DOM BUTTON
 	const dynamicStep = ev.target.dataset.goNextStep;
@@ -155,7 +161,7 @@ function goNextStepControl(ev) {
 		.querySelector(`.step__${Number(dynamicStep)} .next__step__btn`)
 		?.remove();
 
-	// RENDER NEXT BUTTON
+	// RENDER [NEXT-STEP] BUTTON
 	comp.renderChildren(
 		document.querySelector(`.step__${Number(dynamicStep)}`),
 		generateNextButton(Number(dynamicStep) + 1)
@@ -165,18 +171,34 @@ function goNextStepControl(ev) {
 	if (Number(dynamicStep) === 2) checkBookExist(getBook);
 }
 
+// HANDLE [PREVIOUS-STEP] BUTTON
+function goPrevStepControl() {
+	hideAllStepsAndShowFirstStep();
+	resetOnLoad();
+	// REMOVE [PREV-BTN] FROM PREVIOUS ATTEMPT
+	helper.removeEl(document.querySelector(".step__2 .prev__step__btn"));
+}
+
 // STEP 2: CHECK BOOK EXISTENCE
 function checkBookExist(bookExist) {
-	// // CLEAR THE PARENT CONTAINER
+	//  CLEAR THE PARENT CONTAINER
 	helper.cleanParent(".issue__book .step__2 .book-status");
 
 	// BOOK NOT AVAILABLE
-	if (bookExist.quantity === 0)
+	if (bookExist.quantity === 0) {
 		comp.renderChildren(
 			document.querySelector(".issue__book .step__2 .book-status"),
 			`<h1 class="h1">Book Not Available</h1>`
 		);
-	else
+
+		// UPDATE [NEXT-STEP] BUTTON
+		const prevBtn = document.querySelector(
+			".issue__book .step__2 .next__step__btn"
+		);
+		prevBtn.textContent = "Previous Step";
+		helper.addClass(prevBtn, "prev__step__btn");
+		helper.removeClass(prevBtn, "next__step__btn");
+	} else
 		comp.renderChildren(
 			document.querySelector(".issue__book .step__2 .book-status"),
 			`<h1 class="h1">Book Available</h1>`
@@ -184,14 +206,14 @@ function checkBookExist(bookExist) {
 }
 
 export default function issueBookControl(ev) {
+	console.log(ev);
 	// TAP >> [ISSUE-BOOK] BUTTON OR [NEXT-STEP] BUTTON
 	// HIDE ALL THE STEPS AND SHOW A PARTICULAR STEP
 	if (
 		ev.target.dataset.pointer === "issue__book" ||
 		ev.target.classList.contains("next__step__btn")
 	) {
-		allSteps.forEach((step) => helper.hideEl(step));
-		helper.showEl(allSteps[0]);
+		hideAllStepsAndShowFirstStep();
 	}
 
 	// ALWAYS LOAD FIRST STEP AS default
@@ -209,6 +231,8 @@ export default function issueBookControl(ev) {
 	// STEP 1.3: CLICK ON [NEXT] BUTTON
 	if (ev.target.classList.contains("next__step__btn"))
 		goNextStepControl(ev);
+
+	if (ev.target.classList.contains("prev__step__btn")) goPrevStepControl();
 }
 
 document.addEventListener("click", issueBookControl);
