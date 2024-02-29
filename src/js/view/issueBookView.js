@@ -44,7 +44,6 @@ function hideAllStepsAndShowFirstStep() {
 }
 
 function resetOnLoad() {
-	console.log("reset");
 	// RESET ISSUE-BOOK HEADER
 	document.querySelector(
 		".issue__book .issue__book__progress"
@@ -205,8 +204,13 @@ function checkBookExist(bookExist) {
 		);
 }
 
-export default function issueBookControl(ev) {
+// STEP 3: CHECK LIBRARY CARD
+function libraryCardCheck(ev) {
 	console.log(ev);
+}
+
+export default function issueBookControl(ev) {
+	// console.log(ev);
 	// TAP >> [ISSUE-BOOK] BUTTON OR [NEXT-STEP] BUTTON
 	// HIDE ALL THE STEPS AND SHOW A PARTICULAR STEP
 	if (
@@ -234,6 +238,10 @@ export default function issueBookControl(ev) {
 
 	// STEP 2: WHEN NO BOOK > PREVIOUS BTN ACTIVITY
 	if (ev.target.classList.contains("prev__step__btn")) goPrevStepControl();
+
+	// STEP 3: CHECK LIBRARY CARD
+	if (ev.target.classList.contains("library-card__check__input"))
+		libraryCardCheck(ev);
 }
 
 document.addEventListener("click", issueBookControl);
