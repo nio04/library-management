@@ -39,6 +39,7 @@ const generateNextButton = (step) => `
 `;
 
 function resetOnLoad() {
+	console.log("reset");
 	// RESET ISSUE-BOOK HEADER
 	document.querySelector(
 		".issue__book .issue__book__progress"
@@ -183,10 +184,21 @@ function checkBookExist(bookExist) {
 }
 
 export default function issueBookControl(ev) {
-	if (!ev.target.closest(".issue__book")) return;
+	// TAP >> [ISSUE-BOOK] BUTTON OR [NEXT-STEP] BUTTON
+	// HIDE ALL THE STEPS AND SHOW A PARTICULAR STEP
+	if (
+		ev.target.dataset.pointer === "issue__book" ||
+		ev.target.classList.contains("next__step__btn")
+	) {
+		allSteps.forEach((step) => helper.hideEl(step));
+		helper.showEl(allSteps[0]);
+	}
 
 	// ALWAYS LOAD FIRST STEP AS default
 	if (ev.target.dataset.pointer === "issue__book") resetOnLoad();
+
+	// GUDARD CLASUE
+	if (!ev.target.closest(".issue__book")) return;
 
 	// STEP 1: FIND BOOK
 	if (ev.target.id === "search__books__offline__btn") findBook(ev);
@@ -199,5 +211,4 @@ export default function issueBookControl(ev) {
 		goNextStepControl(ev);
 }
 
-// SEARCH BOOK
 document.addEventListener("click", issueBookControl);
