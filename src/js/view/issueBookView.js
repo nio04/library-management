@@ -262,7 +262,129 @@ function showCheckOutPressing() {
 		helper.showEl(
 			document.querySelector(".issue__book .step__5 .next__step__btn")
 		);
-	}, 2000);
+	}, 10);
+}
+
+// STEP 6: SHOW DUE-DATE
+function showDueDate() {
+	const date = new Date();
+
+	const currDate = date.getDate();
+	const currDay = date.getDay();
+	const currMonth = date.getMonth();
+	const currYear = date.getFullYear();
+
+	const dayProcess = (dayInput) => {
+		switch (dayInput) {
+			case 1:
+				return "monday";
+				break;
+			case 2:
+				return "tuesday";
+				break;
+			case 3:
+				return "wednesday";
+				break;
+			case 4:
+				return "thursday";
+				break;
+			case 5:
+				return "friday";
+				break;
+			case 6:
+				return "saturday";
+				break;
+			case 7:
+				return "sunday";
+				break;
+
+			default:
+				return "could not get weekday information";
+				break;
+		}
+	};
+
+	const monthProcess = (monthInput) => {
+		switch (monthInput) {
+			case 1:
+				return "february";
+				break;
+			case 2:
+				return "march";
+				break;
+			case 3:
+				return "april";
+				break;
+			case 4:
+				return "may";
+				break;
+			case 5:
+				return "june";
+				break;
+			case 6:
+				return "july";
+				break;
+			case 7:
+				return "auguest";
+				break;
+			case 8:
+				return "september";
+				break;
+			case 9:
+				return "october";
+				break;
+			case 10:
+				return "november";
+				break;
+			case 11:
+				return "december";
+				break;
+
+			default:
+				return "could not get month information";
+				break;
+		}
+	};
+
+	function getDaysInMonth(year, month) {
+		// FOR CALCULATING FUTURE DATE
+		return new Date(year, month + 1, 0).getDate();
+	}
+
+	const currentDayMarkup = `
+	<p class"">Today is: ${dayProcess(
+		currDay
+	)}, date: ${currDate}, month: ${monthProcess(
+		currMonth
+	)}, year: ${currYear}</p>`;
+
+	const calcFutureDate = () => {
+		// const finalDay =
+		if (currDate + 15 > getDaysInMonth(currYear, currMonth)) {
+			const extraDate = Math.abs(
+				getDaysInMonth(currYear, currMonth) - (currDate + 15)
+			);
+
+			const dueDatemarkup = `
+			<p class="return-book__info">please return the book before <br> date: ${extraDate}, month: ${monthProcess(
+				currMonth + 1
+			)}, year: ${currYear}</p>`;
+
+			document
+				.querySelector(".issue__book .step__6")
+				.insertAdjacentHTML("afterbegin", dueDatemarkup);
+		} else {
+			const dueDatemarkup = `
+				<p class="return-book__info">please return the book before <br> date: ${
+					currDate + 15
+				}, month: ${monthProcess(currMonth)}, year: ${currYear}</p>`;
+
+			document
+				.querySelector(".issue__book .step__6")
+				.insertAdjacentHTML("afterbegin", dueDatemarkup);
+		}
+	};
+	calcFutureDate();
 }
 
 export default function issueBookControl(ev) {
@@ -332,6 +454,11 @@ export default function issueBookControl(ev) {
 	// STEP 5: BOOK CHECK-OUT PRECESSING
 	if (ev.target.dataset.goNextStep === "5") {
 		showCheckOutPressing();
+	}
+
+	// STEP 6: SHOW DUE DATE
+	if (ev.target.dataset.goNextStep === "6") {
+		showDueDate();
 	}
 }
 
