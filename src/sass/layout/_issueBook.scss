@@ -224,6 +224,25 @@
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
+
+		.book__issue {
+			&__waiting {
+				font-size: 2.5rem;
+				text-align: center;
+				padding: 2.5rem 0;
+				text-transform: uppercase;
+				color: var(--primary-color-400);
+			}
+
+			&__success {
+				font-size: 3.2rem;
+				text-align: center;
+				padding: 2.5rem 0;
+				text-transform: uppercase;
+				color: var(--accent-color-400);
+				font-weight: 600;
+			}
+		}
 	}
 	.step__6 {
 		display: flex;

@@ -239,6 +239,32 @@ function showAllInformationBook() {
 
 	parent.insertAdjacentHTML("afterbegin", markup);
 }
+
+// STEP 5: SHOW CHECKOUT PROCESSING
+function showCheckOutPressing() {
+	helper.hideEl(
+		document.querySelector(".issue__book .step__5 .next__step__btn")
+	);
+
+	helper.showEl(
+		document.querySelector(".issue__book .step__5 .book__issue__waiting")
+	);
+
+	setTimeout(() => {
+		helper.hideEl(
+			document.querySelector(".issue__book .step__5 .book__issue__waiting")
+		);
+
+		helper.showEl(
+			document.querySelector(".issue__book .step__5 .book__issue__success")
+		);
+
+		helper.showEl(
+			document.querySelector(".issue__book .step__5 .next__step__btn")
+		);
+	}, 2000);
+}
+
 export default function issueBookControl(ev) {
 	// console.log(ev);
 
@@ -301,6 +327,11 @@ export default function issueBookControl(ev) {
 	// STEP 4: RUN [SHOW-BOOK-INFORMATION] FUNCTION
 	if (ev.target.dataset.goNextStep === "4") {
 		showAllInformationBook();
+	}
+
+	// STEP 5: BOOK CHECK-OUT PRECESSING
+	if (ev.target.dataset.goNextStep === "5") {
+		showCheckOutPressing();
 	}
 }
 
