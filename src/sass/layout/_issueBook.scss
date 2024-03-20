@@ -188,6 +188,36 @@
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
+
+		.book__info {
+			display: grid;
+			grid-gap: 3rem;
+
+			width: 70vw;
+			margin-bottom: 5rem;
+
+			img {
+				justify-self: center;
+
+				height: 85%;
+				width: 40%;
+
+				border-radius: 2rem;
+			}
+
+			&__details {
+				display: grid;
+				grid-template-columns: repeat(2, 1fr);
+				grid-gap: 2rem;
+
+				padding: 2.1rem;
+
+				p {
+					font-size: 1.8rem;
+					text-transform: capitalize;
+				}
+			}
+		}
 	}
 	.step__5 {
 		display: flex;

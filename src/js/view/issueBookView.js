@@ -1,16 +1,17 @@
 /***
  * TOTAL: 07 STEPS
- * find book >
- *  check availablity >
- *  check library card >
- *  provide book info >
- *  show checkout processing loading >
- *  show due date >
- *  take the book
+ *  1. find book >
+ *  2. check availablity >
+ *  3. check library card >
+ *  4. provide book info >
+ *  5. show checkout processing loading >
+ *  6. show due date >
+ *  7. take the book
  */
 
 import * as helper from "../helper";
 import * as comp from "../component";
+import { bookLists } from "../bookContent";
 
 const parent = document.querySelector(".issue__book");
 const allSteps = document.querySelectorAll(".book__issue__step");
@@ -212,6 +213,32 @@ function libraryCardCheck(ev) {
 		helper.hideEl(document.querySelector(".step__3 .next__step__btn"));
 	}
 }
+
+// STEP 4: PROVIDE ALL THE BOOK INFORMATION
+function showAllInformationBook() {
+	const parent = document.querySelector(".issue__book .step__4");
+	const targetBook = helper.bookMatch(getBook.title);
+	const markup = `
+	<section class="book__info">
+		<img src="${targetBook.imgUrl}" alt="${targetBook.title}">
+		<section class="book__info__details">
+			<p>book name: ${targetBook.title}</p>
+			<p>author name: ${targetBook.authorName}</p>
+			<p>book language: ${targetBook.language}</p>
+			<p>genre: ${targetBook.genre} </p>
+			<p>release year: ${targetBook.releaseYear}</p>
+			<p>release version: ${targetBook.releaseVersion}</p>
+			<p>popularity: ${targetBook.popularity} </p>
+			<p>book pages: ${targetBook.pages} </p>
+			<p>book license: ${targetBook.GNUlicense}</p>
+			<p>author bio link: ${targetBook.authorBio} </p>
+			<p>book publication link: ${targetBook.publicationLink}</p>
+			<p>publication name: ${targetBook.publicationName} </p>
+		</section>
+	</section>`;
+
+	parent.insertAdjacentHTML("afterbegin", markup);
+}
 export default function issueBookControl(ev) {
 	// console.log(ev);
 
@@ -269,6 +296,11 @@ export default function issueBookControl(ev) {
 		// HIDE ISSUE-BOOK PAGE
 		helper.hideEl(document.querySelector(".issue__book"));
 		helper.hideEl(document.querySelector(".step__3"));
+	}
+
+	// STEP 4: RUN [SHOW-BOOK-INFORMATION] FUNCTION
+	if (ev.target.dataset.goNextStep === "4") {
+		showAllInformationBook();
 	}
 }
 
