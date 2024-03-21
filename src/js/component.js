@@ -70,6 +70,18 @@ export function setCustomTitle(userInput) {
 	document.title = userInput;
 }
 
+// HIDE SECTION IN LIBRARY-MANAGEMENT PAGE
+export function hideAllSections() {
+	helper.hideEl(
+		document.querySelector(".library-management"),
+		document.querySelector(".view-books"),
+		document.querySelector(".search-books"),
+		document.querySelector(".upload-book"),
+		document.querySelector(".search-online"),
+		document.querySelector(".issue-book")
+	);
+}
+
 // RENDER BOOKS FROM ARRAY OF OBJECT
 export function renderBookMarkup(parent, books) {
 	Array.isArray(books) ? books : [books];

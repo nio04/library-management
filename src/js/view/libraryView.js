@@ -14,16 +14,16 @@ const issueBookSection = document.querySelector(".issue-book");
 const backBtn = document.querySelector("#back-btn");
 const spinner = document.querySelector(".spinner");
 
-function hideAllSections() {
-	helper.hideEl(
-		libraryManagement,
-		viewAllBooksSection,
-		searchBookOfflineSection,
-		uploadBookSection,
-		searchBookOnlineSection,
-		issueBookSection
-	);
-}
+// function hideAllSections() {
+// 	helper.hideEl(
+// 		libraryManagement,
+// 		viewAllBooksSection,
+// 		searchBookOfflineSection,
+// 		uploadBookSection,
+// 		searchBookOnlineSection,
+// 		issueBookSection
+// 	);
+// }
 
 function showTargetElement(ev) {
 	// 1) check which btn is checked
@@ -80,7 +80,7 @@ function libraryPageControl(ev) {
 			return;
 
 		// HIDE ALL THE SECTION
-		hideAllSections();
+		comp.hideAllSections();
 
 		// SHOW TARGET ELEMENT
 		showTargetElement(ev);

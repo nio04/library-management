@@ -198,8 +198,6 @@ function checkBookExist(bookExist) {
 			document.querySelector(".issue__book .step__2 .book-status"),
 			`<h1 class="h1">Book Available</h1>`
 		);
-
-	console.log("step 2");
 }
 
 // STEP 3: CHECK LIBRARY CARD
@@ -470,7 +468,22 @@ export default function issueBookControl(ev) {
 
 	// STEP 7: TAKE THE BOOK
 	if (ev.target.dataset.goNextStep === "7") {
-		takeBook();
+		takeBook(ev);
+	}
+
+	// ISSUE-BOOK COMPLETE
+	if (ev.target.dataset.goNextStep === "8") {
+		// HIDE ISSUE-BOOK PAGE
+		helper.hideEl(
+			document.querySelector(".issue__book"),
+			document.querySelector(".issue__book").children[3]
+		);
+
+		// SHOW LIBRARY-MANAGEMENT PAGE
+		helper.showEl(
+			document.querySelector(".library-management"),
+			...document.querySelector(".library-management").children
+		);
 	}
 }
 
