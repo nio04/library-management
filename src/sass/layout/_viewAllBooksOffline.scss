@@ -9,7 +9,7 @@
 	h1 {
 		border-bottom: 5px double var(--secondary-color-600);
 
-		margin: 10rem 20rem 10rem 20rem;
+		margin: 15rem 20rem 10rem 20rem;
 	}
 
 	.book {
@@ -42,7 +42,7 @@
 					height: auto;
 					width: 80%;
 					max-width: 90%;
-					border-radius: 1.5rem;
+					border-radius: 1rem;
 					object-fit: cover;
 					transform: translateX(-0.5rem);
 				}

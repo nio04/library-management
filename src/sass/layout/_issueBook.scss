@@ -9,6 +9,12 @@
 		font-size: 2.3rem;
 		margin-bottom: 5.5rem;
 		border: 2px solid var(--secondary-color-200);
+		border-radius: 1rem;
+
+		h1 {
+			font-size: 3rem;
+			text-transform: uppercase;
+		}
 
 		.step__description {
 			color: var(--secondary-color-800);
@@ -156,11 +162,11 @@
 		align-items: center;
 
 		.check__library-card {
-			margin-bottom: 10rem;
+			margin-bottom: 7rem;
 			.title {
 				font-size: 4rem;
 				text-transform: uppercase;
-				margin-bottom: 5rem;
+				margin: 5rem 0;
 			}
 
 			.description {
@@ -239,7 +245,7 @@
 				text-transform: uppercase;
 				color: var(--accent-color-400);
 				font-weight: 600;
-				line-height: 2;
+				line-height: 3;
 				text-align: center;
 			}
 		}
@@ -252,9 +258,9 @@
 
 		.return-book__info {
 			font-size: 3.2rem;
-			padding: 6rem 0;
+			padding: 3rem 0;
 			text-transform: capitalize;
-			line-height: 2;
+			line-height: 3;
 		}
 	}
 	.step__7 {
