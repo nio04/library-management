@@ -198,6 +198,8 @@ function checkBookExist(bookExist) {
 			document.querySelector(".issue__book .step__2 .book-status"),
 			`<h1 class="h1">Book Available</h1>`
 		);
+
+	console.log("step 2");
 }
 
 // STEP 3: CHECK LIBRARY CARD
@@ -387,9 +389,14 @@ function showDueDate() {
 	calcFutureDate();
 }
 
-export default function issueBookControl(ev) {
-	// console.log(ev);
+// STEP 7: TAKE THE BOOK
+function takeBook() {
+	helper.showEl(
+		document.querySelector(".issue__book .step__7 .checkout-message")
+	);
+}
 
+export default function issueBookControl(ev) {
 	// TAP >> [ISSUE-BOOK] BUTTON OR [NEXT-STEP] BUTTON
 	// HIDE ALL THE STEPS AND SHOW A PARTICULAR STEP
 	if (
@@ -411,7 +418,7 @@ export default function issueBookControl(ev) {
 	// STEP 1.1: SELECT BOOK ICON
 	if (ev.target.classList.contains("book-mark")) bookSelectIconControl(ev);
 
-	// STEP 1.3: CLICK ON [NEXT] BUTTON
+	// STEP 1.2: CLICK ON [NEXT] BUTTON
 	if (ev.target.classList.contains("next__step__btn"))
 		goNextStepControl(ev);
 
@@ -459,6 +466,11 @@ export default function issueBookControl(ev) {
 	// STEP 6: SHOW DUE DATE
 	if (ev.target.dataset.goNextStep === "6") {
 		showDueDate();
+	}
+
+	// STEP 7: TAKE THE BOOK
+	if (ev.target.dataset.goNextStep === "7") {
+		takeBook();
 	}
 }
 

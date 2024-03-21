@@ -65,6 +65,11 @@ export function hideSpinner() {
 	helper.hideEl(spinner);
 }
 
+// SET CUSTOM TITLE
+export function setCustomTitle(userInput) {
+	document.title = userInput;
+}
+
 // RENDER BOOKS FROM ARRAY OF OBJECT
 export function renderBookMarkup(parent, books) {
 	Array.isArray(books) ? books : [books];
