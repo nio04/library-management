@@ -45,10 +45,10 @@ export default function bookSearchControl(ev) {
 	processBook.push(helper.bookMatch(searchValue));
 
 	// GENERATE BOOK IN UI
-	comp.renderBookMarkup(
-		document.querySelector(".search-result__lists"),
-		processBook
-	);
+	// comp.renderBookMarkup(
+	// 	document.querySelector(".search-result__lists"),
+	// 	processBook
+	// );
 
 	const searchResult = processBook
 		.map((targetBook) => {
