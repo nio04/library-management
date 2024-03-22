@@ -25,8 +25,8 @@
 		&__item {
 			display: flex;
 			list-style: none;
-			border: 2px solid var(--primary-color-200);
-			border-radius: 1.2rem;
+			border: 2px solid var(--primary-color-400);
+			border-radius: 1rem;
 			box-sizing: content-box;
 			position: relative;
 
@@ -87,6 +87,14 @@
 					}
 				}
 			}
+		}
+		.low-quantity-book {
+			filter: opacity(0.8);
+			border: 2px solid var(--primary-color-800) !important;
+		}
+		.no-quantity-book {
+			filter: opacity(0.6);
+			border: 2px solid red !important;
 		}
 	}
 

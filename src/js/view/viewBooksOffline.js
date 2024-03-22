@@ -12,11 +12,22 @@ function offlineBookControl() {
 		.join("");
 
 	comp.render(viewBooksContainer, books);
+
+	// bookContent.bookLists.preBook.forEach((book) => {
+	// 	if (book.quantity === 0) {
+	//     console.log(book);
+	//     console.log(document.querySelector(""))
+	// 	}
+	// });
 }
 
 function renderMarkup(book) {
 	return `
-   <li class="book__item" data-id="${book.id}">
+   <li class="book__item ${
+			book.quantity === 0 ? "no-quantity-book" : ""
+		} ${book.quantity <= 5 ? "low-quantity-book" : ""}" data-id="${
+		book.id
+	}">
       <section class="img">
         <img src="${book.imgUrl}"
              alt="sample book picture">
