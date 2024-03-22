@@ -19,6 +19,13 @@ function getSearchInput(ev) {
 
 export default function bookSearchControl(ev) {
 	ev.preventDefault();
+
+	if (ev.target.closest(".search-books-offline")) {
+		helper.hideEl(
+			document.querySelector(".search-books-offline .search-result")
+		);
+	}
+
 	// RENDER ERROR MESSAGE WHEN BOOKS NOT FOUND
 	if (
 		ev.target.closest(".search-books-offline") &&
@@ -43,12 +50,6 @@ export default function bookSearchControl(ev) {
 
 	const processBook = [];
 	processBook.push(helper.bookMatch(searchValue));
-
-	// GENERATE BOOK IN UI
-	// comp.renderBookMarkup(
-	// 	document.querySelector(".search-result__lists"),
-	// 	processBook
-	// );
 
 	const searchResult = processBook
 		.map((targetBook) => {

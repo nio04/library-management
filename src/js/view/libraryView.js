@@ -14,17 +14,6 @@ const issueBookSection = document.querySelector(".issue-book");
 const backBtn = document.querySelector("#back-btn");
 const spinner = document.querySelector(".spinner");
 
-// function hideAllSections() {
-// 	helper.hideEl(
-// 		libraryManagement,
-// 		viewAllBooksSection,
-// 		searchBookOfflineSection,
-// 		uploadBookSection,
-// 		searchBookOnlineSection,
-// 		issueBookSection
-// 	);
-// }
-
 function showTargetElement(ev) {
 	// 1) check which btn is checked
 	const checkedBtn = ev.target.dataset.pointer;
@@ -85,6 +74,22 @@ function libraryPageControl(ev) {
 		// SHOW TARGET ELEMENT
 		showTargetElement(ev);
 	}, spinnerTimer);
+
+	// SEARCH-BOOK-OFFLINE :: HANDLING BOOK CARD
+
+	if (ev.target.dataset.pointer === "search-books-offline") {
+		// HIDE SERCH-REUSLT CONTAINER
+		helper.hideEl(
+			document.querySelector(".search-books-offline .search-result")
+		);
+
+		// REMOVE SEARCHED-RESULT BOOK CONTAINER
+		helper.removeEl(
+			document.querySelector(
+				".search-result .search-result__section .book .book__info"
+			)
+		);
+	}
 }
 
 document.addEventListener("click", libraryPageControl);

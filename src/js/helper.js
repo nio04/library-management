@@ -14,7 +14,7 @@ export function showEl(...parents) {
 
 // REMOVE ELEMENT
 export function removeEl(...targets) {
-	targets.forEach((target) => target.remove());
+	targets.forEach((target) => target?.remove());
 }
 
 // CLEAN INSIDE PARENT
