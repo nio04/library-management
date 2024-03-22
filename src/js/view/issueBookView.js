@@ -22,6 +22,9 @@ const resultParent = document.querySelector(
 	".issue__book .search-result__section"
 );
 const bookMarkIcon = document.querySelector(".issue__book .book-mark");
+const bookProgressDescriptionH1 = document.querySelector(
+	".issue__book .issue__book__progress h1"
+);
 
 const bookIssueSteps = [
 	"find book",
@@ -400,6 +403,32 @@ function takeBook() {
 	);
 }
 
+// DESIGN STEP-PROGRESS
+function stepProgressing(step) {
+	const target = document.querySelector(".issue__book__progress h1");
+
+	switch (step) {
+		case 2:
+			target.style.setProperty("--step-width", "28.6%");
+			break;
+		case 3:
+			target.style.setProperty("--step-width", "42.9%");
+			break;
+		case 4:
+			target.style.setProperty("--step-width", "57.2%");
+			break;
+		case 5:
+			target.style.setProperty("--step-width", "71.2%");
+			break;
+		case 6:
+			target.style.setProperty("--step-width", "85.8%");
+			break;
+		case 7:
+			target.style.setProperty("--step-width", "100.0%");
+			break;
+	}
+}
+
 export default function issueBookControl(ev) {
 	// TAP >> [ISSUE-BOOK] BUTTON OR [NEXT-STEP] BUTTON
 	// HIDE ALL THE STEPS AND SHOW A PARTICULAR STEP
@@ -426,12 +455,21 @@ export default function issueBookControl(ev) {
 	if (ev.target.classList.contains("next__step__btn"))
 		goNextStepControl(ev);
 
-	// STEP 2: WHEN NO BOOK > PREVIOUS BTN ACTIVITY
-	if (ev.target.classList.contains("prev__step__btn")) goStep1();
+	// STEP 2:
+	if (ev.target.dataset.goNextStep === "2") {
+		stepProgressing(2);
+	}
+
+	// STEP 2.1: WHEN NO BOOK > PREVIOUS BTN ACTIVITY
+	if (ev.target.classList.contains("prev__step__btn")) {
+		goStep1();
+	}
 
 	// STEP 3.0: HIDE [NEXT-STEP] [go-library] FROM STEP 3,
 	// CLEAR RADIO CHECKED
 	if (ev.target.dataset.goNextStep === "3") {
+		stepProgressing(3);
+
 		helper.hideEl(document.querySelector(".step__3 .next__step__btn"));
 		helper.hideEl(document.querySelector(".step__3 .go__library-page"));
 
@@ -459,21 +497,29 @@ export default function issueBookControl(ev) {
 
 	// STEP 4: RUN [SHOW-BOOK-INFORMATION] FUNCTION
 	if (ev.target.dataset.goNextStep === "4") {
+		stepProgressing(4);
+
 		showAllInformationBook();
 	}
 
 	// STEP 5: BOOK CHECK-OUT PRECESSING
 	if (ev.target.dataset.goNextStep === "5") {
+		stepProgressing(5);
+
 		showCheckOutPressing();
 	}
 
 	// STEP 6: SHOW DUE DATE
 	if (ev.target.dataset.goNextStep === "6") {
+		stepProgressing(6);
+
 		showDueDate();
 	}
 
 	// STEP 7: TAKE THE BOOK
 	if (ev.target.dataset.goNextStep === "7") {
+		stepProgressing(7);
+
 		takeBook(ev);
 	}
 
