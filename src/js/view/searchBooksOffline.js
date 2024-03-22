@@ -49,6 +49,33 @@ export default function bookSearchControl(ev) {
 		document.querySelector(".search-result__lists"),
 		processBook
 	);
+
+	const searchResult = processBook
+		.map((targetBook) => {
+			return `
+	<li class="book__info">
+		<figure>
+			<img src="${targetBook.imgUrl}" alt="${targetBook.title}">
+		</figure>
+		<section class="book__info__details">
+			<p>book name: ${targetBook.title}</p>
+			<p>author name: ${targetBook.authorName}</p>
+			<p>book language: ${targetBook.language}</p>
+			<p>genre: ${targetBook.genre} </p>
+			<p>release year: ${targetBook.releaseYear}</p>
+			<p>release version: ${targetBook.releaseVersion}</p>
+			<p>popularity: ${targetBook.popularity} </p>
+			<p>book pages: ${targetBook.pages} </p>
+			<p>book license: ${targetBook.GNUlicense}</p>
+			<p>author bio link: ${targetBook.authorBio} </p>
+			<p>book publication link: ${targetBook.publicationLink}</p>
+			<p>publication name: ${targetBook.publicationName} </p>
+		</section>
+	</li>`;
+		})
+		.join("");
+
+	document.querySelector(".search-result__lists").innerHTML = searchResult;
 }
 
 searchInput.addEventListener("input", getSearchInput);
