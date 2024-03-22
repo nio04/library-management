@@ -82,6 +82,9 @@ function findBook(ev) {
 			"sorry, We could not find the book you query. please try again"
 		);
 
+		// HDIE BOOK SEARCH-RESULT ON FAILED
+		helper.hideEl(resultParent);
+
 		return;
 	}
 
