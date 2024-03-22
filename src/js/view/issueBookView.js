@@ -85,6 +85,9 @@ function findBook(ev) {
 		// HDIE BOOK SEARCH-RESULT ON FAILED
 		helper.hideEl(resultParent);
 
+		// CLEAR BOOK INPUT
+		helper.inputCleaner("search__books__offline__input");
+
 		return;
 	}
 
