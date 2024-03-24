@@ -11,6 +11,7 @@
 
 import * as helper from "../helper";
 import * as comp from "../component";
+import * as bookOffline from "./viewBooksOffline";
 import { bookLists } from "../bookContent";
 
 const parent = document.querySelector(".issue__book");
@@ -429,6 +430,17 @@ function stepProgressing(step) {
 	}
 }
 
+// QUNATITY BOOK MANAGER
+function quantityBookManage() {
+	const prevQuantity = getBook.quantity;
+
+	// QUNATITY BOOK REDUCE
+	getBook.quantity = prevQuantity - 1;
+
+	// RNDER BOOK-VIEW AGAIN
+	bookOffline.bookRenderer();
+}
+
 export default function issueBookControl(ev) {
 	// TAP >> [ISSUE-BOOK] BUTTON OR [NEXT-STEP] BUTTON
 	// HIDE ALL THE STEPS AND SHOW A PARTICULAR STEP
@@ -536,6 +548,9 @@ export default function issueBookControl(ev) {
 			document.querySelector(".library-management"),
 			...document.querySelector(".library-management").children
 		);
+
+		// QUNATITY BOOK MANAGER
+		quantityBookManage();
 	}
 }
 

@@ -6,19 +6,16 @@ const viewBooksContainer = document.querySelector(
 	"#viewbooks__offline__section"
 );
 
-function offlineBookControl() {
+export function bookRenderer() {
 	const books = bookContent.bookLists.preBook
 		.map((book) => renderMarkup(book))
 		.join("");
 
 	comp.render(viewBooksContainer, books);
+}
 
-	// bookContent.bookLists.preBook.forEach((book) => {
-	// 	if (book.quantity === 0) {
-	//     console.log(book);
-	//     console.log(document.querySelector(""))
-	// 	}
-	// });
+export default function offlineBookControl() {
+	bookRenderer();
 }
 
 function renderMarkup(book) {
@@ -44,5 +41,3 @@ function renderMarkup(book) {
 }
 
 document.addEventListener("DOMContentLoaded", offlineBookControl);
-
-export default offlineBookControl;
