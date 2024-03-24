@@ -68,37 +68,27 @@ const getInputValue = () => {
 const validateNaming = (...names) => {
 	const [title, authorName, quantity, genre] = names;
 
-	const regex = /[-\[\]\(\);:'"\/!@#$%^&*()_+?/\\><.=]{1,}/gi;
+	/*
+	 	NOTE: THERE IS A HUGE THING TO LEARN.
+		EX - SOMETIME, WE NEGATE REGEX.TEST &&
+		SOMETHING WE TRUTHY REGEX.TEST
+		THIS SEEMS VERY FUZZT
+	*/
+	const regexNaming = /^[a-z]+ [\sa-z]*$/gi;
+	const regexGenre = /^[a-z]+ [\sa-z(,\-)?]*$/gi;
+	const regexQuantity = /^(?:[1-9]\d{0,2}|1000)$/g;
 
 	// BOOK TITLE CHECKING
-	if (
-		title.length === 0 ||
-		title.length < 3 ||
-		title.length > 16 ||
-		regex.test(title)
-	)
-		return true;
+	if (!regexNaming.test(title)) return true;
 
 	// AUTHOR-NAME CHECK
-	if (
-		authorName.length === 0 ||
-		authorName.length < 3 ||
-		authorName.length > 16 ||
-		regex.test(authorName)
-	)
-		return true;
+	if (regexNaming.test(authorName)) return true;
 
-	// Quantity CHECK
-	if (
-		quantity.length === 0 ||
-		Number(quantity) < 1 ||
-		Number(quantity) > 1000 ||
-		regex.test(quantity)
-	)
-		return true;
+	// // Quantity CHECK
+	if (!regexQuantity.test(quantity)) return true;
 
 	// GENRE CHECKER
-	if (genre.length === 0 || regex.test(genre)) return true;
+	if (regexGenre.test(genre)) return true;
 };
 
 const renderSubmitResultModal = (ev, validateResult) => {
