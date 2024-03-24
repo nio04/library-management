@@ -100,7 +100,7 @@
 				</button>
 				<h1 class="h1">search for books in library</h1>
 
-				<form class="search-books__form">
+				<form class="search-books__form" autocomplete="on">
 					<input
 						type="search"
 						id="search__books__offline__input"
@@ -135,7 +135,10 @@
 
 				<h1 class="h1">uplaod a book</h1>
 
-				<form class="upload-book__form" id="book-form__upload">
+				<form
+					class="upload-book__form"
+					id="book-form__upload"
+					autocomplete="on">
 					<label for="book-name__input"
 						>Book Name:
 						<input
@@ -153,7 +156,6 @@
 						<input
 							type="file"
 							id="book-image__input"
-							name="book-image__input"
 							name="book-image__input"
 							accept="image/*"
 					/></label>
@@ -224,7 +226,7 @@
 
 				<!-- STEP : 01 -- FIND BOOK -->
 				<section class="step__1 book__issue__step issue__book__find__book">
-					<form class="search-books__form">
+					<form class="search-books__form" autocomplete="on">
 						<input
 							type="search"
 							value="book name A"
@@ -263,7 +265,6 @@
 									class="library-card__check__input"
 									id="library-card__y"
 									name="library-card__y"
-									name="library-card"
 									value="yes" />
 								<span class="description-title">yes</span>
 							</label>
@@ -273,7 +274,6 @@
 									class="library-card__check__input"
 									id="library-card__n"
 									name="library-card__n"
-									name="library-card"
 									value="no" />
 								<span class="description-title">no</span>
 							</label>
