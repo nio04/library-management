@@ -154,15 +154,6 @@
 							required
 							title="ADD BOOK NAME"
 					/></label>
-					<label for="book-image__input"
-						>Image:
-						<input
-							type="file"
-							id="book-image__input"
-							name="book-image__input"
-							accept="image/*"
-							title="ADD BOOK COVER"
-					/></label>
 					<label for="book-author__input"
 						>Author name:
 						<input
@@ -173,7 +164,7 @@
 							value="author name A"
 							title="ADD AUTHOR NAME"
 					/></label>
-					<label for="book-genre__input"
+					<label for="book-genre__input" id="book-genre__label"
 						>Genere:
 						<input
 							type="text"
@@ -183,6 +174,99 @@
 							value="comedy, rmance, slice of life"
 							title="ADD BOOK GENRE"
 					/></label>
+					<label for="book-language__input">
+						book language:
+						<input
+							type="text"
+							name="book-language__input"
+							id="book-language__input"
+							placeholder="enter book language"
+							title="ADD BOOK LANGUAGE" />
+					</label>
+					<label for="book-release__input"
+						>book release year:
+						<input
+							type="text"
+							name="book-release__input"
+							id="book-release__input"
+							placeholder="enter book release year"
+							title="ADD BOOK RELEASE YEAR"
+					/></label>
+					<label for="book-release-version__input"
+						>book release version:
+						<input
+							type="number"
+							name="book-release-version__input"
+							id="book-release-version__input"
+							placeholder="enter book release version"
+							title="ADD BOOK RELEASE VERSION"
+					/></label>
+					<label for="book-popularity__input"
+						>book popularity:
+						<input
+							type="number"
+							name="book-popularity__input"
+							id="book-popularity__input"
+							placeholder="enter book popularity"
+							title="ADD BOOK POPULARITY"
+					/></label>
+					<label for="book-page__input"
+						>book pages:
+						<input
+							type="number"
+							name="book-page__input"
+							id="book-page__input"
+							placeholder="enter book pages"
+							title="ADD BOOK PAGES"
+					/></label>
+					<fieldset>
+						<legend>book license</legend>
+						<section class="book-license">
+							<label for="book-license__y">
+								yes
+								<input
+									type="radio"
+									name="book-license__input"
+									id="book-license__y" />
+							</label>
+						</section>
+						<section class="book-license">
+							<label for="book-license__n">
+								no
+								<input
+									type="radio"
+									name="book-license__input"
+									id="book-license__n"
+							/></label>
+						</section>
+					</fieldset>
+					<label for="book-author-bio__input">
+						author bio link
+						<input
+							type="text"
+							name="book-author-bio__input"
+							id="book-author-bio__input"
+							placeholder="enter author bio link"
+							title="ADD AUTHOR BIO LINK" />
+					</label>
+					<label for="book-publication-link__input"
+						>book publication link
+						<input
+							type="text"
+							name="book-publication-link__input"
+							placeholder="enter book publication link"
+							title="ADD BOOK PUBLICATION LINK"
+							id="book-publication-link__input"
+					/></label>
+					<label for="book-publication-name__input">
+						book publication name
+						<input
+							type="text"
+							name="book-publication-name__input"
+							id="book-publication-name__input"
+							placeholder="enter book publication name"
+							title="ADD BOOK PUBLICATION NAME" />
+					</label>
 					<label class="quantity-label" for="book-quantity__input"
 						>Quantity:
 						<input
@@ -192,6 +276,15 @@
 							placeholder="enter book quantity"
 							value="10"
 							title="ADD BOOK QUANTITY"
+					/></label>
+					<label for="book-image__input" id="book-image__label"
+						>Image:
+						<input
+							type="file"
+							id="book-image__input"
+							name="book-image__input"
+							accept="image/*"
+							title="ADD BOOK COVER"
 					/></label>
 					<input
 						type="submit"
