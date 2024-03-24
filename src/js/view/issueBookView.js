@@ -227,6 +227,8 @@ function libraryCardCheck(ev) {
 // STEP 4: PROVIDE ALL THE BOOK INFORMATION
 function showAllInformationBook() {
 	const parent = document.querySelector(".issue__book .step__4");
+	// REMOVE PREVIOUS BOOK INFO
+	helper.removeEl(document.querySelector(".step__4 .book__info"));
 	const targetBook = helper.bookMatch(getBook.title);
 	const markup = `
 	<section class="book__info">
@@ -367,6 +369,9 @@ function showDueDate() {
 	)}, date: ${currDate}, month: ${monthProcess(
 		currMonth
 	)}, year: ${currYear}</p>`;
+
+	// REMOVE PREVIOUS CONTENT
+	helper.removeEl(document.querySelector(".step__6 .return-book__info"));
 
 	const calcFutureDate = () => {
 		// const finalDay =
