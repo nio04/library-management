@@ -19,7 +19,7 @@ function uploadBookControl(ev) {
 	// ON SUBMIT, GET VALUE OF INPUT'S
 	getInputValue();
 
-	// VALIDATE ALL THE NAMING
+	// VALIDATE ALL THE NAMINGS
 	const validateResult = validateNaming(
 		title,
 		authorName,
@@ -30,8 +30,8 @@ function uploadBookControl(ev) {
 	// RENDER [SUCCESS, ERROR] MESSAGE IN UI
 	renderSubmitResultModal(ev, validateResult);
 
-	// IF [VALIDATE-RESULT] TRUE MEANS,
-	// THERE IS SOMETHING WRONG, SO,
+	// IF [VALIDATE-RESULT] TRUE,
+	// THERE IS SOMETHING WRONG. THEN
 	// WE IMMIDIATELY RETURN
 	if (validateResult) return;
 
@@ -47,7 +47,7 @@ function uploadBookControl(ev) {
 		quantity,
 	});
 
-	// RENDER BOOKS IN UI
+	// RENDER NEW BOOKS IN UI
 	comp.renderBookMarkup(
 		document.querySelector(
 			".view-books-offline__custom #viewbooks__offline__section"
@@ -66,18 +66,39 @@ const getInputValue = () => {
 
 // VALIDATE NAMING
 const validateNaming = (...names) => {
-	if (
-		names[0].length === 0 ||
-		names[1].length === 0 ||
-		names[2].length === 0
-	)
-		return true;
+	const [title, authorName, quantity, genre] = names;
 
 	const regex = /[-\[\]\(\);:'"\/!@#$%^&*()_+?/\\><.=]{1,}/gi;
 
-	const result = names.map((name) => regex.test(name));
+	// BOOK TITLE CHECKING
+	if (
+		title.length === 0 ||
+		title.length < 3 ||
+		title.length > 16 ||
+		regex.test(title)
+	)
+		return true;
 
-	return result.includes(true);
+	// AUTHOR-NAME CHECK
+	if (
+		authorName.length === 0 ||
+		authorName.length < 3 ||
+		authorName.length > 16 ||
+		regex.test(authorName)
+	)
+		return true;
+
+	// Quantity CHECK
+	if (
+		quantity.length === 0 ||
+		Number(quantity) < 1 ||
+		Number(quantity) > 1000 ||
+		regex.test(quantity)
+	)
+		return true;
+
+	// GENRE CHECKER
+	if (genre.length === 0 || regex.test(genre)) return true;
 };
 
 const renderSubmitResultModal = (ev, validateResult) => {
