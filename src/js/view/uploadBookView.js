@@ -4,10 +4,20 @@ import * as bookContent from "../bookContent";
 
 const parent = document.querySelector(".upload-book-container");
 let title;
-let img;
 let authorName;
 let genre;
+let language;
+let releaseYear;
+let releaseVserion;
+let popularity;
+let pages;
+let licenseY;
+let licenseN;
+let authorBio;
+let publicationLink;
+let publicationName;
 let quantity;
+let img;
 const formUploadBtn = document.querySelector("#form-upload");
 
 function uploadBookControl(ev) {
@@ -20,12 +30,7 @@ function uploadBookControl(ev) {
 	getInputValue();
 
 	// VALIDATE ALL THE NAMINGS
-	const validateResult = validateNaming(
-		title,
-		authorName,
-		quantity,
-		genre
-	);
+	const validateResult = validateNaming();
 
 	// RENDER [SUCCESS, ERROR] MESSAGE IN UI
 	renderSubmitResultModal(ev, validateResult);
@@ -33,18 +38,29 @@ function uploadBookControl(ev) {
 	// IF [VALIDATE-RESULT] TRUE,
 	// THERE IS SOMETHING WRONG. THEN
 	// WE IMMIDIATELY RETURN
-	if (validateResult) return;
+	if (!validateResult) return;
 
 	// compute - Book IMAGE - src
 	let imgUrl = img.files[0]?.name;
+	// COMPUUTE BOOK-LICENSE
+	let GNUlicense = licenseY === true ? true : false;
 
 	bookContent.newBook.push({
 		id: crypto.randomUUID(),
 		title,
-		imgUrl,
 		authorName,
 		genre,
+		language,
+		releaseYear,
+		releaseVserion,
+		popularity,
+		pages,
+		GNUlicense,
+		authorBio,
+		publicationLink,
+		publicationName,
 		quantity,
+		imgUrl,
 	});
 
 	// RENDER NEW BOOKS IN UI
@@ -58,46 +74,65 @@ function uploadBookControl(ev) {
 
 const getInputValue = () => {
 	title = document.querySelector("#book-name__input").value;
-	img = document.querySelector("#book-image__input");
 	authorName = document.querySelector("#book-author__input").value;
 	genre = document.querySelector("#book-genre__input").value;
+	language = document.querySelector("#book-language__input").value;
+	releaseYear = document.querySelector("#book-release__input").value;
+	releaseVserion = document.querySelector(
+		"#book-release-version__input"
+	).value;
+	popularity = document.querySelector("#book-popularity__input").value;
+	pages = document.querySelector("#book-page__input").value;
+	licenseY = document.querySelector("#book-license__y").checked;
+	licenseN = document.querySelector("#book-license__n").checked;
+	authorBio = document.querySelector("#book-author-bio__input").value;
+	publicationLink = document.querySelector(
+		"#book-publication-link__input"
+	).value;
+	publicationName = document.querySelector(
+		"#book-publication-name__input"
+	).value;
 	quantity = document.querySelector("#book-quantity__input").value;
+	img = document.querySelector("#book-image__input");
 };
 
-// VALIDATE NAMING
-const validateNaming = (...names) => {
-	const [title, authorName, quantity, genre] = names;
+function validateNaming() {
+	// IF NULL > REGEX MATCHING FAILS!
+	const result = [];
+	let flag = true;
+	const regexNaming = /^[a-z]+[\sa-z]*$/gi;
+	const regexGenre = /^[a-z]+[,\sa-z]*$/gi;
+	const regexNumber = /^(?:[1-9]\d{0,3}|1000)$/g;
+	const regexLink = /^https:\/\/www\.\w+\.com$/gi;
 
-	/*
-	 	NOTE: THERE IS A HUGE THING TO LEARN.
-		EX - SOMETIME, WE NEGATE REGEX.TEST &&
-		SOMETHING WE TRUTHY REGEX.TEST
-		THIS SEEMS VERY FUZZT
-	*/
-	const regexNaming = /^[a-z]+ [\sa-z]*$/gi;
-	const regexGenre = /^[a-z]+ [\sa-z(,\-)?]*$/gi;
-	const regexQuantity = /^(?:[1-9]\d{0,2}|1000)$/g;
+	result.push(title.match(regexNaming));
+	result.push(authorName.match(regexNaming));
+	result.push(genre.match(regexGenre));
+	result.push(language.match(regexNaming));
+	result.push(releaseYear.match(regexNumber));
+	result.push(releaseVserion.match(regexNumber));
+	result.push(popularity.match(regexNumber));
+	result.push(pages.match(regexNumber));
+	result.push(authorBio.match(regexLink));
+	result.push(publicationLink.match(regexLink));
+	result.push(publicationName.match(regexNaming));
+	result.push(quantity.match(regexNumber));
+	if (licenseY === false && licenseN === false) flag = false;
 
-	// BOOK TITLE CHECKING
-	if (!regexNaming.test(title)) return true;
+	result.flat().forEach((res) => {
+		if (res === null) flag = false;
+	});
 
-	// AUTHOR-NAME CHECK
-	if (regexNaming.test(authorName)) return true;
-
-	// // Quantity CHECK
-	if (!regexQuantity.test(quantity)) return true;
-
-	// GENRE CHECKER
-	if (regexGenre.test(genre)) return true;
-};
+	return flag;
+}
 
 const renderSubmitResultModal = (ev, validateResult) => {
-	if (ev.target.closest(".upload-book-container") && validateResult)
+	if (ev.target.closest(".upload-book-container") && !validateResult)
 		comp.showModal(
 			parent,
 			`There might be something wrong with your input... Please check your input.`
 		);
-	else if (ev.target.closest(".upload-book-container") && !validateResult)
+	else if (ev.target.closest(".upload-book-container") && validateResult)
 		comp.showModal(
 			parent,
 			`Congratulation! You have successfully added a new books the library collection.`
