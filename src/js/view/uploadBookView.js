@@ -1,4 +1,3 @@
-import * as helper from "../helper";
 import * as comp from "../component";
 import * as bookContent from "../bookContent";
 
@@ -35,9 +34,6 @@ function uploadBookControl(ev) {
 	// RENDER [SUCCESS, ERROR] MESSAGE IN UI
 	renderSubmitResultModal(ev, validateResult);
 
-	// IF [VALIDATE-RESULT] TRUE,
-	// THERE IS SOMETHING WRONG. THEN
-	// WE IMMIDIATELY RETURN
 	if (!validateResult) return;
 
 	// compute - Book IMAGE - src
