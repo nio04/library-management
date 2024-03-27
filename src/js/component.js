@@ -3,6 +3,7 @@ import * as helper from "./helper";
 const container = document.querySelector(".container");
 const overlay = document.querySelector(".overlay");
 const spinner = document.querySelector(".spinner");
+const tooltip = document.querySelector(".tool-tip__book-upload");
 
 // RENDER ON SCREEN
 export function render(parent, markup) {
@@ -81,6 +82,27 @@ export function hideAllSections() {
 		document.querySelector(".issue-book")
 	);
 }
+
+// TOOL-TIP :HOVER
+tooltip.addEventListener("mouseenter", () => {
+	const markup = `
+		<section class="tool-tip">
+			<p class="tool-tip__message">fetch random online book image from unspalsh api!</p>
+		</section>
+		`;
+
+	document
+		.querySelector("#random-photo__label")
+		.insertAdjacentHTML("beforeend", markup);
+});
+
+tooltip.addEventListener("mouseleave", () => {
+	setTimeout(() => {
+		helper.removeEl(
+			document.querySelector("#random-photo__label .tool-tip")
+		);
+	}, 1200);
+});
 
 // RENDER BOOKS FROM ARRAY OF OBJECT
 export function renderBookMarkup(parent, books) {

@@ -76,7 +76,6 @@ function libraryPageControl(ev) {
 	}, spinnerTimer);
 
 	// SEARCH-BOOK-OFFLINE :: HANDLING BOOK CARD
-
 	if (ev.target.dataset.pointer === "search-books-offline") {
 		// HIDE SERCH-REUSLT CONTAINER
 		helper.hideEl(

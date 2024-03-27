@@ -285,7 +285,10 @@
 							value="10"
 							title="ADD BOOK QUANTITY"
 					/></label>
-					<label for="book-image__input" id="book-image__label"
+					<label
+						for="book-image__input"
+						id="book-image__label"
+						class="hidden"
 						>Image:
 						<input
 							type="file"
@@ -294,6 +297,16 @@
 							accept="image/*"
 							title="ADD BOOK COVER"
 					/></label>
+					<label for="random-photo" id="random-photo__label">
+						<span class="tool-tip__book-upload tool-tip__image">ℹ️</span>
+						random photo
+						<input
+							type="checkbox"
+							name="random-photo"
+							id="random-photo"
+							title="ADD RANDOM ONLINE PHOTO"
+							checked />
+					</label>
 					<input
 						type="submit"
 						value="upload"

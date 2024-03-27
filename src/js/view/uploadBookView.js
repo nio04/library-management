@@ -1,4 +1,5 @@
 import * as comp from "../component";
+import * as helper from "../helper";
 import * as bookContent from "../bookContent";
 
 const parent = document.querySelector(".upload-book-container");
@@ -144,3 +145,16 @@ document.addEventListener("click", (ev) => {
 // FORM SUBMT EVENT
 formUploadBtn.addEventListener("click", uploadBookControl);
 export default uploadBookControl;
+
+document
+	.querySelector("#random-photo__label #random-photo")
+	.addEventListener("change", (ev) => {
+		if (!ev.target.checked) {
+			helper.removeEl(document.querySelector("#random-photo__label"));
+
+			helper.removeClass(
+				document.querySelector("#book-image__label"),
+				"hidden"
+			);
+		}
+	});

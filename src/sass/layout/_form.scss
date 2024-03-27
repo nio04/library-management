@@ -20,6 +20,16 @@
 			height: 3rem;
 			width: 15rem;
 		}
+
+		input[type="checkbox"] {
+			height: 2rem;
+			width: 2rem;
+			margin-left: 1rem;
+		}
+	}
+
+	#random-photo__label {
+		position: relative;
 	}
 
 	#book-image__label {
