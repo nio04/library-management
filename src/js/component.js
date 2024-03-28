@@ -105,7 +105,7 @@ tooltip.addEventListener("mouseleave", () => {
 });
 
 // RENDER BOOKS FROM ARRAY OF OBJECT
-export function renderBookMarkup(parent, books) {
+export function renderBookMarkup(parent, books = []) {
 	Array.isArray(books) ? books : [books];
 
 	const markup = books
