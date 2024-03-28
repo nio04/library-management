@@ -9,6 +9,8 @@ export const getRandomImg = async () => {
 
 		const data = await res.json();
 
+		console.log(data.urls);
+
 		return data.urls.thumb;
 	} catch (err) {
 		console.error(err);

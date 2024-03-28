@@ -46,6 +46,8 @@ function uploadBookControl(ev) {
 	if (localImage === "on") imgUrl = img.files[0].name;
 	else imgUrl = onlineImg;
 
+	console.log(onlineImg);
+
 	// COMPUUTE BOOK-LICENSE
 	let GNUlicense = licenseY === true ? true : false;
 

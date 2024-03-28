@@ -20,3 +20,12 @@ document.addEventListener("DOMContentLoaded", () => {
 		storageBook
 	);
 });
+
+// FLUSH ALL THE BOOKS FROM LOCAL-STORAGE
+document.querySelector(".clear-all").addEventListener("click", (ev) => {
+	localStorage.removeItem("newBook");
+
+	document.querySelector(
+		".view-books-offline__custom #viewbooks__offline__section"
+	).innerHTML = "";
+});
