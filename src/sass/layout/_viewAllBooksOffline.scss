@@ -100,5 +100,15 @@
 
 	&__custom {
 		margin-top: 20rem;
+
+		position: relative;
+
+		.clear-all {
+			position: absolute;
+			top: 8rem;
+			right: 4rem;
+			background-color: red;
+			text-transform: uppercase;
+		}
 	}
 }
