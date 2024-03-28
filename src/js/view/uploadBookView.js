@@ -1,6 +1,8 @@
 import * as comp from "../component";
 import * as helper from "../helper";
 import * as bookContent from "../bookContent";
+import * as getRandomImg from "./unsplashView";
+import { onlineImg } from "./libraryView";
 
 const parent = document.querySelector(".upload-book-container");
 let title;
@@ -18,6 +20,8 @@ let publicationLink;
 let publicationName;
 let quantity;
 let img;
+let imgUrl; //for final object
+let localImage = "off";
 const formUploadBtn = document.querySelector("#form-upload");
 
 function uploadBookControl(ev) {
@@ -37,8 +41,10 @@ function uploadBookControl(ev) {
 
 	if (!validateResult) return;
 
-	// compute - Book IMAGE - src
-	let imgUrl = img.files[0]?.name;
+	// LOCAL IMAGE OR ONLINE IMAGE SELECT
+	if (localImage === "on") imgUrl = img.files[0].name;
+	else imgUrl = onlineImg;
+
 	// COMPUUTE BOOK-LICENSE
 	let GNUlicense = licenseY === true ? true : false;
 
@@ -146,6 +152,7 @@ document.addEventListener("click", (ev) => {
 formUploadBtn.addEventListener("click", uploadBookControl);
 export default uploadBookControl;
 
+// ONLINE PICTURE [CHECKBOX] LISTENER
 document
 	.querySelector("#random-photo__label #random-photo")
 	.addEventListener("change", (ev) => {
@@ -156,5 +163,19 @@ document
 				document.querySelector("#book-image__label"),
 				"hidden"
 			);
+		} else {
 		}
+	});
+
+// LOCAL IMAGE PROCESSOR
+function localImageProcess(ev) {
+	return (imgUrl = ev.target.files[0].name);
+}
+
+// MANUAL BOOK SELECT FROM FILE INPUT
+document
+	.querySelector("#book-image__input")
+	.addEventListener("change", (ev) => {
+		localImage = "on";
+		localImageProcess(ev);
 	});

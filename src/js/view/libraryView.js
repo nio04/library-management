@@ -2,6 +2,7 @@
 import * as helper from "../helper";
 import * as comp from "../component";
 import { spinnerTimer } from "../config";
+import { getRandomImg } from "./unsplashView";
 
 const container = document.querySelector(".container");
 const welcomeSection = document.querySelector(".welcome");
@@ -14,6 +15,8 @@ const issueBookSection = document.querySelector(".issue-book");
 const backBtn = document.querySelector("#back-btn");
 const spinner = document.querySelector(".spinner");
 
+export let onlineImg;
+
 function showTargetElement(ev) {
 	// 1) check which btn is checked
 	const checkedBtn = ev.target.dataset.pointer;
@@ -25,7 +28,7 @@ function showTargetElement(ev) {
 	helper.showEl(parentEl);
 }
 
-function libraryPageControl(ev) {
+async function libraryPageControl(ev) {
 	comp.showSpinner(ev);
 
 	setTimeout(() => {
@@ -88,6 +91,11 @@ function libraryPageControl(ev) {
 				".search-result .search-result__section .book .book__info"
 			)
 		);
+	}
+
+	// GET ONLINE PICTURE ID
+	if (ev.target.dataset.pointer === "upload-book-container") {
+		onlineImg = await getRandomImg();
 	}
 }
 
