@@ -1,6 +1,8 @@
 // 2ND
 import * as helper from "../helper";
+import * as comp from "../component";
 import { spinnerTimer } from "../config";
+import { getRandomImg } from "./unsplashView";
 
 const container = document.querySelector(".container");
 const welcomeSection = document.querySelector(".welcome");
@@ -13,16 +15,7 @@ const issueBookSection = document.querySelector(".issue-book");
 const backBtn = document.querySelector("#back-btn");
 const spinner = document.querySelector(".spinner");
 
-function hideAllSections() {
-	helper.hideEl(
-		libraryManagement,
-		viewAllBooksSection,
-		searchBookOfflineSection,
-		uploadBookSection,
-		searchBookOnlineSection,
-		issueBookSection
-	);
-}
+export let onlineImg;
 
 function showTargetElement(ev) {
 	// 1) check which btn is checked
@@ -35,12 +28,12 @@ function showTargetElement(ev) {
 	helper.showEl(parentEl);
 }
 
-function libraryPageControl(ev) {
-	helper.showSpinner(ev);
+async function libraryPageControl(ev) {
+	comp.showSpinner(ev);
 
 	setTimeout(() => {
 		if (backBtn) {
-			helper.hideSpinner();
+			comp.hideSpinner();
 
 			const target = ev.target.dataset.backTo;
 
@@ -79,11 +72,31 @@ function libraryPageControl(ev) {
 			return;
 
 		// HIDE ALL THE SECTION
-		hideAllSections();
+		comp.hideAllSections();
 
 		// SHOW TARGET ELEMENT
 		showTargetElement(ev);
 	}, spinnerTimer);
+
+	// SEARCH-BOOK-OFFLINE :: HANDLING BOOK CARD
+	if (ev.target.dataset.pointer === "search-books-offline") {
+		// HIDE SERCH-REUSLT CONTAINER
+		helper.hideEl(
+			document.querySelector(".search-books-offline .search-result")
+		);
+
+		// REMOVE SEARCHED-RESULT BOOK CONTAINER
+		helper.removeEl(
+			document.querySelector(
+				".search-result .search-result__section .book .book__info"
+			)
+		);
+	}
+
+	// GET ONLINE PICTURE ID
+	if (ev.target.dataset.pointer === "upload-book-container") {
+		onlineImg = await getRandomImg();
+	}
 }
 
 document.addEventListener("click", libraryPageControl);

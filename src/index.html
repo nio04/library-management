@@ -60,7 +60,7 @@
 				<section class="issue-book">
 					<button
 						class="btn anim-btn navigator__link"
-						data-pointer="issue-a-book">
+						data-pointer="issue__book">
 						issue a book
 					</button>
 				</section>
@@ -90,7 +90,8 @@
 
 				<!-- RENDER CUSTOM BOOKS helper -->
 				<section class="view-books-offline__custom">
-					<h1 class="h1">view all the custom books</h1>
+					<h1 class="h1">view all the new books collection</h1>
+					<button class="clear-all btn">flush</button>
 
 					<ul class="book" id="viewbooks__offline__section">
 						<!-- render offline books -->
@@ -108,16 +109,20 @@
 				</button>
 				<h1 class="h1">search for books in library</h1>
 
-				<form class="search-books__form">
+				<form class="search-books__form" autocomplete="on">
 					<input
 						type="search"
 						id="search__books__offline__input"
-						placeholder="search for your books..." />
+						name="search__books__offline"
+						placeholder="search for your books..."
+						autofocus
+						title="INPUT FOR OFFLINE BOOK" />
 					<input
 						type="submit"
 						value="search"
 						class="btn anim-btn navigator__link"
-						id="search__books__offline__btn" />
+						id="search__books__offline__btn"
+						title="SEARCH FOR OFFLINE BOOK" />
 				</form>
 
 				<section class="search-result hidden">
@@ -142,63 +147,182 @@
 
 				<h1 class="h1">uplaod a book</h1>
 
-				<form class="upload-book__form" id="book-form__upload">
-					<label
+				<form
+					class="upload-book__form"
+					id="book-form__upload"
+					autocomplete="on">
+					<label for="book-name__input"
 						>Book Name:
 						<input
 							type="text"
 							id="book-name__input"
-							minlength="2"
-							maxlength="20"
-							required
+							name="book-name__input"
 							placeholder="enter the book name"
 							value="book name A"
+							autofocus
+							required
+							title="ADD BOOK NAME"
 					/></label>
-					<label
-						>Image:
-						<input
-							type="file"
-							id="book-image__input"
-							accept="image/png, image/jpeg, image/png"
-					/></label>
-					<label
+					<label for="book-author__input"
 						>Author name:
 						<input
 							type="text"
 							id="book-author__input"
-							required
-							minlength="2"
-							maxlength="15"
+							name="book-author__input"
 							placeholder="enter author name"
 							value="author name A"
+							title="ADD AUTHOR NAME"
 					/></label>
-					<label
+					<label for="book-genre__input" id="book-genre__label"
 						>Genere:
 						<input
 							type="text"
 							id="book-genre__input"
-							minlength="2"
-							maxlength="40"
-							required
+							name="book-genre__input"
 							placeholder="enter genre by comma seperated"
 							value="comedy, rmance, slice of life"
+							title="ADD BOOK GENRE"
 					/></label>
-					<label class="quantity-label"
+					<label for="book-language__input">
+						book language:
+						<input
+							type="text"
+							name="book-language__input"
+							id="book-language__input"
+							placeholder="enter book language"
+							value="english"
+							title="ADD BOOK LANGUAGE" />
+					</label>
+					<label for="book-release__input"
+						>book release year:
+						<input
+							type="text"
+							name="book-release__input"
+							id="book-release__input"
+							placeholder="enter book release year"
+							value="2015"
+							title="ADD BOOK RELEASE YEAR"
+					/></label>
+					<label for="book-release-version__input"
+						>book release version:
+						<input
+							type="number"
+							name="book-release-version__input"
+							id="book-release-version__input"
+							placeholder="enter book release version"
+							value="3"
+							title="ADD BOOK RELEASE VERSION"
+					/></label>
+					<label for="book-popularity__input"
+						>book popularity:
+						<input
+							type="number"
+							name="book-popularity__input"
+							id="book-popularity__input"
+							value="3"
+							placeholder="enter book popularity"
+							title="ADD BOOK POPULARITY"
+					/></label>
+					<label for="book-page__input"
+						>book pages:
+						<input
+							type="number"
+							name="book-page__input"
+							id="book-page__input"
+							placeholder="enter book pages"
+							value="200"
+							title="ADD BOOK PAGES"
+					/></label>
+					<fieldset>
+						<legend>book license</legend>
+						<section class="book-license">
+							<label for="book-license__y">
+								yes
+								<input
+									type="radio"
+									name="book-license__input"
+									id="book-license__y"
+									checked />
+							</label>
+						</section>
+						<section class="book-license">
+							<label for="book-license__n">
+								no
+								<input
+									type="radio"
+									name="book-license__input"
+									id="book-license__n"
+							/></label>
+						</section>
+					</fieldset>
+					<label for="book-author-bio__input">
+						author bio link
+						<input
+							type="text"
+							name="book-author-bio__input"
+							id="book-author-bio__input"
+							placeholder="enter author bio link"
+							title="ADD AUTHOR BIO LINK"
+							value="https://www.example.com" />
+					</label>
+					<label for="book-publication-link__input"
+						>book publication link
+						<input
+							type="text"
+							name="book-publication-link__input"
+							placeholder="enter book publication link"
+							title="ADD BOOK PUBLICATION LINK"
+							value="https://www.google.com"
+							id="book-publication-link__input"
+					/></label>
+					<label for="book-publication-name__input">
+						book publication name
+						<input
+							type="text"
+							name="book-publication-name__input"
+							id="book-publication-name__input"
+							placeholder="enter book publication name"
+							value="haque"
+							title="ADD BOOK PUBLICATION NAME" />
+					</label>
+					<label class="quantity-label" for="book-quantity__input"
 						>Quantity:
 						<input
 							type="number"
 							id="book-quantity__input"
-							min="1"
-							max="1000"
-							required
+							name="book-quantity__input"
 							placeholder="enter book quantity"
 							value="10"
+							title="ADD BOOK QUANTITY"
 					/></label>
+					<label
+						for="book-image__input"
+						id="book-image__label"
+						class="hidden"
+						>Image:
+						<input
+							type="file"
+							id="book-image__input"
+							name="book-image__input"
+							accept="image/*"
+							title="ADD BOOK COVER"
+					/></label>
+					<label for="random-photo" id="random-photo__label">
+						<span class="tool-tip__book-upload tool-tip__image">ℹ️</span>
+						random photo
+						<input
+							type="checkbox"
+							name="random-photo"
+							id="random-photo"
+							title="ADD RANDOM ONLINE PHOTO"
+							checked />
+					</label>
 					<input
 						type="submit"
 						value="upload"
 						id="form-upload"
-						class="btn anim-btn navigator__link" />
+						class="btn anim-btn navigator__link"
+						title="UPLOAD THE BOOK" />
 				</form>
 			</section>
 
@@ -206,7 +330,118 @@
 			<section class="search-books-online hidden"></section>
 
 			<!-- ISSUE A BOOK -->
-			<section class="issue-a-book hidden"></section>
+			<section class="issue__book hidden">
+				<button
+					class="btn btn-back anim-btn navigator__link"
+					id="back-btn"
+					data-back-to="libraryPage">
+					back to library page
+				</button>
+
+				<h1 class="h1">issue a book</h1>
+
+				<!-- SHOW CHECKOUT PROGRESS -->
+				<section class="issue__book__progress">
+					<h1>
+						steps 1 of 7 : <span class="step__description">find book</span>
+					</h1>
+				</section>
+
+				<!-- STEP : 01 -- FIND BOOK -->
+				<section class="step__1 book__issue__step issue__book__find__book">
+					<form class="search-books__form" autocomplete="on">
+						<input
+							type="search"
+							value="book name A"
+							id="search__books__offline__input"
+							name="search__books__offline__input"
+							placeholder="search for your books..."
+							autofocus
+							title="INPUT FOR BOOK SEARCH" />
+						<input
+							type="submit"
+							value="search"
+							class="btn anim-btn navigator__link"
+							id="search__books__offline__btn"
+							title="SEARCH FOR BOOK" />
+					</form>
+
+					<!-- SHOW BOOK [SEARCH-RESULT] -->
+					<section class="search-result__section hidden">
+						<span class="book-mark un-marked un-marked__icon">❌</span>
+						<ul class="search-result__lists book" id="search-result">
+							<!-- render book -->
+						</ul>
+					</section>
+				</section>
+
+				<!-- STEP : 02 -- CHECK BOOK AVAILABLEITY -->
+				<section class="step__2 book__issue__step">
+					<section class="book-status"></section>
+				</section>
+
+				<!-- STEP : 03 -- CHECKING LIBRARY CARD -->
+				<section class="step__3 book__issue__step">
+					<section class="check__library-card">
+						<h1 class="title">do you have library card?</h1>
+						<section class="description">
+							<label>
+								<input
+									type="radio"
+									class="library-card__check__input"
+									id="library-card__y"
+									name="library-card__y"
+									value="yes" />
+								<span class="description-title">yes</span>
+							</label>
+							<label>
+								<input
+									type="radio"
+									class="library-card__check__input"
+									id="library-card__n"
+									name="library-card__n"
+									value="no" />
+								<span class="description-title">no</span>
+							</label>
+						</section>
+					</section>
+
+					<button
+						class="btn anim-btn next__step__btn"
+						data-go-next-step="4">
+						Next step
+					</button>
+					<button class="btn anim-btn go__library-page">
+						Go to library page
+					</button>
+				</section>
+
+				<!-- step : 04 -- PROVIDE BOOK INFORMATION -->
+				<section class="step__4 book__issue__step"></section>
+
+				<!-- step : 05 -- SHOW CHECKOUT PROCESSING LADING -->
+				<section class="step__5 book__issue__step">
+					<p class="book__issue__waiting hidden">
+						please wait a moment. while we checkout your book
+					</p>
+					<p class="book__issue__success hidden">
+						congratulation! your book is successfully checked out!
+						<br />
+						you can take the book for 15 days!
+					</p>
+				</section>
+
+				<!-- step : 06 -- SHOW DUE DATE -->
+				<section class="step__6 book__issue__step"></section>
+
+				<!-- step : 07 -- TAKE THE BOOK -->
+				<section class="step__7 book__issue__step">
+					<p class="checkout-message hidden">
+						thank you for choosing our library. here is your book.
+						<br />have a nice day. please visit us again
+					</p>
+				</section>
+			</section>
 		</section>
 
 		<div class="overlay overlay-off"></div>

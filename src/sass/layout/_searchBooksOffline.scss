@@ -6,7 +6,7 @@
 	margin-bottom: 5rem;
 
 	.h1 {
-		margin: 10rem 0 4rem 0;
+		margin: 15rem 0 2rem 0;
 	}
 
 	form {
@@ -41,84 +41,54 @@
 		margin: 0 auto;
 		padding-top: 2rem;
 		border: 2px solid var(--secondary-color-400);
+		border-radius: 1rem;
 
 		p {
 			font-size: 3.3rem;
 			font-weight: 500;
 			align-self: flex-start;
+			border-bottom: 6px double var(--secondary-color-400);
+			margin-left: 1.6rem;
+			padding-bottom: 5px;
 		}
 
 		&__section {
 			max-width: 100%;
 
 			.book {
-				display: grid;
-				grid-template-columns: repeat(
-					auto-fill,
-					minmax(min-content, 30rem)
-				);
-				justify-content: center;
-				gap: 5rem;
-
-				padding: 5rem;
+				padding-bottom: 3rem;
+				margin-left: -50.5rem;
+				margin-top: 2rem;
 
 				list-style: none;
-				&__item {
+
+				&__info {
 					display: flex;
-					align-items: center;
+					align-items: flex-start;
 
-					border: 2px solid var(--secondary-color-400);
+					margin-top: 3rem;
 
-					.img {
-						width: 12rem;
-						height: auto;
-						display: flex;
-						justify-content: center;
-						align-items: center;
-
+					figure {
+						height: 100%;
 						img {
+							width: 15rem;
 							height: auto;
-							width: 80%;
-							max-width: 90%;
-							border-radius: 1.5rem;
-							object-fit: cover;
-							transform: translateX(-0.5rem);
+							display: flex;
+							justify-content: flex-start;
+							align-items: center;
+							margin-right: 4rem;
+							border-radius: 1rem;
 						}
 					}
 
-					&__description {
-						position: relative;
-						padding-left: 0.8rem;
+					&__details {
+						p {
+							border: none;
+							font-size: 2.5rem;
+							font-weight: 400;
 
-						.item {
-							&__quantity {
-								position: absolute;
-								bottom: 0.2rem;
-								right: 1.6rem;
-								font-size: 2rem;
-								font-style: italic;
-								font-weight: 800;
-							}
-							&__title {
-								margin: 2rem 0;
-								font-size: 2.3rem;
-								text-transform: capitalize;
-							}
-
-							&__genere {
-								font-weight: 200;
-								color: gray;
-								font-size: 1.6rem;
-							}
-
-							&__author-name {
-								//  position: absolute;
-								//  bottom: 3rem;
-								//  right: 10rem;
-								font-size: 1.8rem;
-								font-style: italic;
-								font-weight: 500;
-								margin-top: 2rem;
+							&:not(:last-child) {
+								margin-bottom: 2.6rem;
 							}
 						}
 					}

@@ -1,5 +1,5 @@
-import * as bookContent from "../bookContent";
 import * as helper from "../helper";
+import * as comp from "../component";
 
 const parent = document.querySelector(".search-books-offline");
 const searchInput = document.querySelector(
@@ -7,10 +7,6 @@ const searchInput = document.querySelector(
 );
 const searchBtn = document.querySelector("#search__books__offline__btn");
 const resultParent = document.querySelector(".search-result");
-
-const allOfflineBookName = bookContent.bookLists.preBook.map(
-	(book) => book.title
-);
 
 let searchValue;
 
@@ -22,33 +18,65 @@ function getSearchInput(ev) {
 }
 
 export default function bookSearchControl(ev) {
-	const findBook = allOfflineBookName.includes(searchValue);
+	ev.preventDefault();
+
+	if (ev.target.closest(".search-books-offline")) {
+		helper.hideEl(
+			document.querySelector(".search-books-offline .search-result")
+		);
+	}
 
 	// RENDER ERROR MESSAGE WHEN BOOKS NOT FOUND
-	if (ev.target.closest(".search-books-offline") && !findBook) {
-		helper.showModal(
+	if (
+		ev.target.closest(".search-books-offline") &&
+		!helper.findBook(searchValue)
+	) {
+		comp.showModal(
 			parent,
 			"sorry, We could not find the book you query. please try again"
 		);
 
-		return;
+		return helper.inputCleaner();
 	}
 
 	// EXECUTE ON SUCCESS
 	helper.showEl(resultParent);
 
-	// FIND THE BOOK OBJECT
-	const bookMatch = bookContent.bookLists.preBook.find(
-		(book) => book.title === searchValue
-	);
-	const processBook = [];
-	processBook.push(bookMatch);
+	// INPUT CLEANER
+	helper.inputCleaner();
 
-	// GENERATE BOOK IN UI
-	helper.renderBookMarkup(
-		document.querySelector(".search-result__lists"),
-		processBook
-	);
+	// FIND THE BOOK OBJECT
+	helper.bookMatch(searchValue);
+
+	const processBook = [];
+	processBook.push(helper.bookMatch(searchValue));
+
+	const searchResult = processBook
+		.map((targetBook) => {
+			return `
+	<li class="book__info">
+		<figure>
+			<img src="${targetBook.imgUrl}" alt="${targetBook.title}">
+		</figure>
+		<section class="book__info__details">
+			<p>book name: ${targetBook.title}</p>
+			<p>author name: ${targetBook.authorName}</p>
+			<p>book language: ${targetBook.language}</p>
+			<p>genre: ${targetBook.genre} </p>
+			<p>release year: ${targetBook.releaseYear}</p>
+			<p>release version: ${targetBook.releaseVersion}</p>
+			<p>popularity: ${targetBook.popularity} </p>
+			<p>book pages: ${targetBook.pages} </p>
+			<p>book license: ${targetBook.GNUlicense}</p>
+			<p>author bio link: ${targetBook.authorBio} </p>
+			<p>book publication link: ${targetBook.publicationLink}</p>
+			<p>publication name: ${targetBook.publicationName} </p>
+		</section>
+	</li>`;
+		})
+		.join("");
+
+	document.querySelector(".search-result__lists").innerHTML = searchResult;
 }
 
 searchInput.addEventListener("input", getSearchInput);

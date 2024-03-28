@@ -9,7 +9,7 @@
 	h1 {
 		border-bottom: 5px double var(--secondary-color-600);
 
-		margin: 10rem 20rem 10rem 20rem;
+		margin: 15rem 20rem 10rem 20rem;
 	}
 
 	.book {
@@ -25,8 +25,8 @@
 		&__item {
 			display: flex;
 			list-style: none;
-			border: 2px solid var(--primary-color-200);
-			border-radius: 1.2rem;
+			border: 2px solid var(--primary-color-400);
+			border-radius: 1rem;
 			box-sizing: content-box;
 			position: relative;
 
@@ -42,7 +42,7 @@
 					height: auto;
 					width: 80%;
 					max-width: 90%;
-					border-radius: 1.5rem;
+					border-radius: 1rem;
 					object-fit: cover;
 					transform: translateX(-0.5rem);
 				}
@@ -88,9 +88,27 @@
 				}
 			}
 		}
+		.low-quantity-book {
+			filter: opacity(0.8);
+			border: 2px solid var(--primary-color-800) !important;
+		}
+		.no-quantity-book {
+			filter: opacity(0.6);
+			border: 2px solid red !important;
+		}
 	}
 
 	&__custom {
 		margin-top: 20rem;
+
+		position: relative;
+
+		.clear-all {
+			position: absolute;
+			top: 8rem;
+			right: 4rem;
+			background-color: red;
+			text-transform: uppercase;
+		}
 	}
 }
