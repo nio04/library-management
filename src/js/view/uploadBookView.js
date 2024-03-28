@@ -3,6 +3,7 @@ import * as helper from "../helper";
 import * as bookContent from "../bookContent";
 import * as getRandomImg from "./unsplashView";
 import { onlineImg } from "./libraryView";
+import * as localstorage from "./localstorageView";
 
 const parent = document.querySelector(".upload-book-container");
 let title;
@@ -48,7 +49,7 @@ function uploadBookControl(ev) {
 	// COMPUUTE BOOK-LICENSE
 	let GNUlicense = licenseY === true ? true : false;
 
-	bookContent.newBook.push({
+	const newBook = {
 		id: crypto.randomUUID(),
 		title,
 		authorName,
@@ -64,14 +65,18 @@ function uploadBookControl(ev) {
 		publicationName,
 		quantity,
 		imgUrl,
-	});
+	};
 
-	// RENDER NEW BOOKS IN UI
+	// PUSH TO BOOK-OBJECt
+	bookContent.newBook.push(newBook);
+	localstorage.setStorage(newBook);
+
+	// RENDER BOOK TO UI
 	comp.renderBookMarkup(
 		document.querySelector(
 			".view-books-offline__custom #viewbooks__offline__section"
 		),
-		bookContent.bookLists.newBook
+		localstorage.storageBook
 	);
 }
 

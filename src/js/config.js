@@ -1,4 +1,5 @@
 export const spinnerTimer = 300;
+export const query = "bookcover";
 export const clientID = "wztGNHFuJ25HJkJ8UhXkQDGo0r_rKT17DVqwBfH4p1Q";
 
 /*
