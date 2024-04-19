@@ -15,6 +15,7 @@
 			font-size: 3rem;
 			text-transform: uppercase;
 			position: relative;
+			font-family: Inconsolata;
 
 			&::before {
 				content: "";
@@ -34,6 +35,9 @@
 			color: var(--secondary-color-800);
 			text-transform: uppercase;
 			margin-left: 1.8rem;
+			font-family: Montserrat;
+			letter-spacing: -1;
+			word-spacing: 3;
 		}
 	}
 
@@ -43,8 +47,20 @@
 		justify-content: center;
 		align-items: center;
 
-		form input[type="submit"] {
-			margin-left: 3rem;
+		form {
+			input[type="search"] {
+				outline: none;
+				width: 22rem;
+				padding-left: 0.4rem;
+				font-family: Montserrat;
+			}
+
+			input[type="submit"] {
+				margin-left: 3rem;
+				font-size: 3rem;
+				text-transform: uppercase;
+				font-family: Inconsolata;
+			}
 		}
 
 		.search-result {
@@ -58,13 +74,12 @@
 
 			margin: 0 auto;
 			padding-top: 2rem;
-			border: 2px solid var(--secondary-color-400);
 
-			p {
-				font-size: 3.3rem;
-				font-weight: 500;
-				align-self: flex-start;
-			}
+			// p {
+			// 	font-size: 3.3rem;
+			// 	font-weight: 500;
+			// 	align-self: flex-start;
+			// }
 
 			&__section {
 				max-width: 100%;
@@ -96,8 +111,6 @@
 						display: flex;
 						align-items: center;
 
-						border: 2px solid var(--secondary-color-400);
-
 						.img {
 							width: 12rem;
 							height: auto;
@@ -122,27 +135,19 @@
 							.item {
 								&__quantity {
 									display: none;
-									position: absolute;
-									bottom: 0;
-									right: 0.6rem;
-									padding: 3px 6px;
-									font-size: 2.6rem;
-									font-style: italic;
-									font-weight: 800;
-									border: 2px solid var(--secondary-color-200);
-									border-radius: 50%;
-									// transform: translateX(0.2rem);
 								}
 								&__title {
 									margin: 2rem 0;
 									font-size: 2.3rem;
 									text-transform: capitalize;
+									font-family: Open Sans;
 								}
 
 								&__genere {
 									font-weight: 200;
 									color: gray;
 									font-size: 1.6rem;
+									font-family: Montserrat;
 								}
 
 								&__author-name {
@@ -153,6 +158,7 @@
 									font-style: italic;
 									font-weight: 500;
 									margin-top: 2rem;
+									font-family: Lato;
 								}
 							}
 						}
@@ -189,6 +195,7 @@
 				align-content: center;
 
 				label {
+					font-family: Roboto;
 					input {
 						height: 3rem;
 						width: 3rem;
@@ -231,6 +238,7 @@
 				grid-gap: 2rem;
 
 				padding: 2.1rem;
+				font-family: Inter;
 
 				p {
 					font-size: 1.8rem;
@@ -239,6 +247,7 @@
 			}
 		}
 	}
+
 	.step__5 {
 		display: flex;
 		flex-direction: column;
@@ -251,10 +260,12 @@
 				padding: 2.5rem 0;
 				text-transform: uppercase;
 				color: var(--primary-color-400);
+				font-family: Montserrat;
 			}
 
 			&__success {
 				font-size: 3.2rem;
+				font-family: Montserrat;
 				padding: 2.5rem 0;
 				text-transform: uppercase;
 				color: var(--accent-color-400);
@@ -264,6 +275,7 @@
 			}
 		}
 	}
+
 	.step__6 {
 		display: flex;
 		flex-direction: column;
@@ -275,8 +287,10 @@
 			padding: 3rem 0;
 			text-transform: capitalize;
 			line-height: 3;
+			font-family: Montserrat;
 		}
 	}
+
 	.step__7 {
 		display: flex;
 		flex-direction: column;
@@ -285,6 +299,7 @@
 
 		.checkout-message {
 			font-size: 3.5rem;
+			font-family: Montserrat;
 			text-transform: uppercase;
 			padding: 2.6rem 0;
 			font-weight: 600;

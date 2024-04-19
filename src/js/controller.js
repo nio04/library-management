@@ -4,6 +4,7 @@ import uploadBookView from "./view/uploadBookView";
 import viewBooksOffline from "./view/viewBooksOffline";
 import searchBooksOffline from "./view/searchBooksOffline";
 import issueBook from "./view/issueBookView";
+import fontView from "./view/fontView";
 
 welcomeView.welcomeViewControl;
 libraryView.libraryPageControl;

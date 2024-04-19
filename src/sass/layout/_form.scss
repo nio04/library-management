@@ -14,17 +14,29 @@
 
 	label {
 		font-size: 2.5rem;
+		font-family: Inter;
 		text-transform: capitalize;
 
 		input {
 			height: 3rem;
-			width: 15rem;
+			width: 18rem;
+
+			font-size: 1.4rem;
+			font-family: Montserrat;
+			outline: none;
+			border-radius: 0.4rem;
+			border: 1px solid gray;
+			padding-left: 0.4rem;
 		}
 
 		input[type="checkbox"] {
 			height: 2rem;
 			width: 2rem;
 			margin-left: 1rem;
+		}
+
+		input[type="file"] {
+			border: none;
 		}
 	}
 
@@ -48,10 +60,13 @@
 		padding: 1rem 2rem;
 		legend {
 			font-size: 2.5rem;
+			font-family: Inter;
+			text-transform: uppercase;
 		}
 		section {
 			label {
 				input {
+					font-family: inherit;
 					width: 12%;
 					height: 50%;
 					margin-left: 0;
@@ -68,7 +83,12 @@
 		grid-column: 1 / -1;
 		justify-self: center;
 
+		font-size: 3rem;
 		width: 40%;
 		margin-top: 5rem;
+		font-family: Inconsolata;
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 1;
 	}
 }

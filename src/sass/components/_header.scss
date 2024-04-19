@@ -1,10 +1,13 @@
 @use "../abstracts/" as abs;
 
-.h1{
-  text-align: center;
-  text-transform: uppercase;
-  font-size: 4.6rem;
-  word-spacing: 1rem;
+.h1 {
+	text-align: center;
+	text-transform: uppercase;
+	font-size: 4.6rem;
+	letter-spacing: -2.5;
+	word-spacing: 1rem;
+	font-family: Inter;
+	font-weight: 700;
 
-  @include abs.margin-y(10);
+	@include abs.margin-y(10);
 }
