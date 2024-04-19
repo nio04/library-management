@@ -1,3 +1,25 @@
+// AMBER
+$amber-color-200: #fde68a;
+$amber-color-300: #fcd34d;
+$amber-color-400: #fbbf24;
+$amber-color-500: #f59e0b;
+$amber-color-600: #d97706;
+$amber-color-700: #b45309;
+$amber-color-800: #92400e;
+
+//YELLOW
+$yellow-color-50: #fefce8;
+$yellow-color-100: #fef9c3;
+$yellow-color-200: #fef08a;
+$yellow-color-300: #fde047;
+$yellow-color-400: #facc15;
+$yellow-color-500: #eab308;
+$yellow-color-600: #ca8a04;
+$yellow-color-700: #a16207;
+$yellow-color-800: #854d0e;
+$yellow-color-900: #713f12;
+$yellow-color-950: #422006;
+
 // SLATE
 $slate-color-200: #e2e8f0;
 $slate-color-300: #cbd5e1;
@@ -6,6 +28,15 @@ $slate-color-500: #64748b;
 $slate-color-600: #475569;
 $slate-color-700: #334155;
 $slate-color-800: #1e293b;
+
+// GRAY
+$gray-color-200: #e5e7eb;
+$gray-color-300: #d1d5db;
+$gray-color-400: #9ca3af;
+$gray-color-500: #6b7280;
+$gray-color-600: #4b5563;
+$gray-color-700: #374151;
+$gray-color-800: #1f2937;
 
 //NUETRAL
 $nuetral-color-200: #e5e5e5;
@@ -25,6 +56,19 @@ $red-color-600: #dc2626;
 $red-color-700: #b91c1c;
 $red-color-800: #991b1b;
 
+//PINK
+$pink-color-50: #fdf2f8;
+$pink-color-100: #fce7f3;
+$pink-color-200: #fbcfe8;
+$pink-color-300: #f9a8d4;
+$pink-color-400: #f472b6;
+$pink-color-500: #ec4899;
+$pink-color-600: #db2777;
+$pink-color-700: #be185d;
+$pink-color-800: #9d174d;
+$pink-color-900: #831843;
+$pink-color-950: #500724;
+
 //GREEN
 $green-color-200: #bbf7d0;
 $green-color-300: #86efac;
@@ -43,6 +87,19 @@ $indigo-color-600: #2563eb;
 $indigo-color-700: #1d4ed8;
 $indigo-color-800: #1e40af;
 
+//CYAN
+$cyan-color-50: #ecfeff;
+$cyan-color-100: #ccfbf1;
+$cyan-color-200: #99f6e4;
+$cyan-color-300: #5eead4;
+$cyan-color-400: #2dd4bf;
+$cyan-color-500: #14b8a6;
+$cyan-color-600: #0d9488;
+$cyan-color-700: #0f766e;
+$cyan-color-800: #115e59;
+$cyan-color-900: #134e4a;
+$cyan-color-950: #042f2e;
+
 //EMERALD
 $emerald-color-200: #a7f3d0;
 $emerald-color-300: #6ee7b7;
@@ -53,6 +110,28 @@ $emerald-color-700: #047857;
 $emerald-color-800: #065f46;
 
 :root {
+	// AMBER
+	--amber-color-200: #{$amber-color-200};
+	--amber-color-300: #{$amber-color-300};
+	--amber-color-400: #{$amber-color-400};
+	--amber-color-500: #{$amber-color-500};
+	--amber-color-600: #{$amber-color-600};
+	--amber-color-700: #{$amber-color-700};
+	--amber-color-800: #{$amber-color-800};
+
+	//YELLOW
+	--yellow-color-50: #{$yellow-color-50};
+	--yellow-color-100: #{$yellow-color-100};
+	--yellow-color-200: #{$yellow-color-200};
+	--yellow-color-300: #{$yellow-color-300};
+	--yellow-color-400: #{$yellow-color-400};
+	--yellow-color-500: #{$yellow-color-500};
+	--yellow-color-600: #{$yellow-color-600};
+	--yellow-color-700: #{$yellow-color-700};
+	--yellow-color-800: #{$yellow-color-800};
+	--yellow-color-900: #{$yellow-color-900};
+	--yellow-color-950: #{$yellow-color-950};
+
 	// PRIMARY COLOR : SLATE
 	--slate-color-200: #{$slate-color-200};
 	--slate-color-300: #{$slate-color-300};
@@ -71,6 +150,15 @@ $emerald-color-800: #065f46;
 	--nuetral-color-700: #{$nuetral-color-700};
 	--nuetral-color-800: #{$nuetral-color-800};
 
+	// GRAY
+	--gray-color-200: #{$gray-color-200};
+	--gray-color-300: #{$gray-color-300};
+	--gray-color-400: #{$gray-color-400};
+	--gray-color-500: #{$gray-color-500};
+	--gray-color-600: #{$gray-color-600};
+	--gray-color-700: #{$gray-color-700};
+	--gray-color-800: #{$gray-color-800};
+
 	//COLOR: RED
 	--red-color-200: #{$red-color-200};
 	--red-color-300: #{$red-color-300};
@@ -79,6 +167,19 @@ $emerald-color-800: #065f46;
 	--red-color-600: #{$red-color-600};
 	--red-color-700: #{$red-color-700};
 	--red-color-800: #{$red-color-800};
+
+	//PINK
+	--pink-color-50: #{$pink-color-50};
+	--pink-color-100: #{$pink-color-100};
+	--pink-color-200: #{$pink-color-200};
+	--pink-color-300: #{$pink-color-300};
+	--pink-color-400: #{$pink-color-400};
+	--pink-color-500: #{$pink-color-500};
+	--pink-color-600: #{$pink-color-600};
+	--pink-color-700: #{$pink-color-700};
+	--pink-color-800: #{$pink-color-800};
+	--pink-color-900: #{$pink-color-900};
+	--pink-color-950: #{$pink-color-950};
 
 	//COLOR: GREEN
 	--green-color-200: #{$green-color-200};
@@ -106,6 +207,19 @@ $emerald-color-800: #065f46;
 	--emerald-color-600: #{$emerald-color-600};
 	--emerald-color-700: #{$emerald-color-700};
 	--emerald-color-800: #{$emerald-color-800};
+
+	//CYAN
+	--cyan-color-50: #{$cyan-color-50};
+	--cyan-color-100: #{$cyan-color-100};
+	--cyan-color-200: #{$cyan-color-200};
+	--cyan-color-300: #{$cyan-color-300};
+	--cyan-color-400: #{$cyan-color-400};
+	--cyan-color-500: #{$cyan-color-500};
+	--cyan-color-600: #{$cyan-color-600};
+	--cyan-color-700: #{$cyan-color-700};
+	--cyan-color-800: #{$cyan-color-800};
+	--cyan-color-900: #{$cyan-color-900};
+	--cyan-color-950: #{$cyan-color-950};
 
 	--color-white: #fff;
 	--step-width: 14.3%;

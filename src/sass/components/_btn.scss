@@ -17,7 +17,7 @@ button:disabled {
 	font-family: Lato;
 	font-size: 2.5rem;
 	padding: 2rem 4rem;
-	background-color: var(--primary-color-400);
+	background-color: var(--slate-color-600);
 	border-radius: 1.2rem;
 	border: none;
 	outline: none;
@@ -44,4 +44,5 @@ button:disabled {
 .welcome-btn {
 	font-family: Inconsolata;
 	text-transform: uppercase;
+	background-color: var(--green-color-600);
 }
