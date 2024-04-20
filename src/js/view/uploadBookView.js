@@ -138,11 +138,13 @@ const renderSubmitResultModal = (ev, validateResult) => {
 	if (ev.target.closest(".upload-book-container") && !validateResult)
 		comp.showModal(
 			parent,
+			"error",
 			`There might be something wrong with your input... Please check your input.`
 		);
 	else if (ev.target.closest(".upload-book-container") && validateResult)
 		comp.showModal(
 			parent,
+			"success",
 			`Congratulation! You have successfully added a new books the library collection.`
 		);
 };

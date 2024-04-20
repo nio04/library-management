@@ -18,5 +18,8 @@
 		"parcel": "^2.11.0",
 		"parcel-reporter-static-files-copy": "^1.5.3",
 		"sharp": "^0.33.2"
+	},
+	"dependencies": {
+		"webfontloader": "^1.6.28"
 	}
 }

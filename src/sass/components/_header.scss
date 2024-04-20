@@ -1,10 +1,28 @@
 @use "../abstracts/" as abs;
 
-.h1{
-  text-align: center;
-  text-transform: uppercase;
-  font-size: 4.6rem;
-  word-spacing: 1rem;
+.h1 {
+	text-align: center;
+	text-transform: uppercase;
+	font-size: 4.6rem;
+	letter-spacing: -2.5;
+	word-spacing: 1rem;
+	font-family: Inter;
+	font-weight: 700;
+	border-radius: 0.6rem;
+	padding: 2rem;
+	background-color: var(--gray-color-300);
 
-  @include abs.margin-y(10);
+	@extend %header-margin;
+	margin-top: 12rem;
+	margin-bottom: 5rem;
+}
+
+h2 {
+	font-size: 3rem;
+	text-transform: uppercase;
+	position: relative;
+	font-family: Inconsolata;
+	padding: 1.3rem 0;
+	border-radius: 0.8rem;
+	background-color: var(--indigo-color-400);
 }

@@ -20,14 +20,22 @@
 	padding-bottom: 7rem;
 	overflow-y: hidden;
 
+	&--header {
+		@include abs.padding-x(11);
+	}
+
 	section {
 		font-size: 2.7rem;
 		text-align: center;
 
 		button {
+			font-size: 2.4rem;
+			letter-spacing: -1;
+			word-spacing: 0.4rem;
 			min-width: 49rem;
 			padding: 1rem 2rem;
 			transition: all 0.3s;
+			font-family: Open Sans;
 		}
 	}
 }

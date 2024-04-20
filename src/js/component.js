@@ -15,14 +15,24 @@ export function renderSibling(parent, markup) {
 	parent.insertAdjacentHTML("afterend", markup);
 }
 
-// RENDER AS CHILDREN
-export function renderChildren(parent, markup) {
-	parent.insertAdjacentHTML("beforeend", markup);
+/**
+ *  RENDER AS CHILDREN
+ * @param {parent__element} parent parent element to add children eliment
+ * @param {string} markup html string to add
+ * @param {string} position children position specify
+ */
+export function renderChildren(parent, markup, position = "beforeend") {
+	parent.insertAdjacentHTML(`${position}`, markup);
 }
 
-// SHOW MODAL
-export function showModal(parent, message = "") {
-	generateModalMarkup(parent);
+/**
+ * SHOW MODAL
+ * @param {element} parent parent element to attach the modal
+ * @param {css_class} className css [success, error] class
+ * @param {string} message modal message
+ */
+export function showModal(parent, className, message = "") {
+	generateModalMarkup(parent, className);
 
 	overlay.classList.remove("overlay-off");
 
@@ -36,9 +46,9 @@ export function hideModal() {
 }
 
 // GENERATING MODAL IN UI
-function generateModalMarkup(parent) {
+function generateModalMarkup(parent, className) {
 	const markup = `
-	<div class="modal">
+	<div class="modal ${className}">
 		<p class="modal__message"></p>
 		<button class="btn modal__btn">OK, I UNDERSTAND</button>
 	</div>`;

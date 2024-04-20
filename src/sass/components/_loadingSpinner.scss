@@ -2,9 +2,7 @@
 @use "../base";
 
 .spinner {
-	display: flex;
-	justify-content: center;
-	align-items: center;
+	@extend %flex-center;
 	height: 100vh;
 
 	&__content {

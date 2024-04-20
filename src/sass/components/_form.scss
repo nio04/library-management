@@ -1,0 +1,90 @@
+form {
+	label {
+		font-size: 2.5rem;
+		font-family: Inter;
+		text-transform: capitalize;
+
+		input {
+			height: 3rem;
+			width: 18rem;
+
+			font-size: 1.4rem;
+			font-family: Montserrat;
+			outline: none;
+			border-radius: 0.4rem;
+			border: 1px solid gray;
+			padding-left: 0.4rem;
+		}
+	}
+
+	input[type="text"],
+	input[type="search"] {
+		height: 4rem;
+		width: 60%;
+		outline: none;
+		border-radius: 0.4rem;
+		border: 1px solid gray;
+		padding-left: 0.6rem;
+		transition: all 0.1s;
+
+		&::placeholder {
+			font-family: Montserrat;
+		}
+		&:focus {
+			outline: 2px solid black;
+		}
+	}
+
+	input[type="submit"] {
+		margin-top: 2rem;
+		font-family: Inconsolata;
+		letter-spacing: 1;
+		text-transform: uppercase;
+	}
+
+	label input[type="checkbox"] {
+		height: 2rem;
+		width: 2rem;
+		margin-left: 1rem;
+	}
+
+	label input[type="file"] {
+		border: none;
+	}
+
+	fieldset {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		padding: 1rem 2rem;
+
+		legend {
+			font-size: 2.5rem;
+			font-family: Inter;
+			text-transform: uppercase;
+		}
+
+		section {
+			label {
+				input[type="radio"] {
+					font-family: inherit;
+					width: 12%;
+					height: 50%;
+					margin-left: 0;
+				}
+			}
+		}
+	}
+
+	input[type="submit"] {
+		grid-column: 1 / -1;
+		justify-self: center;
+
+		font-size: 3rem;
+		min-width: 15%;
+		margin-top: 5rem;
+		font-family: Inconsolata;
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 1;
+	}
+}

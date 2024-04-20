@@ -6,90 +6,76 @@
 	margin-bottom: 5rem;
 
 	.h1 {
-		margin: 15rem 0 2rem 0;
+		line-height: 1.05;
+		@extend %header-margin;
 	}
 
 	form {
-		display: flex;
-		flex-direction: column;
-		justify-content: flex-start;
-		align-items: flex-start;
+		@extend %flex-col-center;
 
 		padding-top: 2rem;
-		padding-left: 15rem;
 		margin-bottom: 5rem;
-
-		input[type="text"] {
-			height: 4rem;
-			width: 50%;
-		}
-
-		input[type="submit"] {
-			margin-top: 2rem;
-		}
 	}
 
 	.search-result {
 		min-height: 30vh;
-		width: 80vw;
+		width: 85vw;
 
-		display: flex;
-		flex-direction: column;
-		justify-content: flex-start;
-		align-items: center;
+		// display: flex;
+		// flex-direction: column;
+		// justify-content: flex-start;
+		// align-items: center;
 
 		margin: 0 auto;
 		padding-top: 2rem;
-		border: 2px solid var(--secondary-color-400);
+		background-color: var(--gray-color-200);
 		border-radius: 1rem;
 
 		p {
-			font-size: 3.3rem;
-			font-weight: 500;
+			font-size: 3rem;
+			font-family: Work Sans;
 			align-self: flex-start;
 			border-bottom: 6px double var(--secondary-color-400);
 			margin-left: 1.6rem;
 			padding-bottom: 5px;
+			text-transform: uppercase;
 		}
 
-		&__section {
-			max-width: 100%;
+		.book {
+			padding-bottom: 3rem;
+			margin-top: 2rem;
 
-			.book {
-				padding-bottom: 3rem;
-				margin-left: -50.5rem;
-				margin-top: 2rem;
+			list-style: none;
 
-				list-style: none;
+			&__info {
+				display: grid;
+				grid-template-columns: min-content 1fr;
 
-				&__info {
-					display: flex;
-					align-items: flex-start;
+				margin-top: 5rem;
+				margin-left: 3vw;
 
-					margin-top: 3rem;
-
-					figure {
-						height: 100%;
-						img {
-							width: 15rem;
-							height: auto;
-							display: flex;
-							justify-content: flex-start;
-							align-items: center;
-							margin-right: 4rem;
-							border-radius: 1rem;
-						}
+				figure {
+					height: 100%;
+					img {
+						width: 15rem;
+						height: auto;
+						display: flex;
+						justify-content: flex-start;
+						align-items: center;
+						margin-right: 4rem;
+						border-radius: 1rem;
 					}
+				}
 
-					&__details {
-						p {
-							border: none;
-							font-size: 2.5rem;
-							font-weight: 400;
+				&__details {
+					p {
+						border: none;
+						font-size: 2.5rem;
+						font-weight: 400;
+						font-family: Arimo;
 
-							&:not(:last-child) {
-								margin-bottom: 2.6rem;
-							}
+						&:not(:last-child) {
+							margin-bottom: 2.6rem;
 						}
 					}
 				}

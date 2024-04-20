@@ -3,6 +3,7 @@
 @use "../components/" as comp;
 @use "uploadPage";
 
+// UPLOAD BOOK SPECIFIC FORM LAYOUT
 .upload-book__form {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(max-content, 30rem));
@@ -14,17 +15,19 @@
 
 	label {
 		font-size: 2.5rem;
+		font-family: Inter;
 		text-transform: capitalize;
 
 		input {
 			height: 3rem;
-			width: 15rem;
-		}
+			width: 18rem;
 
-		input[type="checkbox"] {
-			height: 2rem;
-			width: 2rem;
-			margin-left: 1rem;
+			font-size: 1.4rem;
+			font-family: Montserrat;
+			outline: none;
+			border-radius: 0.4rem;
+			border: 1px solid gray;
+			padding-left: 0.4rem;
 		}
 	}
 
@@ -42,33 +45,7 @@
 		width: 50%;
 	}
 
-	fieldset {
-		display: grid;
-		grid-template-columns: repeat(2, 1fr);
-		padding: 1rem 2rem;
-		legend {
-			font-size: 2.5rem;
-		}
-		section {
-			label {
-				input {
-					width: 12%;
-					height: 50%;
-					margin-left: 0;
-				}
-			}
-		}
-	}
-
 	.quantity-label {
 		justify-self: start;
-	}
-
-	#form-upload {
-		grid-column: 1 / -1;
-		justify-self: center;
-
-		width: 40%;
-		margin-top: 5rem;
 	}
 }

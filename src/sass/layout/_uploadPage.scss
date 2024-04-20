@@ -2,6 +2,7 @@
 
 .upload-book-container {
 	.h1 {
-		@include abs.margin-t(12);
+		@extend %header-margin;
+		margin-bottom: -3rem;
 	}
 }

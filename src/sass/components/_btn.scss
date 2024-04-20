@@ -14,9 +14,10 @@ button:disabled {
 
 .btn {
 	color: var(--color-white);
+	font-family: Lato;
 	font-size: 2.5rem;
 	padding: 2rem 4rem;
-	background-color: var(--primary-color-400);
+	background-color: var(--green-color-500);
 	border-radius: 1.2rem;
 	border: none;
 	outline: none;
@@ -29,4 +30,20 @@ button:disabled {
 	top: 1rem;
 	left: 0.5rem;
 	transition: all 0.3s;
+	font-family: Work Sans;
+	font-weight: 400;
+	text-transform: capitalize;
+	letter-spacing: -1;
+	background-color: var(--indigo-color-300);
+}
+
+.next__step__btn {
+	font-family: Inconsolata;
+	text-transform: uppercase;
+}
+
+.welcome-btn {
+	font-family: Inconsolata;
+	text-transform: uppercase;
+	background-color: var(--green-color-600);
 }

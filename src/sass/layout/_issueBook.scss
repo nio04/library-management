@@ -1,5 +1,6 @@
 @use "../abstracts/" as abs;
 @use "../base";
+@use "../components";
 
 .issue__book {
 	&__progress {
@@ -8,13 +9,10 @@
 		text-align: center;
 		font-size: 2.3rem;
 		margin-bottom: 5.5rem;
-		border: 2px solid var(--secondary-color-200);
-		border-radius: 1rem;
 
-		h1 {
-			font-size: 3rem;
-			text-transform: uppercase;
-			position: relative;
+		h2 {
+			color: var(--gray-color-200);
+			transform: translateY(-2rem);
 
 			&::before {
 				content: "";
@@ -24,47 +22,50 @@
 				top: 0;
 				height: 100%;
 				width: var(--step-width);
-				background-color: var(--accent-color-400);
+				background-color: var(--indigo-color-600);
 				border-radius: 1rem;
 				z-index: -1;
 			}
 		}
 
 		.step__description {
-			color: var(--secondary-color-800);
+			color: var(--nuetral-color-800);
+			font-family: Roboto;
 			text-transform: uppercase;
 			margin-left: 1.8rem;
+			letter-spacing: -1;
+			word-spacing: 3;
 		}
 	}
 
 	&__find__book,
 	.step__1 {
-		display: flex;
-		justify-content: center;
-		align-items: center;
+		@extend %flex-center;
 
-		form input[type="submit"] {
-			margin-left: 3rem;
+		form {
+			input[type="search"] {
+				outline: none;
+				width: 22rem;
+				padding-left: 0.4rem;
+				font-family: Montserrat;
+			}
+
+			input[type="submit"] {
+				margin-left: 3rem;
+				font-size: 3rem;
+				text-transform: uppercase;
+				font-family: Inconsolata;
+			}
 		}
 
 		.search-result {
 			min-height: 30vh;
 			width: 80vw;
 
-			display: flex;
-			flex-direction: column;
-			justify-content: flex-start;
-			align-items: center;
+			@extend %flex-col-center;
 
 			margin: 0 auto;
 			padding-top: 2rem;
-			border: 2px solid var(--secondary-color-400);
-
-			p {
-				font-size: 3.3rem;
-				font-weight: 500;
-				align-self: flex-start;
-			}
 
 			&__section {
 				max-width: 100%;
@@ -95,15 +96,14 @@
 					&__item {
 						display: flex;
 						align-items: center;
-
-						border: 2px solid var(--secondary-color-400);
+						background-color: var(--gray-color-200);
+						padding: 0.6rem 1rem;
+						border-radius: 0.6rem;
 
 						.img {
 							width: 12rem;
 							height: auto;
-							display: flex;
-							justify-content: center;
-							align-items: center;
+							@extend %flex-center;
 
 							img {
 								height: auto;
@@ -122,27 +122,19 @@
 							.item {
 								&__quantity {
 									display: none;
-									position: absolute;
-									bottom: 0;
-									right: 0.6rem;
-									padding: 3px 6px;
-									font-size: 2.6rem;
-									font-style: italic;
-									font-weight: 800;
-									border: 2px solid var(--secondary-color-200);
-									border-radius: 50%;
-									// transform: translateX(0.2rem);
 								}
 								&__title {
 									margin: 2rem 0;
 									font-size: 2.3rem;
 									text-transform: capitalize;
+									font-family: Open Sans;
 								}
 
 								&__genere {
 									font-weight: 200;
 									color: gray;
 									font-size: 1.6rem;
+									font-family: Montserrat;
 								}
 
 								&__author-name {
@@ -153,6 +145,7 @@
 									font-style: italic;
 									font-weight: 500;
 									margin-top: 2rem;
+									font-family: Lato;
 								}
 							}
 						}
@@ -163,32 +156,34 @@
 	}
 
 	.step__2 {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
+		@extend %flex-col-center;
+
+		section h1 {
+			@include abs.margin-y(5);
+		}
 	}
 
 	.step__3 {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
+		@extend %flex-col-center;
 
 		.check__library-card {
 			margin-bottom: 7rem;
 			.title {
 				font-size: 4rem;
 				text-transform: uppercase;
-				margin: 5rem 0;
+				margin: -1rem 0;
 			}
 
 			.description {
-				display: flex;
-				justify-content: space-around;
-				align-content: center;
+				@extend %flex-center;
+				margin-top: 5rem;
 
 				label {
+					font-family: Roboto;
+
+					&:not(:last-child) {
+						margin-right: 5rem;
+					}
 					input {
 						height: 3rem;
 						width: 3rem;
@@ -204,10 +199,7 @@
 	}
 
 	.step__4 {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
+		@extend %flex-col-center;
 
 		.book__info {
 			display: grid;
@@ -231,6 +223,9 @@
 				grid-gap: 2rem;
 
 				padding: 2.1rem;
+				font-family: Inter;
+				background-color: var(--gray-color-200);
+				border-radius: 0.6rem;
 
 				p {
 					font-size: 1.8rem;
@@ -239,11 +234,10 @@
 			}
 		}
 	}
+
 	.step__5 {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
+		@extend %flex-col-center;
+		line-height: 1;
 
 		.book__issue {
 			&__waiting {
@@ -251,45 +245,59 @@
 				padding: 2.5rem 0;
 				text-transform: uppercase;
 				color: var(--primary-color-400);
+				font-family: Montserrat;
 			}
 
 			&__success {
 				font-size: 3.2rem;
+				font-family: Montserrat;
 				padding: 2.5rem 0;
 				text-transform: uppercase;
-				color: var(--accent-color-400);
+				color: var(--yellow-color-500);
 				font-weight: 600;
-				line-height: 3;
+				line-height: 2;
 				text-align: center;
 			}
 		}
 	}
+
 	.step__6 {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
+		@extend %flex-col-center;
+		form {
+			width: 60vw;
+			@extend %flex-col-center;
+			margin: 2rem 0 3rem 0;
+		}
+	}
+
+	.step__7 {
+		@extend %flex-col-center;
 
 		.return-book__info {
 			font-size: 3.2rem;
 			padding: 3rem 0;
 			text-transform: capitalize;
 			line-height: 3;
+			font-family: Montserrat;
+			color: var(--nuetral-color-800);
 		}
 	}
-	.step__7 {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
+
+	.step__8 {
+		@extend %flex-col-center;
 
 		.checkout-message {
 			font-size: 3.5rem;
+			font-family: Montserrat;
 			text-transform: uppercase;
 			padding: 2.6rem 0;
 			font-weight: 600;
-			line-height: 3;
+			line-height: 2;
 			text-align: center;
+
+			span {
+				color: var(--pink-color-800);
+			}
 		}
 	}
 }

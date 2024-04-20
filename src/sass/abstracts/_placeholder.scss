@@ -9,3 +9,20 @@
 		}
 	}
 }
+
+%header-margin {
+	margin: 15rem 30rem 10rem 30rem;
+}
+
+%flex-center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+%flex-col-center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
