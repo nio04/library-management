@@ -7,7 +7,7 @@
 	height: 0.6rem;
 	width: 0.6rem;
 	margin-right: 0.8rem;
-	color: var(--accent-color-300);
+	color: var(--neutral-color-800);
 	cursor: pointer;
 }
 
@@ -18,9 +18,9 @@
 	font-size: 1.8rem;
 	font-style: italic;
 	z-index: 2;
-	background-color: var(--secondary-color-200);
+	background-color: var(--gray-color-200);
 	padding: 1rem;
-	padding-top: 1.8rem;
+	padding-top: 2rem;
 
 	&::before {
 		content: "BETA";

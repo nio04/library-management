@@ -20,6 +20,10 @@
 	padding-bottom: 7rem;
 	overflow-y: hidden;
 
+	&--header {
+		@include abs.padding-x(11);
+	}
+
 	section {
 		font-size: 2.7rem;
 		text-align: center;

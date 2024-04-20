@@ -5,8 +5,9 @@
  *  3. check library card >
  *  4. provide book info >
  *  5. show checkout processing loading >
- *  6. show due date >
- *  7. take the book
+ *  6. input delivery adress
+ *  7. show due date >
+ *  8. take the book
  */
 
 import * as helper from "../helper";
@@ -33,11 +34,13 @@ const bookIssueSteps = [
 	"check library card",
 	"provide book information",
 	"checkout processing",
+	"input delivery address",
 	"due date",
 	"pick up the book",
 ];
-
+const totalSteps = 8;
 let getBook;
+let deliveryAddress;
 
 const generateNextButton = (step) => `
 <button class="btn anim-btn next__step__btn" data-go-next-step="${step}">Next step</button>
@@ -52,7 +55,7 @@ function resetOnLoad() {
 	// RESET ISSUE-BOOK HEADER
 	document.querySelector(
 		".issue__book .issue__book__progress"
-	).innerHTML = `<h1>steps 1 of 7: <span class="step__description">find book</span></h1>`;
+	).innerHTML = `<h2>steps 1 of 8: <span class="step__description">find book</span></h2>`;
 
 	// RESET BOOK-MARK ICON
 	if (document.querySelector(".book-mark")) {
@@ -83,6 +86,7 @@ function findBook(ev) {
 	) {
 		comp.showModal(
 			parent,
+			"error",
 			"sorry, We could not find the book you query. please try again"
 		);
 
@@ -141,16 +145,16 @@ function goNextStepControl(ev) {
 	// GET [STEP] VARIABLE FROM DOM BUTTON
 	const dynamicStep = ev.target.dataset.goNextStep;
 
-	if (Number(dynamicStep) > 7) return;
+	if (Number(dynamicStep) > totalSteps) return;
 
 	const progressDescription = document.querySelector(
 		".issue__book__progress"
 	);
 
 	// UPDATE STEP PROGRESS
-	progressDescription.innerHTML = `<h1> steps ${dynamicStep} of 7 : <span class="step__description">${
+	progressDescription.innerHTML = `<h2> steps ${dynamicStep} of 8 : <span class="step__description">${
 		bookIssueSteps[Number(dynamicStep) - 1]
-	}</span></h1>`;
+	}</span></h2>`;
 
 	// 	HIDE ALL STEPS
 	helper.hideEl(document.querySelector(`.book__issue__step`));
@@ -277,7 +281,14 @@ function showCheckOutPressing() {
 	}, 10);
 }
 
-// STEP 6: SHOW DUE-DATE
+// STEP 6: ENTER DELIVERY ADDRESS
+// function deliveryAddress(ev) {
+// 	ev.preventDefault();
+// 	console.log(ev);
+// 	if (ev.target.id === "delivery-address-btn") console.log(ev);
+// }
+
+// STEP 7: SHOW DUE-DATE
 function showDueDate() {
 	const date = new Date();
 
@@ -371,7 +382,7 @@ function showDueDate() {
 	)}, year: ${currYear}</p>`;
 
 	// REMOVE PREVIOUS CONTENT
-	helper.removeEl(document.querySelector(".step__6 .return-book__info"));
+	helper.removeEl(document.querySelector(".step__7 .return-book__info"));
 
 	const calcFutureDate = () => {
 		// const finalDay =
@@ -386,7 +397,7 @@ function showDueDate() {
 			)}, year: ${currYear}</p>`;
 
 			document
-				.querySelector(".issue__book .step__6")
+				.querySelector(".issue__book .step__7")
 				.insertAdjacentHTML("afterbegin", dueDatemarkup);
 		} else {
 			const dueDatemarkup = `
@@ -395,42 +406,54 @@ function showDueDate() {
 				}, month: ${monthProcess(currMonth)}, year: ${currYear}</p>`;
 
 			document
-				.querySelector(".issue__book .step__6")
+				.querySelector(".issue__book .step__7")
 				.insertAdjacentHTML("afterbegin", dueDatemarkup);
 		}
 	};
 	calcFutureDate();
 }
 
-// STEP 7: TAKE THE BOOK
+// STEP 8: TAKE THE BOOK
 function takeBook() {
-	helper.showEl(
-		document.querySelector(".issue__book .step__7 .checkout-message")
+	// helper.showEl(
+	// 	document.querySelector(".issue__book .step__8 .checkout-message")
+	// );
+	comp.renderChildren(
+		document.querySelector(".issue__book .step__8"),
+		`<p class="checkout-message">
+			thank you for choosing our library. <br />
+			here is your book will be deliver to <span>${deliveryAddress}</span>.
+		<br />have a nice day. please visit us again
+		</p>`,
+		"afterbegin"
 	);
 }
 
 // DESIGN STEP-PROGRESS
 function stepProgressing(step) {
-	const target = document.querySelector(".issue__book__progress h1");
+	const target = document.querySelector(".issue__book__progress h2");
 
 	switch (step) {
 		case 2:
-			target.style.setProperty("--step-width", "28.6%");
+			target.style.setProperty("--step-width", "25%");
 			break;
 		case 3:
-			target.style.setProperty("--step-width", "42.9%");
+			target.style.setProperty("--step-width", "37.5%");
 			break;
 		case 4:
-			target.style.setProperty("--step-width", "57.2%");
+			target.style.setProperty("--step-width", "50%");
 			break;
 		case 5:
-			target.style.setProperty("--step-width", "71.2%");
+			target.style.setProperty("--step-width", "62.5%");
 			break;
 		case 6:
-			target.style.setProperty("--step-width", "85.8%");
+			target.style.setProperty("--step-width", "75%");
 			break;
 		case 7:
-			target.style.setProperty("--step-width", "100.0%");
+			target.style.setProperty("--step-width", "87.5%");
+			break;
+		case 8:
+			target.style.setProperty("--step-width", "100%");
 			break;
 	}
 }
@@ -446,7 +469,7 @@ function quantityBookManage() {
 	bookOffline.bookRenderer();
 }
 
-export default function issueBookControl(ev) {
+export function issueBookControl(ev) {
 	// TAP >> [ISSUE-BOOK] BUTTON OR [NEXT-STEP] BUTTON
 	// HIDE ALL THE STEPS AND SHOW A PARTICULAR STEP
 	if (
@@ -526,22 +549,29 @@ export default function issueBookControl(ev) {
 		showCheckOutPressing();
 	}
 
-	// STEP 6: SHOW DUE DATE
+	// STEP 6: ENTER DELIVERY ADDRESS
 	if (ev.target.dataset.goNextStep === "6") {
 		stepProgressing(6);
+
+		deliveryAddressControl();
+	}
+
+	// STEP 7: SHOW DUE DATE
+	if (ev.target.dataset.goNextStep === "7") {
+		stepProgressing(7);
 
 		showDueDate();
 	}
 
-	// STEP 7: TAKE THE BOOK
-	if (ev.target.dataset.goNextStep === "7") {
-		stepProgressing(7);
+	// STEP 8: TAKE THE BOOK
+	if (ev.target.dataset.goNextStep === "8") {
+		stepProgressing(8);
 
 		takeBook(ev);
 	}
 
 	// ISSUE-BOOK COMPLETE
-	if (ev.target.dataset.goNextStep === "8") {
+	if (ev.target.dataset.goNextStep === "9") {
 		// HIDE ISSUE-BOOK PAGE
 		helper.hideEl(
 			document.querySelector(".issue__book"),
@@ -560,3 +590,27 @@ export default function issueBookControl(ev) {
 }
 
 document.addEventListener("click", issueBookControl);
+
+export function deliveryAddressControl() {
+	// HIDE [NEXT-STEP] BUTTON
+	helper.hideEl(document.querySelector(".step__6 .next__step__btn"));
+
+	document.addEventListener("submit", (ev) => {
+		ev.preventDefault();
+		deliveryAddress = ev.target[0].value;
+		console.log(deliveryAddress);
+
+		if (deliveryAddress.trim().length === 0) {
+			comp.showModal(
+				parent,
+				"error",
+				"You can not add an empty address. Please try again"
+			);
+		} else {
+			helper.hideEl(
+				document.querySelector(".step__6 form #delivery-address-btn")
+			);
+			helper.showEl(document.querySelector(".step__6 .next__step__btn"));
+		}
+	});
+}

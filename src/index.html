@@ -30,7 +30,9 @@
 					data-back-to="mainPage">
 					back to main page
 				</button>
-				<h1 class="h1">library management page</h1>
+				<h1 class="h1 library-management--header">
+					library management page
+				</h1>
 				<section class="view-books">
 					<button
 						class="btn anim-btn navigator__link"
@@ -123,11 +125,9 @@
 				<section class="search-result hidden">
 					<p>search results:</p>
 
-					<section class="search-result__section">
-						<ul class="search-result__lists book" id="search-result">
-							<!-- render book -->
-						</ul>
-					</section>
+					<ul class="search-result__lists book" id="search-result">
+						<!-- render book -->
+					</ul>
 				</section>
 			</section>
 
@@ -337,9 +337,9 @@
 
 				<!-- SHOW CHECKOUT PROGRESS -->
 				<section class="issue__book__progress">
-					<h1>
-						steps 1 of 7 : <span class="step__description">find book</span>
-					</h1>
+					<h2>
+						steps 1 of 8 : <span class="step__description">find book</span>
+					</h2>
 				</section>
 
 				<!-- STEP : 01 -- FIND BOOK -->
@@ -385,7 +385,7 @@
 									type="radio"
 									class="library-card__check__input"
 									id="library-card__y"
-									name="library-card__y"
+									name="library-card"
 									value="yes" />
 								<span class="description-title">yes</span>
 							</label>
@@ -394,7 +394,7 @@
 									type="radio"
 									class="library-card__check__input"
 									id="library-card__n"
-									name="library-card__n"
+									name="library-card"
 									value="no" />
 								<span class="description-title">no</span>
 							</label>
@@ -426,15 +426,33 @@
 					</p>
 				</section>
 
-				<!-- step : 06 -- SHOW DUE DATE -->
-				<section class="step__6 book__issue__step"></section>
+				<!-- step : 06 : input delivery adress -->
+				<section class="step__6 book__issue__step">
+					<form>
+						<input
+							type="text"
+							name="delivery-address"
+							id="delivery-address"
+							class="delivery-address"
+							value="begumganj, noakhali"
+							placeholder="enter delivery adress" />
+						<input
+							type="submit"
+							value="ADD"
+							id="delivery-address-btn"
+							class="btn anim-btn navigator__link" />
+					</form>
+				</section>
 
-				<!-- step : 07 -- TAKE THE BOOK -->
-				<section class="step__7 book__issue__step">
-					<p class="checkout-message hidden">
-						thank you for choosing our library. here is your book.
+				<!-- step : 07 -- SHOW DUE DATE -->
+				<section class="step__7 book__issue__step"></section>
+
+				<!-- step : 08 -- TAKE THE BOOK -->
+				<section class="step__8 book__issue__step">
+					<!-- <p class="checkout-message hidden">
+						thank you for choosing our library. here is your book will be deliver to .
 						<br />have a nice day. please visit us again
-					</p>
+					</p> -->
 				</section>
 			</section>
 		</section>

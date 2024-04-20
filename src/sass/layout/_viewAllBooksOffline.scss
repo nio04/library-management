@@ -7,9 +7,7 @@
 	margin-bottom: 20rem;
 
 	h1 {
-		border-bottom: 5px double var(--secondary-color-600);
-
-		margin: 15rem 20rem 10rem 20rem;
+		@extend %header-margin;
 		word-spacing: 1;
 		letter-spacing: -2;
 	}
@@ -30,14 +28,15 @@
 			border-radius: 1rem;
 			box-sizing: content-box;
 			position: relative;
+			background-color: var(--gray-color-200);
 
 			// ITEM IMG
 			.img {
 				width: 12rem;
 				height: auto;
-				display: flex;
-				justify-content: center;
-				align-items: center;
+				@extend %flex-center;
+				border-radius: 0.7rem;
+				background-color: var(--gray-color-300);
 
 				img {
 					height: auto;
@@ -68,7 +67,6 @@
 					&__title {
 						margin: 2rem 0;
 						font-size: 2.3rem;
-						text-transform: capitalize;
 					}
 
 					&__genere {

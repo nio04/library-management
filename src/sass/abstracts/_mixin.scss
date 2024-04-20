@@ -1,28 +1,31 @@
 // MARGIN
-@mixin margin-x($x){
-  margin: 0 $x * 1rem;
+@mixin margin-x($x) {
+	margin: 0 $x * 1rem;
 }
 
-@mixin margin-y($y){
-  margin: $y * 1rem 0;
+@mixin margin-y($y) {
+	margin-top: $y * 1rem;
+	margin-bottom: $y * 1rem;
 }
 
-@mixin margin-t($t){
-  margin: 0;
-  margin-top: $t * 1rem;
+@mixin margin-t($t) {
+	margin: 0;
+	margin-top: $t * 1rem;
 }
 
-@mixin margin-b($b){
-  margin: 0;
-  margin-bottom: $b * 1rem;
+@mixin margin-b($b) {
+	margin: 0;
+	margin-bottom: $b * 1rem;
 }
 
 // PADDING
 
-@mixin padding-y($y){
-  padding: $y * 1rem 0;
+@mixin padding-y($y) {
+	padding-top: $y * 1rem;
+	padding-bottom: $y * 1rem;
 }
 
-@mixin padding-x($x){
-  padding: 0 $x * 1rem;
+@mixin padding-x($x) {
+	padding-left: $x * 1rem;
+	padding-right: $x * 1rem;
 }
