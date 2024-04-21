@@ -12,6 +12,7 @@ const searchBookOfflineSection = document.querySelector(".search-books");
 const uploadBookSection = document.querySelector(".upload-book");
 const searchBookOnlineSection = document.querySelector(".search-online");
 const issueBookSection = document.querySelector(".issue-book");
+const contributorSection = document.querySelector(".contributor-section");
 const backBtn = document.querySelector("#back-btn");
 const spinner = document.querySelector(".spinner");
 
@@ -24,7 +25,6 @@ function showTargetElement(ev) {
 
 	// 2) select that parent el by dataset && remove HIDDEN class
 	const parentEl = document.querySelector(`.${checkedBtn}`);
-	// parentEl.classList.remove("hidden")
 	helper.showEl(parentEl);
 }
 

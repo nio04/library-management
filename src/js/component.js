@@ -89,7 +89,8 @@ export function hideAllSections() {
 		document.querySelector(".search-books"),
 		document.querySelector(".upload-book"),
 		document.querySelector(".search-online"),
-		document.querySelector(".issue-book")
+		document.querySelector(".issue-book"),
+		document.querySelector(".contributor-section")
 	);
 }
 

@@ -42,8 +42,9 @@ const totalSteps = 8;
 let getBook;
 let deliveryAddress;
 
-const generateNextButton = (step) => `
-<button class="btn anim-btn next__step__btn" data-go-next-step="${step}">Next step</button>
+const generateNextButton = (step, btntext = "Next Step") => `
+	<button class="btn anim-btn next__step__btn" data-go-next-step="${step}">${btntext}
+	</button>
 `;
 
 function hideAllStepsAndShowFirstStep() {
@@ -171,10 +172,18 @@ function goNextStepControl(ev) {
 		?.remove();
 
 	// RENDER [NEXT-STEP] BUTTON
-	comp.renderChildren(
-		document.querySelector(`.step__${Number(dynamicStep)}`),
-		generateNextButton(Number(dynamicStep) + 1)
-	);
+	if (dynamicStep === "8") {
+		// HANDLING LAST STEP BUTTON
+		comp.renderChildren(
+			document.querySelector(`.step__${Number(dynamicStep)}`),
+			generateNextButton(Number(dynamicStep) + 1, "OK")
+		);
+	} else {
+		comp.renderChildren(
+			document.querySelector(`.step__${Number(dynamicStep)}`),
+			generateNextButton(Number(dynamicStep) + 1, "NEXT STEP")
+		);
+	}
 
 	// step 02: EXECUTE on BOOK EXIST FUNCTION
 	if (Number(dynamicStep) === 2) checkBookExist(getBook);
@@ -415,9 +424,11 @@ function showDueDate() {
 
 // STEP 8: TAKE THE BOOK
 function takeBook() {
-	// helper.showEl(
-	// 	document.querySelector(".issue__book .step__8 .checkout-message")
-	// );
+	// REMOVE PREVIOS MESSAGE
+	helper.removeEl(
+		document.querySelector(".issue__book .step__8 .checkout-message")
+	);
+
 	comp.renderChildren(
 		document.querySelector(".issue__book .step__8"),
 		`<p class="checkout-message">
@@ -552,6 +563,10 @@ export function issueBookControl(ev) {
 	// STEP 6: ENTER DELIVERY ADDRESS
 	if (ev.target.dataset.goNextStep === "6") {
 		stepProgressing(6);
+		console.log("stp--6");
+		helper.showEl(
+			document.querySelector(".step__6 form #delivery-address-btn")
+		);
 
 		deliveryAddressControl();
 	}
@@ -591,6 +606,7 @@ export function issueBookControl(ev) {
 
 document.addEventListener("click", issueBookControl);
 
+// INPUT DELIVERY ADDRESS EVENT-LISTENRE
 export function deliveryAddressControl() {
 	// HIDE [NEXT-STEP] BUTTON
 	helper.hideEl(document.querySelector(".step__6 .next__step__btn"));
@@ -598,9 +614,8 @@ export function deliveryAddressControl() {
 	document.addEventListener("submit", (ev) => {
 		ev.preventDefault();
 		deliveryAddress = ev.target[0].value;
-		console.log(deliveryAddress);
 
-		if (deliveryAddress.trim().length === 0) {
+		if (deliveryAddress.length === 0) {
 			comp.showModal(
 				parent,
 				"error",

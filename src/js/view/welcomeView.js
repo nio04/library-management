@@ -10,7 +10,7 @@ const searchBookOfflineSection = document.querySelector(".search-books");
 const uploadBookSection = document.querySelector(".upload-book");
 const searchBookOnlineSection = document.querySelector(".search-online");
 const issueBookSection = document.querySelector(".issue-book");
-// const navigatorEl = document.querySelector(".navigator__link");
+const contributorSection = document.querySelector(".contributor-section");
 
 function welcomeViewControl(ev) {
 	// console.log();
@@ -19,7 +19,6 @@ function welcomeViewControl(ev) {
 	setTimeout(() => {
 		comp.hideSpinner();
 
-		// welcomeSection.classList.add("hidden");
 		helper.hideEl(welcomeSection);
 
 		// SHOW LIBRARY-MANAGEMENT PAGE
