@@ -1,4 +1,6 @@
 import * as comp from "../component";
+import * as bookContent from "../bookContent";
+
 export const storageBook = [];
 
 export function setStorage(book) {
@@ -7,6 +9,11 @@ export function setStorage(book) {
 
 	const stringify = JSON.stringify(storageBook);
 	localStorage.setItem("newBook", stringify);
+}
+
+export function getStorage() {
+	if (localStorage.getItem("newBook") === null) return [];
+	else return JSON.parse(localStorage.getItem("newBook"));
 }
 
 document.addEventListener("DOMContentLoaded", () => {

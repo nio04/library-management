@@ -13,7 +13,8 @@
 import * as helper from "../helper";
 import * as comp from "../component";
 import * as bookOffline from "./viewBooksOffline";
-import { bookLists } from "../bookContent";
+import * as bookContent from "../bookContent";
+import { getStorage } from "./localstorageView";
 
 const parent = document.querySelector(".issue__book");
 const allSteps = document.querySelectorAll(".book__issue__step");
@@ -50,6 +51,15 @@ const generateNextButton = (step, btntext = "Next Step") => `
 function hideAllStepsAndShowFirstStep() {
 	allSteps.forEach((step) => helper.hideEl(step));
 	helper.showEl(allSteps[0]);
+}
+
+function processLocalStorageBooks() {
+	if (!getStorage()) return;
+	// INJECT
+	bookContent.oldBooks.push(getStorage());
+
+	// console.log(bookContent.oldBooks, helper.allOfflineBookName);
+	// console.log(bookContent.oldBooks);
 }
 
 function resetOnLoad() {
@@ -495,6 +505,9 @@ export function issueBookControl(ev) {
 
 	// GUDARD CLASUE
 	if (!ev.target.closest(".issue__book")) return;
+
+	// FETCH & PROCESS OLD BOOKS FROM LOCAL-STORAGE
+	processLocalStorageBooks();
 
 	// STEP 1: FIND BOOK
 	if (ev.target.id === "search__books__offline__btn") findBook(ev);

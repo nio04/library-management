@@ -1,12 +1,13 @@
 import * as helper from "./helper";
 
-const offlineImg = 10;
+const offlineImgNum = 10;
 
-// let preBook;
-export let newBook = [];
+export const oldBooks = [];
+
+export const newBook = [];
 
 // ONLY GENERATE RANDOM NUMBER BASED ON IMAGE NUMBER
-const randomPicturePick = () => helper.randomNumber(offlineImg);
+const randomPicturePick = () => helper.randomNumber(offlineImgNum);
 
 export const bookLists = {
 	preBook: [

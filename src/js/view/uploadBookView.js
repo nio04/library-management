@@ -67,7 +67,7 @@ function uploadBookControl(ev) {
 		imgUrl,
 	};
 
-	// PUSH TO BOOK-OBJECt
+	// PUSH TO BOOK-OBJECT
 	bookContent.newBook.push(newBook);
 	localstorage.setStorage(newBook);
 

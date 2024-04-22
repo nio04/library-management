@@ -1,4 +1,5 @@
 import * as bookContent from "./bookContent";
+import { getStorage } from "./view/localstorageView";
 
 // HIDE ELEMENT
 export function hideEl(...parents) {
@@ -44,14 +45,20 @@ export const inputCleaner = (target) =>
 		.forEach((el) => (el.value = ""));
 
 // RETURN ALL PRE-BOOKS TITLE
-export const allOfflineBookName = bookContent.bookLists.preBook.map(
-	(book) => book.title
-);
+export const allOfflineBookName = [
+	...bookContent.bookLists.preBook,
+	...getStorage(),
+].map((book) => book.title);
 
 // FIND BOOK FROM PRE-BOOK --TITLE
 export const findBook = (searchValue) =>
 	allOfflineBookName.includes(searchValue);
 
 // FIND THE BOOK OBJECT FULL
-export const bookMatch = (searchValue) =>
-	bookContent.bookLists.preBook.find((book) => book.title === searchValue);
+export const bookMatch = (searchValue) => {
+	const oldBooks = getStorage();
+
+	return [...oldBooks, ...bookContent.bookLists.preBook].find(
+		(book) => book.title === searchValue
+	);
+};
