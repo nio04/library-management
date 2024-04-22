@@ -20,6 +20,10 @@ document.addEventListener("DOMContentLoaded", () => {
 	if (localStorage.getItem("newBook") !== null)
 		storageBook.push(...JSON.parse(localStorage.getItem("newBook")));
 
+	// INJECT BOOK-COINTENT STORAGE
+	// const oldBooksFromStorage = localStorage.getItem("newBook");
+	bookContent.oldBooks.push(JSON.parse(localStorage.getItem("newBook")));
+
 	comp.renderBookMarkup(
 		document.querySelector(
 			".view-books-offline__custom #viewbooks__offline__section"

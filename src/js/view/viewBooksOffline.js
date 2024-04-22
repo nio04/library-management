@@ -1,13 +1,19 @@
 import * as helper from "./../helper";
 import * as comp from "../component";
 import * as bookContent from "../bookContent";
+import { getStorage } from "./localstorageView";
 
 const viewBooksContainer = document.querySelector(
 	"#viewbooks__offline__section"
 );
 
 export function bookRenderer() {
-	const books = bookContent.bookLists.preBook
+	// GETTING OLD BOOKS FROM LOCAL-STORAGE
+	let oldBooks;
+	if (localStorage.getItem("newBook") === null) oldBooks = [];
+	else oldBooks = JSON.parse(localStorage.getItem("newBook"));
+
+	const books = [...bookContent.bookLists.preBook, oldBooks]
 		.map((book) => renderMarkup(book))
 		.join("");
 

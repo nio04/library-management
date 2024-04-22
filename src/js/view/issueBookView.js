@@ -486,6 +486,23 @@ function quantityBookManage() {
 	// QUNATITY BOOK REDUCE
 	getBook.quantity = prevQuantity - 1;
 
+	// 1) UPDATE LOCAL-STORAGE BOOK QUANTITY
+	const newQunatity = getStorage().find((book) => {
+		if (getBook.title === book.title)
+			return (book.quantity = getBook.quantity);
+	});
+
+	// 2) DELETE TARGET BOOK FROM LOCAL-STORAGE OBJECT
+	const oldReference = getStorage().filter(
+		(book) => book.id !== getBook.id
+	);
+
+	// 2.1) COOK NEW ARRAY
+	const updatedBooks = [...oldReference, newQunatity];
+
+	// 3) SET TO LOCAL-STORAGE
+	localStorage.setItem("newBook", JSON.stringify(updatedBooks));
+
 	// RNDER BOOK-VIEW AGAIN
 	bookOffline.bookRenderer();
 }
@@ -576,7 +593,6 @@ export function issueBookControl(ev) {
 	// STEP 6: ENTER DELIVERY ADDRESS
 	if (ev.target.dataset.goNextStep === "6") {
 		stepProgressing(6);
-		console.log("stp--6");
 		helper.showEl(
 			document.querySelector(".step__6 form #delivery-address-btn")
 		);
