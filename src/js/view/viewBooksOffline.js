@@ -8,12 +8,7 @@ const viewBooksContainer = document.querySelector(
 );
 
 export function bookRenderer() {
-	// GETTING OLD BOOKS FROM LOCAL-STORAGE
-	let oldBooks;
-	if (localStorage.getItem("newBook") === null) oldBooks = [];
-	else oldBooks = JSON.parse(localStorage.getItem("newBook"));
-
-	const books = [...bookContent.bookLists.preBook, oldBooks]
+	const books = bookContent.bookLists.preBook
 		.map((book) => renderMarkup(book))
 		.join("");
 

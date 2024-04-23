@@ -4,7 +4,8 @@
 	"description": "",
 	"source": "src/index.html",
 	"scripts": {
-		"dev": "parcel",
+		"cleanup": "rimraf .parcel-cache dist",
+		"dev": "npm run cleanup && parcel ./",
 		"build": "parcel build --public-url ./"
 	},
 	"keywords": [],

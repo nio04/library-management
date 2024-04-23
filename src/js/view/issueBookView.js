@@ -486,23 +486,33 @@ function quantityBookManage() {
 	// QUNATITY BOOK REDUCE
 	getBook.quantity = prevQuantity - 1;
 
-	// 1) UPDATE LOCAL-STORAGE BOOK QUANTITY
-	const newQunatity = getStorage().find((book) => {
+	// COOK ALL BOOKS
+	const allBooks = [...bookContent.bookLists.preBook, ...getStorage()];
+
+	// 1) UPDATE BOOK QUANTITY FOR ALL-TYPES-OF-BOOKS
+	const newQunatity = allBooks.find((book) => {
 		if (getBook.title === book.title)
 			return (book.quantity = getBook.quantity);
 	});
 
-	// 2) DELETE TARGET BOOK FROM LOCAL-STORAGE OBJECT
+	// CHECK IF [NEW-QUANTITY] BOOK FROM JS OBJECT OR LOCAL-STORAGE
+	const checkBookFrom = bookContent.bookLists.preBook.find(
+		(book) => book.id === newQunatity.id
+	);
+
+	// 2) FILTER TARGET BOOK FROM LOCAL-STORAGE OBJECT
 	const oldReference = getStorage().filter(
 		(book) => book.id !== getBook.id
 	);
 
-	// 2.1) COOK NEW ARRAY
-	const updatedBooks = [...oldReference, newQunatity];
-
-	// 3) SET TO LOCAL-STORAGE
-	localStorage.setItem("newBook", JSON.stringify(updatedBooks));
-
+	// IF BOOK FROM LOCAL-STORAGE OBJECT THEN INJECT IT TO LOCAL-STORAGE
+	if (!checkBookFrom) {
+		// 3) SET TO LOCAL-STORAGE
+		localStorage.setItem(
+			"newBook",
+			JSON.stringify([...oldReference, newQunatity])
+		);
+	}
 	// RNDER BOOK-VIEW AGAIN
 	bookOffline.bookRenderer();
 }

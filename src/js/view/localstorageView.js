@@ -21,7 +21,6 @@ document.addEventListener("DOMContentLoaded", () => {
 		storageBook.push(...JSON.parse(localStorage.getItem("newBook")));
 
 	// INJECT BOOK-COINTENT STORAGE
-	// const oldBooksFromStorage = localStorage.getItem("newBook");
 	bookContent.oldBooks.push(JSON.parse(localStorage.getItem("newBook")));
 
 	comp.renderBookMarkup(
