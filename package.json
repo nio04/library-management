@@ -15,12 +15,15 @@
 		"staticPath": "src/asset/img/"
 	},
 	"devDependencies": {
+		"@parcel/packager-raw-url": "^2.11.0",
 		"@parcel/transformer-sass": "^2.11.0",
+		"@parcel/transformer-webmanifest": "^2.11.0",
 		"parcel": "^2.11.0",
 		"parcel-reporter-static-files-copy": "^1.5.3",
 		"sharp": "^0.33.2"
 	},
 	"dependencies": {
+		"rimraf": "^5.0.5",
 		"webfontloader": "^1.6.28"
 	}
 }
