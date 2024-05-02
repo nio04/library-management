@@ -7,7 +7,6 @@
 
 	.h1 {
 		line-height: 1.05;
-		@extend %header-margin;
 	}
 
 	form {
@@ -49,25 +48,38 @@
 
 			&__info {
 				display: grid;
-				grid-template-columns: min-content 1fr;
+				grid-template-columns: max-content 1fr;
 
 				margin-top: 5rem;
 				margin-left: 3vw;
 
+				@include abs.mq(600px) {
+					grid-template-columns: 1fr;
+				}
+
 				figure {
 					height: 100%;
+					width: 100%;
+					display: flex;
+					justify-content: flex-start;
+					align-items: flex-start;
+
+					@include abs.mq(600px) {
+						margin-bottom: 7rem;
+						justify-content: center;
+					}
+
 					img {
-						width: 15rem;
 						height: auto;
-						display: flex;
-						justify-content: flex-start;
-						align-items: center;
+						width: 20rem;
+						max-width: 100%;
 						margin-right: 4rem;
 						border-radius: 1rem;
 					}
 				}
 
 				&__details {
+					padding-right: 2rem;
 					p {
 						border: none;
 						font-size: 2.5rem;

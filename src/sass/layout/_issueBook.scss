@@ -4,10 +4,12 @@
 
 .issue__book {
 	&__progress {
-		margin: 0 20vw;
-		padding: 1rem 1.6rem;
+		// margin: 0 20vw;
+		width: 80%;
+		padding: 1rem 2rem;
 		text-align: center;
 		font-size: 2.3rem;
+		margin: auto;
 		margin-bottom: 5.5rem;
 
 		h2 {
@@ -42,10 +44,17 @@
 	.step__1 {
 		@extend %flex-center;
 
+		@include abs.mq(750px) {
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
+			justify-items: center;
+		}
+
 		form {
+			grid-column: 1 / -1;
 			input[type="search"] {
 				outline: none;
-				width: 22rem;
+				width: 28rem;
 				padding-left: 0.4rem;
 				font-family: Montserrat;
 			}
@@ -68,8 +77,11 @@
 			padding-top: 2rem;
 
 			&__section {
+				justify-self: end;
+
 				max-width: 100%;
 				position: relative;
+				margin-top: 5rem;
 
 				.book-mark {
 					position: absolute;
@@ -79,6 +91,10 @@
 					width: 1rem;
 					transform: scale(2);
 					cursor: pointer;
+
+					@include abs.mq(750px) {
+						top: 2rem;
+					}
 				}
 
 				.book {
@@ -153,13 +169,22 @@
 				}
 			}
 		}
+		.next__step__btn {
+			justify-self: start;
+			align-self: center;
+			margin-left: 2rem;
+			margin-top: 4rem;
+		}
 	}
 
 	.step__2 {
 		@extend %flex-col-center;
 
-		section h1 {
-			@include abs.margin-y(5);
+		section {
+			width: 100%;
+			h1 {
+				@include abs.margin-y(5);
+			}
 		}
 	}
 
@@ -227,6 +252,10 @@
 				background-color: var(--gray-color-200);
 				border-radius: 0.6rem;
 
+				@include abs.mq(600px) {
+					grid-template-columns: 1fr;
+				}
+
 				p {
 					font-size: 1.8rem;
 					text-transform: capitalize;
@@ -257,6 +286,7 @@
 				font-weight: 600;
 				line-height: 2;
 				text-align: center;
+				margin-bottom: 4rem;
 			}
 		}
 	}
@@ -267,6 +297,10 @@
 			width: 60vw;
 			@extend %flex-col-center;
 			margin: 2rem 0 3rem 0;
+
+			label {
+				line-height: 6rem;
+			}
 		}
 	}
 
@@ -287,12 +321,12 @@
 		@extend %flex-col-center;
 
 		.checkout-message {
-			font-size: 3.5rem;
+			font-size: 3rem;
 			font-family: Montserrat;
 			text-transform: uppercase;
 			padding: 2.6rem 0;
 			font-weight: 600;
-			line-height: 2;
+			line-height: 2.5;
 			text-align: center;
 			color: var(--green-color-400);
 

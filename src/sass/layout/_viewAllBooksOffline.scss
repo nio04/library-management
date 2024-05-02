@@ -7,7 +7,6 @@
 	margin-bottom: 20rem;
 
 	h1 {
-		@extend %header-margin;
 		word-spacing: 1;
 		letter-spacing: -2;
 	}
@@ -96,16 +95,23 @@
 	}
 
 	&__custom {
+		margin: 6rem;
 		margin-top: 20rem;
-
-		position: relative;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-end;
+		// position: relative;
 
 		.clear-all {
-			position: absolute;
-			top: 8rem;
-			right: 4rem;
+			// position: absolute;
+			// top: 17rem;
+			// right: 7rem;
 			background-color: red;
 			text-transform: uppercase;
+		}
+
+		ul {
+			margin-top: 6rem;
 		}
 	}
 }

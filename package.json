@@ -23,6 +23,7 @@
 		"sharp": "^0.33.2"
 	},
 	"dependencies": {
+		"gsap": "^3.12.5",
 		"rimraf": "^5.0.5",
 		"webfontloader": "^1.6.28"
 	}

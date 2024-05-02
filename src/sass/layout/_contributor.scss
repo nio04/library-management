@@ -10,6 +10,10 @@
 	&-container {
 		transform: translateY(-2rem);
 		@extend %flex-col-center;
+
+		@include abs.mq(650px) {
+			margin-top: 10rem;
+		}
 	}
 
 	&-item {
@@ -33,6 +37,7 @@
 		}
 
 		.contributor-name {
+			width: 70%;
 			grid-column: 1 / -1;
 			margin-bottom: 3rem;
 			text-align: center;
@@ -41,6 +46,8 @@
 			color: var(--gray-color-300);
 			font-family: Montserrat;
 			font-size: 3.3rem;
+			margin: auto;
+			margin-bottom: 5rem;
 		}
 
 		.education {
@@ -50,6 +57,7 @@
 			grid-template-columns: repeat(2, 1fr);
 
 			margin-bottom: 2rem;
+			margin-left: 10rem;
 			h3 {
 				color: var(--nuetral-color-600);
 				font-size: 2.2rem;
@@ -64,6 +72,7 @@
 			grid-gap: 1rem;
 
 			padding-left: 2rem;
+			margin-left: 10rem;
 			li {
 				font-size: 2.2rem;
 				font-family: lato;
