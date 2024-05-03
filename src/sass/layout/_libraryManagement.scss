@@ -20,13 +20,22 @@
 	padding-bottom: 7rem;
 	overflow-y: hidden;
 
-	// &--header {
-	// 	@include abs.padding-x(11);
-	// }
+	&--header {
+		@extend .from-hidden;
+		@include abs.translate(0, -15rem);
+	}
 
 	section {
 		font-size: 2.7rem;
 		text-align: center;
+		opacity: 0;
+
+		&:nth-of-type(even) {
+			transform: translateX(-20rem);
+		}
+		&:nth-of-type(odd) {
+			transform: translateX(20rem);
+		}
 
 		button {
 			font-size: 2.4rem;

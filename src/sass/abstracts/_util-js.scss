@@ -1,0 +1,13 @@
+// @use "mixin" as mix;
+
+.from-hidden {
+	opacity: 0;
+}
+
+.to-visible {
+	opacity: 1 !important;
+	transition-duration: 1s !important;
+	transition-delay: 0.4s !important;
+	// transition-timing-function: cubic-bezier(0.42, 0.84, 0.85, 0.6);
+	transform: translate(0) !important;
+}

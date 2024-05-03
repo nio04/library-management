@@ -9,6 +9,9 @@
 	h1 {
 		word-spacing: 1;
 		letter-spacing: -2;
+
+		@extend .from-hidden;
+		@include abs.translate(0, -20rem);
 	}
 
 	.book {
@@ -20,6 +23,8 @@
 		gap: 4em;
 
 		overflow-y: hidden;
+
+		@extend .from-hidden;
 
 		&__item {
 			display: flex;
@@ -100,18 +105,18 @@
 		display: flex;
 		flex-direction: column;
 		align-items: flex-end;
-		// position: relative;
 
 		.clear-all {
-			// position: absolute;
-			// top: 17rem;
-			// right: 7rem;
 			background-color: red;
 			text-transform: uppercase;
+
+			@extend .from-hidden;
+			@include abs.translate(100%);
 		}
 
 		ul {
 			margin-top: 6rem;
+			@extend .from-hidden;
 		}
 	}
 }

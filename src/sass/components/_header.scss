@@ -17,6 +17,9 @@
 	margin: auto;
 	margin-top: 12rem;
 	margin-bottom: 5rem;
+
+	// @extend .from-hidden;
+	// @include abs.translate(0, -15rem);
 }
 
 .h1-sm {

@@ -5,6 +5,11 @@
 .contributor {
 	&-section {
 		overflow: hidden;
+
+		h1 {
+			@extend .from-hidden;
+			@include abs.translate(0, -100%);
+		}
 	}
 
 	&-container {
@@ -33,6 +38,9 @@
 				height: 25rem;
 				width: 25rem;
 				border-radius: 50%;
+
+				transform: scale(0.1);
+				@extend .from-hidden;
 			}
 		}
 
@@ -48,6 +56,9 @@
 			font-size: 3.3rem;
 			margin: auto;
 			margin-bottom: 5rem;
+
+			@extend .from-hidden;
+			@include abs.translate(0, 100%);
 		}
 
 		.education {
@@ -61,6 +72,15 @@
 			h3 {
 				color: var(--nuetral-color-600);
 				font-size: 2.2rem;
+
+				&:nth-of-type(even) {
+					@extend .from-hidden;
+					@include abs.translate(100%, 0);
+				}
+				&:nth-of-type(odd) {
+					@extend .from-hidden;
+					@include abs.translate(-100%, 0);
+				}
 			}
 		}
 
@@ -77,6 +97,15 @@
 				font-size: 2.2rem;
 				font-family: lato;
 				color: var(--gray-color-700);
+
+				&:nth-of-type(odd) {
+					@extend .from-hidden;
+					@include abs.translate(-100%, 0);
+				}
+				&:nth-of-type(even) {
+					@extend .from-hidden;
+					@include abs.translate(100%, 0);
+				}
 			}
 		}
 	}

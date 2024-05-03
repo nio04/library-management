@@ -9,6 +9,10 @@
 	}
 }
 
+@mixin translate($x: 0, $y: 0) {
+	transform: translate($x, $y);
+}
+
 // MARGIN
 @mixin margin-x($x) {
 	margin: 0 $x * 1rem;

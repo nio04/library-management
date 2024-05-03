@@ -44,7 +44,7 @@ let getBook;
 let deliveryAddress;
 
 const generateNextButton = (step, btntext = "Next Step") => `
-	<button class="btn anim-btn next__step__btn" data-go-next-step="${step}">${btntext}
+	<button class="btn anim-btn next__step__btn dynaimc-next-btn" data-go-next-step="${step}">${btntext}
 	</button>
 `;
 

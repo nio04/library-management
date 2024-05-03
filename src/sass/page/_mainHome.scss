@@ -1,4 +1,4 @@
-@use "../abstracts";
+@use "../abstracts" as abs;
 @use "../base";
 @use "../components";
 @use "../layout";
@@ -9,4 +9,14 @@
 	@extend %flex-col-center;
 
 	overflow: hidden;
+
+	h1 {
+		@extend .from-hidden;
+		@include abs.translate(-100vw, 0);
+	}
+
+	button {
+		@extend .from-hidden;
+		@include abs.translate(0, 10rem);
+	}
 }
