@@ -134,8 +134,10 @@ function callback(entries) {
 			entry.target.children[0].classList.add("to-visible");
 			entry.target.children[1].classList.add("to-visible");
 			uploadForm.forEach((el) => el.classList.add("to-visible"));
+			entry.target.children[2][8].classList.add("to-visible");
 			observer.unobserve(uploadBookPage);
-			observer.unobserve(uploadForm);
+			uploadForm.forEach((el) => observer.unobserve(el));
+			// observer.unobserve(uploadForm);
 		}
 
 		if (
