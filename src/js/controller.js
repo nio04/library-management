@@ -1,4 +1,3 @@
-import gsapControl from "./view/gsapView";
 import intersectionController from "./view/intersection";
 
 import welcomeView from "./view/welcomeView";
@@ -22,5 +21,4 @@ uploadBookView.uploadBookControl;
 issueBookControl;
 deliveryAddressControl;
 
-// gsapControl();
 intersectionController();
