@@ -55,9 +55,10 @@
 
 	&__find__book,
 	.step__1 {
+		margin: 0 3rem;
 		@extend %flex-center;
 
-		@include abs.mq(750px) {
+		@include abs.mq(1000px) {
 			display: grid;
 			grid-template-columns: repeat(2, 1fr);
 			justify-items: center;
@@ -65,7 +66,13 @@
 
 		form {
 			grid-column: 1 / -1;
+
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
+			align-items: center;
+
 			input[type="search"] {
+				grid-column: 1 / 2;
 				outline: none;
 				width: 28rem;
 				padding-left: 0.4rem;
@@ -76,7 +83,8 @@
 			}
 
 			input[type="submit"] {
-				margin-left: 3rem;
+				grid-column: 2 / 3;
+				margin-top: 0;
 				font-size: 3rem;
 				text-transform: uppercase;
 				font-family: Inconsolata;
@@ -263,6 +271,7 @@
 
 	.step__4 {
 		@extend %flex-col-center;
+		margin-bottom: 3rem;
 
 		.book__info {
 			display: grid;

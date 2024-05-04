@@ -15,12 +15,12 @@
 	}
 
 	.book {
-		width: 95vw;
 		max-width: 100vw;
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(min-content, 40rem));
+		grid-template-columns: repeat(auto-fit, minmax(min-content, 45rem));
 		justify-content: center;
 		gap: 4em;
+		padding: 0 2rem;
 
 		overflow-y: hidden;
 
