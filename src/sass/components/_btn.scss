@@ -22,7 +22,28 @@ button:disabled {
 	border: none;
 	outline: none;
 	cursor: pointer;
-	transition: all 0.3s;
+	transition: all 0.2s;
+}
+
+.welcome-btn {
+	font-family: Inconsolata;
+	font-size: 3rem;
+	text-transform: uppercase;
+	background-image: linear-gradient(
+		to right,
+		var(--indigo-color-200) 0%,
+		var(--indigo-color-700) 51%,
+		var(--indigo-color-800) 100%
+	);
+	transition: 0.2s;
+	background-size: 200% auto;
+	color: white;
+	box-shadow: 0 2px 5px 2px rgba(0, 0, 0, 0.3);
+
+	&:hover {
+		background-position: right center;
+		transform: translateY(-10px);
+	}
 }
 
 .btn-back {
@@ -34,31 +55,65 @@ button:disabled {
 	font-weight: 400;
 	text-transform: capitalize;
 	letter-spacing: -1;
-	background-color: var(--indigo-color-300);
-
 	transform: translateX(-100%);
 	opacity: 0;
+	background-image: linear-gradient(
+		to right,
+		var(--indigo-color-800) 0%,
+		var(--indigo-color-400) 51%,
+		var(--indigo-color-800) 100%
+	);
+	transition: 0.1s;
+	background-size: 200% auto;
+	box-shadow: 0 0 20px #eee;
+
+	&:hover {
+		background-position: right center;
+	}
+}
+
+.clear-all {
+	text-transform: uppercase;
+	@extend .from-hidden;
+	@include abs.translate(100%);
+
+	background-image: linear-gradient(
+		to right,
+		var(--red-color-800) 0%,
+		var(--red-color-200) 51%,
+		var(--red-color-800) 100%
+	);
+	transition: 0.1s;
+	background-size: 200% auto;
+	box-shadow: 0 0 20px #eee;
+
+	&:hover {
+		background-position: right center;
+	}
 }
 
 .next__step__btn {
 	font-family: Inconsolata;
 	text-transform: uppercase;
-
 	opacity: 0;
 	transition: all 0.3s ease;
+	background-image: linear-gradient(
+		to right,
+		var(--emerald-color-300) 0%,
+		var(--emerald-color-600) 51%,
+		var(--emerald-color-300) 100%
+	);
+	background-size: 200% auto;
+	transition: 0.5s;
+	box-shadow: 0 0 20px #eee;
+
+	&:hover {
+		background-position: right center;
+	}
 }
 
 .dynaimc-next-btn {
 	// link to [.next__step__btn]
 	opacity: 1;
 	transition: all 0.3s ease;
-}
-
-.welcome-btn {
-	font-family: Inconsolata;
-	text-transform: uppercase;
-	background-color: var(--green-color-600);
-
-	// opacity: 0;
-	// transform: translateY(10rem);
 }

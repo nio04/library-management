@@ -106,14 +106,6 @@
 		flex-direction: column;
 		align-items: flex-end;
 
-		.clear-all {
-			background-color: red;
-			text-transform: uppercase;
-
-			@extend .from-hidden;
-			@include abs.translate(100%);
-		}
-
 		ul {
 			margin-top: 6rem;
 			@extend .from-hidden;

@@ -45,6 +45,30 @@
 			padding: 1rem 2rem;
 			transition: all 0.3s;
 			font-family: Open Sans;
+
+			background-image: linear-gradient(
+				to right,
+				var(--indigo-color-600) 0%,
+				var(--indigo-color-700) 51%,
+				var(--indigo-color-200) 100%
+			);
+			background-size: 200% auto;
+			box-shadow: 0 0 20px #eee;
+			&:hover {
+				background-position: right center;
+			}
+
+			&:disabled {
+				background: dimgrey;
+				color: linen;
+				opacity: 1;
+				cursor: not-allowed;
+
+				&:hover {
+					transform: translate(0);
+					box-shadow: none;
+				}
+			}
 		}
 	}
 }
