@@ -3,15 +3,14 @@
 @use "../components/" as comp;
 @use "uploadPage";
 
-// UPLOAD BOOK SPECIFIC FORM LAYOUT
+// UPLOAD-BOOK SPECIFIC FORM LAYOUT
 .upload-book__form {
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(max-content, 42rem));
+	grid-template-columns: repeat(auto-fit, minmax(max-content, 55rem));
 	justify-content: center;
 	align-items: center;
 	gap: 6rem;
-	margin: 10rem;
-	padding-bottom: 3rem;
+	margin: 10rem 6rem 4rem 6rem;
 
 	label {
 		font-size: 2.5rem;
@@ -19,15 +18,16 @@
 		text-transform: capitalize;
 
 		input {
-			height: 3rem;
-			width: 18rem;
+			height: 5rem;
+			width: 26rem;
 
-			font-size: 1.4rem;
+			font-size: 2rem;
 			font-family: Montserrat;
+			font-weight: 600;
 			outline: none;
 			border-radius: 0.4rem;
 			border: 1px solid gray;
-			padding-left: 0.4rem;
+			padding-left: 0.8rem;
 		}
 	}
 

@@ -74,7 +74,7 @@
 			input[type="search"] {
 				grid-column: 1 / 2;
 				outline: none;
-				width: 28rem;
+				width: 35rem;
 				padding-left: 0.4rem;
 				font-family: Montserrat;
 
@@ -274,19 +274,16 @@
 		margin-bottom: 3rem;
 
 		.book__info {
-			display: grid;
-			grid-gap: 3rem;
-
 			width: 70vw;
-			margin-bottom: 5rem;
+			display: grid;
 
 			img {
 				justify-self: center;
 
-				height: 85%;
-				width: 40%;
+				height: auto;
+				width: 16%;
 
-				border-radius: 2rem;
+				border-radius: 1.4rem;
 
 				@extend .from-hidden;
 				transform: scale(0.1);
@@ -301,6 +298,8 @@
 				font-family: Inter;
 				background-color: var(--gray-color-200);
 				border-radius: 0.6rem;
+				margin-bottom: 3rem;
+				margin-top: 2rem;
 
 				@extend .from-hidden;
 
@@ -311,6 +310,16 @@
 				p {
 					font-size: 1.8rem;
 					text-transform: capitalize;
+
+					&::before {
+						content: "";
+						display: inline-block;
+						height: 0.7rem;
+						width: 0.7rem;
+						background-color: var(--gray-color-400);
+						border-radius: 50%;
+						margin-right: 0.6rem;
+					}
 				}
 			}
 		}
