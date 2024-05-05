@@ -21,11 +21,6 @@
 			@extend .from-hidden;
 			@include abs.translate(0, -100%);
 		}
-
-		input[type="submit"] {
-			@extend .from-hidden;
-			@include abs.translate(0, 100%);
-		}
 	}
 
 	.search-result {

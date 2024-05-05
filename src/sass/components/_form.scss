@@ -1,3 +1,5 @@
+@use "../abstracts" as abs;
+
 form {
 	label {
 		font-size: 2.5rem;
@@ -39,13 +41,6 @@ form {
 		}
 	}
 
-	input[type="submit"] {
-		margin-top: 2rem;
-		font-family: Inconsolata;
-		letter-spacing: 1;
-		text-transform: uppercase;
-	}
-
 	label input[type="checkbox"] {
 		height: 2rem;
 		width: 2rem;
@@ -85,11 +80,13 @@ form {
 
 		font-size: 3rem;
 		min-width: 15%;
-		margin-top: 5rem;
+		// margin-top: 5rem;
+		padding: 2rem 5rem;
 		font-family: Inconsolata;
 		font-weight: 600;
 		text-transform: uppercase;
 		letter-spacing: 1;
+		text-align: right;
 		background-image: linear-gradient(
 			to right,
 			var(--pink-color-800) 0%,
@@ -102,6 +99,23 @@ form {
 
 		&:hover {
 			background-position: right center;
+		}
+	}
+
+	.search-section,
+	.submit-section {
+		display: flex;
+		align-items: center;
+		margin-top: 4rem;
+		svg {
+			transform: translateX(5.3rem);
+			z-index: 2;
+		}
+
+		input[type="submit"] {
+			@extend .from-hidden;
+			@include abs.translate(0, 100%);
+			padding-left: 6rem;
 		}
 	}
 }

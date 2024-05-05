@@ -192,7 +192,9 @@ function callback(entries) {
 		}
 		if (entry.isIntersecting && entry.target.classList[0] === "step__6") {
 			entry.target.children[0].children[0].classList.add("to-visible");
-			entry.target.children[0].children[1].classList.add("to-visible");
+			entry.target.children[0].children[1].children[1].classList.add(
+				"to-visible"
+			);
 			entry.target.parentElement.children[2].children[0].classList.add(
 				"to-visible"
 			);

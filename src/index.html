@@ -51,7 +51,10 @@
 					class="btn btn-back anim-btn navigator__link"
 					id="back-btn"
 					data-back-to="mainPage">
-					back to main page
+					<svg>
+						<use xlink:href="./asset/icons/sprite.svg#back"></use>
+					</svg>
+					main page
 				</button>
 				<h1 class="h1 library-management--header">
 					library management page
@@ -108,7 +111,10 @@
 					class="btn btn-back anim-btn navigator__link"
 					id="back-btn"
 					data-back-to="libraryPage">
-					back to library page
+					<svg>
+						<use xlink:href="./asset/icons/sprite.svg#back"></use>
+					</svg>
+					library page
 				</button>
 				<h1 class="h1">view all the books colection</h1>
 
@@ -119,7 +125,11 @@
 				<!-- RENDER CUSTOM BOOKS helper -->
 				<section class="view-books-offline__custom">
 					<h1 class="h1">view all the new books collection</h1>
-					<button class="anim-btn clear-all btn">flush</button>
+					<button class="anim-btn clear-all btn">
+						<svg>
+							<use xlink:href="./asset/icons/sprite.svg#del"></use></svg
+						>flush
+					</button>
 
 					<ul class="book" id="viewbooks__offline__section">
 						<!-- render offline books -->
@@ -133,7 +143,10 @@
 					class="btn btn-back anim-btn navigator__link"
 					id="back-btn"
 					data-back-to="libraryPage">
-					back to library page
+					<svg>
+						<use xlink:href="./asset/icons/sprite.svg#back"></use>
+					</svg>
+					library page
 				</button>
 				<h1 class="h1">search for books in library</h1>
 
@@ -145,12 +158,19 @@
 						placeholder="search for your books..."
 						autofocus
 						title="INPUT FOR OFFLINE BOOK" />
-					<input
-						type="submit"
-						value="search"
-						class="btn anim-btn navigator__link"
-						id="search__books__offline__btn"
-						title="SEARCH FOR OFFLINE BOOK" />
+
+					<section class="search-section">
+						<svg>
+							<use xlink:href="./asset/icons/sprite.svg#search"></use>
+						</svg>
+
+						<input
+							type="submit"
+							value="search"
+							class="btn anim-btn navigator__link"
+							id="search__books__offline__btn"
+							title="SEARCH FOR OFFLINE BOOK" />
+					</section>
 				</form>
 
 				<section class="search-result hidden">
@@ -168,7 +188,10 @@
 					class="btn btn-back anim-btn navigator__link"
 					id="back-btn"
 					data-back-to="libraryPage">
-					back to library page
+					<svg>
+						<use xlink:href="./asset/icons/sprite.svg#back"></use>
+					</svg>
+					library page
 				</button>
 
 				<h1 class="h1">uplaod a book</h1>
@@ -343,12 +366,18 @@
 							title="ADD RANDOM ONLINE PHOTO"
 							checked />
 					</label>
-					<input
-						type="submit"
-						value="upload"
-						id="form-upload"
-						class="btn anim-btn navigator__link"
-						title="UPLOAD THE BOOK" />
+					<section class="submit-section">
+						<svg>
+							<use xlink:href="./asset/icons/sprite.svg#upload"></use>
+						</svg>
+
+						<input
+							type="submit"
+							value="upload"
+							id="form-upload"
+							class="btn anim-btn navigator__link"
+							title="UPLOAD THE BOOK" />
+					</section>
 				</form>
 			</section>
 
@@ -361,7 +390,10 @@
 					class="btn btn-back anim-btn navigator__link"
 					id="back-btn"
 					data-back-to="libraryPage">
-					back to library page
+					<svg>
+						<use xlink:href="./asset/icons/sprite.svg#back"></use>
+					</svg>
+					library page
 				</button>
 
 				<h1 class="h1">issue a book</h1>
@@ -384,12 +416,17 @@
 							placeholder="search for your books..."
 							autofocus
 							title="INPUT FOR BOOK SEARCH" />
-						<input
-							type="submit"
-							value="search"
-							class="btn anim-btn navigator__link"
-							id="search__books__offline__btn"
-							title="SEARCH FOR BOOK" />
+						<section class="search-section">
+							<svg>
+								<use xlink:href="./asset/icons/sprite.svg#search"></use>
+							</svg>
+							<input
+								type="submit"
+								value="search"
+								class="btn anim-btn navigator__link"
+								id="search__books__offline__btn"
+								title="SEARCH FOR BOOK" />
+						</section>
 					</form>
 
 					<!-- SHOW BOOK [SEARCH-RESULT] -->
@@ -435,6 +472,9 @@
 					<button
 						class="btn anim-btn next__step__btn"
 						data-go-next-step="4">
+						<svg>
+							<use xlink:href="./asset/icons/sprite.svg#next"></use>
+						</svg>
 						Next step
 					</button>
 					<button class="btn anim-btn go__library-page">
@@ -470,11 +510,17 @@
 								value="begumganj, noakhali"
 								placeholder="enter delivery adress" />
 						</label>
-						<input
-							type="submit"
-							value="ADD"
-							id="delivery-address-btn"
-							class="btn anim-btn navigator__link" />
+						<section class="submit-section">
+							<svg>
+								<use xlink:href="./asset/icons/sprite.svg#add"></use>
+							</svg>
+
+							<input
+								type="submit"
+								value="ADD"
+								id="delivery-address-btn"
+								class="btn anim-btn navigator__link" />
+						</section>
 					</form>
 				</section>
 
@@ -496,7 +542,10 @@
 					class="btn btn-back anim-btn navigator__link"
 					id="back-btn"
 					data-back-to="libraryPage">
-					back to library page
+					<svg>
+						<use xlink:href="./asset/icons/sprite.svg#back"></use>
+					</svg>
+					library page
 				</button>
 
 				<h1 class="h1">contributors</h1>

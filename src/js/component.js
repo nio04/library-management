@@ -143,3 +143,15 @@ export function renderBookMarkup(parent, books = []) {
 
 	parent.innerHTML = markup;
 }
+
+// GENERATE NEXT-ICON & RETURN
+export function nextIcon() {
+	const nextIcon = new URL("../asset/icons/next.svg", import.meta.url)
+		.href;
+
+	const img = document.createElement("img");
+	img.src = nextIcon;
+	img.alt = "logo";
+
+	return img;
+}

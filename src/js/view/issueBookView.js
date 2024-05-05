@@ -9,7 +9,7 @@
  *  7. show due date >
  *  8. take the book
  */
-
+import icons from "url:../../asset/icons/sprite.svg";
 import * as helper from "../helper";
 import * as comp from "../component";
 import * as bookOffline from "./viewBooksOffline";
@@ -43,10 +43,12 @@ const totalSteps = 8;
 let getBook;
 let deliveryAddress;
 
-const generateNextButton = (step, btntext = "Next Step") => `
-	<button class="btn anim-btn next__step__btn dynaimc-next-btn" data-go-next-step="${step}">${btntext}
+const generateNextButton = (step, btntext = "Next Step") => {
+	return `
+	<button class="btn anim-btn next__step__btn dynaimc-next-btn" data-go-next-step="${step}">${btntext} <svg style="margin-left:1.3rem; margin-right: 0"><use  xlink:href="${icons}#next"></use></svg>
 	</button>
 `;
+};
 
 function hideAllStepsAndShowFirstStep() {
 	allSteps.forEach((step) => helper.hideEl(step));

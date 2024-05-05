@@ -5,7 +5,7 @@
 	"source": "src/index.html",
 	"scripts": {
 		"cleanup": "rimraf .parcel-cache dist",
-		"dev": "npm run cleanup && parcel ./",
+		"dev": "npm run cleanup && parcel serve --no-cache ./",
 		"build": "parcel build --public-url ./"
 	},
 	"keywords": [],
@@ -16,6 +16,7 @@
 	},
 	"devDependencies": {
 		"@parcel/packager-raw-url": "^2.11.0",
+		"@parcel/transformer-inline-string": "^2.11.0",
 		"@parcel/transformer-sass": "^2.11.0",
 		"@parcel/transformer-webmanifest": "^2.11.0",
 		"parcel": "^2.11.0",
