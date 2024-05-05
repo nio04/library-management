@@ -21,7 +21,7 @@ const searchOfflinePage = document.querySelector(".search-books-offline");
 
 // UPLOAD BOOK
 const uploadBookPage = document.querySelector(".upload-book-container");
-// const uploadForm = document.querySelectorAll(".upload-book__form label");
+const uploadForm = document.querySelectorAll(".upload-book__form label");
 
 // ISSUE-BOOK
 const issueBookPage = document.querySelector(".issue__book");
@@ -112,7 +112,6 @@ function callback(entries) {
 			entry.target.children[4].children[1].classList.add("to-visible");
 			entry.target.children[5].children[0].classList.add("to-visible");
 			entry.target.children[5].children[1].classList.add("to-visible");
-
 			observer.unobserve(viewBooksPage);
 		}
 
@@ -133,11 +132,8 @@ function callback(entries) {
 		) {
 			entry.target.children[0].classList.add("to-visible");
 			entry.target.children[1].classList.add("to-visible");
-			// uploadForm.forEach((el) => el.classList.add("to-visible"));
-			// entry.target.children[2][8].classList.add("to-visible");
-			// observer.unobserve(uploadBookPage);
-			// uploadForm.forEach((el) => observer.unobserve(el));
-			// observer.unobserve(uploadForm);
+			entry.target.children[2][17].classList.add("to-visible");
+			observer.unobserve(uploadBookPage);
 		}
 
 		if (

@@ -108,14 +108,14 @@ form {
 		align-items: center;
 		margin-top: 4rem;
 		svg {
-			transform: translateX(5.3rem);
+			transform: translateX(6.3rem);
 			z-index: 2;
 		}
 
 		input[type="submit"] {
 			@extend .from-hidden;
 			@include abs.translate(0, 100%);
-			padding-left: 6rem;
+			padding-left: 7rem;
 		}
 	}
 }

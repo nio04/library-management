@@ -1,6 +1,7 @@
 @use "../abstracts/" as abs;
 
 .upload-book-container {
+	// overflow-x: hidden;
 	.h1 {
 		margin-bottom: -3rem;
 
@@ -9,7 +10,11 @@
 	}
 
 	form {
-		overflow-x: hidden;
+		section input[type="submit"] {
+			transform: translate(0);
+			opacity: 1;
+		}
+		// overflow-x: hidden;
 		// label {
 		// 	&:nth-of-type(even) {
 		// 		@extend .from-hidden;
