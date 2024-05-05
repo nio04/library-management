@@ -72,12 +72,12 @@ function uploadBookControl(ev) {
 	localstorage.setStorage(newBook);
 
 	// RENDER BOOK TO UI
-	comp.renderBookMarkup(
-		document.querySelector(
-			".view-books-offline__custom #viewbooks__offline__section"
-		),
-		localstorage.storageBook
-	);
+	// comp.renderBookMarkup(
+	// 	document.querySelector(
+	// 		".view-books-offline__custom #viewbooks__offline__section"
+	// 	),
+	// 	localstorage.storageBook
+	// );
 }
 
 const getInputValue = () => {

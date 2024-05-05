@@ -7,7 +7,7 @@ export const oldBooks = [];
 export const newBook = [];
 
 // ONLY GENERATE RANDOM NUMBER BASED ON IMAGE NUMBER
-const randomPicturePick = () => helper.randomNumber(offlineImgNum);
+const randomPicturePick = () => helper.randomNumberMax(offlineImgNum);
 
 export const bookLists = {
 	preBook: [

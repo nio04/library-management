@@ -12,8 +12,9 @@ const libraryAllSections = document.querySelectorAll(
 );
 
 // VIEW-BOOKS-OFFLINE
-const viewBooksPage = document.querySelector(".view-books-offline");
-const customBooks = document.querySelector(".view-books-offline__custom");
+const viewBooksPage = document.querySelector(
+	".view-books-offline--container"
+);
 
 // SEARCH OFFLINE BOOKS
 const searchOfflinePage = document.querySelector(".search-books-offline");
@@ -46,7 +47,7 @@ export default function intersectionController() {
 
 	if (viewBooksPage) observer.observe(viewBooksPage);
 
-	if (customBooks) observer.observe(customBooks);
+	// if (customBooks) observer.observe(customBooks);
 
 	if (searchOfflinePage) observer.observe(searchOfflinePage);
 
@@ -98,22 +99,21 @@ function callback(entries) {
 
 		if (
 			entry.isIntersecting &&
-			entry.target.classList[0] === "view-books-offline"
+			entry.target.classList[0] === "view-books-offline--container"
 		) {
 			entry.target.children[0].classList.add("to-visible");
-			entry.target.children[1].classList.add("to-visible");
-			entry.target.children[2].classList.add("to-visible");
-			observer.unobserve(viewBooksPage);
-		}
+			entry.target.children[1].children[0].classList.add("to-visible");
+			entry.target.children[1].children[1].classList.add("to-visible");
+			entry.target.children[2].children[0].classList.add("to-visible");
+			entry.target.children[2].children[1].classList.add("to-visible");
+			entry.target.children[3].children[0].classList.add("to-visible");
+			entry.target.children[3].children[1].classList.add("to-visible");
+			entry.target.children[4].children[0].classList.add("to-visible");
+			entry.target.children[4].children[1].classList.add("to-visible");
+			entry.target.children[5].children[0].classList.add("to-visible");
+			entry.target.children[5].children[1].classList.add("to-visible");
 
-		if (
-			entry.isIntersecting &&
-			entry.target.classList[0] === "view-books-offline__custom"
-		) {
-			entry.target.children[0].classList.add("to-visible");
-			entry.target.children[1].classList.add("to-visible");
-			entry.target.children[2].classList.add("to-visible");
-			observer.unobserve(customBooks);
+			observer.unobserve(viewBooksPage);
 		}
 
 		if (

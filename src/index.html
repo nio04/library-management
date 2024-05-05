@@ -62,7 +62,7 @@
 				<section class="view-books">
 					<button
 						class="btn anim-btn navigator__link"
-						data-pointer="view-books-offline">
+						data-pointer="view-books-offline--container">
 						view all books
 					</button>
 				</section>
@@ -105,8 +105,8 @@
 				</section>
 			</section>
 
-			<!-- VIEW ALL BOOKS FROM OFFLINE -->
-			<section class="view-books-offline hidden">
+			<!-- VIEW ALL BOOKS SECTION [[STARTS]] -->
+			<section class="view-books-offline--container hidden">
 				<button
 					class="btn btn-back anim-btn navigator__link"
 					id="back-btn"
@@ -116,23 +116,63 @@
 					</svg>
 					library page
 				</button>
-				<h1 class="h1">view all the books colection</h1>
 
-				<ul class="book" id="viewbooks__offline__section">
-					<!-- render offline books -->
-				</ul>
-
-				<!-- RENDER CUSTOM BOOKS helper -->
-				<section class="view-books-offline__custom">
-					<h1 class="h1">view all the new books collection</h1>
-					<button class="anim-btn clear-all btn">
+				<!-- RENDER CUSTOM BOOKS [from local-storage] -->
+				<section class="view-books-offline--new-collection">
+					<h1 class="h1">
+						explore all the
+						<span class="color-header">new collections</span>
+					</h1>
+					<!-- <button class="anim-btn clear-all btn">
 						<svg>
 							<use xlink:href="./asset/icons/sprite.svg#del"></use></svg
 						>flush
-					</button>
+					</button> -->
 
-					<ul class="book" id="viewbooks__offline__section">
-						<!-- render offline books -->
+					<ul class="book">
+						<!-- render all offline books [from local-storage] -->
+					</ul>
+				</section>
+
+				<!-- view books for trendy books -->
+				<section class="view-books-offline--trending">
+					<h1 class="h1">
+						explore our <span class="color-header">trending books</span>
+					</h1>
+					<ul class="book">
+						<!-- render all trendy books -->
+					</ul>
+				</section>
+
+				<!-- view books for most-sell books -->
+				<section class="view-books-offline--most-sell">
+					<h1 class="h1">
+						explore our
+						<span class="color-header"> most selling books</span>
+					</h1>
+					<ul class="book">
+						<!-- render most sells books -->
+					</ul>
+				</section>
+
+				<!-- view books for most-searched books -->
+				<section class="view-books-offline--most-search">
+					<h1 class="h1">
+						explore our <span class="color-header">most search books</span>
+					</h1>
+					<ul class="book">
+						<!-- render most searched books -->
+					</ul>
+				</section>
+
+				<!-- VIEW ALL BOOKS FROM OFFLINE -->
+				<section class="view-books-offline--view-all">
+					<h1 class="h1">
+						explore from our <span class="color-header">collection</span>
+					</h1>
+
+					<ul class="book">
+						<!-- render [js] pre-book [ALL-BOOKS] -->
 					</ul>
 				</section>
 			</section>

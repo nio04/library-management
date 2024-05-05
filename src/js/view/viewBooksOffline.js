@@ -3,20 +3,99 @@ import * as comp from "../component";
 import * as bookContent from "../bookContent";
 import { getStorage } from "./localstorageView";
 
-const viewBooksContainer = document.querySelector(
-	"#viewbooks__offline__section"
+const newCollectionContainer = document.querySelector(
+	".view-books-offline--new-collection ul"
 );
 
-export function bookRenderer() {
-	const books = bookContent.bookLists.preBook
-		.map((book) => renderMarkup(book))
-		.join("");
+const trendyBooksContainer = document.querySelector(
+	".view-books-offline--trending ul"
+);
+const mostSellBooksContainer = document.querySelector(
+	".view-books-offline--most-sell ul"
+);
+const mostSearchBooksContainer = document.querySelector(
+	".view-books-offline--most-search ul"
+);
+const viewAllBooksContainer = document.querySelector(
+	".view-books-offline--view-all ul"
+);
 
-	comp.render(viewBooksContainer, books);
+let getRandomBooksIndex;
+const trendyBooks = [];
+const mostSellBooks = [];
+const mostSearchBooks = [];
+
+/**
+ *
+ * @param {string} target - "trendy" | "sells" | "search"
+ */
+function fillUpBookSection(target) {
+	const tempStore = [];
+	// generate random books limit per section
+	getRandomBooksIndex = helper.generateUniqueNumbers(
+		helper.randomNumberMin()
+	);
+
+	for (let i = 0; i < getRandomBooksIndex.length; i += 1) {
+		tempStore.push(bookContent.bookLists.preBook[getRandomBooksIndex[i]]);
+	}
+
+	switch (target) {
+		case "trendy":
+			trendyBooks.push(...tempStore);
+			break;
+		case "sells":
+			mostSellBooks.push(...tempStore);
+			break;
+		case "search":
+			mostSearchBooks.push(...tempStore);
+		default:
+			break;
+	}
+}
+
+export function bookRenderer(parent, bookTypes) {
+	let books;
+
+	switch (bookTypes) {
+		case "new-book":
+			books = bookContent.oldBooks
+				.flat()
+				.map((book) => renderMarkup(book))
+				.join("");
+			break;
+		case "trendy":
+			books = trendyBooks.map((book) => renderMarkup(book)).join("");
+			break;
+
+		case "sells":
+			books = mostSellBooks.map((book) => renderMarkup(book)).join("");
+			break;
+
+		case "search":
+			books = mostSearchBooks.map((book) => renderMarkup(book)).join("");
+			break;
+
+		case "view-all":
+			books = bookContent.bookLists.preBook
+				.map((book) => renderMarkup(book))
+				.join("");
+			break;
+	}
+
+	comp.render(parent, books);
 }
 
 export default function offlineBookControl() {
-	bookRenderer();
+	fillUpBookSection("trendy");
+	fillUpBookSection("sells");
+	fillUpBookSection("search");
+
+	bookRenderer(newCollectionContainer, "new-book");
+	bookRenderer(trendyBooksContainer, "trendy");
+	bookRenderer(mostSellBooksContainer, "sells");
+	bookRenderer(mostSearchBooksContainer, "search");
+	bookRenderer(viewAllBooksContainer, "view-all");
 }
 
 function renderMarkup(book) {

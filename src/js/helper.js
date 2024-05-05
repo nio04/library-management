@@ -33,9 +33,14 @@ export function removeClass(target, ...classes) {
 	target.classList.remove(...classes);
 }
 
-// RANDOM GENERATE NUMBER WITHIN RANGE
-export function randomNumber(limit) {
+// RANDOM GENERATE NUMBER WITHIN RANGE [limit-max]
+export function randomNumberMax(limit) {
 	return Math.trunc(Math.random() * limit + 1);
+}
+
+// RANDOM GENERATE NUMBER WITHIN RANGE [limit-min]
+export function randomNumberMin(min = 3, max = 6) {
+	return Math.trunc(Math.random() * (max - min) + 1) + min;
 }
 
 // CLEAR ALL INPUT VALUE
@@ -62,3 +67,17 @@ export const bookMatch = (searchValue) => {
 		(book) => book.title === searchValue
 	);
 };
+
+// GENERATE random number but unique
+export function generateUniqueNumbers(count, min = 0, max = 10) {
+	const uniqueNumbers = [];
+
+	const isUnique = (number) => uniqueNumbers.indexOf(number) === -1;
+
+	while (uniqueNumbers.length < count) {
+		const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+
+		if (isUnique(randomNumber)) uniqueNumbers.push(randomNumber);
+	}
+	return uniqueNumbers;
+}
