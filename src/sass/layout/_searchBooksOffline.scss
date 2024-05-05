@@ -1,32 +1,26 @@
-@use "../abstracts/" as abs;
-@use "../base";
-@use "../components";
-
 .search-books-offline {
 	margin-bottom: 5rem;
 
 	.h1 {
 		line-height: 1.05;
-		@extend .from-hidden;
-		@include abs.translate(-100%);
+		transform: translateY(-100%);
 	}
 
 	form {
-		@extend %flex-col-center;
-
+		display: flex;
+		flex-direction: column;
+		align-items: center;
 		padding-top: 2rem;
 		margin-bottom: 5rem;
 
 		input[type="search"] {
-			@extend .from-hidden;
-			@include abs.translate(0, -100%);
+			transform: translateY(-100%);
 		}
 	}
 
 	.search-result {
 		min-height: 30vh;
 		width: 85vw;
-
 		margin: 0 auto;
 		padding-top: 2rem;
 		background-color: var(--gray-color-200);
@@ -35,6 +29,7 @@
 		p {
 			font-size: 3rem;
 			font-family: Work Sans;
+			font-weight: normal;
 			align-self: flex-start;
 			border-bottom: 6px double var(--secondary-color-400);
 			margin-left: 1.6rem;
@@ -45,28 +40,24 @@
 		.book {
 			padding-bottom: 3rem;
 			margin-top: 2rem;
-
 			list-style: none;
 
 			&__info {
 				display: grid;
 				grid-template-columns: max-content 1fr;
-
 				margin-top: 5rem;
 				margin-left: 3vw;
 
-				@include abs.mq(780px) {
+				@media (max-width: 780px) {
 					grid-template-columns: 1fr;
 				}
 
 				figure {
-					height: 100%;
-					width: 100%;
 					display: flex;
 					justify-content: flex-start;
 					align-items: flex-start;
 
-					@include abs.mq(780px) {
+					@media (max-width: 780px) {
 						margin-bottom: 7rem;
 						justify-content: center;
 					}

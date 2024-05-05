@@ -26,11 +26,10 @@
 		display: grid;
 		grid-template-columns: repeat(2, 1fr);
 		justify-content: center;
-
 		margin-bottom: 5rem;
+
 		figure {
 			grid-column: 1 / -1;
-
 			@extend %flex-center;
 			margin-bottom: 1rem;
 
@@ -38,7 +37,6 @@
 				height: 25rem;
 				width: 25rem;
 				border-radius: 50%;
-
 				transform: scale(0.1);
 				@extend .from-hidden;
 			}
@@ -63,49 +61,45 @@
 
 		.education {
 			grid-column: 1 / -1;
-
 			display: grid;
 			grid-template-columns: repeat(2, 1fr);
-
 			margin-bottom: 2rem;
 			margin-left: 10rem;
+
+			$translateX: 100%; // Initial value for odd elements
 			h3 {
 				color: var(--nuetral-color-600);
 				font-size: 2.2rem;
 
 				&:nth-of-type(even) {
-					@extend .from-hidden;
-					@include abs.translate(100%, 0);
+					$translateX: -100%; // Change translation value for even elements
 				}
-				&:nth-of-type(odd) {
-					@extend .from-hidden;
-					@include abs.translate(-100%, 0);
-				}
+
+				@extend .from-hidden;
+				@include abs.translate($translateX, 0);
 			}
 		}
 
 		&__role {
 			grid-column: 1 / -1;
-
 			display: grid;
 			grid-template-columns: repeat(2, 1fr);
 			grid-gap: 1rem;
-
 			padding-left: 2rem;
 			margin-left: 10rem;
+
 			li {
 				font-size: 2.2rem;
-				font-family: lato;
+				font-family: Lato;
 				color: var(--gray-color-700);
 
-				&:nth-of-type(odd) {
-					@extend .from-hidden;
-					@include abs.translate(-100%, 0);
-				}
+				$translateX: -100%; // Initial value for odd elements
 				&:nth-of-type(even) {
-					@extend .from-hidden;
-					@include abs.translate(100%, 0);
+					$translateX: 100%; // Change translation value for even elements
 				}
+
+				@extend .from-hidden;
+				@include abs.translate($translateX, 0);
 			}
 		}
 	}

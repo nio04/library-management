@@ -3,12 +3,12 @@
 // MEDIA-QUERY
 @mixin mq($breakpoint) {
 	$em-breakpoint: func.to-em($breakpoint);
-
 	@media (max-width: #{$em-breakpoint}) {
 		@content;
 	}
 }
 
+// TRANSLATE
 @mixin translate($x: 0, $y: 0) {
 	transform: translate($x, $y);
 }
@@ -34,7 +34,6 @@
 }
 
 // PADDING
-
 @mixin padding-y($y) {
 	padding-top: $y * 1rem;
 	padding-bottom: $y * 1rem;

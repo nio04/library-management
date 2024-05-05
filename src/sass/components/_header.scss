@@ -27,9 +27,8 @@
 }
 
 h2 {
+	@extend .h1; // Reuse styles from .h1
 	font-size: 3rem;
-	text-transform: uppercase;
-	position: relative;
 	font-family: Inconsolata;
 	padding: 1.3rem 0;
 	border-radius: 0.8rem;

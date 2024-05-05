@@ -29,6 +29,7 @@ button:disabled {
 }
 
 .welcome-btn {
+	@extend .btn;
 	font-family: Inconsolata;
 	font-size: 3rem;
 	text-transform: uppercase;
@@ -38,11 +39,9 @@ button:disabled {
 		var(--gray-color-400) 51%,
 		var(--gray-color-800) 100%
 	);
-	transition: 0.1s;
 	background-size: 200% auto;
 	color: black;
 	box-shadow: 0 4px 5px 2px rgba(0, 0, 0, 0.3);
-	// border: 2px solid var(--indigo-color-400);
 
 	&:hover {
 		background-position: right center;
@@ -55,7 +54,6 @@ button:disabled {
 	position: absolute;
 	top: 1rem;
 	left: 0.5rem;
-	transition: all 0.3s;
 	font-family: Work Sans;
 	font-weight: 400;
 	text-transform: capitalize;
@@ -68,9 +66,9 @@ button:disabled {
 		var(--indigo-color-400) 51%,
 		var(--indigo-color-800) 100%
 	);
-	transition: 0.1s;
 	background-size: 200% auto;
 	box-shadow: 0 0 20px #eee;
+	transition: all 0.3s;
 
 	&:hover {
 		background-position: right center;
@@ -78,19 +76,18 @@ button:disabled {
 }
 
 .clear-all {
-	text-transform: uppercase;
 	@extend .from-hidden;
 	@include abs.translate(100%);
-
+	text-transform: uppercase;
 	background-image: linear-gradient(
 		to right,
 		var(--red-color-800) 0%,
 		var(--red-color-200) 51%,
 		var(--red-color-800) 100%
 	);
-	transition: 0.1s;
 	background-size: 200% auto;
 	box-shadow: 0 0 20px #eee;
+	transition: 0.1s;
 
 	&:hover {
 		background-position: right center;
@@ -98,10 +95,10 @@ button:disabled {
 }
 
 .next__step__btn {
+	@extend .btn;
 	font-family: Inconsolata;
 	text-transform: uppercase;
 	opacity: 0;
-	transition: all 0.3s ease;
 	background-image: linear-gradient(
 		to right,
 		var(--emerald-color-300) 0%,
@@ -109,8 +106,8 @@ button:disabled {
 		var(--emerald-color-300) 100%
 	);
 	background-size: 200% auto;
-	transition: 0.5s;
 	box-shadow: 0 0 20px #eee;
+	transition: all 0.3s ease;
 
 	&:hover {
 		background-position: right center;
@@ -118,7 +115,7 @@ button:disabled {
 }
 
 .dynaimc-next-btn {
-	// link to [.next__step__btn]
+	@extend .next__step__btn;
 	opacity: 1;
 	transition: all 0.3s ease;
 }

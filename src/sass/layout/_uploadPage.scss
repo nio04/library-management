@@ -1,7 +1,6 @@
 @use "../abstracts/" as abs;
 
 .upload-book-container {
-	// overflow-x: hidden;
 	.h1 {
 		margin-bottom: -3rem;
 
@@ -9,25 +8,8 @@
 		@include abs.translate(0, -120%);
 	}
 
-	form {
-		section input[type="submit"] {
-			transform: translate(0);
-			opacity: 1;
-		}
-		// overflow-x: hidden;
-		// label {
-		// 	&:nth-of-type(even) {
-		// 		@extend .from-hidden;
-		// 		transform: translateX(-100%);
-		// 	}
-		// 	&:nth-of-type(odd) {
-		// 		@extend .from-hidden;
-		// 		transform: translateX(100%);
-		// 	}
-		// }
-		// fieldset {
-		// 	opacity: 0;
-		// 	transform: scale(0.4);
-		// }
+	form section input[type="submit"] {
+		transform: translate(0);
+		opacity: 1;
 	}
 }
