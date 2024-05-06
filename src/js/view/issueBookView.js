@@ -15,6 +15,7 @@ import * as comp from "../component";
 import * as bookOffline from "./viewBooksOffline";
 import * as bookContent from "../bookContent";
 import { getStorage } from "./localstorageView";
+import { searchBooks } from "./serachView";
 
 const parent = document.querySelector(".issue__book");
 const allSteps = document.querySelectorAll(".book__issue__step");
@@ -23,10 +24,6 @@ const searchInput = document.querySelector(
 );
 const resultParent = document.querySelector(
 	".issue__book .search-result__section"
-);
-const bookMarkIcon = document.querySelector(".issue__book .book-mark");
-const bookProgressDescriptionH1 = document.querySelector(
-	".issue__book .issue__book__progress h1"
 );
 
 const bookIssueSteps = [
@@ -64,9 +61,6 @@ function processLocalStorageBooks() {
 	if (!getStorage()) return;
 	// INJECT
 	bookContent.oldBooks.push(getStorage());
-
-	// console.log(bookContent.oldBooks, helper.allOfflineBookName);
-	// console.log(bookContent.oldBooks);
 }
 
 function resetOnLoad() {
@@ -74,18 +68,6 @@ function resetOnLoad() {
 	document.querySelector(
 		".issue__book .issue__book__progress"
 	).innerHTML = `<h2>steps 1 of 8: <span class="step__description">find book</span></h2>`;
-
-	// RESET BOOK-MARK ICON
-	if (document.querySelector(".book-mark")) {
-		// HIDE PARENT
-		helper.addClass(resultParent, "hidden");
-
-		// RESET TO DEFAULT
-		helper.addClass(bookMarkIcon, "un-marked", "un-marked__icon");
-		helper.removeClass(bookMarkIcon, "marked", "marked__icon");
-
-		document.querySelector(".book-mark").textContent = "❌";
-	}
 
 	// RESET SEARCH-RESULT SECTION
 	document.querySelector(".issue__book .step__1 ul").innerHTML = "";
@@ -97,10 +79,12 @@ function findBook(ev) {
 	if (!ev.target.closest(".issue__book")) return;
 
 	let searchValue = searchInput.value;
+	let searchResults = searchBooks(searchValue);
 
+	// ON [ERROR SEARCH-RESULT]
 	if (
 		ev.target.closest(".issue__book__find__book") &&
-		!helper.findBook(searchValue)
+		searchResults.length === 0
 	) {
 		comp.showModal(
 			parent,
@@ -123,39 +107,13 @@ function findBook(ev) {
 	// CLEAR BOOK INPUT
 	helper.inputCleaner("search__books__offline__input");
 
-	// FIND THE BOOK OBJECT
-	getBook = helper.bookMatch(searchValue);
-
 	// GENERATE BOOK IN UI
 	comp.renderBookMarkup(
 		document.querySelector(".issue__book .search-result__lists"),
-		[getBook]
+		searchResults
 	);
-}
-
-function bookSelectIconControl(ev) {
-	if (ev.target.classList.contains("un-marked__icon")) {
-		// REMOVE [CROSS] ICON WITH [TICK] ICON
-		helper.removeClass(
-			bookMarkIcon,
-			"hidden",
-			"un-marked",
-			"un-marked__icon"
-		);
-		helper.addClass(bookMarkIcon, "marked", "marked__icon");
-
-		document.querySelector(".book-mark").textContent = "✅";
-
-		comp.renderSibling(resultParent, generateNextButton(2));
-	} else {
-		// REMOVE [TICK] ICON WITH [CROSS] ICON
-		helper.removeEl(document.querySelector(".next__step__btn"));
-
-		helper.addClass(bookMarkIcon, "un-marked", "un-marked__icon");
-		helper.removeClass(bookMarkIcon, "marked", "marked__icon");
-
-		document.querySelector(".book-mark").textContent = "❌";
-	}
+	// GENERATE NEXT-STEP BTN
+	comp.renderSibling(resultParent, generateNextButton(2));
 }
 
 // HANDLE [NEXT-STEP] BUTTON
@@ -494,7 +452,7 @@ function quantityBookManage() {
 	getBook.quantity = prevQuantity - 1;
 
 	// COOK ALL BOOKS
-	const allBooks = [...bookContent.bookLists.preBook, ...getStorage()];
+	const allBooks = [...bookContent.bookLists.preBooks, ...getStorage()];
 
 	// 1) UPDATE BOOK QUANTITY FOR ALL-TYPES-OF-BOOKS
 	const newQunatity = allBooks.find((book) => {
@@ -503,7 +461,7 @@ function quantityBookManage() {
 	});
 
 	// CHECK IF [NEW-QUANTITY] BOOK FROM JS OBJECT OR LOCAL-STORAGE
-	const checkBookFrom = bookContent.bookLists.preBook.find(
+	const checkBookFrom = bookContent.bookLists.preBooks.find(
 		(book) => book.id === newQunatity.id
 	);
 
@@ -545,9 +503,6 @@ export function issueBookControl(ev) {
 
 	// STEP 1: FIND BOOK
 	if (ev.target.id === "search__books__offline__btn") findBook(ev);
-
-	// STEP 1.1: SELECT BOOK ICON
-	if (ev.target.classList.contains("book-mark")) bookSelectIconControl(ev);
 
 	// STEP 1.2: CLICK ON [NEXT] BUTTON
 	if (ev.target.classList.contains("next__step__btn"))

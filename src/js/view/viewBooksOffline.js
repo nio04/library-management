@@ -37,7 +37,7 @@ function fillUpBookSection(target) {
 	);
 
 	for (let i = 0; i < getRandomBooksIndex.length; i += 1) {
-		tempStore.push(bookContent.bookLists.preBook[getRandomBooksIndex[i]]);
+		tempStore.push(bookContent.bookLists.preBooks[getRandomBooksIndex[i]]);
 	}
 
 	switch (target) {
@@ -77,7 +77,7 @@ export function bookRenderer(parent, bookTypes) {
 			break;
 
 		case "view-all":
-			books = bookContent.bookLists.preBook
+			books = bookContent.bookLists.preBooks
 				.map((book) => renderMarkup(book))
 				.join("");
 			break;

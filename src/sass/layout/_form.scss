@@ -20,7 +20,6 @@
 		input {
 			height: 5rem;
 			width: 26rem;
-
 			font-size: 2rem;
 			font-family: Montserrat;
 			font-weight: 600;
@@ -35,10 +34,8 @@
 		position: relative;
 	}
 
-	#book-image__label {
-		input {
-			width: auto;
-		}
+	#book-image__label input {
+		width: auto;
 	}
 
 	#book-genre__label input {

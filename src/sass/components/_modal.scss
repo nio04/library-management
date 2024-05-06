@@ -1,18 +1,16 @@
 .modal {
 	width: 60rem;
 	height: 30rem;
-
 	position: absolute;
 	left: 0;
 	right: 0;
 	top: 28rem;
-
 	font-weight: 500;
-	margin-left: auto;
-	margin-right: auto;
+	margin: auto;
 	background-color: var(--red-color-500);
 	color: white;
 	z-index: 10;
+	box-shadow: 0 4px 5px 5px rgba(0, 0, 0, 0.3);
 
 	&__message {
 		min-height: 100%;
@@ -20,10 +18,11 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
-
 		text-transform: capitalize;
-		font-size: 3rem;
-		font-family: Work Sans;
+		font: {
+			size: 3rem;
+			family: Work Sans;
+		}
 		padding: 0 1.8rem;
 		line-height: 5rem;
 		border-radius: 1rem;
@@ -31,26 +30,29 @@
 
 	&__btn {
 		position: absolute;
-		bottom: 0;
+		bottom: -10rem;
 		left: 20%;
-		font-family: Arimo;
-		font-weight: 600;
-		transform: translateY(10.2rem);
+		font: {
+			family: Arimo;
+			weight: 600;
+		}
+		transform: translateY(1rem);
 
 		&:hover {
-			box-shadow: 0 2px 2px 4px rgba(0, 0, 0, 0.2);
+			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 
 			&:active {
 				box-shadow: none;
+				transform: translate(0);
 			}
 		}
 	}
 }
 
 .success {
-	background-color: var(--green-color-700);
+	background-color: var(--green-color-600);
 }
 
 .error {
-	background-color: var(--red-color-800);
+	background-color: var(--red-color-600);
 }

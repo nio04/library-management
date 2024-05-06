@@ -148,9 +148,8 @@ function callback(entries) {
 		if (entry.isIntersecting && entry.target.classList[0] === "step__1") {
 			entry.target.children[0][0].classList.add("to-visible");
 			entry.target.children[0][1].classList.add("to-visible");
-			entry.target.children[1].children[0].classList.add("to-visible");
-			entry.target.children[1]?.children[1]?.children[0]?.classList.add(
-				"to-visible"
+			Array.from(entry.target.children[1].children[0].children).forEach(
+				(item) => item.classList.add("to-visible")
 			);
 		}
 

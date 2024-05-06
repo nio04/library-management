@@ -21,8 +21,6 @@
 }
 
 %flex-col-center {
-	display: flex;
-	justify-content: center;
-	align-items: center;
+	@extend %flex-center; // Reuse styles from %flex-center
 	flex-direction: column;
 }
