@@ -67,18 +67,6 @@ function resetOnLoad() {
 		".issue__book .issue__book__progress"
 	).innerHTML = `<h2>steps 1 of 8: <span class="step__description">find book</span></h2>`;
 
-	// RESET BOOK-MARK ICON
-	if (document.querySelector(".book-mark")) {
-		// HIDE PARENT
-		helper.addClass(resultParent, "hidden");
-
-		// RESET TO DEFAULT
-		helper.addClass(bookMarkIcon, "un-marked", "un-marked__icon");
-		helper.removeClass(bookMarkIcon, "marked", "marked__icon");
-
-		document.querySelector(".book-mark").textContent = "❌";
-	}
-
 	// RESET SEARCH-RESULT SECTION
 	document.querySelector(".issue__book .step__1 ul").innerHTML = "";
 }
@@ -122,31 +110,8 @@ function findBook(ev) {
 		document.querySelector(".issue__book .search-result__lists"),
 		searchResults
 	);
-}
-
-function bookSelectIconControl(ev) {
-	if (ev.target.classList.contains("un-marked__icon")) {
-		// REMOVE [CROSS] ICON WITH [TICK] ICON
-		helper.removeClass(
-			bookMarkIcon,
-			"hidden",
-			"un-marked",
-			"un-marked__icon"
-		);
-		helper.addClass(bookMarkIcon, "marked", "marked__icon");
-
-		document.querySelector(".book-mark").textContent = "✅";
-
-		comp.renderSibling(resultParent, generateNextButton(2));
-	} else {
-		// REMOVE [TICK] ICON WITH [CROSS] ICON
-		helper.removeEl(document.querySelector(".next__step__btn"));
-
-		helper.addClass(bookMarkIcon, "un-marked", "un-marked__icon");
-		helper.removeClass(bookMarkIcon, "marked", "marked__icon");
-
-		document.querySelector(".book-mark").textContent = "❌";
-	}
+	// GENERATE NEXT-STEP BTN
+	comp.renderSibling(resultParent, generateNextButton(2));
 }
 
 // HANDLE [NEXT-STEP] BUTTON
@@ -536,9 +501,6 @@ export function issueBookControl(ev) {
 
 	// STEP 1: FIND BOOK
 	if (ev.target.id === "search__books__offline__btn") findBook(ev);
-
-	// STEP 1.1: SELECT BOOK ICON
-	if (ev.target.classList.contains("book-mark")) bookSelectIconControl(ev);
 
 	// STEP 1.2: CLICK ON [NEXT] BUTTON
 	if (ev.target.classList.contains("next__step__btn"))
