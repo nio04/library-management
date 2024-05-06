@@ -33,6 +33,7 @@ export default function bookSearchControl(ev) {
 	) {
 		comp.showModal(
 			parent,
+			"error",
 			"sorry, We could not find the book you query. please try again"
 		);
 

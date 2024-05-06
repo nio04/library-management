@@ -20,9 +20,9 @@ export function renderChildren(parent, markup, position = "beforeend") {
 
 // Modal Functions
 export function showModal(parent, className, message = "") {
-	generateModalMarkup(parent, className);
+	generateModalMarkup(parent, className, message);
 	overlay.classList.remove("overlay-off");
-	document.querySelector(".modal__message").textContent = message;
+	// document.querySelector(".modal__message").textContent = message;
 }
 
 export function hideModal() {
@@ -30,10 +30,10 @@ export function hideModal() {
 	overlay.classList.add("overlay-off");
 }
 
-function generateModalMarkup(parent, className) {
+function generateModalMarkup(parent, className, message) {
 	const markup = `
         <div class="modal ${className}">
-            <p class="modal__message"></p>
+            <p class="modal__message">${message}</p>
             <button class="btn modal__btn">OK, I UNDERSTAND</button>
         </div>`;
 	parent.insertAdjacentHTML("afterbegin", markup);
