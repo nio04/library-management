@@ -15,6 +15,7 @@ import * as comp from "../component";
 import * as bookOffline from "./viewBooksOffline";
 import * as bookContent from "../bookContent";
 import { getStorage } from "./localstorageView";
+import { searchBooks } from "./serachView";
 
 const parent = document.querySelector(".issue__book");
 const allSteps = document.querySelectorAll(".book__issue__step");
@@ -23,10 +24,6 @@ const searchInput = document.querySelector(
 );
 const resultParent = document.querySelector(
 	".issue__book .search-result__section"
-);
-const bookMarkIcon = document.querySelector(".issue__book .book-mark");
-const bookProgressDescriptionH1 = document.querySelector(
-	".issue__book .issue__book__progress h1"
 );
 
 const bookIssueSteps = [
@@ -77,7 +74,7 @@ function findBook(ev) {
 	if (!ev.target.closest(".issue__book")) return;
 
 	let searchValue = searchInput.value;
-	let searchResults = helper.bookMatch(searchValue);
+	let searchResults = searchBooks(searchValue);
 
 	// ON [ERROR SEARCH-RESULT]
 	if (
@@ -450,7 +447,7 @@ function quantityBookManage() {
 	getBook.quantity = prevQuantity - 1;
 
 	// COOK ALL BOOKS
-	const allBooks = [...bookContent.bookLists.preBook, ...getStorage()];
+	const allBooks = [...bookContent.bookLists.preBooks, ...getStorage()];
 
 	// 1) UPDATE BOOK QUANTITY FOR ALL-TYPES-OF-BOOKS
 	const newQunatity = allBooks.find((book) => {
@@ -459,7 +456,7 @@ function quantityBookManage() {
 	});
 
 	// CHECK IF [NEW-QUANTITY] BOOK FROM JS OBJECT OR LOCAL-STORAGE
-	const checkBookFrom = bookContent.bookLists.preBook.find(
+	const checkBookFrom = bookContent.bookLists.preBooks.find(
 		(book) => book.id === newQunatity.id
 	);
 

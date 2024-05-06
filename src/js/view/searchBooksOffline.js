@@ -1,5 +1,6 @@
 import * as helper from "../helper";
 import * as comp from "../component";
+import { searchBooks } from "./serachView";
 
 const parent = document.querySelector(".search-books-offline");
 const searchInput = document.querySelector(
@@ -29,7 +30,7 @@ export default function bookSearchControl(ev) {
 
 	// perform search-action first for improving code execution
 	// store search-reesults after finding
-	searchResults = helper.bookMatch(searchValue);
+	searchResults = searchBooks(searchValue);
 
 	// RENDER [ERROR-MESSAGE] WHEN BOOKS NOT FOUND
 	if (
@@ -51,10 +52,8 @@ export default function bookSearchControl(ev) {
 	// INPUT CLEANER
 	helper.inputCleaner();
 
-	// FIND THE BOOK OBJECT
-
-	// store search-reesults after finding
-	searchResults = helper.bookMatch(searchValue);
+	// store search-results after finding
+	searchResults = searchBooks(searchValue);
 
 	// store search-results markup
 	const results = searchResultMarkup(searchResults);

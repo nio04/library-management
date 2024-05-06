@@ -49,12 +49,3 @@ export function generateUniqueNumbers(count, min = 0, max = 10) {
 	}
 	return uniqueNumbers;
 }
-
-// Book-related Functions
-import { preBooks } from "./bookContent";
-import { getStorage } from "./view/localstorageView";
-
-export const bookMatch = (searchValue) =>
-	[...preBooks, ...getStorage()].filter((book) =>
-		book.title.toLowerCase().includes(searchValue.toLowerCase())
-	);
