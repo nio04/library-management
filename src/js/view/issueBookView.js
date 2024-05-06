@@ -59,9 +59,6 @@ function processLocalStorageBooks() {
 	if (!getStorage()) return;
 	// INJECT
 	bookContent.oldBooks.push(getStorage());
-
-	// console.log(bookContent.oldBooks, helper.allOfflineBookName);
-	// console.log(bookContent.oldBooks);
 }
 
 function resetOnLoad() {
@@ -92,10 +89,12 @@ function findBook(ev) {
 	if (!ev.target.closest(".issue__book")) return;
 
 	let searchValue = searchInput.value;
+	let searchResults = helper.bookMatch(searchValue);
 
+	// ON [ERROR SEARCH-RESULT]
 	if (
 		ev.target.closest(".issue__book__find__book") &&
-		!helper.findBook(searchValue)
+		searchResults.length === 0
 	) {
 		comp.showModal(
 			parent,
@@ -118,13 +117,10 @@ function findBook(ev) {
 	// CLEAR BOOK INPUT
 	helper.inputCleaner("search__books__offline__input");
 
-	// FIND THE BOOK OBJECT
-	getBook = helper.bookMatch(searchValue);
-
 	// GENERATE BOOK IN UI
 	comp.renderBookMarkup(
 		document.querySelector(".issue__book .search-result__lists"),
-		[getBook]
+		searchResults
 	);
 }
 

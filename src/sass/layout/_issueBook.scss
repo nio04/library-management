@@ -136,9 +136,14 @@
 						background-color: var(--gray-color-200);
 						padding: 0.6rem 1rem;
 						border-radius: 0.6rem;
+						transition: all 0.1s;
 						@extend .from-hidden;
 						@include abs.translate(0, 100%);
+						cursor: pointer;
 
+						&:hover {
+							background: var(--gray-color-400);
+						}
 						.img {
 							width: 12rem;
 							height: auto;
