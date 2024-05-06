@@ -1,53 +1,45 @@
 import * as comp from "../component";
 import * as helper from "../helper";
 import * as bookContent from "../bookContent";
-import * as getRandomImg from "./unsplashView";
-import { onlineImg } from "./libraryView";
 import * as localstorage from "./localstorageView";
+import { onlineImg } from "./libraryView";
 
 const parent = document.querySelector(".upload-book-container");
-let title;
-let authorName;
-let genre;
-let language;
-let releaseYear;
-let releaseVserion;
-let popularity;
-let pages;
-let licenseY;
-let licenseN;
-let authorBio;
-let publicationLink;
-let publicationName;
-let quantity;
-let img;
-let imgUrl; //for final object
+
+let title,
+	authorName,
+	genre,
+	language,
+	releaseYear,
+	releaseVserion,
+	popularity,
+	pages,
+	licenseY,
+	licenseN,
+	authorBio,
+	publicationLink,
+	publicationName,
+	quantity,
+	img,
+	imgUrl;
 let localImage = "off";
+
 const formUploadBtn = document.querySelector("#form-upload");
 
-function uploadBookControl(ev) {
+export default function uploadBookControl(ev) {
 	ev.preventDefault();
 
-	// RETURN, IF THE SUBMIT BTN IS FROM ANOTHER FORM
 	if (ev.target.id !== "form-upload") return;
 
-	// ON SUBMIT, GET VALUE OF INPUT'S
 	getInputValue();
 
-	// VALIDATE ALL THE NAMINGS
 	const validateResult = validateNaming();
 
-	// RENDER [SUCCESS, ERROR] MESSAGE IN UI
 	renderSubmitResultModal(ev, validateResult);
 
 	if (!validateResult) return;
 
-	// LOCAL IMAGE OR ONLINE IMAGE SELECT
-	if (localImage === "on") imgUrl = img.files[0].name;
-	else imgUrl = onlineImg;
-
-	// COMPUUTE BOOK-LICENSE
-	let GNUlicense = licenseY === true ? true : false;
+	imgUrl = localImage === "on" ? img.files[0].name : onlineImg;
 
 	const newBook = {
 		id: crypto.randomUUID(),
@@ -59,7 +51,7 @@ function uploadBookControl(ev) {
 		releaseVserion,
 		popularity,
 		pages,
-		GNUlicense,
+		GNUlicense: licenseY === true,
 		authorBio,
 		publicationLink,
 		publicationName,
@@ -67,20 +59,11 @@ function uploadBookControl(ev) {
 		imgUrl,
 	};
 
-	// PUSH TO BOOK-OBJECT
 	bookContent.newBook.push(newBook);
 	localstorage.setStorage(newBook);
-
-	// RENDER BOOK TO UI
-	// comp.renderBookMarkup(
-	// 	document.querySelector(
-	// 		".view-books-offline__custom #viewbooks__offline__section"
-	// 	),
-	// 	localstorage.storageBook
-	// );
 }
 
-const getInputValue = () => {
+function getInputValue() {
 	title = document.querySelector("#book-name__input").value;
 	authorName = document.querySelector("#book-author__input").value;
 	genre = document.querySelector("#book-genre__input").value;
@@ -102,30 +85,32 @@ const getInputValue = () => {
 	).value;
 	quantity = document.querySelector("#book-quantity__input").value;
 	img = document.querySelector("#book-image__input");
-};
+}
 
 function validateNaming() {
-	// IF NULL > REGEX MATCHING FAILS!
-	const result = [];
-	let flag = true;
 	const regexNaming = /^[a-z]+[\sa-z]*$/gi;
 	const regexGenre = /^[a-z]+[,\sa-z]*$/gi;
 	const regexNumber = /^(?:[1-9]\d{0,3}|1000)$/g;
 	const regexLink = /^https:\/\/www\.\w+\.com$/gi;
 
-	result.push(title.match(regexNaming));
-	result.push(authorName.match(regexNaming));
-	result.push(genre.match(regexGenre));
-	result.push(language.match(regexNaming));
-	result.push(releaseYear.match(regexNumber));
-	result.push(releaseVserion.match(regexNumber));
-	result.push(popularity.match(regexNumber));
-	result.push(pages.match(regexNumber));
-	result.push(authorBio.match(regexLink));
-	result.push(publicationLink.match(regexLink));
-	result.push(publicationName.match(regexNaming));
-	result.push(quantity.match(regexNumber));
-	if (licenseY === false && licenseN === false) flag = false;
+	const result = [
+		title.match(regexNaming),
+		authorName.match(regexNaming),
+		genre.match(regexGenre),
+		language.match(regexNaming),
+		releaseYear.match(regexNumber),
+		releaseVserion.match(regexNumber),
+		popularity.match(regexNumber),
+		pages.match(regexNumber),
+		authorBio.match(regexLink),
+		publicationLink.match(regexLink),
+		publicationName.match(regexNaming),
+		quantity.match(regexNumber),
+	];
+
+	let flag = true;
+
+	if (!(licenseY || licenseN)) flag = false;
 
 	result.flat().forEach((res) => {
 		if (res === null) flag = false;
@@ -134,55 +119,42 @@ function validateNaming() {
 	return flag;
 }
 
-const renderSubmitResultModal = (ev, validateResult) => {
-	if (ev.target.closest(".upload-book-container") && !validateResult)
-		comp.showModal(
-			parent,
-			"error",
-			`There might be something wrong with your input... Please check your input.`
-		);
-	else if (ev.target.closest(".upload-book-container") && validateResult)
-		comp.showModal(
-			parent,
-			"success",
-			`Congratulation! You have successfully added a new books the library collection.`
-		);
-};
+function renderSubmitResultModal(ev, validateResult) {
+	const message = validateResult
+		? "Congratulation! You have successfully added a new book to the library collection."
+		: "There might be something wrong with your input. Please check your input.";
 
-// CLICK EVENT
+	if (ev.target.closest(".upload-book-container")) {
+		const type = validateResult ? "success" : "error";
+		comp.showModal(parent, type, message);
+	}
+}
+
 document.addEventListener("click", (ev) => {
-	if (ev.target.classList.contains("modal__btn")) comp.hideModal();
-	else if (ev.target.classList.contains("overlay")) comp.hideModal();
+	if (
+		ev.target.classList.contains("modal__btn") ||
+		ev.target.classList.contains("overlay")
+	) {
+		comp.hideModal();
+	}
 });
 
-// FORM SUBMT EVENT
 formUploadBtn.addEventListener("click", uploadBookControl);
-export default uploadBookControl;
 
-// ONLINE PICTURE [CHECKBOX] LISTENER
 document
 	.querySelector("#random-photo__label #random-photo")
 	.addEventListener("change", (ev) => {
+		const label = document.querySelector("#book-image__label");
+
 		if (!ev.target.checked) {
 			helper.removeEl(document.querySelector("#random-photo__label"));
-
-			helper.removeClass(
-				document.querySelector("#book-image__label"),
-				"hidden"
-			);
-		} else {
+			helper.removeClass(label, "hidden");
 		}
 	});
 
-// LOCAL IMAGE PROCESSOR
-function localImageProcess(ev) {
-	return (imgUrl = ev.target.files[0].name);
-}
-
-// MANUAL BOOK SELECT FROM FILE INPUT
 document
 	.querySelector("#book-image__input")
 	.addEventListener("change", (ev) => {
 		localImage = "on";
-		localImageProcess(ev);
+		imgUrl = ev.target.files[0].name;
 	});

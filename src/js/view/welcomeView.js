@@ -2,38 +2,40 @@ import * as helper from "../helper";
 import * as comp from "../component";
 import { spinnerTimer } from "../config";
 
-const welcomeSection = document.querySelector(".welcome");
-const btn = document.querySelector(".welcome-btn");
-const libraryPage = document.querySelector(".library-management");
-const viewAllBooksSection = document.querySelector(".view-books");
-const searchBookOfflineSection = document.querySelector(".search-books");
-const uploadBookSection = document.querySelector(".upload-book");
-const searchBookOnlineSection = document.querySelector(".search-online");
-const issueBookSection = document.querySelector(".issue-book");
-const contributorSection = document.querySelector(".contributor-section");
+const sections = {
+	welcome: document.querySelector(".welcome"),
+	libraryPage: document.querySelector(".library-management"),
+	viewAllBooksSection: document.querySelector(".view-books"),
+	searchBookOfflineSection: document.querySelector(".search-books"),
+	uploadBookSection: document.querySelector(".upload-book"),
+	searchBookOnlineSection: document.querySelector(".search-online"),
+	issueBookSection: document.querySelector(".issue-book"),
+	contributorSection: document.querySelector(".contributor-section"),
+};
+
+function showLibraryPage() {
+	helper.hideEl(sections.welcome);
+	helper.showEl(
+		sections.libraryPage,
+		sections.viewAllBooksSection,
+		sections.searchBookOfflineSection,
+		sections.uploadBookSection,
+		sections.searchBookOnlineSection,
+		sections.issueBookSection
+	);
+}
 
 function welcomeViewControl(ev) {
-	// console.log();
 	comp.showSpinner(ev);
 
 	setTimeout(() => {
 		comp.hideSpinner();
-
-		helper.hideEl(welcomeSection);
-
-		// SHOW LIBRARY-MANAGEMENT PAGE
-		helper.showEl(
-			libraryPage,
-			viewAllBooksSection,
-			searchBookOfflineSection,
-			uploadBookSection,
-			searchBookOnlineSection,
-			issueBookSection
-		);
+		showLibraryPage();
 	}, spinnerTimer);
 }
 
-// EVENT
-btn.addEventListener("click", welcomeViewControl);
+document
+	.querySelector(".welcome-btn")
+	.addEventListener("click", welcomeViewControl);
 
 export default welcomeViewControl;
