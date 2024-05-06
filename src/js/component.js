@@ -95,7 +95,7 @@ export function renderBookMarkup(parent, books = []) {
 	const markup = books
 		.map(
 			(book) => `
-        <li class="book__item">
+        <li class="book__item" id="${book.id}">
             <section class="img">
                 <img src="${book?.imgUrl}" alt="${book.title}" />
             </section>

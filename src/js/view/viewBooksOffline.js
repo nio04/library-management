@@ -1,7 +1,6 @@
 import * as helper from "./../helper";
 import * as comp from "../component";
 import * as bookContent from "../bookContent";
-import { getStorage } from "./localstorageView";
 
 const newCollectionContainer = document.querySelector(
 	".view-books-offline--new-collection ul"

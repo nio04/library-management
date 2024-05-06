@@ -65,7 +65,7 @@ function searchResultMarkup(results) {
 	return [...results]
 		.map(
 			(book) =>
-				`<li class="book__info">
+				`<li class="book__info" data-id="${book.id}">
 					<figure>
 						<img src="${book.imgUrl}" alt="${book.title}">
 					</figure>
