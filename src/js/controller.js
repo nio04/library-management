@@ -1,4 +1,3 @@
-import intersectionController from "./view/intersection";
 import welcomeView from "./view/welcomeView";
 import libraryView from "./view/libraryView";
 import uploadBookView from "./view/uploadBookView";
@@ -8,7 +7,10 @@ import {
 	issueBookControl,
 	deliveryAddressControl,
 } from "./view/issueBookView";
+
 import fontView from "./view/fontView";
+import intersectionController from "./view/intersection";
+import { tooltipControl } from "./view/tooltipView";
 
 welcomeView.welcomeViewControl;
 libraryView.libraryPageControl;
@@ -19,3 +21,4 @@ issueBookControl;
 deliveryAddressControl;
 
 intersectionController();
+tooltipControl();

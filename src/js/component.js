@@ -3,7 +3,6 @@ import * as helper from "./helper";
 const container = document.querySelector(".container");
 const overlay = document.querySelector(".overlay");
 const spinner = document.querySelector(".spinner");
-const tooltip = document.querySelector(".tool-tip__book-upload");
 
 // Render Functions
 export function render(parent, markup) {
@@ -22,7 +21,6 @@ export function renderChildren(parent, markup, position = "beforeend") {
 export function showModal(parent, className, message = "") {
 	generateModalMarkup(parent, className, message);
 	overlay.classList.remove("overlay-off");
-	// document.querySelector(".modal__message").textContent = message;
 }
 
 export function hideModal() {
@@ -51,11 +49,6 @@ export function hideSpinner() {
 	helper.hideEl(spinner);
 }
 
-// Utility Functions
-export function setCustomTitle(userInput) {
-	document.title = userInput;
-}
-
 export function hideAllSections() {
 	const sections = [
 		".library-management",
@@ -71,24 +64,15 @@ export function hideAllSections() {
 	);
 }
 
-// Tooltip Functions
-tooltip.addEventListener("mouseenter", () => {
-	const markup = `
-        <section class="tool-tip">
-            <p class="tool-tip__message">fetch random online book image from unspalsh api!</p>
-        </section>`;
-	document
-		.querySelector("#random-photo__label")
-		.insertAdjacentHTML("beforeend", markup);
-});
-
-tooltip.addEventListener("mouseleave", () => {
-	setTimeout(() => {
-		helper.removeEl(
-			document.querySelector("#random-photo__label .tool-tip")
-		);
-	}, 1200);
-});
+// Next Icon Generation Function
+export function nextIcon() {
+	const nextIcon = new URL("../asset/icons/next.svg", import.meta.url)
+		.href;
+	const img = document.createElement("img");
+	img.src = nextIcon;
+	img.alt = "logo";
+	return img;
+}
 
 // Book Rendering Function
 export function renderBookMarkup(parent, books = []) {
@@ -110,14 +94,4 @@ export function renderBookMarkup(parent, books = []) {
 		.join("");
 
 	parent.innerHTML = markup;
-}
-
-// Next Icon Generation Function
-export function nextIcon() {
-	const nextIcon = new URL("../asset/icons/next.svg", import.meta.url)
-		.href;
-	const img = document.createElement("img");
-	img.src = nextIcon;
-	img.alt = "logo";
-	return img;
 }
