@@ -78,8 +78,17 @@ function findBook(ev) {
 
 	if (!ev.target.closest(".issue__book")) return;
 
+	// STEP-1 always remove [next-step] btn at first
+	helper.removeEl(document.querySelector(".step__1 .next__step__btn"));
+
 	let searchValue = searchInput.value;
 	let searchResults = searchBooks(searchValue);
+
+	// WHEN NO SEARCH-INPUT, CLEAR SEARCH-RESULTS
+	if (searchValue.length < 1) {
+		helper.cleanParent(".search-result__section .search-result__lists");
+		return;
+	}
 
 	// ON [ERROR SEARCH-RESULT]
 	if (
