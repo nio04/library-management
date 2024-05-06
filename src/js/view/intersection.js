@@ -77,7 +77,7 @@ export default function intersectionController() {
 function callback(entries) {
 	entries.forEach((entry) => {
 		if (!entry.target) return;
-		console.log(entry);
+		// console.log(entry);
 		if (entry.isIntersecting && entry.target.classList[0] === "welcome") {
 			// WELCOME-PAGE
 			entry.target.children[0].classList.add("to-visible");
