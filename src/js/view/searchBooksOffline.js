@@ -14,9 +14,6 @@ let searchResults;
 
 function getSearchInput(ev) {
 	searchValue = ev.target.value;
-	if (ev.target.value.length === 0) {
-		helper.cleanParent(".search-result .search-result__lists");
-	}
 }
 
 export default function bookSearchControl(ev) {
@@ -26,6 +23,12 @@ export default function bookSearchControl(ev) {
 		helper.hideEl(
 			document.querySelector(".search-books-offline .search-result")
 		);
+	}
+
+	// WHEN NO SEARCH-INPUT, CLEAR SEARCH-RESULTS
+	if (searchValue.length < 1) {
+		helper.cleanParent(".search-result .search-result__lists");
+		return;
 	}
 
 	// perform search-action first for improving code execution
@@ -59,6 +62,9 @@ export default function bookSearchControl(ev) {
 	const results = searchResultMarkup(searchResults);
 
 	document.querySelector(".search-result__lists").innerHTML = results;
+
+	// RESET SEARCH INPUT
+	searchValue = "";
 }
 
 function searchResultMarkup(results) {
