@@ -54,14 +54,7 @@ export function generateUniqueNumbers(count, min = 0, max = 10) {
 import { preBooks } from "./bookContent";
 import { getStorage } from "./view/localstorageView";
 
-export const allOfflineBookName = [...preBooks, ...getStorage()].map(
-	(book) => book.title
-);
-
-export const findBook = (searchValue) =>
-	allOfflineBookName.includes(searchValue);
-
 export const bookMatch = (searchValue) =>
-	[...preBooks, ...getStorage()].filter(
-		(book) => book.title === searchValue
+	[...preBooks, ...getStorage()].filter((book) =>
+		book.title.toLowerCase().includes(searchValue.toLowerCase())
 	);

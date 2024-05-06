@@ -9,11 +9,12 @@ const searchBtn = document.querySelector("#search__books__offline__btn");
 const resultParent = document.querySelector(".search-result");
 
 let searchValue;
+let searchResults;
 
 function getSearchInput(ev) {
 	searchValue = ev.target.value;
 	if (ev.target.value.length === 0) {
-		document.querySelector(".search-result__lists .book__item")?.remove();
+		helper.cleanParent(".search-result .search-result__lists");
 	}
 }
 
@@ -26,10 +27,14 @@ export default function bookSearchControl(ev) {
 		);
 	}
 
+	// perform search-action first for improving code execution
+	// store search-reesults after finding
+	searchResults = helper.bookMatch(searchValue);
+
 	// RENDER [ERROR-MESSAGE] WHEN BOOKS NOT FOUND
 	if (
 		ev.target.closest(".search-books-offline") &&
-		!helper.findBook(searchValue)
+		searchResults.length === 0
 	) {
 		comp.showModal(
 			parent,
@@ -47,10 +52,9 @@ export default function bookSearchControl(ev) {
 	helper.inputCleaner();
 
 	// FIND THE BOOK OBJECT
-	helper.bookMatch(searchValue);
 
 	// store search-reesults after finding
-	const searchResults = helper.bookMatch(searchValue);
+	searchResults = helper.bookMatch(searchValue);
 
 	// store search-results markup
 	const results = searchResultMarkup(searchResults);
