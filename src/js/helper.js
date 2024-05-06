@@ -61,10 +61,7 @@ export const allOfflineBookName = [...preBooks, ...getStorage()].map(
 export const findBook = (searchValue) =>
 	allOfflineBookName.includes(searchValue);
 
-export const bookMatch = (searchValue) => {
-	const oldBooks = getStorage();
-
-	return [...preBooks, ...oldBooks].find(
+export const bookMatch = (searchValue) =>
+	[...preBooks, ...getStorage()].filter(
 		(book) => book.title === searchValue
 	);
-};

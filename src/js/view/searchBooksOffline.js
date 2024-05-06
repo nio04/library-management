@@ -26,7 +26,7 @@ export default function bookSearchControl(ev) {
 		);
 	}
 
-	// RENDER ERROR MESSAGE WHEN BOOKS NOT FOUND
+	// RENDER [ERROR-MESSAGE] WHEN BOOKS NOT FOUND
 	if (
 		ev.target.closest(".search-books-offline") &&
 		!helper.findBook(searchValue)
@@ -49,37 +49,45 @@ export default function bookSearchControl(ev) {
 	// FIND THE BOOK OBJECT
 	helper.bookMatch(searchValue);
 
-	const processBook = [];
-	processBook.push(helper.bookMatch(searchValue));
+	// store search-reesults after finding
+	const searchResults = helper.bookMatch(searchValue);
 
-	const searchResult = processBook
-		.map((targetBook) => {
-			return `
-	<li class="book__info">
-		<figure>
-			<img src="${targetBook.imgUrl}" alt="${targetBook.title}">
-		</figure>
-		<section class="book__info__details">
-			<p>book name: ${targetBook.title}</p>
-			<p>author name: ${targetBook.authorName}</p>
-			<p>book language: ${targetBook.language}</p>
-			<p>genre: ${targetBook.genre} </p>
-			<p>release year: ${targetBook.releaseYear}</p>
-			<p>release version: ${targetBook.releaseVersion}</p>
-			<p>popularity: ${targetBook.popularity} </p>
-			<p>book pages: ${targetBook.pages} </p>
-			<p>book license: ${targetBook.GNUlicense}</p>
-			<p>author bio link: ${targetBook.authorBio} </p>
-			<p>book publication link: ${targetBook.publicationLink}</p>
-			<p>publication name: ${targetBook.publicationName} </p>
-		</section>
-	</li>`;
-		})
+	// store search-results markup
+	const results = searchResultMarkup(searchResults);
+
+	document.querySelector(".search-result__lists").innerHTML = results;
+}
+
+function searchResultMarkup(results) {
+	return [...results]
+		.map(
+			(book) =>
+				`<li class="book__info">
+					<figure>
+						<img src="${book.imgUrl}" alt="${book.title}">
+					</figure>
+					<section class="book__info__details">
+						<p>book name: ${book.title}</p>
+						<p>author name: ${book.authorName}</p>
+					</section>
+				</li>`
+		)
 		.join("");
-
-	document.querySelector(".search-result__lists").innerHTML = searchResult;
 }
 
 searchInput.addEventListener("input", getSearchInput);
 
 searchBtn.addEventListener("click", bookSearchControl);
+
+/*
+	<p>book language: ${book.language}</p>
+	<p>genre: ${book.genre} </p>
+	<p>release year: ${book.releaseYear}</p>
+	<p>release version: ${book.releaseVersion}</p>
+	<p>popularity: ${book.popularity} </p>
+	<p>book pages: ${book.pages} </p>
+	<p>book license: ${book.GNUlicense}</p>
+	<p>author bio link: ${book.authorBio} </p>
+	<p>book publication link: ${book.publicationLink}</p>
+	<p>publication name: ${book.publicationName} </p>
+*/

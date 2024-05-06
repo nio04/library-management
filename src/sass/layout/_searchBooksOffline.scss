@@ -34,7 +34,7 @@
 			align-self: flex-start;
 			border-bottom: 6px double var(--secondary-color-400);
 			margin-left: 1.6rem;
-			padding-bottom: 5px;
+			margin-bottom: 5rem;
 			text-transform: uppercase;
 		}
 
@@ -46,14 +46,24 @@
 			&__info {
 				display: grid;
 				grid-template-columns: max-content 1fr;
-				margin-top: 5rem;
-				margin-left: 3vw;
+				align-items: center;
+				margin: 2rem 2rem 2rem 5vw;
+				border-radius: 1.3rem;
+				background-color: var(--gray-color-300);
+				cursor: pointer;
+				transition: all 0.2s;
+
+				&:hover {
+					background-color: var(--gray-color-400);
+				}
 
 				@media (max-width: 780px) {
 					grid-template-columns: 1fr;
 				}
 
 				figure {
+					width: 20rem;
+					height: 15rem;
 					display: flex;
 					justify-content: flex-start;
 					align-items: flex-start;
@@ -64,16 +74,19 @@
 					}
 
 					img {
-						height: auto;
-						width: 20rem;
+						height: 100%;
+						width: 100%;
 						max-width: 100%;
+						object-fit: cover;
 						margin-right: 4rem;
 						border-radius: 1rem;
+						font-size: 3rem;
 					}
 				}
 
 				&__details {
 					padding-right: 2rem;
+					padding: 3rem 1rem;
 					p {
 						border: none;
 						font-size: 2.5rem;

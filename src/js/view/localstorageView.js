@@ -13,7 +13,7 @@ export function setStorage(book) {
 
 export function getStorage() {
 	if (localStorage.getItem("newBook") === null) return [];
-	else return JSON.parse(localStorage.getItem("newBook"));
+	else return [...JSON.parse(localStorage.getItem("newBook"))];
 }
 
 document.addEventListener("DOMContentLoaded", () => {
