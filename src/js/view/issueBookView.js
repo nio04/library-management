@@ -44,7 +44,12 @@ let getBook;
 let deliveryAddress;
 
 const generateNextButton = (step, btntext = "Next Step") => {
-	return `
+	return btntext === "OK"
+		? `
+	<button class="btn anim-btn next__step__btn dynaimc-next-btn" data-go-next-step="${step}">${btntext} <svg style="margin-left:1.3rem; margin-right: 0"><use  xlink:href="${icons}#ok"></use></svg>
+	</button>
+`
+		: `
 	<button class="btn anim-btn next__step__btn dynaimc-next-btn" data-go-next-step="${step}">${btntext} <svg style="margin-left:1.3rem; margin-right: 0"><use  xlink:href="${icons}#next"></use></svg>
 	</button>
 `;
