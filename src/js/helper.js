@@ -23,7 +23,7 @@ export function removeClass(target, ...classes) {
 	target.classList.remove(...classes);
 }
 
-export const inputCleaner = (target) =>
+export const inputCleaner = () =>
 	document
 		.querySelectorAll("input[type='search']")
 		.forEach((el) => (el.value = ""));
@@ -51,13 +51,12 @@ export function generateUniqueNumbers(count, min = 0, max = 10) {
 }
 
 // Book-related Functions
-import * as bookContent from "./bookContent";
+import { preBooks } from "./bookContent";
 import { getStorage } from "./view/localstorageView";
 
-export const allOfflineBookName = [
-	...bookContent.bookLists.preBooks,
-	...getStorage(),
-].map((book) => book.title);
+export const allOfflineBookName = [...preBooks, ...getStorage()].map(
+	(book) => book.title
+);
 
 export const findBook = (searchValue) =>
 	allOfflineBookName.includes(searchValue);
@@ -65,7 +64,7 @@ export const findBook = (searchValue) =>
 export const bookMatch = (searchValue) => {
 	const oldBooks = getStorage();
 
-	return [...oldBooks, ...bookContent.bookLists.preBook].find(
+	return [...preBooks, ...oldBooks].find(
 		(book) => book.title === searchValue
 	);
 };

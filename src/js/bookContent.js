@@ -7,7 +7,7 @@ export const oldBooks = [];
 const offlineImgNum = 10;
 
 // Array to store pre-defined books
-const preBooks = [
+export const preBooks = [
 	{
 		id: crypto.randomUUID(),
 		title: "book name A",
@@ -266,10 +266,10 @@ const preBooks = [
 ];
 
 // Array to store new books
-const newBooks = [];
+export const newBook = [];
 
 // Export the book lists object
 export const bookLists = {
 	preBooks,
-	newBooks,
+	newBook,
 };
