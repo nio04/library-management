@@ -1,6 +1,6 @@
 import * as helper from "../helper";
 import * as comp from "../component";
-import { searchBooks } from "./serachView";
+import { searchBooks } from "./searchView";
 
 // DOM elements
 const parent = document.querySelector(".search-books-offline");
@@ -31,7 +31,7 @@ export default function bookSearchControl(ev) {
 	}
 
 	// Clear search results if no input
-	if (searchValue.length < 1) {
+	if (searchValue?.length < 1) {
 		helper.cleanParent(".search-result .search-result__lists");
 		return;
 	}

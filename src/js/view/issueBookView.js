@@ -15,7 +15,7 @@ import * as comp from "../component";
 import * as bookOffline from "./viewBooksOffline";
 import * as bookContent from "../bookContent";
 import { getStorage } from "./localstorageView";
-import { searchBooks } from "./serachView";
+import { searchBooks } from "./searchView";
 
 const parent = document.querySelector(".issue__book");
 const allSteps = document.querySelectorAll(".book__issue__step");
