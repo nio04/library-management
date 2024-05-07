@@ -24,6 +24,7 @@ export const preBooks = [
 		authorBio: "author bio link",
 		publicationLink: "publication link",
 		publicationName: "Haque",
+		customBook: false,
 	},
 	{
 		id: crypto.randomUUID(),
@@ -41,6 +42,7 @@ export const preBooks = [
 		authorBio: "author bio link",
 		publicationLink: "publication link",
 		publicationName: "Haque",
+		customBook: false,
 	},
 	{
 		id: crypto.randomUUID(),
@@ -58,6 +60,7 @@ export const preBooks = [
 		authorBio: "author bio link",
 		publicationLink: "publication link",
 		publicationName: "Haque",
+		customBook: false,
 	},
 	{
 		id: crypto.randomUUID(),
@@ -75,6 +78,7 @@ export const preBooks = [
 		authorBio: "author bio link",
 		publicationLink: "publication link",
 		publicationName: "Haque",
+		customBook: false,
 	},
 	{
 		id: crypto.randomUUID(),
@@ -92,6 +96,7 @@ export const preBooks = [
 		authorBio: "author bio link",
 		publicationLink: "publication link",
 		publicationName: "Haque",
+		customBook: false,
 	},
 	{
 		id: crypto.randomUUID(),
@@ -109,6 +114,7 @@ export const preBooks = [
 		authorBio: "author bio link",
 		publicationLink: "publication link",
 		publicationName: "Haque",
+		customBook: false,
 	},
 	{
 		id: crypto.randomUUID(),
@@ -126,6 +132,7 @@ export const preBooks = [
 		authorBio: "author bio link",
 		publicationLink: "publication link",
 		publicationName: "Haque",
+		customBook: false,
 	},
 	{
 		id: crypto.randomUUID(),
@@ -143,6 +150,7 @@ export const preBooks = [
 		authorBio: "author bio link",
 		publicationLink: "publication link",
 		publicationName: "Haque",
+		customBook: false,
 	},
 	{
 		id: crypto.randomUUID(),
@@ -160,6 +168,7 @@ export const preBooks = [
 		authorBio: "author bio link",
 		publicationLink: "publication link",
 		publicationName: "Haque",
+		customBook: false,
 	},
 	{
 		id: crypto.randomUUID(),
@@ -177,6 +186,7 @@ export const preBooks = [
 		authorBio: "author bio link",
 		publicationLink: "publication link",
 		publicationName: "Haque",
+		customBook: false,
 	},
 	{
 		id: crypto.randomUUID(),
@@ -194,6 +204,7 @@ export const preBooks = [
 		authorBio: "author bio link",
 		publicationLink: "publication link",
 		publicationName: "Haque",
+		customBook: false,
 	},
 	{
 		id: crypto.randomUUID(),
@@ -211,6 +222,7 @@ export const preBooks = [
 		authorBio: "author bio link",
 		publicationLink: "publication link",
 		publicationName: "Haque",
+		customBook: false,
 	},
 	{
 		id: crypto.randomUUID(),
@@ -228,6 +240,7 @@ export const preBooks = [
 		authorBio: "author bio link",
 		publicationLink: "publication link",
 		publicationName: "Haque",
+		customBook: false,
 	},
 	{
 		id: crypto.randomUUID(),
@@ -245,6 +258,7 @@ export const preBooks = [
 		authorBio: "author bio link",
 		publicationLink: "publication link",
 		publicationName: "Haque",
+		customBook: false,
 	},
 	{
 		id: crypto.randomUUID(),
@@ -262,6 +276,7 @@ export const preBooks = [
 		authorBio: "author bio link",
 		publicationLink: "publication link",
 		publicationName: "Haque",
+		customBook: false,
 	},
 ];
 
@@ -272,4 +287,5 @@ export const newBook = [];
 export const bookLists = {
 	preBooks,
 	newBook,
+	oldBooks,
 };

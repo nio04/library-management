@@ -43,6 +43,7 @@ export default function uploadBookControl(ev) {
 
 	const newBook = {
 		id: crypto.randomUUID(),
+		customBook: true,
 		title,
 		authorName,
 		genre,

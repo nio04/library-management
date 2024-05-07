@@ -1,4 +1,3 @@
-import * as comp from "../component";
 import * as bookContent from "../bookContent";
 
 // Array to store books in local storage
@@ -25,31 +24,10 @@ export function getStorage() {
 	}
 }
 
-// Event listener for DOMContentLoaded event
-document.addEventListener("DOMContentLoaded", () => {
-	// If newBook item exists in local storage, add its contents to storageBook array
+export default function localStorageControl() {
 	if (localStorage.getItem("newBook") !== null) {
-		storageBook.push(...JSON.parse(localStorage.getItem("newBook")));
+		bookContent.oldBooks.push(
+			...JSON.parse(localStorage.getItem("newBook"))
+		);
 	}
-
-	// Add books from local storage to bookContent.oldBooks array
-	bookContent.oldBooks.push(JSON.parse(localStorage.getItem("newBook")));
-
-	// Render the book markup using component render function
-	// comp.renderBookMarkup(
-	//     document.querySelector(
-	//         ".view-books-offline__custom #viewbooks__offline__section"
-	//     ),
-	//     storageBook
-	// );
-});
-
-// Event listener for click on clear-all button to flush all books from local storage
-// document.querySelector(".clear-all").addEventListener("click", (ev) => {
-//     localStorage.removeItem("newBook");
-
-//     // Clear the inner HTML of viewbooks__offline__section element
-//     document.querySelector(
-//         ".view-books-offline__custom #viewbooks__offline__section"
-//     ).innerHTML = "";
-// });
+}

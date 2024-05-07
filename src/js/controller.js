@@ -1,3 +1,6 @@
+// import localStorageControl from "./view/localstorageView";
+// localStorageControl();
+
 import welcomeView from "./view/welcomeView";
 import libraryView from "./view/libraryView";
 import uploadBookView from "./view/uploadBookView";
@@ -7,6 +10,7 @@ import {
 	issueBookControl,
 	deliveryAddressControl,
 } from "./view/issueBookView";
+import bookModalControl from "./view/bookModalView";
 
 import fontView from "./view/fontView";
 import intersectionController from "./view/intersection";
@@ -19,6 +23,8 @@ searchBooksOffline.searchBookControl;
 uploadBookView.uploadBookControl;
 issueBookControl;
 deliveryAddressControl;
+bookModalControl;
 
 intersectionController();
 tooltipControl();
+fontView.fontControl;

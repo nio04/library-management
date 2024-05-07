@@ -9,8 +9,7 @@ function loadFonts(fonts) {
 	});
 }
 
-// DEFAULT FONT-FAMILY
-window.addEventListener("load", () => {
+export default function fontControl() {
 	const defaultFonts = [
 		"Inter:400,600",
 		"Open Sans:400,600",
@@ -22,4 +21,7 @@ window.addEventListener("load", () => {
 		"Inconsolata:400,600",
 	];
 	loadFonts(defaultFonts);
-});
+}
+
+// DEFAULT FONT-FAMILY
+window.addEventListener("load", fontControl);
