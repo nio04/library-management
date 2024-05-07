@@ -46,16 +46,8 @@
 		justify-self: start;
 	}
 
-	// .submit-section {
-	// 	display: flex;
-	// 	align-items: center;
-	// 	svg {
-	// 		transform: translateX(6rem);
-	// 	}
-	// 	input[type="submit"] {
-	// 		text-align: right;
-	// 		padding: 2rem 3rem;
-	// 		padding-left: 7rem;
-	// 	}
-	// }
+	.submit-section {
+		grid-column: 1 / -1;
+		justify-self: center;
+	}
 }
