@@ -25,6 +25,7 @@
 		font-size: 2.7rem;
 		text-align: center;
 		opacity: 0;
+		transition: all 0.3s;
 
 		&:nth-of-type(even) {
 			transform: translateX(-20rem);

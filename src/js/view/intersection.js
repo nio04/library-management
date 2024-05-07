@@ -29,7 +29,7 @@ export default function intersectionController() {
 function callback(entries) {
 	entries.forEach((entry) => {
 		if (!entry.target) return;
-		console.log(entry);
+		// console.log(entry);
 		if (entry.isIntersecting) {
 			switch (entry.target.classList[0]) {
 				case "welcome":
@@ -192,6 +192,5 @@ const observer = new IntersectionObserver(callback, options);
 
 // HELPER CLASS FOR SHOW CHILDREN
 function showChildren(...target) {
-	console.log(target);
 	target.flat(Infinity).forEach((el) => el.classList.add("to-visible"));
 }

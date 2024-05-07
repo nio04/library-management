@@ -1,0 +1,32 @@
+@use "../abstracts/" as abs;
+
+#random-photo__label {
+	position: relative;
+}
+.tool-tip {
+	height: 8rem;
+	position: absolute;
+	top: 5rem;
+	left: 0;
+	opacity: 1 !important;
+
+	&__message {
+		font-size: 2.2rem;
+		background-color: var(--gray-color-200);
+		padding: 1rem;
+		padding-top: 4rem;
+		padding-left: 2rem;
+		font-family: Montserrat;
+		font-weight: 600;
+
+		&::before {
+			content: "BETA";
+			display: block;
+			position: absolute;
+			top: 0.4rem;
+			left: 0.5rem;
+			color: red;
+			font-weight: 600;
+		}
+	}
+}
