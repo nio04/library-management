@@ -1,3 +1,4 @@
+import icons from "url:../../asset/icons/sprite.svg";
 import { manageOverlay } from "../helper";
 import localStorageControl from "./localstorageView";
 localStorageControl();
@@ -43,7 +44,9 @@ function renderBookModal(parent, book) {
 		.map((item) => {
 			return `
 		<section class="book-modal">
-			<button class="modal-close">❌</button>
+		<svg class="modal-close">
+			<use xlink:href="${icons}#close"></use>
+		</svg>
 			<figure>
 				<img src="${item.imgUrl === undefined ? "" : item.imgUrl}" al="${
 				item.title
@@ -96,8 +99,6 @@ function renderBookModal(parent, book) {
 		`;
 		})
 		.join("");
-
-	console.log(markup);
 
 	parent.insertAdjacentHTML("afterbegin", markup);
 	manageOverlay();
