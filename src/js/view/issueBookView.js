@@ -41,15 +41,13 @@ let getBook;
 let deliveryAddress;
 
 const generateNextButton = (step, btntext = "Next Step") => {
-	return btntext === "OK"
-		? `
-	<button class="btn anim-btn next__step__btn dynaimc-next-btn" data-go-next-step="${step}">${btntext} <svg style="margin-left:1.3rem; margin-right: 0"><use  xlink:href="${icons}#ok"></use></svg>
-	</button>
-`
-		: `
-	<button class="btn anim-btn next__step__btn dynaimc-next-btn" data-go-next-step="${step}">${btntext} <svg style="margin-left:1.3rem; margin-right: 0"><use  xlink:href="${icons}#next"></use></svg>
-	</button>
-`;
+	const icon = btntext === "OK" ? "ok" : "next";
+
+	return `
+        <button class="btn anim-btn next__step__btn dynaimc-next-btn" data-go-next-step="${step}">
+            ${btntext} <svg style="margin-left:1.3rem; margin-right: 0"><use  xlink:href="${icons}#${icon}"></use></svg>
+        </button>
+    `;
 };
 
 function hideAllStepsAndShowFirstStep() {
@@ -64,33 +62,41 @@ function processLocalStorageBooks() {
 }
 
 function resetOnLoad() {
-	// RESET ISSUE-BOOK HEADER
-	document.querySelector(
+	// Reset issue-book header
+	const issueBookHeader = document.querySelector(
 		".issue__book .issue__book__progress"
-	).innerHTML = `<h2>steps 1 of 8: <span class="step__description">find book</span></h2>`;
+	);
+	issueBookHeader.innerHTML = `
+        <h2>Steps 1 of 8: <span class="step__description">find book</span></h2>
+    `;
 
-	// RESET SEARCH-RESULT SECTION
-	document.querySelector(".issue__book .step__1 ul").innerHTML = "";
+	// Reset search-result section
+	const searchResultSection = document.querySelector(
+		".issue__book .step__1 ul"
+	);
+	searchResultSection.innerHTML = "";
 }
 
 function findBook(ev) {
 	ev.preventDefault();
 
-	if (!ev.target.closest(".issue__book")) return;
+	const issueBook = ev.target.closest(".issue__book");
+	if (!issueBook) return;
 
-	// STEP-1 always remove [next-step] btn at first
-	helper.removeEl(document.querySelector(".step__1 .next__step__btn"));
+	// Remove [next-step] btn at first
+	const step1NextBtn = document.querySelector(".step__1 .next__step__btn");
+	helper.removeEl(step1NextBtn);
 
-	let searchValue = searchInput.value;
-	let searchResults = searchBooks(searchValue);
+	const searchValue = searchInput.value;
+	const searchResults = searchBooks(searchValue);
 
-	// WHEN NO SEARCH-INPUT, CLEAR SEARCH-RESULTS
+	// Clear search results when no search input
 	if (searchValue.length < 1) {
 		helper.cleanParent(".search-result__section .search-result__lists");
 		return;
 	}
 
-	// ON [ERROR SEARCH-RESULT]
+	// Handle error when search result is empty
 	if (
 		ev.target.closest(".issue__book__find__book") &&
 		searchResults.length === 0
@@ -98,36 +104,37 @@ function findBook(ev) {
 		comp.showModal(
 			parent,
 			"error",
-			"sorry, We could not find the book you query. please try again"
+			"Sorry, we could not find the book you queried. Please try again."
 		);
 
-		// HDIE BOOK SEARCH-RESULT ON FAILED
+		// Hide book search result on failure
 		helper.hideEl(resultParent);
 
-		// CLEAR BOOK INPUT
+		// Clear book input
 		helper.inputCleaner("search__books__offline__input");
 
 		return;
 	}
 
-	// EXECUTE ON SUCCESS
+	// Execute on success
 	helper.showEl(resultParent);
 
-	// CLEAR BOOK INPUT
+	// Clear book input
 	helper.inputCleaner("search__books__offline__input");
 
-	// GENERATE BOOK IN UI
+	// Generate book in UI
 	comp.renderBookMarkup(
 		document.querySelector(".issue__book .search-result__lists"),
 		searchResults
 	);
-	// GENERATE NEXT-STEP BTN
+
+	// Generate next-step button
 	comp.renderSibling(resultParent, generateNextButton(2));
 }
 
 // HANDLE [NEXT-STEP] BUTTON
 function goNextStepControl(ev) {
-	// GET [STEP] VARIABLE FROM DOM BUTTON
+	// Get the 'step' variable from the DOM button
 	const dynamicStep = ev.target.dataset.goNextStep;
 
 	if (Number(dynamicStep) > totalSteps) return;
@@ -136,40 +143,35 @@ function goNextStepControl(ev) {
 		".issue__book__progress"
 	);
 
-	// UPDATE STEP PROGRESS
-	progressDescription.innerHTML = `<h2> steps ${dynamicStep} of 8 : <span class="step__description">${
+	// Update step progress
+	progressDescription.innerHTML = `
+        <h2>Steps ${dynamicStep} of 8: <span class="step__description">${
 		bookIssueSteps[Number(dynamicStep) - 1]
-	}</span></h2>`;
+	}</span></h2>
+    `;
 
-	// 	HIDE ALL STEPS
+	// Hide all steps
 	helper.hideEl(document.querySelector(`.book__issue__step`));
 
-	// REMOVE ALL [GO NEXT] BUTTONS
+	// Remove all [go next] buttons
 	helper.removeEl(document.querySelector(`[data-go-next-step]`));
 
-	// SHOW NEXT STEP IN UI
+	// Show next step in UI
 	helper.showEl(document.querySelector(`.step__${dynamicStep}`));
 
-	// CLEAR OLD BUTTON IF EXIST
+	// Clear old button if it exists
 	document
 		.querySelector(`.step__${Number(dynamicStep)} .next__step__btn`)
 		?.remove();
 
-	// RENDER [NEXT-STEP] BUTTON
-	if (dynamicStep === "8") {
-		// HANDLING LAST STEP BUTTON
-		comp.renderChildren(
-			document.querySelector(`.step__${Number(dynamicStep)}`),
-			generateNextButton(Number(dynamicStep) + 1, "OK")
-		);
-	} else {
-		comp.renderChildren(
-			document.querySelector(`.step__${Number(dynamicStep)}`),
-			generateNextButton(Number(dynamicStep) + 1, "NEXT STEP")
-		);
-	}
+	// Render [next-step] button
+	const buttonText = dynamicStep === "8" ? "OK" : "NEXT STEP";
+	comp.renderChildren(
+		document.querySelector(`.step__${Number(dynamicStep)}`),
+		generateNextButton(Number(dynamicStep) + 1, buttonText)
+	);
 
-	// step 02: EXECUTE on BOOK EXIST FUNCTION
+	// Execute on book exist function for step 2
 	if (Number(dynamicStep) === 2) checkBookExist(getBook);
 }
 
@@ -177,41 +179,44 @@ function goNextStepControl(ev) {
 function goStep1() {
 	hideAllStepsAndShowFirstStep();
 	resetOnLoad();
-	// REMOVE [PREV-BTN] FROM PREVIOUS ATTEMPT
+
+	// Remove [prev-btn] from previous attempt
 	helper.removeEl(document.querySelector(".step__2 .prev__step__btn"));
 }
 
 // STEP 2: CHECK BOOK EXISTENCE
 function checkBookExist(bookExist) {
-	//  CLEAR THE PARENT CONTAINER
+	// Clear the parent container
 	helper.cleanParent(".issue__book .step__2 .book-status");
 
-	// BOOK NOT AVAILABLE
 	if (bookExist.quantity === 0) {
+		// Book not available
 		comp.renderChildren(
 			document.querySelector(".issue__book .step__2 .book-status"),
 			`<h1 class="h1">Book Not Available</h1>`
 		);
 
-		// UPDATE [NEXT-STEP] BUTTON
+		// Update [next-step] button to [previous-step]
 		const prevBtn = document.querySelector(
 			".issue__book .step__2 .next__step__btn"
 		);
 		prevBtn.textContent = "Previous Step";
 		helper.addClass(prevBtn, "prev__step__btn");
 		helper.removeClass(prevBtn, "next__step__btn");
-	} else
+	} else {
+		// Book available
 		comp.renderChildren(
 			document.querySelector(".issue__book .step__2 .book-status"),
 			`<h1 class="h1">Book Available</h1>`
 		);
+	}
 }
 
 // STEP 3: CHECK LIBRARY CARD
 function libraryCardCheck(ev) {
 	const checkLibraryCard = ev.target.value;
 
-	// SHOW BTN ON HAVING LIBRARY-CARD
+	// Show appropriate buttons based on library card availability
 	if (checkLibraryCard === "yes") {
 		helper.showEl(document.querySelector(".step__3 .next__step__btn"));
 		helper.hideEl(document.querySelector(".step__3 .go__library-page"));
@@ -224,53 +229,54 @@ function libraryCardCheck(ev) {
 // STEP 4: PROVIDE ALL THE BOOK INFORMATION
 function showAllInformationBook() {
 	const parent = document.querySelector(".issue__book .step__4");
-	// REMOVE PREVIOUS BOOK INFO
+
+	// Remove previous book info
 	helper.removeEl(document.querySelector(".step__4 .book__info"));
+
 	const targetBook = helper.bookMatch(getBook.title);
+
 	const markup = `
-	<section class="book__info">
-		<img src="${targetBook.imgUrl}" alt="${targetBook.title}">
-		<section class="book__info__details">
-			<p>book name: ${targetBook.title}</p>
-			<p>author name: ${targetBook.authorName}</p>
-			<p>book language: ${targetBook.language}</p>
-			<p>genre: ${targetBook.genre} </p>
-			<p>release year: ${targetBook.releaseYear}</p>
-			<p>release version: ${targetBook.releaseVersion}</p>
-			<p>popularity: ${targetBook.popularity} </p>
-			<p>book pages: ${targetBook.pages} </p>
-			<p>book license: ${targetBook.GNUlicense}</p>
-			<p>author bio link: ${targetBook.authorBio} </p>
-			<p>book publication link: ${targetBook.publicationLink}</p>
-			<p>publication name: ${targetBook.publicationName} </p>
-		</section>
-	</section>`;
+        <section class="book__info">
+            <img src="${targetBook.imgUrl}" alt="${targetBook.title}">
+            <section class="book__info__details">
+                <p>Book Name: ${targetBook.title}</p>
+                <p>Author Name: ${targetBook.authorName}</p>
+                <p>Book Language: ${targetBook.language}</p>
+                <p>Genre: ${targetBook.genre} </p>
+                <p>Release Year: ${targetBook.releaseYear}</p>
+                <p>Release Version: ${targetBook.releaseVersion}</p>
+                <p>Popularity: ${targetBook.popularity} </p>
+                <p>Book Pages: ${targetBook.pages} </p>
+                <p>Book License: ${targetBook.GNUlicense}</p>
+                <p>Author Bio Link: ${targetBook.authorBio} </p>
+                <p>Book Publication Link: ${targetBook.publicationLink}</p>
+                <p>Publication Name: ${targetBook.publicationName} </p>
+            </section>
+        </section>
+    `;
 
 	parent.insertAdjacentHTML("afterbegin", markup);
 }
 
 // STEP 5: SHOW CHECKOUT PROCESSING
 function showCheckOutPressing() {
-	helper.hideEl(
-		document.querySelector(".issue__book .step__5 .next__step__btn")
+	const step5NextBtn = document.querySelector(
+		".issue__book .step__5 .next__step__btn"
+	);
+	const bookIssueWaiting = document.querySelector(
+		".issue__book .step__5 .book__issue__waiting"
+	);
+	const bookIssueSuccess = document.querySelector(
+		".issue__book .step__5 .book__issue__success"
 	);
 
-	helper.showEl(
-		document.querySelector(".issue__book .step__5 .book__issue__waiting")
-	);
+	helper.hideEl(step5NextBtn);
+	helper.showEl(bookIssueWaiting);
 
 	setTimeout(() => {
-		helper.hideEl(
-			document.querySelector(".issue__book .step__5 .book__issue__waiting")
-		);
-
-		helper.showEl(
-			document.querySelector(".issue__book .step__5 .book__issue__success")
-		);
-
-		helper.showEl(
-			document.querySelector(".issue__book .step__5 .next__step__btn")
-		);
+		helper.hideEl(bookIssueWaiting);
+		helper.showEl(bookIssueSuccess);
+		helper.showEl(step5NextBtn);
 	}, 10);
 }
 
@@ -291,75 +297,34 @@ function showDueDate() {
 	const currYear = date.getFullYear();
 
 	const dayProcess = (dayInput) => {
-		switch (dayInput) {
-			case 1:
-				return "monday";
-				break;
-			case 2:
-				return "tuesday";
-				break;
-			case 3:
-				return "wednesday";
-				break;
-			case 4:
-				return "thursday";
-				break;
-			case 5:
-				return "friday";
-				break;
-			case 6:
-				return "saturday";
-				break;
-			case 7:
-				return "sunday";
-				break;
-
-			default:
-				return "could not get weekday information";
-				break;
-		}
+		const daysOfWeek = [
+			"Sunday",
+			"Monday",
+			"Tuesday",
+			"Wednesday",
+			"Thursday",
+			"Friday",
+			"Saturday",
+		];
+		return daysOfWeek[dayInput];
 	};
 
 	const monthProcess = (monthInput) => {
-		switch (monthInput) {
-			case 1:
-				return "february";
-				break;
-			case 2:
-				return "march";
-				break;
-			case 3:
-				return "april";
-				break;
-			case 4:
-				return "may";
-				break;
-			case 5:
-				return "june";
-				break;
-			case 6:
-				return "july";
-				break;
-			case 7:
-				return "auguest";
-				break;
-			case 8:
-				return "september";
-				break;
-			case 9:
-				return "october";
-				break;
-			case 10:
-				return "november";
-				break;
-			case 11:
-				return "december";
-				break;
-
-			default:
-				return "could not get month information";
-				break;
-		}
+		const monthsOfYear = [
+			"January",
+			"February",
+			"March",
+			"April",
+			"May",
+			"June",
+			"July",
+			"August",
+			"September",
+			"October",
+			"November",
+			"December",
+		];
+		return monthsOfYear[monthInput];
 	};
 
 	function getDaysInMonth(year, month) {
@@ -367,59 +332,53 @@ function showDueDate() {
 		return new Date(year, month + 1, 0).getDate();
 	}
 
-	const currentDayMarkup = `
-	<p class"">Today is: ${dayProcess(
-		currDay
-	)}, date: ${currDate}, month: ${monthProcess(
-		currMonth
-	)}, year: ${currYear}</p>`;
-
 	// REMOVE PREVIOUS CONTENT
 	helper.removeEl(document.querySelector(".step__7 .return-book__info"));
 
 	const calcFutureDate = () => {
-		// const finalDay =
-		if (currDate + 15 > getDaysInMonth(currYear, currMonth)) {
-			const extraDate = Math.abs(
-				getDaysInMonth(currYear, currMonth) - (currDate + 15)
-			);
-
-			const dueDatemarkup = `
-			<p class="return-book__info">please return the book before <br> date: ${extraDate}, month: ${monthProcess(
-				currMonth + 1
-			)}, year: ${currYear}</p>`;
-
-			document
-				.querySelector(".issue__book .step__7")
-				.insertAdjacentHTML("afterbegin", dueDatemarkup);
-		} else {
-			const dueDatemarkup = `
-				<p class="return-book__info">please return the book before <br> date: ${
-					currDate + 15
-				}, month: ${monthProcess(currMonth)}, year: ${currYear}</p>`;
-
-			document
-				.querySelector(".issue__book .step__7")
-				.insertAdjacentHTML("afterbegin", dueDatemarkup);
-		}
+		const futureDate = currDate + 15;
+		const futureMonth =
+			currMonth +
+			(futureDate > getDaysInMonth(currYear, currMonth) ? 1 : 0);
+		const dueDateMarkup = `
+            <p class="return-book__info">Please return the book before <br> Date: ${futureDate}, Month: ${monthProcess(
+			futureMonth
+		)}, Year: ${currYear}</p>
+        `;
+		document
+			.querySelector(".issue__book .step__7")
+			.insertAdjacentHTML("afterbegin", dueDateMarkup);
 	};
+
+	const currentDayMarkup = `
+        <p class="">Today is: ${dayProcess(
+					currDay
+				)}, Date: ${currDate}, Month: ${monthProcess(
+		currMonth
+	)}, Year: ${currYear}</p>
+    `;
+
 	calcFutureDate();
 }
 
 // STEP 8: TAKE THE BOOK
 function takeBook() {
-	// REMOVE PREVIOS MESSAGE
+	// Remove previous message
 	helper.removeEl(
 		document.querySelector(".issue__book .step__8 .checkout-message")
 	);
 
+	const checkoutMessageMarkup = `
+        <p class="checkout-message">
+            Thank you for choosing our library.<br />
+            Your book will be delivered to <span>${deliveryAddress}</span>.<br />
+            Have a nice day. Please visit us again.
+        </p>
+    `;
+
 	comp.renderChildren(
 		document.querySelector(".issue__book .step__8"),
-		`<p class="checkout-message">
-			thank you for choosing our library. <br />
-			here is your book will be deliver to <span>${deliveryAddress}</span>.
-		<br />have a nice day. please visit us again
-		</p>`,
+		checkoutMessageMarkup,
 		"afterbegin"
 	);
 }
@@ -427,67 +386,55 @@ function takeBook() {
 // DESIGN STEP-PROGRESS
 function stepProgressing(step) {
 	const target = document.querySelector(".issue__book__progress h2");
+	const stepWidths = {
+		2: "25%",
+		3: "37.5%",
+		4: "50%",
+		5: "62.5%",
+		6: "75%",
+		7: "87.5%",
+		8: "100%",
+	};
 
-	switch (step) {
-		case 2:
-			target.style.setProperty("--step-width", "25%");
-			break;
-		case 3:
-			target.style.setProperty("--step-width", "37.5%");
-			break;
-		case 4:
-			target.style.setProperty("--step-width", "50%");
-			break;
-		case 5:
-			target.style.setProperty("--step-width", "62.5%");
-			break;
-		case 6:
-			target.style.setProperty("--step-width", "75%");
-			break;
-		case 7:
-			target.style.setProperty("--step-width", "87.5%");
-			break;
-		case 8:
-			target.style.setProperty("--step-width", "100%");
-			break;
-	}
+	target.style.setProperty("--step-width", stepWidths[step]);
 }
 
 // QUNATITY BOOK MANAGER
 function quantityBookManage() {
 	const prevQuantity = getBook.quantity;
 
-	// QUNATITY BOOK REDUCE
+	// Reduce quantity of the book
 	getBook.quantity = prevQuantity - 1;
 
-	// COOK ALL BOOKS
+	// Get all books
 	const allBooks = [...bookContent.bookLists.preBooks, ...getStorage()];
 
-	// 1) UPDATE BOOK QUANTITY FOR ALL-TYPES-OF-BOOKS
-	const newQunatity = allBooks.find((book) => {
-		if (getBook.title === book.title)
-			return (book.quantity = getBook.quantity);
+	// Update book quantity for all types of books
+	allBooks.forEach((book) => {
+		if (getBook.title === book.title) {
+			book.quantity = getBook.quantity;
+		}
 	});
 
-	// CHECK IF [NEW-QUANTITY] BOOK FROM JS OBJECT OR LOCAL-STORAGE
+	// Check if new quantity book is from JS object or local storage
 	const checkBookFrom = bookContent.bookLists.preBooks.find(
-		(book) => book.id === newQunatity.id
+		(book) => book.id === getBook.id
 	);
 
-	// 2) FILTER TARGET BOOK FROM LOCAL-STORAGE OBJECT
+	// Filter target book from local storage object
 	const oldReference = getStorage().filter(
 		(book) => book.id !== getBook.id
 	);
 
-	// IF BOOK FROM LOCAL-STORAGE OBJECT THEN INJECT IT TO LOCAL-STORAGE
+	// If book is from local storage object, update local storage
 	if (!checkBookFrom) {
-		// 3) SET TO LOCAL-STORAGE
 		localStorage.setItem(
 			"newBook",
-			JSON.stringify([...oldReference, newQunatity])
+			JSON.stringify([...oldReference, getBook])
 		);
 	}
-	// RNDER BOOK-VIEW AGAIN
+
+	// Render book view again
 	bookOffline.bookRenderer();
 }
 
@@ -615,11 +562,14 @@ export function issueBookControl(ev) {
 }
 
 document.addEventListener("click", issueBookControl);
-
-// INPUT DELIVERY ADDRESS EVENT-LISTENRE
 export function deliveryAddressControl() {
+	const nextStepBtn = document.querySelector(".step__6 .next__step__btn");
+	const deliveryAddressBtn = document.querySelector(
+		".step__6 form #delivery-address-btn"
+	);
+
 	// HIDE [NEXT-STEP] BUTTON
-	helper.hideEl(document.querySelector(".step__6 .next__step__btn"));
+	helper.hideEl(nextStepBtn);
 
 	document.addEventListener("submit", (ev) => {
 		ev.preventDefault();
@@ -629,13 +579,11 @@ export function deliveryAddressControl() {
 			comp.showModal(
 				parent,
 				"error",
-				"You can not add an empty address. Please try again"
+				"You cannot add an empty address. Please try again"
 			);
 		} else {
-			helper.hideEl(
-				document.querySelector(".step__6 form #delivery-address-btn")
-			);
-			helper.showEl(document.querySelector(".step__6 .next__step__btn"));
+			helper.hideEl(deliveryAddressBtn);
+			helper.showEl(nextStepBtn);
 		}
 	});
 }
