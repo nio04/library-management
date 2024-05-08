@@ -60,6 +60,10 @@
 					background-color: var(--gray-color-400);
 				}
 
+				&:active {
+					background-color: var(--gray-color-500);
+				}
+
 				@media (max-width: 780px) {
 					grid-template-columns: 1fr;
 				}

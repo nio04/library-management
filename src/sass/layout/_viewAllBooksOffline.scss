@@ -40,6 +40,15 @@
 			position: relative;
 			background-color: var(--gray-color-200);
 
+			&:hover {
+				background-color: var(--gray-color-300);
+				cursor: pointer;
+			}
+
+			&:active {
+				background-color: var(--gray-color-400);
+			}
+
 			.img {
 				width: 12rem;
 				height: auto;
