@@ -5,14 +5,15 @@ import { oldBooks, newBook, preBooks } from "../bookContent";
 const allBooks = [...oldBooks, ...newBook, ...preBooks];
 
 function viewAllBooks__bookSelect(ev) {
+	const parent = document.querySelector(".view-books-offline--container");
 	const viewBooksTarget = ev.target.closest(".book .book__item");
 	if (!ev.target.closest(".book .book__item")) return;
 
 	const bookId = viewBooksTarget.dataset.id;
 	const targetBook = allBooks.filter((book) => book.id === bookId);
-	console.log(targetBook);
+	// console.log(targetBook);
 
-	renderBookModal(targetBook);
+	renderBookModal(parent, targetBook);
 }
 
 function searchBooks__bookSelect(ev) {
@@ -35,7 +36,8 @@ export default function bookModalControl(ev) {
 
 document.addEventListener("click", (ev) => bookModalControl(ev));
 
-function renderBookModal(book) {
+// ERNDER BOOK-MODAL
+function renderBookModal(parent, book) {
 	const markup = book
 		.map((item) => {
 			return `
@@ -94,4 +96,6 @@ function renderBookModal(book) {
 		.join("");
 
 	console.log(markup);
+
+	parent.insertAdjacentHTML("afterbegin", markup);
 }
