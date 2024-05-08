@@ -56,55 +56,55 @@ function renderBookModal(parent, book) {
 	// Generate markup for the book modal
 	const markup = `
 			<section class="book-modal">
-			<svg class="modal-close">
-			<use xlink:href="${icons}#close"></use>
-			</svg>
-			<figure>
-			<img src="${book.imgUrl || ""}" alt="${book.title}" />
-			</figure>
-			<section class="book-modal__description">
-			<p class="book-modal__info">
-			<span class="key">Name</span> : <span class="value">${book.title}</span>
-			</p>
-			<p class="book-modal__info">
-			<span class="key">Author Name</span> : <span class="value">${
-				book.authorName
-			}</span>
-			</p>
-			<p class="book-modal__info">
-			<span class="key">Popularity</span> : <span class="value">${
-				book.popularity
-			}</span>
-			</p>
-			<p class="book-modal__info">
-			<span class="key">Page Number</span> : <span class="value">${
-				book.pages
-			}</span>
-			</p>
-			<p class="book-modal__info">
-			<span class="key">Book Quantity</span> : <span class="value">${
-				book.quantity
-			}</span>
-			</p>
-			<p class="book-modal__info">
-			<span class="key">Language</span> : <span class="value">${
-				book.language
-			}</span>
-			</p>
-			<p class="book-modal__info">
-			<span class="key">Release Year</span> : <span class="value">${
-				book.releaseYear
-			}</span>
-			</p>
-			<p class="book-modal__info">
-			<span class="key">Publication Name</span> : <span class="value">${
-				book.publicationName
-			}</span>
-			</p>
-			<p class="book-modal__info">
-			<span class="key">Genre</span> : <span class="value">${book.genre}</span>
-			</p>
-			</section>
+				<svg class="modal-close">
+				<use xlink:href="${icons}#close"></use>
+				</svg>
+				<figure>
+					<img src="${book.imgUrl || ""}" alt="${book.title}" />
+				</figure>
+				<section class="book-modal__description">
+					<p class="book-modal__info">
+					<span class="key">Name</span> : <span class="value">${book.title}</span>
+					</p>
+					<p class="book-modal__info">
+					<span class="key">Author Name</span> : <span class="value">${
+						book.authorName
+					}</span>
+					</p>
+					<p class="book-modal__info">
+					<span class="key">Popularity</span> : <span class="value">${
+						book.popularity
+					}</span>
+					</p>
+					<p class="book-modal__info">
+					<span class="key">Page Number</span> : <span class="value">${
+						book.pages
+					}</span>
+					</p>
+					<p class="book-modal__info">
+					<span class="key">Book Quantity</span> : <span class="value">${
+						book.quantity
+					}</span>
+					</p>
+					<p class="book-modal__info">
+					<span class="key">Language</span> : <span class="value">${
+						book.language
+					}</span>
+					</p>
+					<p class="book-modal__info">
+					<span class="key">Release Year</span> : <span class="value">${
+						book.releaseYear
+					}</span>
+					</p>
+					<p class="book-modal__info">
+					<span class="key">Publication Name</span> : <span class="value">${
+						book.publicationName
+					}</span>
+					</p>
+					<p class="book-modal__info">
+					<span class="key">Genre</span> : <span class="value">${book.genre}</span>
+					</p>
+				</section>
 			</section>`;
 
 	// Insert the markup into the parent element

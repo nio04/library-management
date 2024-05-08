@@ -236,23 +236,23 @@ function showAllInformationBook() {
 	const targetBook = helper.bookMatch(getBook.title);
 
 	const markup = `
-        <section class="book__info">
-            <img src="${targetBook.imgUrl}" alt="${targetBook.title}">
-            <section class="book__info__details">
-                <p>Book Name: ${targetBook.title}</p>
-                <p>Author Name: ${targetBook.authorName}</p>
-                <p>Book Language: ${targetBook.language}</p>
-                <p>Genre: ${targetBook.genre} </p>
-                <p>Release Year: ${targetBook.releaseYear}</p>
-                <p>Release Version: ${targetBook.releaseVersion}</p>
-                <p>Popularity: ${targetBook.popularity} </p>
-                <p>Book Pages: ${targetBook.pages} </p>
-                <p>Book License: ${targetBook.GNUlicense}</p>
-                <p>Author Bio Link: ${targetBook.authorBio} </p>
-                <p>Book Publication Link: ${targetBook.publicationLink}</p>
-                <p>Publication Name: ${targetBook.publicationName} </p>
-            </section>
-        </section>
+		<section class="book__info">
+			<img src="${targetBook.imgUrl}" alt="${targetBook.title}">
+			<section class="book__info__details">
+				<p>Book Name: ${targetBook.title}</p>
+				<p>Author Name: ${targetBook.authorName}</p>
+				<p>Book Language: ${targetBook.language}</p>
+				<p>Genre: ${targetBook.genre} </p>
+				<p>Release Year: ${targetBook.releaseYear}</p>
+				<p>Release Version: ${targetBook.releaseVersion}</p>
+				<p>Popularity: ${targetBook.popularity} </p>
+				<p>Book Pages: ${targetBook.pages} </p>
+				<p>Book License: ${targetBook.GNUlicense}</p>
+				<p>Author Bio Link: ${targetBook.authorBio} </p>
+				<p>Book Publication Link: ${targetBook.publicationLink}</p>
+				<p>Publication Name: ${targetBook.publicationName} </p>
+			</section>
+		</section>
     `;
 
 	parent.insertAdjacentHTML("afterbegin", markup);
