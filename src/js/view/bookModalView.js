@@ -1,3 +1,4 @@
+import { manageOverlay } from "../helper";
 import localStorageControl from "./localstorageView";
 localStorageControl();
 import { oldBooks, newBook, preBooks } from "../bookContent";
@@ -42,12 +43,13 @@ function renderBookModal(parent, book) {
 		.map((item) => {
 			return `
 		<section class="book-modal">
+			<button class="modal-close">❌</button>
 			<figure>
 				<img src="${item.imgUrl === undefined ? "" : item.imgUrl}" al="${
 				item.title
 			}" />
 			</figure>
-			<section class="book-modal__description>
+			<section class="book-modal__description">
 				<p class="book-modal__info">
 					<span class="key">name</span> : <span class="value">${item.title}</span>
 				</p>
@@ -77,9 +79,6 @@ function renderBookModal(parent, book) {
 					}</span>
 				</p>
 				<p class="book-modal__info">
-					<span class="key">genre</span> : <span class="value">${item.genre}</span>
-				</p>
-				<p class="book-modal__info">
 					<span class="key">release year</span> : <span class="value">${
 						item.releaseYear
 					}</span>
@@ -88,6 +87,9 @@ function renderBookModal(parent, book) {
 					<span class="key">publication name</span> : <span class="value">${
 						item.publicationName
 					}</span>
+				</p>
+				<p class="book-modal__info">
+					<span class="key">genre</span> : <span class="value">${item.genre}</span>
 				</p>
 				</section>
 		</section>
@@ -98,4 +100,5 @@ function renderBookModal(parent, book) {
 	console.log(markup);
 
 	parent.insertAdjacentHTML("afterbegin", markup);
+	manageOverlay();
 }

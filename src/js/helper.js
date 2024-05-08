@@ -49,3 +49,9 @@ export function generateUniqueNumbers(count, min = 0, max = 10) {
 	}
 	return uniqueNumbers;
 }
+
+// utility Functions
+export function manageOverlay() {
+	document.querySelector(".overlay").classList.toggle("overlay-off");
+	document.body.classList.toggle("no-overflow");
+}

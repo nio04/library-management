@@ -1,7 +1,6 @@
-import * as helper from "./helper";
+import { hideEl, showEl, manageOverlay } from "./helper";
 
 const container = document.querySelector(".container");
-const overlay = document.querySelector(".overlay");
 const spinner = document.querySelector(".spinner");
 
 // Render Functions
@@ -20,14 +19,12 @@ export function renderChildren(parent, markup, position = "beforeend") {
 // Modal Functions
 export function showModal(parent, className, message = "") {
 	generateModalMarkup(parent, className, message);
-	overlay.classList.remove("overlay-off");
-	document.body.classList.add("no-overflow");
+	manageOverlay();
 }
 
 export function hideModal() {
 	document.querySelector(".modal").remove();
-	overlay.classList.add("overlay-off");
-	document.body.classList.remove("no-overflow");
+	manageOverlay();
 }
 
 function generateModalMarkup(parent, className, message) {
@@ -42,13 +39,13 @@ function generateModalMarkup(parent, className, message) {
 // Spinner Functions
 export function showSpinner(ev) {
 	if (!ev?.target.classList.contains("navigator__link")) return;
-	helper.hideEl(container);
-	helper.showEl(spinner);
+	hideEl(container);
+	showEl(spinner);
 }
 
 export function hideSpinner() {
-	helper.showEl(container);
-	helper.hideEl(spinner);
+	showEl(container);
+	hideEl(spinner);
 }
 
 export function hideAllSections() {
@@ -61,9 +58,7 @@ export function hideAllSections() {
 		".issue-book",
 		".contributor-section",
 	];
-	sections.forEach((section) =>
-		helper.hideEl(document.querySelector(section))
-	);
+	sections.forEach((section) => hideEl(document.querySelector(section)));
 }
 
 // Next Icon Generation Function
