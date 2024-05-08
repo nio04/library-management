@@ -23,7 +23,7 @@ export function showModal(parent, className, message = "") {
 }
 
 export function hideModal() {
-	document.querySelector(".modal").remove();
+	document.querySelector(".modal")?.remove();
 	manageOverlay();
 }
 
