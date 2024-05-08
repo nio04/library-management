@@ -19,12 +19,14 @@ function viewAllBooks__bookSelect(ev) {
 }
 
 function searchBooks__bookSelect(ev) {
+	const parent = document.querySelector(".search-books-offline");
 	const searchBookTarget = ev.target.closest(".book .book__info");
 	if (!ev.target.closest(".book .book__info")) return;
 
 	const bookId = searchBookTarget.dataset.id;
 	const targetBook = allBooks.filter((book) => book.id === bookId);
-	console.log(targetBook);
+	// console.log(targetBook);
+	renderBookModal(parent, targetBook);
 }
 
 export default function bookModalControl(ev) {
