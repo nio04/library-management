@@ -1,5 +1,5 @@
 import icons from "url:../../asset/icons/sprite.svg";
-import { manageOverlay } from "../helper";
+import { manageOverlay, removeEl } from "../helper";
 import localStorageControl from "./localstorageView";
 localStorageControl();
 import { oldBooks, newBook, preBooks } from "../bookContent";
@@ -34,6 +34,12 @@ export default function bookModalControl(ev) {
 	// FOR SEARCH SECTION
 	else if (ev.target.closest(".search-result__lists"))
 		searchBooks__bookSelect(ev);
+
+	// CLOSE BOOK-MODAL
+	if (ev.target.closest(".book-modal .modal-close")) {
+		removeEl(document.querySelector(".book-modal"));
+		manageOverlay();
+	}
 }
 
 document.addEventListener("click", (ev) => bookModalControl(ev));
