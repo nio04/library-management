@@ -21,11 +21,13 @@ export function renderChildren(parent, markup, position = "beforeend") {
 export function showModal(parent, className, message = "") {
 	generateModalMarkup(parent, className, message);
 	overlay.classList.remove("overlay-off");
+	document.body.classList.add("no-overflow");
 }
 
 export function hideModal() {
 	document.querySelector(".modal").remove();
 	overlay.classList.add("overlay-off");
+	document.body.classList.remove("no-overflow");
 }
 
 function generateModalMarkup(parent, className, message) {

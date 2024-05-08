@@ -11,3 +11,7 @@
 	// transition-timing-function: cubic-bezier(0.42, 0.84, 0.85, 0.6);
 	transform: translate(0) !important;
 }
+
+.no-overflow {
+	overflow: hidden;
+}
