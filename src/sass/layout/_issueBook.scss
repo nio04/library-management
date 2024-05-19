@@ -53,19 +53,13 @@
 	&__find__book,
 	.step__1 {
 		margin: 0 3rem;
-		@extend %flex-center;
-
-		@include abs.mq(1000px) {
-			display: grid;
-			grid-template-columns: repeat(2, 1fr);
-			justify-items: center;
-		}
+		display: grid;
+		grid-template-columns: 1fr;
 
 		form {
-			grid-column: 1 / -1;
-			display: grid;
-			grid-template-columns: repeat(2, 1fr);
+			display: flex;
 			align-items: center;
+			justify-content: center;
 
 			input[type="search"],
 			input[type="submit"] {
@@ -87,6 +81,10 @@
 				font-family: Inconsolata;
 				@include abs.translate(100%, 0);
 			}
+
+			.search-section {
+				margin-top: 0;
+			}
 		}
 
 		.search-result {
@@ -98,7 +96,7 @@
 			padding-top: 2rem;
 
 			&__section {
-				justify-self: end;
+				// justify-self: end;
 				max-width: 100%;
 				position: relative;
 				margin-top: 5rem;
@@ -122,8 +120,8 @@
 				.book {
 					display: grid;
 					grid-template-columns: repeat(
-						auto-fill,
-						minmax(min-content, 30rem)
+						auto-fit,
+						minmax(min-content, 60rem)
 					);
 					justify-content: center;
 					gap: 5rem;
@@ -197,10 +195,11 @@
 		}
 
 		.next__step__btn {
-			justify-self: start;
+			justify-self: center;
 			align-self: center;
 			margin-left: 2rem;
 			margin-top: 4rem;
+			margin: 4rem 2rem 4rem 2rem;
 			// @extend .from-hidden;
 			// transform: translateX(100%);
 		}
