@@ -465,14 +465,19 @@ export function issueBookControl(ev) {
 
 	// selecting books in search-result
 	if (ev.target.closest("section .book .book__item")) {
-		const selectedBookEl = ev.target
-			.closest(".book .book__item")
-			.getAttribute("id");
+		const selectedBookEl = ev.target.closest(".book .book__item");
+
+		const selectedBookID = selectedBookEl.getAttribute("id");
 		// search book by ID
-		searchBooks(selectedBookEl);
+		searchBooks(selectedBookID);
 		// inject book
-		getBook = searchBooks(selectedBookEl);
-		console.log(getBook);
+		getBook = searchBooks(selectedBookID);
+
+		// select all the search-result and remove class
+		document
+			.querySelectorAll(".search-result__section .search-result__lists li")
+			.forEach((el) => el.classList.remove("select-book"));
+		selectedBookEl.classList.add("select-book");
 	}
 
 	// STEP 1.2: CLICK ON [NEXT] BUTTON

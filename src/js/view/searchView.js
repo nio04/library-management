@@ -19,7 +19,6 @@ const getAllBooks = () => {
 
 // Function to filter books based on search value
 const filterBooksBySearchValue = (books, searchValue) => {
-	console.log(searchValue);
 	const searchQuery = searchValue?.toLowerCase();
 	return books.filter((book) =>
 		book.title?.toLowerCase().includes(searchQuery)
