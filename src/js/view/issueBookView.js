@@ -85,8 +85,7 @@ function findBook(ev) {
 	if (!issueBook) return;
 
 	// Remove [next-step] btn at first
-	const step1NextBtn = document.querySelector(".step__1 .next__step__btn");
-	helper.removeEl(step1NextBtn);
+	helper.removeEl(document.querySelector(".step__1 .next__step__btn"));
 
 	const searchValue = searchInput.value;
 	const searchResults = searchBooks(searchValue);
@@ -131,6 +130,8 @@ function findBook(ev) {
 
 	// Generate next-step button
 	comp.renderSibling(resultParent, generateNextButton(2));
+	// disble [next-btn] for step 1 AT FIRST
+	document.querySelector(".step__1 .next__step__btn").disabled = true;
 }
 
 // HANDLE [NEXT-STEP] BUTTON
@@ -466,12 +467,16 @@ export function issueBookControl(ev) {
 	// selecting books in search-result
 	if (ev.target.closest("section .book .book__item")) {
 		const selectedBookEl = ev.target.closest(".book .book__item");
-
 		const selectedBookID = selectedBookEl.getAttribute("id");
+
 		// search book by ID
 		searchBooks(selectedBookID);
-		// inject book
+
+		// inject selected book
 		getBook = searchBooks(selectedBookID);
+
+		// enable [next-btn] when book is selected
+		document.querySelector(".step__1 .next__step__btn").disabled = false;
 
 		// select all the search-result and remove class
 		document
@@ -482,7 +487,7 @@ export function issueBookControl(ev) {
 
 	// STEP 1.2: CLICK ON [NEXT] BUTTON
 	if (
-		ev.target.closest(".next__step__btn svg") ||
+		(getBook?.length > 0 && ev.target.closest(".next__step__btn svg")) ||
 		ev.target.classList.contains("next__step__btn")
 	)
 		goNextStepControl(ev);
