@@ -85,80 +85,80 @@ function callback(entries) {
 					]);
 					observer.unobserve(entry.target);
 					break;
-				case "issue__book":
-					showChildren([
-						entry.target.children[0],
-						entry.target.children[1],
-						entry.target.children[2],
-					]);
-					observer.unobserve(entry.target);
-					break;
-				case "step__1":
-					showChildren([
-						entry.target.children[0][0],
-						entry.target.children[0][1],
-						Array.from(entry.target.children[1].children[0].children),
-					]);
-					observer.unobserve(entry.target);
-					break;
-				case "search-result__lists":
-					showChildren([Array.from(entry.target.children)]);
-					observer.unobserve(entry.target);
-					break;
-				case "step__2":
-					showChildren([
-						entry.target.children[0].children[0],
-						entry.target.parentElement.children[2].children[0],
-					]);
-					observer.unobserve(entry.target);
-					break;
-				case "step__3":
-					showChildren([
-						entry.target.children[0].children[0],
-						entry.target.children[0].children[1].children[0],
-						entry.target.children[0].children[1].children[1],
-						entry.target.parentElement.children[2].children[0],
-					]);
-					observer.unobserve(entry.target);
-					break;
-				case "step__4":
-					showChildren([
-						entry.target.children[0].children[0],
-						entry.target.children[0].children[1],
-						entry.target.parentElement.children[2].children[0],
-					]);
-					observer.unobserve(entry.target);
-					break;
-				case "step__5":
-					showChildren([
-						entry.target.children[0],
-						entry.target.children[1],
-						entry.target.parentElement.children[2].children[0],
-					]);
-					observer.unobserve(entry.target);
-					break;
-				case "step__6":
-					showChildren([
-						entry.target.children[0].children[0],
-						entry.target.children[0].children[1].children[1],
-						entry.target.parentElement.children[2].children[0],
-					]);
-					observer.unobserve(entry.target);
-					break;
-				case "step__7":
-					showChildren(
-						[entry.target.firstElementChild],
-						entry.target.parentElement.children[2].children[0]
-					);
-					observer.unobserve(entry.target);
-					break;
-				case "step__8":
-					showChildren([
-						entry.target.children[0],
-						entry.target.parentElement.children[2].children[0],
-					]);
-					observer.unobserve(entry.target);
-					break;
+				// case "issue__book":
+				// 	showChildren([
+				// 		entry.target.children[0],
+				// 		entry.target.children[1],
+				// 		entry.target.children[2],
+				// 	]);
+				// 	observer.unobserve(entry.target);
+				// 	break;
+				// case "step__1":
+				// 	showChildren([
+				// 		entry.target.children[0][0],
+				// 		entry.target.children[0][1],
+				// 		Array.from(entry.target.children[1].children[0].children),
+				// 	]);
+				// 	observer.unobserve(entry.target);
+				// 	break;
+				// case "search-result__lists":
+				// 	showChildren([Array.from(entry.target.children)]);
+				// 	observer.unobserve(entry.target);
+				// 	break;
+				// case "step__2":
+				// 	showChildren([
+				// 		entry.target.children[0].children[0],
+				// 		entry.target.parentElement.children[2].children[0],
+				// 	]);
+				// 	observer.unobserve(entry.target);
+				// 	break;
+				// case "step__3":
+				// 	showChildren([
+				// 		entry.target.children[0].children[0],
+				// 		entry.target.children[0].children[1].children[0],
+				// 		entry.target.children[0].children[1].children[1],
+				// 		entry.target.parentElement.children[2].children[0],
+				// 	]);
+				// 	observer.unobserve(entry.target);
+				// 	break;
+				// case "step__4":
+				// 	showChildren([
+				// 		entry.target.children[0].children[0],
+				// 		entry.target.children[0].children[1],
+				// 		entry.target.parentElement.children[2].children[0],
+				// 	]);
+				// 	observer.unobserve(entry.target);
+				// 	break;
+				// case "step__5":
+				// 	showChildren([
+				// 		entry.target.children[0],
+				// 		entry.target.children[1],
+				// 		entry.target.parentElement.children[2].children[0],
+				// 	]);
+				// 	observer.unobserve(entry.target);
+				// 	break;
+				// case "step__6":
+				// 	showChildren([
+				// 		entry.target.children[0].children[0],
+				// 		entry.target.children[0].children[1].children[1],
+				// 		entry.target.parentElement.children[2].children[0],
+				// 	]);
+				// 	observer.unobserve(entry.target);
+				// 	break;
+				// case "step__7":
+				// 	showChildren(
+				// 		[entry.target.firstElementChild],
+				// 		entry.target.parentElement.children[2].children[0]
+				// 	);
+				// 	observer.unobserve(entry.target);
+				// 	break;
+				// case "step__8":
+				// 	showChildren([
+				// 		entry.target.children[0],
+				// 		entry.target.parentElement.children[2].children[0],
+				// 	]);
+				// 	observer.unobserve(entry.target);
+				// 	break;
 				case "contributor-section":
 					showChildren([
 						entry.target.children[0],

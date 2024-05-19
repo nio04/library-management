@@ -6,8 +6,8 @@
 	overflow-x: hidden;
 
 	h1 {
-		@extend .from-hidden;
-		@include abs.translate(0, -100%);
+		// @extend .from-hidden;
+		// @include abs.translate(0, -100%);
 	}
 
 	&__progress {
@@ -21,8 +21,8 @@
 		h2 {
 			color: var(--gray-color-200);
 			transform: translateY(-2rem);
-			@extend .from-hidden;
-			@include abs.translate(100%, 0);
+			// @extend .from-hidden;
+			// @include abs.translate(100%, 0);
 
 			&::before {
 				content: "";
@@ -35,8 +35,8 @@
 				background-color: var(--indigo-color-600);
 				border-radius: 1rem;
 				z-index: -1;
-				@extend .from-hidden;
-				@include abs.translate(-100%, 0);
+				// @extend .from-hidden;
+				// @include abs.translate(-100%, 0);
 			}
 		}
 
@@ -65,13 +65,13 @@
 			input[type="submit"] {
 				outline: none;
 				font-family: Montserrat;
-				@extend .from-hidden;
+				// @extend .from-hidden;
 			}
 
 			input[type="search"] {
 				width: 35rem;
 				padding-left: 0.4rem;
-				@include abs.translate(-100%, 0);
+				// @include abs.translate(-100%, 0);
 			}
 
 			input[type="submit"] {
@@ -79,7 +79,9 @@
 				font-size: 3rem;
 				text-transform: uppercase;
 				font-family: Inconsolata;
-				@include abs.translate(100%, 0);
+				// @include abs.translate(100%, 0);
+				opacity: 1 !important;
+				transform: translate(0) !important;
 			}
 
 			.search-section {
@@ -102,20 +104,20 @@
 				margin-top: 5rem;
 				overflow: hidden;
 
-				.book-mark {
-					position: absolute;
-					top: 0;
-					right: 2rem;
-					height: 1rem;
-					width: 1rem;
-					transform: translateY(-100%);
-					cursor: pointer;
-					transform: scale(2) !important;
-					@extend .from-hidden;
-					@include abs.mq(750px) {
-						top: 2rem;
-					}
-				}
+				// .book-mark {
+				// 	position: absolute;
+				// 	top: 0;
+				// 	right: 2rem;
+				// 	height: 1rem;
+				// 	width: 1rem;
+				// 	// transform: translateY(-100%);
+				// 	cursor: pointer;
+				// 	transform: scale(2) !important;
+				// 	// @extend .from-hidden;
+				// 	@include abs.mq(750px) {
+				// 		top: 2rem;
+				// 	}
+				// }
 
 				.book {
 					display: grid;
@@ -135,8 +137,8 @@
 						padding: 0.6rem 1rem;
 						border-radius: 0.6rem;
 						transition: all 0.1s;
-						@extend .from-hidden;
-						@include abs.translate(0, 100%);
+						// @extend .from-hidden;
+						// @include abs.translate(0, 100%);
 						cursor: pointer;
 
 						&:hover {
@@ -238,15 +240,15 @@
 
 					&:nth-of-type(even),
 					&:nth-of-type(odd) {
-						@extend .from-hidden;
+						// @extend .from-hidden;
 					}
 
 					&:nth-of-type(even) {
-						transform: translateX(-150%);
+						// transform: translateX(-150%);
 					}
 
 					&:nth-of-type(odd) {
-						transform: translateX(150%);
+						// transform: translateX(150%);
 					}
 
 					&:not(:last-child) {
@@ -281,8 +283,8 @@
 				height: auto;
 				width: 16%;
 				border-radius: 1.4rem;
-				@extend .from-hidden;
-				transform: scale(0.1);
+				// @extend .from-hidden;
+				// transform: scale(0.1);
 			}
 
 			&__details {
@@ -295,7 +297,7 @@
 				border-radius: 0.6rem;
 				margin-bottom: 3rem;
 				margin-top: 2rem;
-				@extend .from-hidden;
+				// @extend .from-hidden;
 
 				@include abs.mq(600px) {
 					grid-template-columns: 1fr;
@@ -330,8 +332,8 @@
 				text-transform: uppercase;
 				color: var(--primary-color-400);
 				font-family: Montserrat;
-				@extend .from-hidden;
-				@include abs.translate(0, 100%);
+				// @extend .from-hidden;
+				// @include abs.translate(0, 100%);
 			}
 
 			&__success {
@@ -344,8 +346,8 @@
 				line-height: 2;
 				text-align: center;
 				margin-bottom: 4rem;
-				@extend .from-hidden;
-				@include abs.translate(0, 100%);
+				// @extend .from-hidden;
+				// @include abs.translate(0, 100%);
 			}
 		}
 	}
@@ -362,8 +364,8 @@
 			label {
 				line-height: 6rem;
 				align-self: flex-start;
-				@extend .from-hidden;
-				@include abs.translate(0, -100%);
+				// @extend .from-hidden;
+				// @include abs.translate(0, -100%);
 
 				input[type="text"] {
 					width: 100%;
@@ -373,6 +375,11 @@
 			section {
 				margin: 0 auto;
 				margin-top: 4rem;
+
+				input {
+					opacity: 1 !important;
+					transform: translate(0) !important;
+				}
 			}
 		}
 	}
@@ -387,7 +394,7 @@
 			line-height: 3;
 			font-family: Montserrat;
 			color: var(--red-color-400);
-			@extend .from-hidden;
+			// @extend .from-hidden;
 		}
 	}
 
@@ -403,8 +410,8 @@
 			line-height: 2.5;
 			text-align: center;
 			color: var(--green-color-400);
-			@extend .from-hidden;
-			@include abs.translate(0, 100%);
+			// @extend .from-hidden;
+			// @include abs.translate(0, 100%);
 
 			span {
 				color: var(--pink-color-800);
