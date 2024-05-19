@@ -37,6 +37,7 @@ const bookIssueSteps = [
 	"pick up the book",
 ];
 const totalSteps = 8;
+// selected book from search-result
 let getBook;
 let deliveryAddress;
 
@@ -186,10 +187,11 @@ function goStep1() {
 
 // STEP 2: CHECK BOOK EXISTENCE
 function checkBookExist(bookExist) {
+	console.log(bookExist);
 	// Clear the parent container
 	helper.cleanParent(".issue__book .step__2 .book-status");
 
-	if (bookExist.quantity === 0) {
+	if (bookExist[0].quantity === 0) {
 		// Book not available
 		comp.renderChildren(
 			document.querySelector(".issue__book .step__2 .book-status"),
@@ -459,6 +461,17 @@ export function issueBookControl(ev) {
 
 	// STEP 1: FIND BOOK
 	if (ev.target.id === "search__books__offline__btn") findBook(ev);
+
+	if (ev.target.closest("section .book .book__item")) {
+		const selectedBookEl = ev.target
+			.closest(".book .book__item")
+			.getAttribute("id");
+		// search book by ID
+		searchBooks(selectedBookEl);
+		// inject book
+		getBook = searchBooks(selectedBookEl);
+		console.log(getBook);
+	}
 
 	// STEP 1.2: CLICK ON [NEXT] BUTTON
 	if (ev.target.classList.contains("next__step__btn"))
