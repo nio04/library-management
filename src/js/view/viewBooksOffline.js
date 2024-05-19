@@ -47,7 +47,7 @@ function fillUpBookSection(target) {
 	}
 }
 
-function renderBooks(parent, books) {
+export function renderBooks(parent, books) {
 	const markup = books
 		.flat(Infinity)
 		.map((book) => renderMarkup(book))
@@ -55,7 +55,7 @@ function renderBooks(parent, books) {
 	comp.render(parent, markup);
 }
 
-function renderMarkup(book = []) {
+export function renderMarkup(book = []) {
 	if (book === null) return;
 	return `
         <li class="book__item ${

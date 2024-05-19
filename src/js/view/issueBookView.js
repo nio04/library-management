@@ -12,7 +12,7 @@
 import icons from "url:../../asset/icons/sprite.svg";
 import * as helper from "../helper";
 import * as comp from "../component";
-import * as bookOffline from "./viewBooksOffline";
+import { renderBooks, renderMarkup } from "./viewBooksOffline";
 import * as bookContent from "../bookContent";
 import { getStorage } from "./localstorageView";
 import { searchBooks } from "./searchView";
@@ -235,27 +235,28 @@ function showAllInformationBook() {
 	// Remove previous book info
 	helper.removeEl(document.querySelector(".step__4 .book__info"));
 
-	const targetBook = helper.bookMatch(getBook.title);
-
-	const markup = `
+	// const targetBook = helper.bookMatch(getBook.title);
+	const markup = getBook.map((book) => {
+		return `
 		<section class="book__info">
-			<img src="${targetBook.imgUrl}" alt="${targetBook.title}">
+			<img src="${book.imgUrl}" alt="${book.title}">
 			<section class="book__info__details">
-				<p>Book Name: ${targetBook.title}</p>
-				<p>Author Name: ${targetBook.authorName}</p>
-				<p>Book Language: ${targetBook.language}</p>
-				<p>Genre: ${targetBook.genre} </p>
-				<p>Release Year: ${targetBook.releaseYear}</p>
-				<p>Release Version: ${targetBook.releaseVersion}</p>
-				<p>Popularity: ${targetBook.popularity} </p>
-				<p>Book Pages: ${targetBook.pages} </p>
-				<p>Book License: ${targetBook.GNUlicense}</p>
-				<p>Author Bio Link: ${targetBook.authorBio} </p>
-				<p>Book Publication Link: ${targetBook.publicationLink}</p>
-				<p>Publication Name: ${targetBook.publicationName} </p>
+				<p>Book Name: ${book.title}</p>
+				<p>Author Name: ${book.authorName}</p>
+				<p>Book Language: ${book.language}</p>
+				<p>Genre: ${book.genre} </p>
+				<p>Release Year: ${book.releaseYear}</p>
+				<p>Release Version: ${book.releaseVersion}</p>
+				<p>Popularity: ${book.popularity} </p>
+				<p>Book Pages: ${book.pages} </p>
+				<p>Book License: ${book.GNUlicense}</p>
+				<p>Author Bio Link: ${book.authorBio} </p>
+				<p>Book Publication Link: ${book.publicationLink}</p>
+				<p>Publication Name: ${book.publicationName} </p>
 			</section>
 		</section>
     `;
+	});
 
 	parent.insertAdjacentHTML("afterbegin", markup);
 }
@@ -403,41 +404,41 @@ function stepProgressing(step) {
 
 // QUNATITY BOOK MANAGER
 function quantityBookManage() {
-	const prevQuantity = getBook.quantity;
-
-	// Reduce quantity of the book
-	getBook.quantity = prevQuantity - 1;
+	const selectedBookTitle = getBook[0].title;
 
 	// Get all books
 	const allBooks = [...bookContent.bookLists.preBooks, ...getStorage()];
 
 	// Update book quantity for all types of books
 	allBooks.forEach((book) => {
-		if (getBook.title === book.title) {
-			book.quantity = getBook.quantity;
+		if (book.title === selectedBookTitle) {
+			book.quantity -= 1;
 		}
 	});
 
 	// Check if new quantity book is from JS object or local storage
 	const checkBookFrom = bookContent.bookLists.preBooks.find(
-		(book) => book.id === getBook.id
+		(book) => book.id === getBook[0].id
 	);
 
 	// Filter target book from local storage object
 	const oldReference = getStorage().filter(
-		(book) => book.id !== getBook.id
+		(book) => book.id !== getBook[0].id
 	);
 
-	// If book is from local storage object, update local storage
+	// If book is from local storage, update local storage
 	if (!checkBookFrom) {
 		localStorage.setItem(
 			"newBook",
-			JSON.stringify([...oldReference, getBook])
+			JSON.stringify([...oldReference, getBook[0]])
 		);
 	}
 
-	// Render book view again
-	bookOffline.bookRenderer();
+	// Render book view again [taking helps from [view-books-offline.js]]
+	renderBooks(
+		document.querySelector(".view-books-offline--view-all ul"),
+		allBooks
+	);
 }
 
 export function issueBookControl(ev) {
@@ -462,6 +463,7 @@ export function issueBookControl(ev) {
 	// STEP 1: FIND BOOK
 	if (ev.target.id === "search__books__offline__btn") findBook(ev);
 
+	// selecting books in search-result
 	if (ev.target.closest("section .book .book__item")) {
 		const selectedBookEl = ev.target
 			.closest(".book .book__item")
