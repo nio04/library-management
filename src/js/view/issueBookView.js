@@ -135,8 +135,9 @@ function findBook(ev) {
 
 // HANDLE [NEXT-STEP] BUTTON
 function goNextStepControl(ev) {
+	const btnParent = ev.target.closest(".next__step__btn");
 	// Get the 'step' variable from the DOM button
-	const dynamicStep = ev.target.dataset.goNextStep;
+	const dynamicStep = btnParent.dataset.goNextStep;
 
 	if (Number(dynamicStep) > totalSteps) return;
 
@@ -187,7 +188,6 @@ function goStep1() {
 
 // STEP 2: CHECK BOOK EXISTENCE
 function checkBookExist(bookExist) {
-	console.log(bookExist);
 	// Clear the parent container
 	helper.cleanParent(".issue__book .step__2 .book-status");
 
@@ -481,7 +481,10 @@ export function issueBookControl(ev) {
 	}
 
 	// STEP 1.2: CLICK ON [NEXT] BUTTON
-	if (ev.target.classList.contains("next__step__btn"))
+	if (
+		ev.target.closest(".next__step__btn svg") ||
+		ev.target.classList.contains("next__step__btn")
+	)
 		goNextStepControl(ev);
 
 	// STEP 2:
