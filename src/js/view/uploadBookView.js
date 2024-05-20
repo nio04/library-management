@@ -62,6 +62,9 @@ export default function uploadBookControl(ev) {
 
 	bookContent.newBook.push(newBook);
 	localstorage.setStorage(newBook);
+
+	// Clear the URL form data
+	history.pushState({}, document.title, window.location.pathname);
 }
 
 function getInputValue() {
