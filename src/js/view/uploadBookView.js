@@ -137,11 +137,13 @@ document.addEventListener("click", (ev) => {
 		ev.target.classList.contains("overlay")
 	) {
 		comp.hideModal();
+		location.reload();
 	}
 });
 
 formUploadBtn.addEventListener("click", uploadBookControl);
 
+// HANDLING IMG EVENT
 document
 	.querySelector("#random-photo__label #random-photo")
 	.addEventListener("change", (ev) => {
