@@ -1,3 +1,4 @@
+import icons from "url:../../asset/icons/sprite.svg";
 import * as helper from "./../helper";
 import * as comp from "../component";
 import { oldBooks, preBooks } from "../bookContent";
@@ -47,6 +48,25 @@ function fillUpBookSection(target) {
 	}
 }
 
+function sortViewAllBooks(sortType) {
+	const allBooks = [preBooks, oldBooks].flat(Infinity);
+
+	if (sortType === "ascending")
+		return allBooks.sort((a, b) => {
+			if (a.title > b.title) return 1;
+			if (a.title < b.title) return -1;
+			return 0;
+		});
+	if (sortType === "descending")
+		return allBooks.sort((a, b) => {
+			if (a.title > b.title) return -1;
+			if (a.title < b.title) return 1;
+			return 0;
+		});
+
+	return allBooks;
+}
+
 export function renderBooks(parent, books) {
 	const markup = books
 		.flat(Infinity)
@@ -89,3 +109,44 @@ export default function offlineBookControl() {
 }
 
 document.addEventListener("DOMContentLoaded", offlineBookControl);
+
+// handling sorting
+document.addEventListener("click", (ev) => {
+	if (ev.target.closest(".view-books-offline--view-all h1 svg")) {
+		const targetH1 = document.querySelector(
+			".view-books-offline--view-all h1"
+		);
+		const iconParent = ev.target.closest("svg");
+
+		if (iconParent.classList.contains("sort-ascending")) {
+			// SHOW BOOKS IN ASCENDING
+			targetH1.innerHTML = generateDescendingIcon();
+			const sortedBooks = sortViewAllBooks("descending");
+			renderBooks(containers.viewAll, sortedBooks);
+		} else {
+			// SHOW BOOKS IN DESCENDING
+			targetH1.innerHTML = generateAscendingIcon();
+			const sortedBooks = sortViewAllBooks("ascending");
+			renderBooks(containers.viewAll, sortedBooks);
+		}
+	}
+});
+
+function generateAscendingIcon() {
+	return `
+		explore from our <span class="color-header">
+		collection</span>
+		<svg class="sort-ascending">
+					<use xlink:href="${icons}#sort-ascending"></use>
+		</svg>
+	`;
+}
+function generateDescendingIcon() {
+	return `
+		explore from our <span class="color-header">
+		collection</span>
+		<svg class="sort-descending">
+					<use xlink:href="${icons}#sort-descending"></use>
+		</svg>
+`;
+}
