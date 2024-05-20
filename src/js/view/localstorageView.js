@@ -1,16 +1,12 @@
 import * as bookContent from "../bookContent";
 
-// Array to store books in local storage
-export const storageBook = [];
-
 // Function to add a new book to storage
 export function setStorage(book) {
-	// Add new book to storage
-	storageBook.push(book);
-
 	// Convert storageBook array to JSON and store in local storage
-	const stringify = JSON.stringify(storageBook);
-	localStorage.setItem("newBook", stringify);
+	localStorage.setItem(
+		"newBook",
+		JSON.stringify([...bookContent.oldBooks, bookContent.newBook])
+	);
 }
 
 // Function to retrieve books from storage
