@@ -2,6 +2,7 @@ import icons from "url:../../asset/icons/sprite.svg";
 import * as helper from "./../helper";
 import * as comp from "../component";
 import { oldBooks, preBooks } from "../bookContent";
+import { flushLocalStorage } from "./localstorageView";
 
 const containers = {
 	newCollection: document.querySelector(
@@ -152,3 +153,8 @@ function generateDescendingIcon() {
 }
 
 // DELETING NEW COLLECTION BOOKS
+document.addEventListener("click", (ev) => {
+	if (ev.target.closest(".view-books-offline--new-collection h1 svg")) {
+		flushLocalStorage();
+	}
+});

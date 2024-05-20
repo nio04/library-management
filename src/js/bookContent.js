@@ -1,6 +1,6 @@
 import * as helper from "./helper";
 
-// Array to store oldBooks
+// Array to store oldBooks [local-storage]
 export const oldBooks = [];
 
 // Define the number of offline images available

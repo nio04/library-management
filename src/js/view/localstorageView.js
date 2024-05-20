@@ -24,6 +24,12 @@ export function getStorage() {
 	}
 }
 
+export function flushLocalStorage() {
+	if (localStorage.getItem("newBook") === null) return;
+
+	localStorage.removeItem("newBook");
+}
+
 export default function localStorageControl() {
 	if (localStorage.getItem("newBook") !== null) {
 		bookContent.oldBooks.push(
