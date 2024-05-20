@@ -150,3 +150,5 @@ function generateDescendingIcon() {
 		</svg>
 `;
 }
+
+// DELETING NEW COLLECTION BOOKS

@@ -120,6 +120,16 @@
 	}
 }
 
+%svg-markup {
+	margin: 0 2.6rem;
+	fill: var(--green-color-600);
+	cursor: pointer;
+
+	@include abs.mq(840px) {
+		margin-top: 2.5rem;
+	}
+}
+
 .view-books-offline {
 	&--container {
 		overflow-x: hidden;
@@ -135,17 +145,19 @@
 		@extend %book-structure;
 	}
 
+	&--new-collection {
+		h1 {
+			svg {
+				@extend %svg-markup;
+			}
+		}
+	}
+
 	&--view-all {
 		h1 {
 			svg {
-				margin: 0 2.6rem;
-				fill: var(--green-color-600);
-				transform: scale(1.3);
-				cursor: pointer;
-
-				@include abs.mq(840px) {
-					margin-top: 2.5rem;
-				}
+				@extend %svg-markup;
+				transform: translateY(20%) scale(1.5);
 			}
 		}
 	}
