@@ -45,7 +45,9 @@ const generateNextButton = (step, btntext = "Next Step") => {
 	const icon = btntext === "OK" ? "ok" : "next";
 
 	return `
-        <button class="btn anim-btn next__step__btn dynaimc-next-btn" data-go-next-step="${step}">
+        <button class="btn anim-btn next__step__btn dynaimc-next-btn ${
+					step === 9 ? "last__step" : ""
+				}" data-go-next-step="${step}">
             ${btntext} <svg style="margin-left:1.3rem; margin-right: 0"><use  xlink:href="${icons}#${icon}"></use></svg>
         </button>
     `;
@@ -139,6 +141,7 @@ function goNextStepControl(ev) {
 	const btnParent = ev.target.closest(".next__step__btn");
 	// Get the 'step' variable from the DOM button
 	const dynamicStep = btnParent.dataset.goNextStep;
+	console.log(ev, btnParent, dynamicStep);
 
 	if (Number(dynamicStep) > totalSteps) return;
 
@@ -154,7 +157,10 @@ function goNextStepControl(ev) {
     `;
 
 	// Hide all steps
-	helper.hideEl(document.querySelector(`.book__issue__step`));
+	// helper.hideEl(document.querySelectorAll(`.book__issue__step`));
+	document
+		.querySelectorAll(`.book__issue__step`)
+		.forEach((el) => el.classList.add("hidden"));
 
 	// Remove all [go next] buttons
 	helper.removeEl(document.querySelector(`[data-go-next-step]`));
@@ -486,11 +492,7 @@ export function issueBookControl(ev) {
 	}
 
 	// STEP 1.2: CLICK ON [NEXT] BUTTON
-	if (
-		(getBook?.length > 0 && ev.target.closest(".next__step__btn svg")) ||
-		ev.target.classList.contains("next__step__btn")
-	)
-		goNextStepControl(ev);
+	if (ev.target.closest(".next__step__btn")) goNextStepControl(ev);
 
 	// STEP 2:
 	if (ev.target.dataset.goNextStep === "2") {
@@ -504,8 +506,13 @@ export function issueBookControl(ev) {
 
 	// STEP 3.0: HIDE [NEXT-STEP] [go-library] FROM STEP 3,
 	// CLEAR RADIO CHECKED
-	if (ev.target.dataset.goNextStep === "3") {
+	if (
+		ev.target.dataset.goNextStep === "3" ||
+		ev.target.closest(".next__step__btn svg")
+	) {
 		stepProgressing(3);
+
+		console.log("stp3");
 
 		helper.hideEl(document.querySelector(".step__3 .next__step__btn"));
 		helper.hideEl(document.querySelector(".step__3 .go__library-page"));
@@ -533,21 +540,30 @@ export function issueBookControl(ev) {
 	}
 
 	// STEP 4: RUN [SHOW-BOOK-INFORMATION] FUNCTION
-	if (ev.target.dataset.goNextStep === "4") {
+	if (
+		ev.target.dataset.goNextStep === "4" ||
+		ev.target.closest(".next__step__btn svg")
+	) {
 		stepProgressing(4);
 
 		showAllInformationBook();
 	}
 
 	// STEP 5: BOOK CHECK-OUT PRECESSING
-	if (ev.target.dataset.goNextStep === "5") {
+	if (
+		ev.target.dataset.goNextStep === "5" ||
+		ev.target.closest(".next__step__btn svg")
+	) {
 		stepProgressing(5);
 
 		showCheckOutPressing();
 	}
 
 	// STEP 6: ENTER DELIVERY ADDRESS
-	if (ev.target.dataset.goNextStep === "6") {
+	if (
+		ev.target.dataset.goNextStep === "6" ||
+		ev.target.closest(".next__step__btn svg")
+	) {
 		stepProgressing(6);
 		helper.showEl(
 			document.querySelector(".step__6 form #delivery-address-btn")
@@ -557,21 +573,30 @@ export function issueBookControl(ev) {
 	}
 
 	// STEP 7: SHOW DUE DATE
-	if (ev.target.dataset.goNextStep === "7") {
+	if (
+		ev.target.dataset.goNextStep === "7" ||
+		ev.target.closest(".next__step__btn svg")
+	) {
 		stepProgressing(7);
 
 		showDueDate();
 	}
 
 	// STEP 8: TAKE THE BOOK
-	if (ev.target.dataset.goNextStep === "8") {
+	if (
+		ev.target.dataset.goNextStep === "8" ||
+		ev.target.closest(".next__step__btn svg")
+	) {
 		stepProgressing(8);
 
 		takeBook(ev);
 	}
 
 	// ISSUE-BOOK COMPLETE
-	if (ev.target.dataset.goNextStep === "9") {
+	if (
+		ev.target.dataset.goNextStep === "9" ||
+		ev.target.closest(".last__step svg")
+	) {
 		// HIDE ISSUE-BOOK PAGE
 		helper.hideEl(
 			document.querySelector(".issue__book"),
@@ -589,6 +614,7 @@ export function issueBookControl(ev) {
 	}
 }
 
+// HANDLE DELIVERY-ADDRESS
 document.addEventListener("click", issueBookControl);
 export function deliveryAddressControl() {
 	const nextStepBtn = document.querySelector(".step__6 .next__step__btn");

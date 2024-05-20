@@ -1,10 +1,12 @@
 // DOM Manipulation Functions
 export function hideEl(...parents) {
-	parents.forEach((parent) => parent.classList.add("hidden"));
+	parents
+		.flat(Infinity)
+		.forEach((parent) => parent?.classList.add("hidden"));
 }
 
 export function showEl(...parents) {
-	parents.forEach((parent) => parent.classList.remove("hidden"));
+	parents.forEach((parent) => parent?.classList.remove("hidden"));
 }
 
 export function removeEl(...targets) {
