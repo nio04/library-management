@@ -5,9 +5,9 @@
 .issue__book {
 	overflow-x: hidden;
 
-	h1 {
-		// @extend .from-hidden;
-		// @include abs.translate(0, -100%);
+	.btn-back {
+		opacity: 1 !important;
+		transform: translate(0) !important;
 	}
 
 	&__progress {
