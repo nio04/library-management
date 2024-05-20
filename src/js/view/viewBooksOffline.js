@@ -156,5 +156,6 @@ function generateDescendingIcon() {
 document.addEventListener("click", (ev) => {
 	if (ev.target.closest(".view-books-offline--new-collection h1 svg")) {
 		flushLocalStorage();
+		renderBooks(containers.newCollection, []);
 	}
 });

@@ -132,6 +132,10 @@ function renderSubmitResultModal(ev, validateResult) {
 }
 
 document.addEventListener("click", (ev) => {
+	ev.preventDefault();
+
+	if (!ev.target.closest(".upload-book-container")) return;
+
 	if (
 		ev.target.classList.contains("modal__btn") ||
 		ev.target.classList.contains("overlay")
@@ -139,9 +143,10 @@ document.addEventListener("click", (ev) => {
 		comp.hideModal();
 		location.reload();
 	}
+	if (ev.target.id === "form-upload") uploadBookControl(ev);
 });
 
-formUploadBtn.addEventListener("click", uploadBookControl);
+// formUploadBtn.addEventListener("click", uploadBookControl);
 
 // HANDLING IMG EVENT
 document
