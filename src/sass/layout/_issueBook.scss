@@ -352,39 +352,39 @@
 		}
 	}
 
+	// .step__6 {
+	// 	@extend %flex-col-center;
+
+	// 	form {
+	// 		// width: 60vw;
+	// 		@extend %flex-col-center;
+	// 		align-items: flex-end;
+	// 		margin: 2rem 0 3rem 0;
+
+	// 		label {
+	// 			line-height: 6rem;
+	// 			align-self: flex-start;
+	// 			// @extend .from-hidden;
+	// 			// @include abs.translate(0, -100%);
+
+	// 			input[type="text"] {
+	// 				width: 100%;
+	// 			}
+	// 		}
+
+	// 		section {
+	// 			margin: 0 auto;
+	// 			margin-top: 4rem;
+
+	// 			input {
+	// 				opacity: 1 !important;
+	// 				transform: translate(0) !important;
+	// 			}
+	// 		}
+	// 	}
+	// }
+
 	.step__6 {
-		@extend %flex-col-center;
-
-		form {
-			// width: 60vw;
-			@extend %flex-col-center;
-			align-items: flex-end;
-			margin: 2rem 0 3rem 0;
-
-			label {
-				line-height: 6rem;
-				align-self: flex-start;
-				// @extend .from-hidden;
-				// @include abs.translate(0, -100%);
-
-				input[type="text"] {
-					width: 100%;
-				}
-			}
-
-			section {
-				margin: 0 auto;
-				margin-top: 4rem;
-
-				input {
-					opacity: 1 !important;
-					transform: translate(0) !important;
-				}
-			}
-		}
-	}
-
-	.step__7 {
 		@extend %flex-col-center;
 
 		.return-book__info {
@@ -398,7 +398,7 @@
 		}
 	}
 
-	.step__8 {
+	.step__7 {
 		@extend %flex-col-center;
 
 		.checkout-message {

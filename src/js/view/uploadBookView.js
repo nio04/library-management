@@ -89,6 +89,7 @@ function getInputValue() {
 	).value;
 	quantity = document.querySelector("#book-quantity__input").value;
 	img = document.querySelector("#book-image__input");
+	console.log(licenseY, licenseN);
 }
 
 function validateNaming() {

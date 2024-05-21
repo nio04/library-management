@@ -32,21 +32,30 @@ const bookIssueSteps = [
 	"check library card",
 	"provide book information",
 	"checkout processing",
-	"input delivery address",
 	"due date",
 	"pick up the book",
 ];
-const totalSteps = 8;
+// const bookIssueSteps = [
+// 	"find book",
+// 	"check availablity",
+// 	"check library card",
+// 	"provide book information",
+// 	"checkout processing",
+// 	"input delivery address",
+// 	"due date",
+// 	"pick up the book",
+// ];
+const totalSteps = 7;
 // selected book from search-result
 let getBook;
-let deliveryAddress;
+// let deliveryAddress;
 
 const generateNextButton = (step, btntext = "Next Step") => {
 	const icon = btntext === "OK" ? "ok" : "next";
 
 	return `
         <button class="btn anim-btn next__step__btn dynaimc-next-btn ${
-					step === 9 ? "last__step" : ""
+					step === totalSteps - 1 ? "last__step" : ""
 				}" data-go-next-step="${step}">
             ${btntext} <svg style="margin-left:1.3rem; margin-right: 0"><use  xlink:href="${icons}#${icon}"></use></svg>
         </button>
@@ -141,7 +150,6 @@ function goNextStepControl(ev) {
 	const btnParent = ev.target.closest(".next__step__btn");
 	// Get the 'step' variable from the DOM button
 	const dynamicStep = btnParent.dataset.goNextStep;
-	console.log(ev, btnParent, dynamicStep);
 
 	if (Number(dynamicStep) > totalSteps) return;
 
@@ -174,7 +182,7 @@ function goNextStepControl(ev) {
 		?.remove();
 
 	// Render [next-step] button
-	const buttonText = dynamicStep === "8" ? "OK" : "NEXT STEP";
+	const buttonText = dynamicStep === "7" ? "OK" : "NEXT STEP";
 	comp.renderChildren(
 		document.querySelector(`.step__${Number(dynamicStep)}`),
 		generateNextButton(Number(dynamicStep) + 1, buttonText)
@@ -343,7 +351,7 @@ function showDueDate() {
 	}
 
 	// REMOVE PREVIOUS CONTENT
-	helper.removeEl(document.querySelector(".step__7 .return-book__info"));
+	helper.removeEl(document.querySelector(".step__6 .return-book__info"));
 
 	const calcFutureDate = () => {
 		const futureDate = currDate + 15;
@@ -356,7 +364,7 @@ function showDueDate() {
 		)}, Year: ${currYear}</p>
         `;
 		document
-			.querySelector(".issue__book .step__7")
+			.querySelector(".issue__book .step__6")
 			.insertAdjacentHTML("afterbegin", dueDateMarkup);
 	};
 
@@ -375,19 +383,25 @@ function showDueDate() {
 function takeBook() {
 	// Remove previous message
 	helper.removeEl(
-		document.querySelector(".issue__book .step__8 .checkout-message")
+		document.querySelector(".issue__book .step__7 .checkout-message")
 	);
 
 	const checkoutMessageMarkup = `
         <p class="checkout-message">
             Thank you for choosing our library.<br />
-            Your book will be delivered to <span>${deliveryAddress}</span>.<br />
             Have a nice day. Please visit us again.
         </p>
     `;
+	// `
+	//       <p class="checkout-message">
+	//           Thank you for choosing our library.<br />
+	//           Your book will be delivered to <span>${deliveryAddress}</span>.<br />
+	//           Have a nice day. Please visit us again.
+	//       </p>
+	//   `;
 
 	comp.renderChildren(
-		document.querySelector(".issue__book .step__8"),
+		document.querySelector(".issue__book .step__7"),
 		checkoutMessageMarkup,
 		"afterbegin"
 	);
@@ -397,13 +411,12 @@ function takeBook() {
 function stepProgressing(step) {
 	const target = document.querySelector(".issue__book__progress h2");
 	const stepWidths = {
-		2: "25%",
-		3: "37.5%",
-		4: "50%",
-		5: "62.5%",
-		6: "75%",
-		7: "87.5%",
-		8: "100%",
+		2: "28.56%",
+		3: "42.84%",
+		4: "57.12%",
+		5: "71.4%",
+		6: "85.68%",
+		7: "100%",
 	};
 
 	target.style.setProperty("--step-width", stepWidths[step]);
@@ -512,8 +525,6 @@ export function issueBookControl(ev) {
 	) {
 		stepProgressing(3);
 
-		console.log("stp3");
-
 		helper.hideEl(document.querySelector(".step__3 .next__step__btn"));
 		helper.hideEl(document.querySelector(".step__3 .go__library-page"));
 
@@ -554,47 +565,49 @@ export function issueBookControl(ev) {
 		ev.target.dataset.goNextStep === "5" ||
 		ev.target.closest(".next__step__btn svg")
 	) {
+		console.log("5");
 		stepProgressing(5);
 
 		showCheckOutPressing();
 	}
 
 	// STEP 6: ENTER DELIVERY ADDRESS
+	// if (
+	// 	ev.target.dataset.goNextStep === "6" ||
+	// 	ev.target.closest(".next__step__btn svg")
+	// ) {
+	// 	stepProgressing(6);
+	// 	helper.showEl(
+	// 		document.querySelector(".step__6 form #delivery-address-btn")
+	// 	);
+
+	// 	deliveryAddressControl();
+	// }
+
+	// STEP 7: SHOW DUE DATE
 	if (
 		ev.target.dataset.goNextStep === "6" ||
 		ev.target.closest(".next__step__btn svg")
 	) {
+		console.log("6");
 		stepProgressing(6);
-		helper.showEl(
-			document.querySelector(".step__6 form #delivery-address-btn")
-		);
-
-		deliveryAddressControl();
-	}
-
-	// STEP 7: SHOW DUE DATE
-	if (
-		ev.target.dataset.goNextStep === "7" ||
-		ev.target.closest(".next__step__btn svg")
-	) {
-		stepProgressing(7);
 
 		showDueDate();
 	}
 
 	// STEP 8: TAKE THE BOOK
 	if (
-		ev.target.dataset.goNextStep === "8" ||
+		ev.target.dataset.goNextStep === "7" ||
 		ev.target.closest(".next__step__btn svg")
 	) {
-		stepProgressing(8);
+		stepProgressing(7);
 
 		takeBook(ev);
 	}
 
 	// ISSUE-BOOK COMPLETE
 	if (
-		ev.target.dataset.goNextStep === "9" ||
+		ev.target.dataset.goNextStep === "8" ||
 		ev.target.closest(".last__step svg")
 	) {
 		// HIDE ISSUE-BOOK PAGE
@@ -616,28 +629,46 @@ export function issueBookControl(ev) {
 
 // HANDLE DELIVERY-ADDRESS
 document.addEventListener("click", issueBookControl);
-export function deliveryAddressControl() {
-	const nextStepBtn = document.querySelector(".step__6 .next__step__btn");
-	const deliveryAddressBtn = document.querySelector(
-		".step__6 form #delivery-address-btn"
-	);
 
-	// HIDE [NEXT-STEP] BUTTON
-	helper.hideEl(nextStepBtn);
+// export function deliveryAddressControl() {
+// 	const nextStepBtn = document.querySelector(".step__6 .next__step__btn");
+// 	const deliveryAddressBtn = document.querySelector(
+// 		".step__6 form #delivery-address-btn"
+// 	);
+// 	const form = document.querySelector(".step__6 form");
 
-	document.addEventListener("submit", (ev) => {
-		ev.preventDefault();
-		deliveryAddress = ev.target[0].value;
+// 	// Debugging: Check if the form exists
+// 	if (form) {
+// 		console.log("Form element found:", form);
 
-		if (deliveryAddress.length === 0) {
-			comp.showModal(
-				parent,
-				"error",
-				"You cannot add an empty address. Please try again"
-			);
-		} else {
-			helper.hideEl(deliveryAddressBtn);
-			helper.showEl(nextStepBtn);
-		}
-	});
-}
+// 		// HIDE [NEXT-STEP] BUTTON
+// 		helper.hideEl(nextStepBtn);
+
+// 		// Debugging: Check if we're about to attach the event listener
+// 		console.log("Attaching submit event listener to the form");
+
+// 		form.addEventListener("submit", (ev) => {
+// 			ev.preventDefault();
+// 			console.log("Submit event triggered");
+
+// 			const deliveryAddress =
+// 				ev.target.querySelector("#address-input").value; // Adjust the selector as needed
+
+// 			if (deliveryAddress.length === 0) {
+// 				comp.showModal(
+// 					null,
+// 					"error",
+// 					"You cannot add an empty address. Please try again"
+// 				);
+// 			} else {
+// 				helper.hideEl(deliveryAddressBtn);
+// 				helper.showEl(nextStepBtn);
+// 			}
+// 		});
+// 	} else {
+// 		console.error("Form not found");
+// 	}
+// }
+
+// Invoke the function to attach the event listener
+// deliveryAddressControl();

@@ -22,7 +22,7 @@ viewBooksOffline.offlineBookControl;
 searchBooksOffline.searchBookControl;
 uploadBookView.uploadBookControl;
 issueBookControl;
-deliveryAddressControl;
+// deliveryAddressControl;
 bookModalControl;
 
 intersectionController();
