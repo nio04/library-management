@@ -6,11 +6,16 @@
 // UPLOAD-BOOK SPECIFIC FORM LAYOUT
 .upload-book__form {
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(max-content, 55rem));
+	// grid-template-columns: repeat(auto-fit, minmax(max-content, 55rem));
+	grid-template-columns: repeat(2, 1fr);
 	justify-content: center;
 	align-items: center;
 	gap: 6rem;
 	margin: 10rem 6rem 4rem 6rem;
+
+	@include abs.mq(1060px) {
+		grid-template-columns: 1fr;
+	}
 
 	label {
 		font-size: 2.5rem;
@@ -27,6 +32,10 @@
 			border-radius: 0.4rem;
 			border: 1px solid gray;
 			padding-left: 0.8rem;
+
+			@include abs.mq(1060px) {
+				width: 45rem;
+			}
 		}
 	}
 
