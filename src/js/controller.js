@@ -15,6 +15,7 @@ import bookModalControl from "./view/bookModalView";
 import fontView from "./view/fontView";
 import intersectionController from "./view/intersection";
 import { tooltipControl } from "./view/tooltipView";
+import { hideModal } from "./component";
 
 welcomeView.welcomeViewControl;
 libraryView.libraryPageControl;
@@ -28,3 +29,15 @@ bookModalControl;
 intersectionController();
 tooltipControl();
 fontView.fontControl;
+
+// handling overlay && modal removing
+document.addEventListener("click", (ev) => {
+	if (
+		!(
+			ev.target.classList.contains("modal__btn") ||
+			ev.target.classList.contains("overlay")
+		)
+	)
+		return;
+	hideModal();
+});

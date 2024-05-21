@@ -18,6 +18,7 @@ export function renderChildren(parent, markup, position = "beforeend") {
 
 // Modal Functions
 export function showModal(parent, className, message = "") {
+	console.log("modal");
 	generateModalMarkup(parent, className, message);
 	manageOverlay();
 }
