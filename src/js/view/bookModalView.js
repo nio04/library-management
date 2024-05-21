@@ -7,7 +7,7 @@ import { oldBooks, newBook, preBooks } from "../bookContent";
 localStorageControl();
 
 // Combine all books into a single array
-const allBooks = [...oldBooks, ...newBook, ...preBooks];
+const allBooks = [...oldBooks, ...newBook, ...preBooks].flat(Infinity);
 
 // Function to render book modal for view all books section
 function viewAllBooks__bookSelect(ev) {
