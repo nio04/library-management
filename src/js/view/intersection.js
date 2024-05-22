@@ -29,7 +29,7 @@ export default function intersectionController() {
 function callback(entries) {
 	entries.forEach((entry) => {
 		if (!entry.target) return;
-		// console.log(entry);
+		console.log(entry);
 		if (entry.isIntersecting) {
 			switch (entry.target.classList[0]) {
 				case "welcome":
@@ -81,7 +81,6 @@ function callback(entries) {
 					showChildren([
 						entry.target.children[0],
 						entry.target.children[1],
-						entry.target.children[2][17],
 					]);
 					observer.unobserve(entry.target);
 					break;

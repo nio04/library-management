@@ -14,8 +14,8 @@ let title,
 	releaseVserion,
 	popularity,
 	pages,
-	licenseY,
-	licenseN,
+	// licenseY,
+	// licenseN,
 	authorBio,
 	publicationLink,
 	publicationName,
@@ -52,7 +52,7 @@ export default function uploadBookControl(ev) {
 		releaseVserion,
 		popularity,
 		pages,
-		GNUlicense: licenseY === true,
+		// GNUlicense: licenseY === true,
 		authorBio,
 		publicationLink,
 		publicationName,
@@ -78,8 +78,8 @@ function getInputValue() {
 	).value;
 	popularity = document.querySelector("#book-popularity__input").value;
 	pages = document.querySelector("#book-page__input").value;
-	licenseY = document.querySelector("#book-license__y").checked;
-	licenseN = document.querySelector("#book-license__n").checked;
+	// licenseY = document.querySelector("#book-license__y").checked;
+	// licenseN = document.querySelector("#book-license__n").checked;
 	authorBio = document.querySelector("#book-author-bio__input").value;
 	publicationLink = document.querySelector(
 		"#book-publication-link__input"
@@ -89,7 +89,6 @@ function getInputValue() {
 	).value;
 	quantity = document.querySelector("#book-quantity__input").value;
 	img = document.querySelector("#book-image__input");
-	console.log(licenseY, licenseN);
 }
 
 function validateNaming() {
@@ -115,7 +114,7 @@ function validateNaming() {
 
 	let flag = true;
 
-	if (!(licenseY || licenseN)) flag = false;
+	// if (!(licenseY || licenseN)) flag = false;
 
 	result.flat().forEach((res) => {
 		if (res === null) flag = false;
