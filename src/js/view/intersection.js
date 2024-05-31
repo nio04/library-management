@@ -1,12 +1,16 @@
 const elements = {
 	welcomePage: document.querySelector(".welcome"),
 	libraryPage: document.querySelector(".library-management"),
-	viewBooksPage: document.querySelector(".view-books-offline--container"),
+	viewBooksPage: document.querySelector(
+		".view-books-offline--container"
+	),
 	searchOfflinePage: document.querySelector(".search-books-offline"),
 	uploadBookPage: document.querySelector(".upload-book-container"),
 	issueBookPage: document.querySelector(".issue__book"),
 	step1: document.querySelector(".step__1"),
-	step1Results: document.querySelector(".step__1 .search-result__lists"),
+	step1Results: document.querySelector(
+		".step__1 .search-result__lists"
+	),
 	step2: document.querySelector(".step__2"),
 	step3: document.querySelector(".step__3"),
 	step4: document.querySelector(".step__4"),
@@ -29,7 +33,6 @@ export default function intersectionController() {
 function callback(entries) {
 	entries.forEach((entry) => {
 		if (!entry.target) return;
-		console.log(entry);
 		if (entry.isIntersecting) {
 			switch (entry.target.classList[0]) {
 				case "welcome":
@@ -162,14 +165,21 @@ function callback(entries) {
 					showChildren([
 						entry.target.children[0],
 						entry.target.children[1],
-						entry.target.children[2].children[0].children[0].children[0],
+						entry.target.children[2].children[0].children[0]
+							.children[0],
 						entry.target.children[2].children[0].children[1],
-						entry.target.children[2].children[0].children[2].children[0],
-						entry.target.children[2].children[0].children[2].children[1],
-						entry.target.children[2].children[0].children[3].children[0],
-						entry.target.children[2].children[0].children[3].children[1],
-						entry.target.children[2].children[0].children[3].children[2],
-						entry.target.children[2].children[0].children[3].children[3],
+						entry.target.children[2].children[0].children[2]
+							.children[0],
+						entry.target.children[2].children[0].children[2]
+							.children[1],
+						entry.target.children[2].children[0].children[3]
+							.children[0],
+						entry.target.children[2].children[0].children[3]
+							.children[1],
+						entry.target.children[2].children[0].children[3]
+							.children[2],
+						entry.target.children[2].children[0].children[3]
+							.children[3],
 					]);
 					observer.unobserve(entry.target);
 					break;
@@ -191,5 +201,7 @@ const observer = new IntersectionObserver(callback, options);
 
 // HELPER CLASS FOR SHOW CHILDREN
 function showChildren(...target) {
-	target.flat(Infinity).forEach((el) => el.classList.add("to-visible"));
+	target
+		.flat(Infinity)
+		.forEach((el) => el.classList.add("to-visible"));
 }

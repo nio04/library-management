@@ -1,5 +1,5 @@
 import icons from "url:../../asset/icons/sprite.svg";
-import { manageOverlay, removeEl } from "../helper";
+import { removeEl } from "../helper";
 import localStorageControl from "./localstorageView";
 import { oldBooks, newBook, preBooks } from "../bookContent";
 
@@ -7,11 +7,15 @@ import { oldBooks, newBook, preBooks } from "../bookContent";
 localStorageControl();
 
 // Combine all books into a single array
-const allBooks = [...oldBooks, ...newBook, ...preBooks].flat(Infinity);
+const allBooks = [...oldBooks, ...newBook, ...preBooks].flat(
+	Infinity
+);
 
 // Function to render book modal for view all books section
 function viewAllBooks__bookSelect(ev) {
-	const parent = document.querySelector(".view-books-offline--container");
+	const parent = document.querySelector(
+		".view-books-offline--container"
+	);
 	const viewBooksTarget = ev.target.closest(".book .book__item");
 	if (!viewBooksTarget) return;
 
@@ -64,7 +68,9 @@ function renderBookModal(parent, book) {
 				</figure>
 				<section class="book-modal__description">
 					<p class="book-modal__info">
-					<span class="key">Name</span> : <span class="value">${book.title}</span>
+					<span class="key">Name</span> : <span class="value">${
+						book.title
+					}</span>
 					</p>
 					<p class="book-modal__info">
 					<span class="key">Author Name</span> : <span class="value">${
@@ -102,7 +108,9 @@ function renderBookModal(parent, book) {
 					}</span>
 					</p>
 					<p class="book-modal__info">
-					<span class="key">Genre</span> : <span class="value">${book.genre}</span>
+					<span class="key">Genre</span> : <span class="value">${
+						book.genre
+					}</span>
 					</p>
 				</section>
 			</section>`;

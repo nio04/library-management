@@ -96,14 +96,18 @@ function findBook(ev) {
 	if (!issueBook) return;
 
 	// Remove [next-step] btn at first
-	helper.removeEl(document.querySelector(".step__1 .next__step__btn"));
+	helper.removeEl(
+		document.querySelector(".step__1 .next__step__btn")
+	);
 
 	const searchValue = searchInput.value;
 	const searchResults = searchBooks(searchValue);
 
 	// Clear search results when no search input
 	if (searchValue.length < 1) {
-		helper.cleanParent(".search-result__section .search-result__lists");
+		helper.cleanParent(
+			".search-result__section .search-result__lists"
+		);
 		return;
 	}
 
@@ -114,7 +118,7 @@ function findBook(ev) {
 	) {
 		comp.showModal(
 			parent,
-			"error",
+			"Find Book Error",
 			"Sorry, we could not find the book you queried. Please try again."
 		);
 
@@ -198,7 +202,9 @@ function goStep1() {
 	resetOnLoad();
 
 	// Remove [prev-btn] from previous attempt
-	helper.removeEl(document.querySelector(".step__2 .prev__step__btn"));
+	helper.removeEl(
+		document.querySelector(".step__2 .prev__step__btn")
+	);
 }
 
 // STEP 2: CHECK BOOK EXISTENCE
@@ -235,11 +241,19 @@ function libraryCardCheck(ev) {
 
 	// Show appropriate buttons based on library card availability
 	if (checkLibraryCard === "yes") {
-		helper.showEl(document.querySelector(".step__3 .next__step__btn"));
-		helper.hideEl(document.querySelector(".step__3 .go__library-page"));
+		helper.showEl(
+			document.querySelector(".step__3 .next__step__btn")
+		);
+		helper.hideEl(
+			document.querySelector(".step__3 .go__library-page")
+		);
 	} else {
-		helper.showEl(document.querySelector(".step__3 .go__library-page"));
-		helper.hideEl(document.querySelector(".step__3 .next__step__btn"));
+		helper.showEl(
+			document.querySelector(".step__3 .go__library-page")
+		);
+		helper.hideEl(
+			document.querySelector(".step__3 .next__step__btn")
+		);
 	}
 }
 
@@ -351,7 +365,9 @@ function showDueDate() {
 	}
 
 	// REMOVE PREVIOUS CONTENT
-	helper.removeEl(document.querySelector(".step__6 .return-book__info"));
+	helper.removeEl(
+		document.querySelector(".step__6 .return-book__info")
+	);
 
 	const calcFutureDate = () => {
 		const futureDate = currDate + 15;
@@ -427,7 +443,10 @@ function quantityBookManage() {
 	const selectedBookTitle = getBook[0].title;
 
 	// Get all books
-	const allBooks = [...bookContent.bookLists.preBooks, ...getStorage()];
+	const allBooks = [
+		...bookContent.bookLists.preBooks,
+		...getStorage(),
+	];
 
 	// Update book quantity for all types of books
 	allBooks.forEach((book) => {
@@ -495,11 +514,15 @@ export function issueBookControl(ev) {
 		getBook = searchBooks(selectedBookID);
 
 		// enable [next-btn] when book is selected
-		document.querySelector(".step__1 .next__step__btn").disabled = false;
+		document.querySelector(
+			".step__1 .next__step__btn"
+		).disabled = false;
 
 		// select all the search-result and remove class
 		document
-			.querySelectorAll(".search-result__section .search-result__lists li")
+			.querySelectorAll(
+				".search-result__section .search-result__lists li"
+			)
 			.forEach((el) => el.classList.remove("select-book"));
 		selectedBookEl.classList.add("select-book");
 	}
@@ -525,8 +548,12 @@ export function issueBookControl(ev) {
 	) {
 		stepProgressing(3);
 
-		helper.hideEl(document.querySelector(".step__3 .next__step__btn"));
-		helper.hideEl(document.querySelector(".step__3 .go__library-page"));
+		helper.hideEl(
+			document.querySelector(".step__3 .next__step__btn")
+		);
+		helper.hideEl(
+			document.querySelector(".step__3 .go__library-page")
+		);
 
 		// CLEAR RADIO CHECKED
 		document

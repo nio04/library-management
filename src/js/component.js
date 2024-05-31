@@ -1,4 +1,5 @@
-import { hideEl, showEl, manageOverlay } from "./helper";
+import { hideEl, showEl } from "./helper";
+import * as bootstrap from "./view/bootstrapView";
 
 const container = document.querySelector(".container");
 const spinner = document.querySelector(".spinner");
@@ -12,29 +13,54 @@ export function renderSibling(parent, markup) {
 	parent.insertAdjacentHTML("afterend", markup);
 }
 
-export function renderChildren(parent, markup, position = "beforeend") {
+export function renderChildren(
+	parent,
+	markup,
+	position = "beforeend"
+) {
 	parent.insertAdjacentHTML(position, markup);
 }
 
 // Modal Functions
-export function showModal(parent, className, message = "") {
-	console.log("modal");
-	generateModalMarkup(parent, className, message);
-	manageOverlay();
+export function showModal(parent, title, message = "") {
+	generateModalMarkup(parent, title, message);
+	bootstrap.createModalInstance();
+	// bootstrap.modalShow();
 }
 
-export function hideModal() {
-	document.querySelector(".modal")?.remove();
-	document.querySelector(".book-modal")?.remove();
-	manageOverlay();
-}
+// export function hideModal() {
+// 	document.querySelector(".modal")?.remove();
+// 	document.querySelector(".book-modal")?.remove();
+// 	manageOverlay();
+// }
 
-function generateModalMarkup(parent, className, message) {
+// function generateModalMarkup(parent, className, message) {
+// 	const markup = `
+//         <div class="modal ${className}">
+//             <p class="modal__message">${message}</p>
+//             <button class="btn modal__btn">OK, I UNDERSTAND</button>
+//         </div>`;
+// 	parent.insertAdjacentHTML("afterbegin", markup);
+// }
+function generateModalMarkup(parent, title, message) {
 	const markup = `
-        <div class="modal ${className}">
-            <p class="modal__message">${message}</p>
-            <button class="btn modal__btn">OK, I UNDERSTAND</button>
-        </div>`;
+		<div class="modal fade" id="my-modal" tabindex="-1" 	aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog modal-dialog-centered modal-lg">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h1 class="modal-title" id="exampleModalLabel">${title}</h1>
+	        <button type="button" class="btn-close" data-bs-dismiss="modal" 	aria-label="Close"></button>
+	      </div>
+	      <div class="modal-body">
+	        ${message}
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" 	data-bs-dismiss="modal">Close</button>
+	       </div>
+	    </div>
+	  </div>
+	</div>`;
+
 	parent.insertAdjacentHTML("afterbegin", markup);
 }
 
@@ -60,7 +86,9 @@ export function hideAllSections() {
 		".issue-book",
 		".contributor-section",
 	];
-	sections.forEach((section) => hideEl(document.querySelector(section)));
+	sections.forEach((section) =>
+		hideEl(document.querySelector(section))
+	);
 }
 
 // Next Icon Generation Function

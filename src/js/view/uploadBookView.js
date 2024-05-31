@@ -76,7 +76,9 @@ function getInputValue() {
 	releaseVserion = document.querySelector(
 		"#book-release-version__input"
 	).value;
-	popularity = document.querySelector("#book-popularity__input").value;
+	popularity = document.querySelector(
+		"#book-popularity__input"
+	).value;
 	pages = document.querySelector("#book-page__input").value;
 	// licenseY = document.querySelector("#book-license__y").checked;
 	// licenseN = document.querySelector("#book-license__n").checked;
@@ -129,7 +131,7 @@ function renderSubmitResultModal(ev, validateResult) {
 		: "There might be something wrong with your input. Please check your input.";
 
 	if (ev.target.closest(".upload-book-container")) {
-		const type = validateResult ? "success" : "error";
+		const type = validateResult ? "success upload" : "error upload";
 		comp.showModal(parent, type, message);
 	}
 }

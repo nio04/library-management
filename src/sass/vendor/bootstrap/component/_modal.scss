@@ -1,0 +1,14 @@
+// @use "../../../../../node_modules/bootstrap/scss/modal";
+
+.modal {
+	font-size: 2.6rem;
+
+	&-content {
+		.modal-header h1 {
+			font-size: 2.3rem;
+		}
+		.modal-footer button {
+			padding: 0.8rem 1.4rem;
+		}
+	}
+}

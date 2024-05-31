@@ -27,6 +27,7 @@
 		"sharp": "^0.33.2"
 	},
 	"dependencies": {
+		"bootstrap": "^5.3.3",
 		"rimraf": "^5.0.5",
 		"webfontloader": "^1.6.28"
 	}

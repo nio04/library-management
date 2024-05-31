@@ -45,7 +45,8 @@ export function generateUniqueNumbers(count, min = 0, max = 10) {
 	const isUnique = (number) => uniqueNumbers.indexOf(number) === -1;
 
 	while (uniqueNumbers.length < count) {
-		const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+		const randomNumber =
+			Math.floor(Math.random() * (max - min + 1)) + min;
 
 		if (isUnique(randomNumber)) uniqueNumbers.push(randomNumber);
 	}
@@ -53,8 +54,8 @@ export function generateUniqueNumbers(count, min = 0, max = 10) {
 }
 
 // utility Functions
-export function manageOverlay() {
-	console.log("maOv");
-	document.querySelector(".overlay").classList.toggle("overlay-off");
-	document.body.classList.toggle("no-overflow");
-}
+// export function manageOverlay() {
+// 	console.log("maOv");
+// 	document.querySelector(".overlay").classList.toggle("overlay-off");
+// 	document.body.classList.toggle("no-overflow");
+// }

@@ -7,7 +7,9 @@ const parent = document.querySelector(".search-books-offline");
 const searchInput = document.querySelector(
 	"#search__books__offline__input"
 );
-const searchBtn = document.querySelector("#search__books__offline__btn");
+const searchBtn = document.querySelector(
+	"#search__books__offline__btn"
+);
 const resultParent = document.querySelector(".search-result");
 
 // Variables to store search value and results
@@ -46,7 +48,7 @@ export default function bookSearchControl(ev) {
 	) {
 		comp.showModal(
 			parent,
-			"error",
+			"Search Book Error",
 			"Sorry, we could not find the book you are looking for. Please try again."
 		);
 		return helper.inputCleaner();
