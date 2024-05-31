@@ -1,3 +1,5 @@
+import * as bootstrapView from "./view/bootstrapView";
+
 import welcomeView from "./view/welcomeView";
 import libraryView from "./view/libraryView";
 import uploadBookView from "./view/uploadBookView";
@@ -11,7 +13,9 @@ import bookModalControl from "./view/bookModalView";
 
 import fontView from "./view/fontView";
 import intersectionController from "./view/intersection";
-import { tooltipControl } from "./view/tooltipView";
+// import { tooltipControl } from "./view/tooltipView";
+
+import { hideModal } from "./component";
 
 welcomeView.welcomeViewControl;
 libraryView.libraryPageControl;
@@ -23,10 +27,9 @@ issueBookControl;
 bookModalControl;
 
 intersectionController();
-tooltipControl();
+// tooltipControl();
 fontView.fontControl;
 
-import * as bootstrapView from "./view/bootstrapView";
 // bootstrapView.hideModal;
 
 // handling overlay && modal removing

@@ -22,31 +22,31 @@ form {
 		}
 	}
 
-	input[type="text"],
-	input[type="search"] {
-		height: 4rem;
-		width: 60%;
-		font: {
-			size: 2.4rem;
-			weight: 600;
-			family: Montserrat;
-		}
-		outline: none;
-		border-radius: 0.4rem;
-		border: 1px solid gray;
-		padding-left: 0.6rem;
-		transition: all 0.1s;
+	// input[type="text"],
+	// input[type="search"] {
+	// 	height: 4rem;
+	// 	width: 60%;
+	// 	font: {
+	// 		size: 2.4rem;
+	// 		weight: 600;
+	// 		family: Montserrat;
+	// 	}
+	// 	outline: none;
+	// 	border-radius: 0.4rem;
+	// 	border: 1px solid gray;
+	// 	padding-left: 0.6rem;
+	// 	transition: all 0.1s;
 
-		&::placeholder {
-			font: {
-				family: Montserrat;
-				weight: 400;
-			}
-		}
-		&:focus {
-			outline: 2px solid black;
-		}
-	}
+	// 	&::placeholder {
+	// 		font: {
+	// 			family: Montserrat;
+	// 			weight: 400;
+	// 		}
+	// 	}
+	// 	&:focus {
+	// 		outline: 2px solid black;
+	// 	}
+	// }
 
 	label input[type="checkbox"] {
 		height: 2rem;

@@ -1,5 +1,5 @@
 import icons from "url:../../asset/icons/sprite.svg";
-import { removeEl } from "../helper";
+import { removeEl, manageOverlay } from "../helper";
 import localStorageControl from "./localstorageView";
 import { oldBooks, newBook, preBooks } from "../bookContent";
 

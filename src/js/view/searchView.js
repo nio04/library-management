@@ -4,7 +4,7 @@ import { getStorage } from "./localstorageView";
 // Function to combine preBooks and stored books, and filter them based on search value
 export const searchBooks = (searchValue) => {
 	const allBooks = getAllBooks();
-	if (searchValue.length > 30 && searchValue.includes("-"))
+	if (searchValue?.length > 30 && searchValue.includes("-"))
 		return searchBooksByID(allBooks, searchValue);
 
 	return filterBooksBySearchValue(allBooks, searchValue);

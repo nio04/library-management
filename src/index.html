@@ -134,7 +134,8 @@
 				<!-- view books for trendy books -->
 				<section class="view-books-offline--trending">
 					<h1 class="h1">
-						explore our <span class="color-header">trending books</span>
+						explore our
+						<span class="color-header">trending books</span>
 					</h1>
 					<ul class="book">
 						<!-- render all trendy books -->
@@ -155,7 +156,8 @@
 				<!-- view books for most-searched books -->
 				<section class="view-books-offline--most-search">
 					<h1 class="h1">
-						explore our <span class="color-header">most search books</span>
+						explore our
+						<span class="color-header">most search books</span>
 					</h1>
 					<ul class="book">
 						<!-- render most searched books -->
@@ -165,7 +167,8 @@
 				<!-- VIEW ALL BOOKS FROM OFFLINE -->
 				<section class="view-books-offline--view-all">
 					<h1 class="h1">
-						explore from our <span class="color-header">collection</span>
+						explore from our
+						<span class="color-header">collection</span>
 						<svg class="sort-ascending">
 							<use
 								xlink:href="./asset/icons/sprite.svg#sort-ascending"></use>
@@ -192,14 +195,20 @@
 				<h1 class="h1">search for books in library</h1>
 
 				<form class="search-books__form" autocomplete="on">
-					<input
+					<!-- <input
 						type="search"
 						id="search__books__offline__input"
 						name="search__books__offline"
 						value="book name A"
 						placeholder="search for your books..."
 						autofocus
-						title="INPUT FOR OFFLINE BOOK" />
+						title="INPUT FOR OFFLINE BOOK" /> -->
+
+					<input
+						type="search"
+						class="form-control"
+						id="search__books__offline__input"
+						placeholder="search for your books..." />
 
 					<section class="search-section">
 						<svg>
@@ -242,7 +251,7 @@
 					class="upload-book__form"
 					id="book-form__upload"
 					autocomplete="on">
-					<label for="book-name__input"
+					<!-- <label for="book-name__input"
 						>Book Name:
 						<input
 							type="text"
@@ -253,77 +262,123 @@
 							autofocus
 							required
 							title="ADD BOOK NAME"
-					/></label>
-					<label for="book-author__input"
-						>Author name:
+					/></label> -->
+					<section class="form-group">
+						<label for="book-name__input" class="form-label"
+							>Book Name:
+						</label>
 						<input
 							type="text"
+							class="form-control"
+							id="book-name__input"
+							name="book-name__input"
+							placeholder="Enter Book Name"
+							autofocus
+							required
+							title="ADD BOOK NAME" />
+					</section>
+
+					<section class="form-group">
+						<label for="book-author__input" class="form-label"
+							>Author name:</label
+						>
+						<input
+							type="text"
+							class="form-control"
 							id="book-author__input"
 							name="book-author__input"
-							placeholder="enter author name"
-							value="author name A"
-							title="ADD AUTHOR NAME"
-					/></label>
-					<label for="book-genre__input" id="book-genre__label"
-						>Genere:
+							placeholder="Enter Author Name"
+							title="ADD AUTHOR NAME" />
+					</section>
+
+					<section class="form-group">
+						<label
+							for="book-genre__input"
+							id="book-genre__label"
+							class="form-label"
+							>Genere:</label
+						>
 						<input
 							type="text"
+							class="form-control"
 							id="book-genre__input"
 							name="book-genre__input"
-							placeholder="enter genre by comma seperated"
-							value="comedy, rmance, slice of life"
+							placeholder="Enter Book Genre"
 							title="ADD BOOK GENRE"
-					/></label>
-					<label for="book-language__input">
-						book language:
+							aria-describedby="genreBlock" />
+						<p id="genreBlock" class="form-text">
+							Enter book genre by comma sperate. Example: action,
+							comedy, humor
+						</p>
+					</section>
+
+					<section class="form-group">
+						<label for="book-language__input" class="form-label">
+							book language:
+						</label>
 						<input
 							type="text"
 							name="book-language__input"
+							class="form-control"
 							id="book-language__input"
-							placeholder="enter book language"
-							value="english"
+							placeholder="Enter Book Language"
 							title="ADD BOOK LANGUAGE" />
-					</label>
-					<label for="book-release__input"
-						>book release year:
+					</section>
+
+					<section class="form-group">
+						<label for="book-release__input" class="form-label"
+							>book release year:</label
+						>
 						<input
-							type="text"
+							type="number"
 							name="book-release__input"
+							class="form-control"
 							id="book-release__input"
-							placeholder="enter book release year"
-							value="2015"
-							title="ADD BOOK RELEASE YEAR"
-					/></label>
-					<label for="book-release-version__input"
-						>book release version:
+							placeholder="Enter Book Release Year"
+							title="ADD BOOK RELEASE YEAR" />
+					</section>
+
+					<section class="form-group">
+						<label
+							for="book-release-version__input"
+							class="form-label"
+							>book release version:</label
+						>
 						<input
 							type="number"
 							name="book-release-version__input"
+							class="form-control"
 							id="book-release-version__input"
-							placeholder="enter book release version"
-							value="3"
-							title="ADD BOOK RELEASE VERSION"
-					/></label>
-					<label for="book-popularity__input"
-						>book popularity:
+							placeholder="Enter Book Release Version"
+							title="ADD BOOK RELEASE VERSION" />
+					</section>
+
+					<section class="form-group">
+						<label for="book-popularity__input" class="form-label"
+							>book popularity:</label
+						>
 						<input
 							type="number"
 							name="book-popularity__input"
+							class="form-control"
 							id="book-popularity__input"
-							value="3"
-							placeholder="enter book popularity"
-							title="ADD BOOK POPULARITY"
-					/></label>
-					<label for="book-page__input"
-						>book pages:
+							placeholder="Enter Book Popularity"
+							title="ADD BOOK POPULARITY" />
+					</section>
+
+					<section class="form-group">
+						<label for="book-page__input" class="form-label"
+							>book pages:</label
+						>
 						<input
 							type="number"
 							name="book-page__input"
+							class="form-control"
 							id="book-page__input"
-							placeholder="enter book pages"
-							value="200"
-							title="ADD BOOK PAGES"
-					/></label>
+							placeholder="Enter Total Book Pages"
+							title="ADD BOOK PAGES" />
+					</section>
+
 					<!-- <fieldset>
 						<legend>book license</legend>
 						<section class="book-license">
@@ -346,68 +401,98 @@
 							/></label>
 						</section>
 					</fieldset> -->
-					<label for="book-author-bio__input">
-						author bio link
+
+					<section class="form-group">
+						<label for="book-author-bio__input" class="form-label">
+							author bio link:
+						</label>
 						<input
 							type="text"
 							name="book-author-bio__input"
+							class="form-control"
 							id="book-author-bio__input"
-							placeholder="enter author bio link"
-							title="ADD AUTHOR BIO LINK"
-							value="https://www.example.com" />
-					</label>
-					<label for="book-publication-link__input"
-						>book publication link
+							placeholder="Enter Author Bio Link"
+							title="ADD AUTHOR BIO LINK" />
+					</section>
+
+					<section class="form-group">
+						<label
+							for="book-publication-link__input"
+							class="form-label"
+							>book publication link:
+						</label>
 						<input
 							type="text"
 							name="book-publication-link__input"
-							placeholder="enter book publication link"
-							title="ADD BOOK PUBLICATION LINK"
-							value="https://www.google.com"
+							class="form-control"
 							id="book-publication-link__input"
-					/></label>
-					<label for="book-publication-name__input">
-						book publication name
+							placeholder="enter book publication link"
+							title="ADD BOOK PUBLICATION LINK" />
+					</section>
+
+					<section class="form-group">
+						<label
+							for="book-publication-name__input"
+							class="form-label">
+							book publication name:
+						</label>
 						<input
 							type="text"
 							name="book-publication-name__input"
+							class="form-control"
 							id="book-publication-name__input"
-							placeholder="enter book publication name"
-							value="haque"
+							placeholder="Enter Book Publication Name"
 							title="ADD BOOK PUBLICATION NAME" />
-					</label>
-					<label class="quantity-label" for="book-quantity__input"
-						>Quantity:
+					</section>
+
+					<section class="form-group">
+						<label
+							class="quantity-label form-label"
+							for="book-quantity__input"
+							>Quantity:</label
+						>
 						<input
 							type="number"
-							id="book-quantity__input"
 							name="book-quantity__input"
-							placeholder="enter book quantity"
-							value="10"
-							title="ADD BOOK QUANTITY"
-					/></label>
-					<label
-						for="book-image__input"
-						id="book-image__label"
-						class="hidden"
-						>Image:
+							class="form-control"
+							id="book-quantity__input"
+							placeholder="Enter Book Quantity"
+							title="ADD BOOK QUANTITY" />
+					</section>
+
+					<section class="form-group">
+						<label
+							for="book-image__input"
+							id="book-image__label"
+							class="form-label hidden"
+							>Image:</label
+						>
 						<input
 							type="file"
+							class="form-control hidden"
 							id="book-image__input"
 							name="book-image__input"
 							accept="image/*"
-							title="ADD BOOK COVER"
-					/></label>
-					<label for="random-photo" id="random-photo__label">
-						<span class="tool-tip__book-upload tool-tip__image">ℹ️</span>
-						random photo
+							title="ADD BOOK COVER" />
+
+						<label
+							for="random-photo"
+							id="random-photo__label"
+							class="form-check-label form-check-bs">
+							<span class="tool-tip__book-upload tool-tip__image"
+								>ℹ️</span
+							>
+							random photo
+						</label>
 						<input
 							type="checkbox"
+							class="form-check-input form-check-bs"
 							name="random-photo"
 							id="random-photo"
 							title="ADD RANDOM ONLINE PHOTO"
 							checked />
-					</label>
+					</section>
+
 					<section class="submit-section">
 						<svg>
 							<use xlink:href="./asset/icons/sprite.svg#upload"></use>
@@ -443,24 +528,28 @@
 				<!-- SHOW CHECKOUT PROGRESS -->
 				<section class="issue__book__progress">
 					<h2>
-						steps 1 of 8 : <span class="step__description">find book</span>
+						steps 1 of 8 :
+						<span class="step__description">find book</span>
 					</h2>
 				</section>
 
 				<!-- STEP : 01 -- FIND BOOK -->
-				<section class="step__1 book__issue__step issue__book__find__book">
+				<section
+					class="step__1 book__issue__step issue__book__find__book">
 					<form class="search-books__form" autocomplete="on">
-						<input
-							type="search"
-							value="book name A"
-							id="search__books__offline__input"
-							name="search__books__offline__input"
-							placeholder="search for your books..."
-							autofocus
-							title="INPUT FOR BOOK SEARCH" />
+						<section class="form-group">
+							<input
+								type="search"
+								class="form-control"
+								id="search__books__offline__input"
+								name="search__books__offline__input"
+								placeholder="search for your books..."
+								title="INPUT FOR BOOK SEARCH" />
+						</section>
 						<section class="search-section">
 							<svg>
-								<use xlink:href="./asset/icons/sprite.svg#search"></use>
+								<use
+									xlink:href="./asset/icons/sprite.svg#search"></use>
 							</svg>
 							<input
 								type="submit"
@@ -487,7 +576,9 @@
 				<!-- STEP : 03 -- CHECKING LIBRARY CARD -->
 				<section class="step__3 book__issue__step">
 					<section class="check__library-card">
-						<h1 class="title h1 h1-sm">Do you have a library card?</h1>
+						<h1 class="title h1 h1-sm">
+							Do you have a library card?
+						</h1>
 						<section class="description">
 							<label for="library-card__y">
 								<input

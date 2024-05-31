@@ -1,0 +1,30 @@
+%form-control-design {
+	width: 70%;
+	font-size: 3rem;
+	border: 1px solid var(--gray-color-400);
+
+	&:focus {
+		box-shadow: 0 0 0 0.45rem #0d6efd40;
+	}
+
+	&::placeholder {
+		font-family: Arimo;
+		font-weight: 400;
+		font-size: 2.5rem;
+		color: var(--gray-color-500);
+	}
+}
+
+.form-group {
+	.form-control {
+		@extend %form-control-design;
+	}
+	.form-text {
+		font-size: 2.2rem;
+		font-family: Roboto;
+	}
+}
+// 	FORM-CONTROL WITHOUT <FORM> ELEMENT
+.form-control {
+	@extend %form-control-design;
+}

@@ -1,7 +1,6 @@
-@use "./component/modal";
-
 // import global BS file
-@import "../../../../node_modules/bootstrap/scss/bootstrap.scss";
+@use "../../../../node_modules/bootstrap/scss/bootstrap.scss";
+@use "./component" as comp;
 
 // iporting individual files (remove troubles)
 // @import "../../../../node_modules/bootstrap/scss/functions";

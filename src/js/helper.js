@@ -54,8 +54,7 @@ export function generateUniqueNumbers(count, min = 0, max = 10) {
 }
 
 // utility Functions
-// export function manageOverlay() {
-// 	console.log("maOv");
-// 	document.querySelector(".overlay").classList.toggle("overlay-off");
-// 	document.body.classList.toggle("no-overflow");
-// }
+export function manageOverlay() {
+	document.querySelector(".overlay").classList.toggle("overlay-off");
+	document.body.classList.toggle("no-overflow");
+}

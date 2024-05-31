@@ -137,31 +137,38 @@ function renderSubmitResultModal(ev, validateResult) {
 }
 
 document.addEventListener("click", (ev) => {
-	ev.preventDefault();
+	// ev.preventDefault();
 
 	if (!ev.target.closest(".upload-book-container")) return;
+
+	// IMAG-CHECK -CHECKBOX
+	// if (ev.target.closest(".form-group .form-check-bs")) {
+	// 	console.log(onlineImg);
+	// 	// img =
+	// }
 
 	if (
 		ev.target.classList.contains("modal__btn") ||
 		ev.target.classList.contains("overlay")
 	) {
-		comp.hideModal();
+		// comp.hideModal();
 		location.reload();
 	}
 	if (ev.target.id === "form-upload") uploadBookControl(ev);
 });
 
-// formUploadBtn.addEventListener("click", uploadBookControl);
-
-// HANDLING IMG EVENT
+// Check if random img or manual img
 document
-	.querySelector("#random-photo__label #random-photo")
+	.querySelector("section #random-photo")
 	.addEventListener("change", (ev) => {
 		const label = document.querySelector("#book-image__label");
+		const fileInputEl = document.querySelector("#book-image__input");
 
 		if (!ev.target.checked) {
 			helper.removeEl(document.querySelector("#random-photo__label"));
+			helper.removeEl(document.querySelector("#random-photo"));
 			helper.removeClass(label, "hidden");
+			helper.removeClass(fileInputEl, "hidden");
 		}
 	});
 
@@ -171,3 +178,14 @@ document
 		localImage = "on";
 		imgUrl = ev.target.files[0].name;
 	});
+
+// document.addEventListener("click", (ev) => {
+// 	ev.preventDefault();
+
+// 	if (!ev.target.closest(".upload-book-container")) return;
+
+// 	const state = document.querySelector("#flexCheckDefault").checked;
+
+// 	document.querySelector("#flexCheckDefault").checked = !state;
+// 	console.log(ev.target, ev);
+// });

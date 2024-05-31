@@ -1,4 +1,4 @@
-import { hideEl, showEl } from "./helper";
+import { hideEl, showEl, manageOverlay } from "./helper";
 import * as bootstrap from "./view/bootstrapView";
 
 const container = document.querySelector(".container");
@@ -28,11 +28,10 @@ export function showModal(parent, title, message = "") {
 	// bootstrap.modalShow();
 }
 
-// export function hideModal() {
-// 	document.querySelector(".modal")?.remove();
-// 	document.querySelector(".book-modal")?.remove();
-// 	manageOverlay();
-// }
+export function hideModal() {
+	document.querySelector(".book-modal")?.remove();
+	manageOverlay();
+}
 
 // function generateModalMarkup(parent, className, message) {
 // 	const markup = `
