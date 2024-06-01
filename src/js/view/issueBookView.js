@@ -446,6 +446,7 @@ function quantityBookManage() {
 		...bookContent.bookLists.preBooks,
 		...getStorage(),
 	];
+	console.log(allBooks);
 
 	// Update book quantity for all types of books
 	allBooks.forEach((book) => {
@@ -468,9 +469,13 @@ function quantityBookManage() {
 	if (!checkBookFrom) {
 		localStorage.setItem(
 			"newBook",
-			JSON.stringify([...oldReference, getBook[0]])
+			JSON.stringify([
+				...oldReference,
+				allBooks.find((book) => book.title === selectedBookTitle),
+			])
 		);
 	}
+	console.log(oldReference, getBook);
 
 	// Render book view again [taking helps from [view-books-offline.js]]
 	renderBooks(
