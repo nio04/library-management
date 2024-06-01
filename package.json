@@ -6,7 +6,7 @@
 	"scripts": {
 		"cleanup": "rimraf .parcel-cache dist",
 		"dev": "npm run cleanup && parcel serve --no-cache ./",
-		"build": "parcel build --public-url ./"
+		"build": "npm run cleanup && parcel build --public-url ./"
 	},
 	"keywords": [],
 	"author": "",
