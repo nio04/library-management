@@ -137,18 +137,12 @@ function renderSubmitResultModal(ev, validateResult) {
 }
 
 document.addEventListener("click", (ev) => {
-	// ev.preventDefault();
-
 	if (!ev.target.closest(".upload-book-container")) return;
 
-	// IMAG-CHECK -CHECKBOX
-	// if (ev.target.closest(".form-group .form-check-bs")) {
-	// 	console.log(onlineImg);
-	// 	// img =
-	// }
-
 	if (
-		ev.target.classList.contains("modal__btn") ||
+		ev.target.closest(
+			".modal .modal-dialog .modal-content .modal-footer button"
+		) ||
 		ev.target.classList.contains("overlay")
 	) {
 		// comp.hideModal();
