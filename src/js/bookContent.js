@@ -3,6 +3,9 @@ import * as helper from "./helper";
 // Array to store oldBooks [local-storage]
 export const oldBooks = [];
 
+// Array to store new books [custom-book-upload]
+export const newBook = [];
+
 // Define the number of offline images available
 const offlineImgNum = 10;
 
@@ -48,7 +51,13 @@ export const preBooks = [
 		id: crypto.randomUUID(),
 		title: "book name C",
 		authorName: "author name C",
-		genre: ["comedy", "romance", "slice of life", "actions", "tragedy"],
+		genre: [
+			"comedy",
+			"romance",
+			"slice of life",
+			"actions",
+			"tragedy",
+		],
 		quantity: 0,
 		imgUrl: `book-${helper.randomNumberMax(offlineImgNum)}.jpg`,
 		releaseYear: 2010,
@@ -84,7 +93,13 @@ export const preBooks = [
 		id: crypto.randomUUID(),
 		title: "book name E",
 		authorName: "author name E",
-		genre: ["comedy", "romance", "slice of life", "actions", "adults"],
+		genre: [
+			"comedy",
+			"romance",
+			"slice of life",
+			"actions",
+			"adults",
+		],
 		quantity: 8,
 		imgUrl: `book-${helper.randomNumberMax(offlineImgNum)}.jpg`,
 		releaseYear: 2022,
@@ -279,9 +294,6 @@ export const preBooks = [
 		customBook: false,
 	},
 ];
-
-// Array to store new books
-export const newBook = [];
 
 // Export the book lists object
 export const bookLists = {

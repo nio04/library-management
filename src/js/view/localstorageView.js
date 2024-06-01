@@ -5,10 +5,9 @@ export function setStorage(book) {
 	// Convert storageBook array to JSON and store in local storage
 	localStorage.setItem(
 		"newBook",
-		JSON.stringify([...bookContent.oldBooks, bookContent.newBook])
+		JSON.stringify([...bookContent.oldBooks.flat(Infinity), book])
 	);
 }
-
 // Function to retrieve books from storage
 export function getStorage() {
 	// Check if newBook item exists in local storage

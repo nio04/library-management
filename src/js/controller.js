@@ -29,17 +29,3 @@ bookModalControl;
 intersectionController();
 // tooltipControl();
 fontView.fontControl;
-
-// bootstrapView.hideModal;
-
-// handling overlay && modal removing
-document.addEventListener("click", (ev) => {
-	if (
-		!(
-			ev.target.classList.contains("modal__btn") ||
-			ev.target.classList.contains("overlay")
-		)
-	)
-		return;
-	hideModal();
-});
