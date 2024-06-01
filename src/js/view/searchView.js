@@ -13,7 +13,7 @@ export const searchBooks = (searchValue) => {
 // Function to get all books from preBooks and stored books
 const getAllBooks = () => {
 	const preBooksArray = Array.isArray(preBooks) ? preBooks : [];
-	const storedBooksArray = getStorage() || [];
+	const storedBooksArray = getStorage().flat(Infinity) || [];
 	return [...preBooksArray, ...storedBooksArray];
 };
 
