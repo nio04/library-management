@@ -18,7 +18,7 @@ let searchResults;
 
 // Function to get search input value
 function getSearchInput(ev) {
-	searchValue = ev.target.value;
+	searchValue = ev.target.value.trim();
 }
 
 // Main function to control book search
