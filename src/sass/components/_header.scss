@@ -18,8 +18,11 @@
 	margin-top: 12rem;
 	margin-bottom: 5rem;
 
-	// @extend .from-hidden;
-	// @include abs.translate(0, -15rem);
+	@include abs.mq(600px) {
+		width: 100%;
+		// margin-left: 3vw;
+		// margin-right: 3vw;
+	}
 }
 
 .h1-sm {

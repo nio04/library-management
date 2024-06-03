@@ -77,8 +77,12 @@
 					margin-left: 2rem;
 
 					@media (max-width: 780px) {
-						margin-bottom: 7rem;
+						margin-bottom: 2rem;
 						justify-content: center;
+					}
+
+					@include abs.mq(500px) {
+						width: 100%;
 					}
 
 					img {
@@ -88,6 +92,10 @@
 						border-radius: 1rem;
 						font-size: 3rem;
 						background-color: var(--gray-color-200);
+
+						@include abs.mq(500px) {
+							width: 15rem;
+						}
 					}
 				}
 
@@ -98,7 +106,7 @@
 					padding-left: 2rem;
 					p {
 						border: none;
-						font-size: 2.5rem;
+						font-size: clamp(2rem, 3vw, 1vw);
 						font-weight: 400;
 						font-family: Arimo;
 						margin-bottom: 0;

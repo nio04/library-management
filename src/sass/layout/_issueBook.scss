@@ -61,6 +61,11 @@
 			align-items: center;
 			justify-content: center;
 
+			@include abs.mq(460px) {
+				flex-direction: column;
+				gap: 3rem;
+			}
+
 			input[type="search"],
 			input[type="submit"] {
 				outline: none;
@@ -324,6 +329,7 @@
 	.step__5 {
 		@extend %flex-col-center;
 		line-height: 1;
+		margin-bottom: 3rem;
 
 		.book__issue {
 			&__waiting {
@@ -354,6 +360,7 @@
 
 	.step__6 {
 		@extend %flex-col-center;
+		margin-bottom: 3rem;
 
 		form {
 			// width: 60vw;
@@ -400,6 +407,7 @@
 
 	.step__8 {
 		@extend %flex-col-center;
+		margin-bottom: 3rem;
 
 		.checkout-message {
 			font-size: 3rem;
@@ -407,9 +415,10 @@
 			text-transform: uppercase;
 			padding: 2.6rem 0;
 			font-weight: 600;
-			line-height: 2.5;
+			line-height: 1.9;
 			text-align: center;
 			color: var(--green-color-400);
+			margin-bottom: 3rem;
 			// @extend .from-hidden;
 			// @include abs.translate(0, 100%);
 

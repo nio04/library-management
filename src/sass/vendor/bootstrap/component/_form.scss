@@ -1,7 +1,13 @@
+@use "../../../abstracts/" as abs;
+
 %form-control-design {
-	width: 70%;
+	width: 90%;
 	font-size: 3rem;
 	border: 1px solid var(--gray-color-400);
+
+	@include abs.mq(600px) {
+		width: 100%;
+	}
 
 	&:focus {
 		box-shadow: 0 0 0 0.45rem #0d6efd40;
@@ -30,10 +36,13 @@
 }
 
 .form-check {
+	padding-left: 0;
 	input[type="checkbox"] {
 		width: 1.6em;
 		height: 1.6em;
 		margin-right: 1rem;
+		float: none;
+		margin-left: 1.3rem;
 	}
 }
 
