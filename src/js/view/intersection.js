@@ -165,21 +165,21 @@ function callback(entries) {
 					showChildren([
 						entry.target.children[0],
 						entry.target.children[1],
-						entry.target.children[2].children[0].children[0]
-							.children[0],
-						entry.target.children[2].children[0].children[1],
-						entry.target.children[2].children[0].children[2]
-							.children[0],
-						entry.target.children[2].children[0].children[2]
-							.children[1],
-						entry.target.children[2].children[0].children[3]
-							.children[0],
-						entry.target.children[2].children[0].children[3]
-							.children[1],
-						entry.target.children[2].children[0].children[3]
-							.children[2],
-						entry.target.children[2].children[0].children[3]
-							.children[3],
+						// entry.target.children[2].children[0].children[0]
+						// 	.children[0],
+						// entry.target.children[2].children[0].children[1],
+						// entry.target.children[2].children[0].children[2]
+						// 	.children[0],
+						// entry.target.children[2].children[0].children[2]
+						// 	.children[1],
+						// entry.target.children[2].children[0].children[3]
+						// 	.children[0],
+						// entry.target.children[2].children[0].children[3]
+						// 	.children[1],
+						// entry.target.children[2].children[0].children[3]
+						// 	.children[2],
+						// entry.target.children[2].children[0].children[3]
+						// 	.children[3],
 					]);
 					observer.unobserve(entry.target);
 					break;

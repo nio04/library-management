@@ -4,18 +4,24 @@
 
 .contributor {
 	&-section {
-		overflow: hidden;
+		// overflow: hidden;
 
 		h1 {
-			@extend .from-hidden;
+			// @extend .from-hidden;
 			@include abs.translate(0, -100%);
 			padding: 1rem;
+			margin-top: 6rem;
+			margin-left: 28rem;
 		}
 	}
 
 	&-container {
-		transform: translateY(-2rem);
-		@extend %flex-col-center;
+		transform: translateY(4.5rem);
+		// @extend %flex-col-center;
+		margin: 3rem;
+		margin-top: 6rem;
+		display: flex;
+		gap: 2rem;
 
 		@include abs.mq(650px) {
 			margin-top: 10rem;
@@ -27,21 +33,46 @@
 		display: grid;
 		grid-template-columns: repeat(2, 1fr);
 		justify-content: center;
+		box-shadow: 0 2px 2px 3px rgba(#000, 0.2);
+
+		&:nth-child(2) {
+			transform: scale(1.2) translateY(-3rem);
+
+			.role-container {
+				.education {
+					transform: translateX(2rem);
+				}
+				.contributor-item__role {
+					transform: translateX(2.2rem);
+				}
+			}
+		}
+
+		&:nth-child(3) {
+			.role-container {
+				.education {
+					transform: translateX(2.7rem);
+				}
+				.contributor-item__role {
+					transform: translateX(3rem);
+				}
+			}
+		}
 
 		figure {
 			grid-column: 1 / -1;
 			margin-bottom: 1rem;
-			height: 15rem;
+			height: 25rem;
 			width: 25rem;
 			justify-self: center;
 			margin-top: 3rem;
 
 			img {
-				height: 25rem;
-				width: 25rem;
+				height: 100%;
+				width: 100%;
 				border-radius: 50%;
-				transform: scale(0.1);
-				@extend .from-hidden;
+				// transform: scale(0.1);
+				// @extend .from-hidden;
 			}
 		}
 
@@ -50,58 +81,73 @@
 			background-color: var(--gray-color-600);
 			color: var(--gray-color-300);
 			grid-column: 1 / -1;
-			width: 70%;
-			margin: 8.4rem auto;
+			width: 100%;
+			margin: 2rem auto;
 			font-family: Montserrat;
 			font-size: 3.3rem;
 			font-weight: 600;
-			transform: translateY(100%);
+			// transform: translateY(100%);
 
-			@extend .from-hidden;
-			@include abs.translate(0, 100%);
+			// @extend .from-hidden;
+			// @include abs.translate(0, 100%);
 		}
 
-		.education {
+		.role-container {
 			grid-column: 1 / -1;
 			display: grid;
 			grid-template-columns: repeat(2, 1fr);
 			margin-bottom: 2rem;
-			margin-left: 10rem;
 
-			$translateX: 100%; // Initial value for odd elements
-			h3 {
-				color: var(--nuetral-color-600);
-				font-size: 2.2rem;
+			.education {
+				grid-column: 1 / -1;
+				// width: 50rem;
+				display: grid;
+				grid-template-columns: repeat(2, 1fr);
+				// margin-left: 10rem;
 
-				&:nth-of-type(even) {
-					$translateX: -100%; // Change translation value for even elements
+				$translateX: 100%; // Initial value for odd elements
+				h3 {
+					color: var(--nuetral-color-600);
+					font-size: 2.2rem;
+					text-transform: capitalize;
+
+					&:first-child {
+						padding-left: 1rem;
+					}
+
+					// &:nth-of-type(even) {
+					// 	$translateX: -100%; // Change translation value for even elements
+					// }
+
+					// @extend .from-hidden;
+					// @include abs.translate($translateX, 0);
 				}
-
-				@extend .from-hidden;
-				@include abs.translate($translateX, 0);
 			}
-		}
 
-		&__role {
-			grid-column: 1 / -1;
-			display: grid;
-			grid-template-columns: repeat(2, 1fr);
-			grid-gap: 1rem;
-			padding-left: 2rem;
-			margin-left: 10rem;
+			.contributor-item__role {
+				grid-column: 1 / -1;
+				display: grid;
+				grid-template-columns: repeat(2, 1fr);
+				grid-gap: 1rem;
+				padding-left: 3rem;
+				margin-top: 2rem;
+				text-transform: capitalize;
+				// padding-left: 2rem;
+				// margin-left: 10rem;
 
-			li {
-				font-size: 2.2rem;
-				font-family: Lato;
-				color: var(--gray-color-700);
+				li {
+					font-size: 2.2rem;
+					font-family: Lato;
+					color: var(--gray-color-700);
 
-				$translateX: -100%; // Initial value for odd elements
-				&:nth-of-type(even) {
-					$translateX: 100%; // Change translation value for even elements
+					// $translateX: -100%; // Initial value for odd elements
+					// &:nth-of-type(even) {
+					// 	$translateX: 100%; // Change translation value for even elements
+					// }
+
+					// // @extend .from-hidden;
+					// @include abs.translate($translateX, 0);
 				}
-
-				@extend .from-hidden;
-				@include abs.translate($translateX, 0);
 			}
 		}
 	}
