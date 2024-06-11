@@ -4,24 +4,33 @@
 
 .contributor {
 	&-section {
-		// overflow: hidden;
-
 		h1 {
-			// @extend .from-hidden;
 			@include abs.translate(0, -100%);
 			padding: 1rem;
 			margin-top: 6rem;
 			margin-left: 28rem;
+
+			@include abs.mq(1300px) {
+				margin-top: 11rem;
+				margin-left: auto;
+			}
 		}
 	}
 
 	&-container {
-		transform: translateY(4.5rem);
-		// @extend %flex-col-center;
 		margin: 3rem;
 		margin-top: 6rem;
 		display: flex;
 		gap: 2rem;
+		transform: translateY(4.5rem);
+
+		@include abs.mq(1300px) {
+			transform: translate(0);
+		}
+
+		@include abs.mq(1300px) {
+			flex-direction: column;
+		}
 
 		@include abs.mq(650px) {
 			margin-top: 10rem;
@@ -35,8 +44,16 @@
 		justify-content: center;
 		box-shadow: 0 2px 2px 3px rgba(#000, 0.2);
 
+		@include abs.mq(1300px) {
+			width: 100%;
+		}
+
 		&:nth-child(2) {
 			transform: scale(1.2) translateY(-3rem);
+
+			@include abs.mq(1300px) {
+				transform: translate(0);
+			}
 
 			.role-container {
 				.education {
@@ -71,8 +88,6 @@
 				height: 100%;
 				width: 100%;
 				border-radius: 50%;
-				// transform: scale(0.1);
-				// @extend .from-hidden;
 			}
 		}
 
@@ -86,10 +101,6 @@
 			font-family: Montserrat;
 			font-size: 3.3rem;
 			font-weight: 600;
-			// transform: translateY(100%);
-
-			// @extend .from-hidden;
-			// @include abs.translate(0, 100%);
 		}
 
 		.role-container {
@@ -100,10 +111,8 @@
 
 			.education {
 				grid-column: 1 / -1;
-				// width: 50rem;
 				display: grid;
 				grid-template-columns: repeat(2, 1fr);
-				// margin-left: 10rem;
 
 				$translateX: 100%; // Initial value for odd elements
 				h3 {
@@ -114,13 +123,6 @@
 					&:first-child {
 						padding-left: 1rem;
 					}
-
-					// &:nth-of-type(even) {
-					// 	$translateX: -100%; // Change translation value for even elements
-					// }
-
-					// @extend .from-hidden;
-					// @include abs.translate($translateX, 0);
 				}
 			}
 
@@ -132,21 +134,11 @@
 				padding-left: 3rem;
 				margin-top: 2rem;
 				text-transform: capitalize;
-				// padding-left: 2rem;
-				// margin-left: 10rem;
 
 				li {
 					font-size: 2.2rem;
 					font-family: Lato;
 					color: var(--gray-color-700);
-
-					// $translateX: -100%; // Initial value for odd elements
-					// &:nth-of-type(even) {
-					// 	$translateX: 100%; // Change translation value for even elements
-					// }
-
-					// // @extend .from-hidden;
-					// @include abs.translate($translateX, 0);
 				}
 			}
 		}
